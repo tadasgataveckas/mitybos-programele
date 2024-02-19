@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface IClientInterface
 {
-    bool Login(string name, string password);
+    int Login(string name, string password, string constring, out int id);
     void SendSurveyResults();
 }
