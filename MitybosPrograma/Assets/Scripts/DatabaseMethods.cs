@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Data;
 using System.Collections.Generic;
+using UnityEngine;
 using MySqlConnector;
 public class DatabaseMethods
 {
+  
 	public int Login(string username, string password, string constring, out int id)
 	{
         MySqlCommand command = new MySqlCommand();
@@ -18,7 +20,7 @@ public class DatabaseMethods
             command.Parameters.Add("@expr2", MySqlDbType.VarChar, 255).Value = password;
             command.Connection = ConnectionObject;
             ConnectionObject.Open();
-            using (var reader = command.ExecuteReader())
+            using (MySqlDataReader reader = command.ExecuteReader())
             {
 
                 if (reader.HasRows)
