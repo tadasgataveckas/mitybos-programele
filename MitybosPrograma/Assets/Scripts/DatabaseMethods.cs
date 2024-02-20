@@ -2,12 +2,13 @@
 using System.Data;
 using System.Collections.Generic;
 using UnityEngine;
-using MySqlConnector;
+using MySql.Data.MySqlClient;
 public class DatabaseMethods
 {
   
 	public int Login(string username, string password, string constring, out int id)
 	{
+        
         MySqlCommand command = new MySqlCommand();
         MySqlConnection ConnectionObject = new MySqlConnection();
         ConnectionObject.ConnectionString = constring;
