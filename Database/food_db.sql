@@ -79,7 +79,7 @@ CREATE TABLE `user` (
 
 CREATE TABLE `user_data` (
   `id_user` int(6) NOT NULL,
-  `creation_date` date NOT NULL DEFAULT current_timestamp(),
+  `creation_date` datetime NOT NULL DEFAULT current_timestamp(),
   `height` decimal(5,2) DEFAULT NULL,
   `weight` decimal(5,2) DEFAULT NULL,
   `gender` enum('Vyras','Moteris') DEFAULT NULL,
