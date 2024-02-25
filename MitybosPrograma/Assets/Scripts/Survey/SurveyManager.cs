@@ -12,9 +12,10 @@ public class SurveyManager : MonoBehaviour
 
     public string eatingPreference;
    
-    public int age;
-    public int height;
-    public double weight;
+    //Kolkas string reikia suzinot kaip paversti i int ir double
+    public string age;
+    public string height;
+    public string weight;
 
     public List<string> allergies;
 
@@ -32,6 +33,21 @@ public class SurveyManager : MonoBehaviour
     {
         eatingPreference = newEatingPreference;
     }
+
+    public void InputAge(string newAge)
+    {
+        age = newAge;
+        Debug.Log("You Entered " + age);
+    }
+    public void InputHeight(string newHeight)
+    {
+        height = newHeight;
+    }
+    public void InputWeight(string newWeight)
+    {
+        weight = newWeight;
+    }
+
 
 
     // Survey Segments
