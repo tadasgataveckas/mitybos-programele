@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,12 +12,14 @@ public class SurveyManager : MonoBehaviour
 
     public string eatingPreference;
    
-    //Kolkas string reikia suzinot kaip paversti i int ir double
-    public string age;
-    public string height;
-    public string weight;
+    public int age;
+
+    public double height;
+
+    public double weight;
 
     public List<string> allergies;
+
 
     public void InputGender(string newGender) 
     {
@@ -36,17 +38,41 @@ public class SurveyManager : MonoBehaviour
 
     public void InputAge(string newAge)
     {
-        age = newAge;
-        Debug.Log("You Entered " + age);
+        if (int.TryParse(newAge, out age))
+        {
+            Debug.Log("Input age is: " + age);
+        }
     }
+
     public void InputHeight(string newHeight)
     {
-        height = newHeight;
+        if (double.TryParse(newHeight, out height))
+        {
+            Debug.Log("Input height is: " + height);
+        }
     }
+
     public void InputWeight(string newWeight)
     {
-        weight = newWeight;
+        if (double.TryParse(newWeight, out weight))
+        {
+            Debug.Log("Input weight is: " + weight);
+        }
     }
+
+    public void AddAllergy(string allergy)
+    {
+        if (allergies.Contains(allergy)) // Patikriname, ar alergija jau yra sąraše
+        {
+            allergies.Remove(allergy); // Jei taip, pašaliname ją
+        }
+        else
+        {
+            allergies.Add(allergy); // Jei ne, pridedame ją
+            Debug.Log("Added allergy: " + allergy);
+        }
+    }
+
 
 
 
@@ -72,6 +98,7 @@ public class SurveyManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //inputField.contentType = InputField.ContentType.IntegerNumber;
         SwitchSegment(currentSegment);
     }
 
