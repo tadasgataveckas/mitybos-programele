@@ -127,5 +127,16 @@ public class DatabaseMethods
         }
     }
 
-    public void UpdateProfile() { }
+    public void UpdateProfile(int id, string gender, double height, double weight, string goal, string constring)
+    {
+        MySqlCommand command_select = new MySqlCommand();
+        MySqlConnection ConnectionObject = new MySqlConnection();
+        ConnectionObject.ConnectionString = constring;
+        try
+        {
+
+        }
+        catch (MySqlException e) { System.Console.WriteLine(e.Message);}
+        finally { ConnectionObject.Close(); }
+    }
 }

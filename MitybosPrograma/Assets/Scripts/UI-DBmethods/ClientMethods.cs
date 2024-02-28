@@ -42,10 +42,9 @@ public class ClientMethods : IClientInterface
         return _databaseMethods.Register(email, name, password, constring);
     }
 
-    public void UpdateProfile()
-	{
-		new NotImplementedException();
-	}
 
-
+    public void UpdateProfile(int id, string gender, double height, double weight, string goal, string constring)
+    {
+        _databaseMethods.UpdateProfile(id, gender, height, weight, goal, constring);
+    }
 }
