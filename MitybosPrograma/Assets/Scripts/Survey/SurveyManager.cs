@@ -21,6 +21,9 @@ public class SurveyManager : MonoBehaviour
     public List<string> allergies;
 
 
+    string connectionLocal = "Server=localhost;User ID=root;Password=root;Database=food_db";
+
+
     public void InputGender(string newGender) 
     {
         gender = newGender;
