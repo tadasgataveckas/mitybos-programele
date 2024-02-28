@@ -1567,11 +1567,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 559990404204870485, guid: ef38286cb479bab448a0040de44a4c2e, type: 3}
       propertyPath: m_text
-      value: Be fit
+      value: Gain weight
       objectReference: {fileID: 0}
     - target: {fileID: 873658333204427413, guid: ef38286cb479bab448a0040de44a4c2e, type: 3}
       propertyPath: m_Name
-      value: Be fit
+      value: Gain weight
       objectReference: {fileID: 0}
     - target: {fileID: 4951444116319168413, guid: ef38286cb479bab448a0040de44a4c2e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -1599,7 +1599,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4951444116319168413, guid: ef38286cb479bab448a0040de44a4c2e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Be fit
+      value: Gain weight
       objectReference: {fileID: 0}
     - target: {fileID: 4951444116319168413, guid: ef38286cb479bab448a0040de44a4c2e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -2412,7 +2412,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &789610764
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3609,11 +3609,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 559990404204870485, guid: ef38286cb479bab448a0040de44a4c2e, type: 3}
       propertyPath: m_text
-      value: Lose Weight
+      value: Lose weight
       objectReference: {fileID: 0}
     - target: {fileID: 873658333204427413, guid: ef38286cb479bab448a0040de44a4c2e, type: 3}
       propertyPath: m_Name
-      value: Lose Weight
+      value: Lose weight
       objectReference: {fileID: 0}
     - target: {fileID: 4951444116319168413, guid: ef38286cb479bab448a0040de44a4c2e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -3641,7 +3641,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4951444116319168413, guid: ef38286cb479bab448a0040de44a4c2e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Lose Weight
+      value: Lose weight
       objectReference: {fileID: 0}
     - target: {fileID: 4951444116319168413, guid: ef38286cb479bab448a0040de44a4c2e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
