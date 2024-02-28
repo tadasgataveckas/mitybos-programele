@@ -23,6 +23,10 @@ public class SurveyManager : MonoBehaviour
 
     string connectionLocal = "Server=localhost;User ID=root;Password=root;Database=food_db";
 
+    public void SubmitSurvey()
+    {
+        // ...
+    }
 
     public void InputGender(string newGender) 
     {
