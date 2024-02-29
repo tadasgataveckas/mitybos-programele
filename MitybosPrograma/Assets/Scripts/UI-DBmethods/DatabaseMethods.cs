@@ -8,6 +8,7 @@ using Mysqlx.Expr;
 using Mysqlx.Crud;
 using UnityEngine.Analytics;
 using Unity.VisualScripting;
+using Unity.VisualScripting;
 public class DatabaseMethods
 {
   
@@ -32,6 +33,7 @@ public class DatabaseMethods
                 if (reader.HasRows)
                 {
                     reader.Read();
+                    id = (int)reader.GetValue(0);
                     id = (int)reader.GetValue(0);
                     return id;
                 }
@@ -64,6 +66,7 @@ public class DatabaseMethods
         MySqlConnection ConnectionObject = new MySqlConnection();
         ConnectionObject.ConnectionString = constring;
         int id = -1;
+        int id = -1;
         try
         {
             command_register.CommandText = "INSERT INTO `food_db`.`user` " +
@@ -84,27 +87,37 @@ public class DatabaseMethods
             command_select.Connection = ConnectionObject; 
             ConnectionObject.Open();
             
+            
             int rowcount = command_register.ExecuteNonQuery();
             using (MySqlDataReader reader = command_select.ExecuteReader())
             {
+
 
                 if (reader.HasRows)
                 {
                     reader.Read();
                     id = (int)reader.GetValue(0);
                     
+                    id = (int)reader.GetValue(0);
+                    
                 }
                 else
                     id = -1;
+                    id = -1;
             }
+
+
 
 
 
             if (rowcount > 0)
             {
                 InsertRegisterPlaceholder(id, constring);
+                InsertRegisterPlaceholder(id, constring);
                 return true;
             }
+            else
+                return false;
             else
                 return false;
         }
@@ -116,8 +129,11 @@ public class DatabaseMethods
     }
 
     public void InsertRegisterPlaceholder(int id, string constring)
+    public void InsertRegisterPlaceholder(int id, string constring)
     {
         MySqlCommand command_insert = new MySqlCommand();
+        MySqlConnection ConnectionObject = new MySqlConnection();
+        ConnectionObject.ConnectionString = constring;
         MySqlConnection ConnectionObject = new MySqlConnection();
         ConnectionObject.ConnectionString = constring;
         try
@@ -128,12 +144,17 @@ public class DatabaseMethods
             command_insert.Parameters.Add("@expr1", MySqlDbType.Int64, 6).Value = id;
             command_insert.Connection = ConnectionObject;
             ConnectionObject.Open();    
+                                        " VALUES(@expr1, 0.0, 0.0, 'Vyras', CURRENT_DATE(), 'Lose weight')";
+            command_insert.Parameters.Add("@expr1", MySqlDbType.Int64, 6).Value = id;
+            command_insert.Connection = ConnectionObject;
+            ConnectionObject.Open();    
             command_insert.ExecuteNonQuery();
         }
         catch (MySqlException e)
         {
             System.Console.WriteLine(e.Message);
         }
+        finally {ConnectionObject.Close(); }
         finally {ConnectionObject.Close(); }
     }
 

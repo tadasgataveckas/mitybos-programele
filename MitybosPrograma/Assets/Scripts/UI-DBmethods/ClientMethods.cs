@@ -8,6 +8,7 @@ using UnityEngine;
 public class ClientMethods : IClientInterface
 {
 	
+	
 
 	private readonly DatabaseMethods _databaseMethods;
 
