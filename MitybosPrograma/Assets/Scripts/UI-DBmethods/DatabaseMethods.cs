@@ -7,6 +7,7 @@ using static UnityEngine.UI.GridLayoutGroup;
 using Mysqlx.Expr;
 using Mysqlx.Crud;
 using UnityEngine.Analytics;
+using Unity.VisualScripting;
 public class DatabaseMethods
 {
   
@@ -31,7 +32,7 @@ public class DatabaseMethods
                 if (reader.HasRows)
                 {
                     reader.Read();
-                    id = (int)reader.GetValue(1);
+                    id = (int)reader.GetValue(0);
                     return id;
                 }
                 else
@@ -62,6 +63,7 @@ public class DatabaseMethods
         MySqlCommand command_select = new MySqlCommand();
         MySqlConnection ConnectionObject = new MySqlConnection();
         ConnectionObject.ConnectionString = constring;
+        int id = -1;
         try
         {
             command_register.CommandText = "INSERT INTO `food_db`.`user` " +
@@ -81,27 +83,30 @@ public class DatabaseMethods
             command_register.Connection = ConnectionObject;
             command_select.Connection = ConnectionObject; 
             ConnectionObject.Open();
-
+            
             int rowcount = command_register.ExecuteNonQuery();
-            int id_usr_fk = -1;
             using (MySqlDataReader reader = command_select.ExecuteReader())
             {
+
                 if (reader.HasRows)
                 {
                     reader.Read();
-                    id_usr_fk = (int)reader.GetValue(1);
+                    id = (int)reader.GetValue(0);
+                    
                 }
                 else
-                    id_usr_fk = -1;
+                    id = -1;
             }
+
+
 
             if (rowcount > 0)
             {
-                InsertRegisterPlaceholder(id_usr_fk, ConnectionObject);
+                InsertRegisterPlaceholder(id, constring);
                 return true;
             }
-            else return false;
-
+            else
+                return false;
         }
         catch (MySqlException e)
         {
@@ -110,31 +115,57 @@ public class DatabaseMethods
         finally { ConnectionObject.Close(); }
     }
 
-    public void InsertRegisterPlaceholder(int id, MySqlConnection ConnectionObject)
+    public void InsertRegisterPlaceholder(int id, string constring)
     {
         MySqlCommand command_insert = new MySqlCommand();
+        MySqlConnection ConnectionObject = new MySqlConnection();
+        ConnectionObject.ConnectionString = constring;
         try
         {
             command_insert.CommandText = "INSERT INTO `food_db`.`user_data` " +
                                         "(`id_user`,`height`,`weight`,`gender`,`date_of_birth`,`goal`)" +
-                                        " VALUES(@expr1, 0.0, 0.0, 'Vyras', CURRENT_DATE, 'Lose weight')";
-            command_insert.Parameters.Add("@expr1", MySqlDbType.Int16, 6).Value = id;
+                                        " VALUES(@expr1, 0.0, 0.0, 'Vyras', CURRENT_DATE(), 'Lose weight')";
+            command_insert.Parameters.Add("@expr1", MySqlDbType.Int64, 6).Value = id;
+            command_insert.Connection = ConnectionObject;
+            ConnectionObject.Open();    
             command_insert.ExecuteNonQuery();
         }
         catch (MySqlException e)
         {
             System.Console.WriteLine(e.Message);
         }
+        finally {ConnectionObject.Close(); }
     }
 
     public void UpdateProfile(int id, string gender, double height, double weight, string goal, string constring)
     {
-        MySqlCommand command_select = new MySqlCommand();
+        MySqlCommand command_update = new MySqlCommand();
         MySqlConnection ConnectionObject = new MySqlConnection();
         ConnectionObject.ConnectionString = constring;
         try
         {
+            command_update.CommandText = "UPDATE `food_db`.`user_data`" +
+                                        " SET `height` = @expr2, `weight` = @expr3," +
+                                        " `gender` = @expr4, `date_of_birth` = CURRENT_DATE(), " +
+                                        "`goal` = @expr5 " +
+                                        "WHERE `id_user` = @expr1";
+            command_update.Parameters.Add("@expr1", MySqlDbType.Int64, 6).Value = id;
+            command_update.Parameters.Add("@expr2", MySqlDbType.Decimal, 5).Value = height;
+            command_update.Parameters.Add("@expr3", MySqlDbType.Decimal, 6).Value = weight;
+            //pakeisti kai pakeista duombaze VVV
+            if (gender == "Man")
+            {
+                command_update.Parameters.Add("@expr4", MySqlDbType.Enum, 6).Value = "Vyras";
+            }
+            else
+                command_update.Parameters.Add("@expr4", MySqlDbType.Enum, 6).Value = "Moteris";
+            ///
 
+            command_update.Parameters.Add("@expr5", MySqlDbType.Enum, 6).Value = goal;
+
+            command_update.Connection = ConnectionObject;
+            ConnectionObject.Open();
+            command_update.ExecuteNonQuery();
         }
         catch (MySqlException e) { System.Console.WriteLine(e.Message);}
         finally { ConnectionObject.Close(); }

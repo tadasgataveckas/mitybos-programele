@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class LoginManager : MonoBehaviour
 {
     // Login data
-    public string username; // username = email?
+    public string username; // username = email? 
 
     //public string email;
 
@@ -16,6 +16,10 @@ public class LoginManager : MonoBehaviour
 
     public List<GameObject> segments;
 
+    string constring = "Server=localhost;User ID=root;Password=root;Database=food_db";
+    
+    ClientMethods c = new ClientMethods(new DatabaseMethods());
+    public static int id; //iki kol pakeista i string
 
     public void InputUsername(string newUsername)
     {
@@ -29,15 +33,27 @@ public class LoginManager : MonoBehaviour
         // ...
     }
 
+    public void SetID(int newid)
+    {
+        id = newid;
+    }
+
+
     public void SubmitLogin() 
     {
-        // ...
-        SceneManager.LoadScene("Survey");
+        int id = c.Login(username, password, out id,constring);
+        SetID(id);
+        
+        if (id > 0)
+            SceneManager.LoadScene("Survey");
+        else
+            SwitchSegment(0);
     }
 
     public void SubmitSignUp()
     {
-        // ...
+        c.Register(username,username, password,constring);
+       
         SwitchSegment(0);
     }
     public void LoginWithAPI()

@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class ClientMethods : IClientInterface
 {
-	public ClientMethods() { }
+	
 
 	private readonly DatabaseMethods _databaseMethods;
 
@@ -42,7 +42,10 @@ public class ClientMethods : IClientInterface
         return _databaseMethods.Register(email, name, password, constring);
     }
 
-
+    public void InsertRegisterPlaceholder(int id, string constring)
+    {
+        _databaseMethods.InsertRegisterPlaceholder(id, constring);
+    }
     public void UpdateProfile(int id, string gender, double height, double weight, string goal, string constring)
     {
         _databaseMethods.UpdateProfile(id, gender, height, weight, goal, constring);

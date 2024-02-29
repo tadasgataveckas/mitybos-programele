@@ -21,11 +21,12 @@ public class SurveyManager : MonoBehaviour
     public List<string> allergies;
 
 
-    string connectionLocal = "Server=localhost;User ID=root;Password=root;Database=food_db";
-
+    string constring = "Server=localhost;User ID=root;Password=root;Database=food_db";
+    ClientMethods c = new ClientMethods(new DatabaseMethods());
     public void SubmitSurvey()
     {
-        // ...
+        Debug.Log(LoginManager.id);
+        c.UpdateProfile(LoginManager.id,gender,height,weight,goal,constring);
     }
 
     public void InputGender(string newGender) 
