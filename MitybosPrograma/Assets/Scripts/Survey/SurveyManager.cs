@@ -21,6 +21,17 @@ public class SurveyManager : MonoBehaviour
     public List<string> allergies;
 
 
+<<<<<<< Updated upstream
+=======
+    string constring = "Server=localhost;User ID=root;Password=root;Database=food_db";
+    ClientMethods c = new ClientMethods(new DatabaseMethods());
+    public void SubmitSurvey()
+    {
+        Debug.Log(LoginManager.id);
+        c.UpdateProfile(LoginManager.id,gender,height,weight,goal,constring);
+    }
+
+>>>>>>> Stashed changes
     public void InputGender(string newGender) 
     {
         gender = newGender;
