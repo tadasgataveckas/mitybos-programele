@@ -8,6 +8,7 @@ using UnityEngine;
 public class ClientMethods : IClientInterface
 {
 	
+	
 
 	private readonly DatabaseMethods _databaseMethods;
 
@@ -42,14 +43,6 @@ public class ClientMethods : IClientInterface
         return _databaseMethods.Register(email, name, password, constring);
     }
 
-<<<<<<< Updated upstream
-    public void UpdateProfile()
-	{
-		new NotImplementedException();
-	}
-
-
-=======
     public void InsertRegisterPlaceholder(int id, string constring)
     {
         _databaseMethods.InsertRegisterPlaceholder(id, constring);
@@ -58,5 +51,4 @@ public class ClientMethods : IClientInterface
     {
         _databaseMethods.UpdateProfile(id, gender, height, weight, goal, constring);
     }
->>>>>>> Stashed changes
 }

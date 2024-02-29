@@ -60,9 +60,14 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\unity_auth\LoginController.cs" />
     <Compile Include="Assets\Scripts\Survey\SurveyButton.cs" />
+    <Compile Include="Assets\Scripts\unity_auth\LoginController.cs" />
+    <Compile Include="Assets\Scripts\Survey\SurveyButton.cs" />
     <Compile Include="Assets\SoftEffects\Scripts\CGHolder.cs" />
     <Compile Include="Assets\SoftEffects\Scripts\SoftEffects.cs" />
     <Compile Include="Assets\SoftEffects\Scripts\Styles.cs" />
+    <Compile Include="Assets\Scripts\UI-DBmethods\ClientMethods.cs" />
+    <Compile Include="Assets\Scripts\UI-DBmethods\IClientInterface.cs" />
+    <Compile Include="Assets\Scripts\UI-DBmethods\DatabaseMethods.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\ClientMethods.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\IClientInterface.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\DatabaseMethods.cs" />
@@ -73,6 +78,9 @@
     <Compile Include="Assets\SoftEffects\Scripts\SoftEffectsFont.cs" />
     <Compile Include="Assets\Scripts\Login\LoginManager.cs" />
     <Compile Include="Assets\Scripts\unity_auth\UILogin.cs" />
+    <Compile Include="Assets\SoftEffects\Scripts\SoftEffectsFont.cs" />
+    <Compile Include="Assets\Scripts\unity_auth\UILogin.cs" />
+    <Compile Include="Assets\Scripts\Login\LoginManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -474,6 +482,10 @@
     </Reference>
     <Reference Include="K4os.Compression.LZ4">
       <HintPath>Assets\Scripts\DLLs\K4os.Compression.LZ4.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.2.1\Runtime\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Android.Types">
@@ -972,6 +984,9 @@
       <HintPath>C:\Program Files\Unity 2021.3.35f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
       <Private>False</Private>
     </Reference>
+      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.35f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.InternalAPIEngineBridge.001">
       <HintPath>Library\ScriptAssemblies\Unity.InternalAPIEngineBridge.001.dll</HintPath>
       <Private>False</Private>
@@ -994,6 +1009,12 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.State.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
+    <Reference Include="Unity.VisualScripting.State.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Services.Authentication.PlayerAccounts">
+      <HintPath>Library\ScriptAssemblies\Unity.Services.Authentication.PlayerAccounts.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.2D.IK.Editor">
@@ -1018,6 +1039,10 @@
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Services.Authentication">
+      <HintPath>Library\ScriptAssemblies\Unity.Services.Authentication.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.2D.IK.Runtime">
@@ -1090,10 +1115,20 @@
     </Reference>
     <Reference Include="Unity.PlasticSCM.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
+    <Reference Include="Unity.VisualScripting.Flow">
+      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.PlasticSCM.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Extras.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.2D.Tilemap.Extras.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Services.Core">
+      <HintPath>Library\ScriptAssemblies\Unity.Services.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core">
@@ -1104,12 +1139,24 @@
       <HintPath>Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Services.Core.Analytics">
+      <HintPath>Library\ScriptAssemblies\Unity.Services.Core.Analytics.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.Burst">
       <HintPath>Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Services.Authentication.Editor.Shared">
+      <HintPath>Library\ScriptAssemblies\Unity.Services.Authentication.Editor.Shared.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.Shared.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Environments">
+      <HintPath>Library\ScriptAssemblies\Unity.Services.Core.Environments.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.2D.Animation.Runtime">
