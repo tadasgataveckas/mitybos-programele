@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 21, 2024 at 07:01 PM
+-- Generation Time: Mar 02, 2024 at 04:27 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -24,12 +24,35 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `allergies_from_products`
+--
+
+CREATE TABLE `allergies_from_products` (
+  `id_allergy` int(6) NOT NULL,
+  `id_product` int(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `allergy`
+--
+
+CREATE TABLE `allergy` (
+  `id_allergy` int(6) NOT NULL,
+  `allergy_name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `meal`
 --
 
 CREATE TABLE `meal` (
   `id_meal` int(6) NOT NULL,
-  `meal_name` varchar(50) NOT NULL
+  `meal_name` varchar(50) NOT NULL,
+  `meal_type` enum('Breakfast','Lunch','Dinner','Snack') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -65,7 +88,7 @@ CREATE TABLE `product` (
 --
 
 CREATE TABLE `user` (
-  `id_user` int(11) NOT NULL,
+  `id_user` int(6) NOT NULL,
   `email` varchar(100) NOT NULL,
   `username` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL
@@ -79,12 +102,13 @@ CREATE TABLE `user` (
 
 CREATE TABLE `user_data` (
   `id_user` int(6) NOT NULL,
-  `creation_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `height` decimal(5,2) DEFAULT NULL,
-  `weight` decimal(5,2) DEFAULT NULL,
-  `gender` enum('Vyras','Moteris') DEFAULT NULL,
+  `height` decimal(5,2) UNSIGNED DEFAULT NULL,
+  `weight` decimal(5,2) UNSIGNED DEFAULT NULL,
+  `gender` enum('Male','Female','Other') DEFAULT NULL,
+  `goal` enum('Lose weight','Maintain weight','Gain weight','Gain muscle') DEFAULT NULL,
+  `physical_activity` int(1) UNSIGNED NOT NULL DEFAULT 0,
   `date_of_birth` date DEFAULT NULL,
-  `goal` enum('Lose weight','Maintain weight','Gain weight','Gain muscle') DEFAULT NULL
+  `creation_date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -98,9 +122,34 @@ CREATE TABLE `user_filtered_products` (
   `id_product` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_selected_allergies`
+--
+
+CREATE TABLE `user_selected_allergies` (
+  `id_user` int(6) NOT NULL,
+  `id_allergy` int(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `allergies_from_products`
+--
+ALTER TABLE `allergies_from_products`
+  ADD PRIMARY KEY (`id_allergy`,`id_product`),
+  ADD KEY `afp_id_product_fk` (`id_product`);
+
+--
+-- Indexes for table `allergy`
+--
+ALTER TABLE `allergy`
+  ADD PRIMARY KEY (`id_allergy`),
+  ADD UNIQUE KEY `allergy_name` (`allergy_name`);
 
 --
 -- Indexes for table `meal`
@@ -145,8 +194,21 @@ ALTER TABLE `user_filtered_products`
   ADD KEY `ufp_id_product_fk` (`id_product`);
 
 --
+-- Indexes for table `user_selected_allergies`
+--
+ALTER TABLE `user_selected_allergies`
+  ADD PRIMARY KEY (`id_user`,`id_allergy`),
+  ADD KEY `usa_id_allergy_fk` (`id_allergy`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `allergy`
+--
+ALTER TABLE `allergy`
+  MODIFY `id_allergy` int(6) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `meal`
@@ -164,7 +226,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_user` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user_data`
@@ -175,6 +237,13 @@ ALTER TABLE `user_data`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `allergies_from_products`
+--
+ALTER TABLE `allergies_from_products`
+  ADD CONSTRAINT `afp_id_allergy_fk` FOREIGN KEY (`id_allergy`) REFERENCES `allergy` (`id_allergy`),
+  ADD CONSTRAINT `afp_id_product_fk` FOREIGN KEY (`id_product`) REFERENCES `product` (`id_product`);
 
 --
 -- Constraints for table `meals_from_products`
@@ -194,7 +263,14 @@ ALTER TABLE `user_data`
 --
 ALTER TABLE `user_filtered_products`
   ADD CONSTRAINT `ufp_id_product_fk` FOREIGN KEY (`id_product`) REFERENCES `product` (`id_product`),
-  ADD CONSTRAINT `ufp_id_user_fk` FOREIGN KEY (`id_user`) REFERENCES `user_data` (`id_user`);
+  ADD CONSTRAINT `ufp_id_user_fk` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
+
+--
+-- Constraints for table `user_selected_allergies`
+--
+ALTER TABLE `user_selected_allergies`
+  ADD CONSTRAINT `usa_id_allergy_fk` FOREIGN KEY (`id_allergy`) REFERENCES `allergy` (`id_allergy`),
+  ADD CONSTRAINT `usa_id_user_fk` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
