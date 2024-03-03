@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class SurveyManager : MonoBehaviour
 {
@@ -19,6 +21,8 @@ public class SurveyManager : MonoBehaviour
     public double weight;
 
     public List<string> allergies;
+
+    public int activity;
 
 
     string constring = "Server=localhost;User ID=root;Password=root;Database=food_db";
@@ -81,6 +85,25 @@ public class SurveyManager : MonoBehaviour
         }
     }
 
+    public void InputActivity(string newactivity)
+    {
+        newactivity = GetSliderValue(newactivity);
+        if (int.TryParse(vall, out activity))
+        {
+            Debug.Log("Input activity is: " + activity);
+        }
+    }
+    string vall = "";
+    //[SerializedField] private Slider _slider;
+    //[SerializedField] private TextMeshProUGUI _sliderText;
+    public string GetSliderValue(string sliderValue)
+    {
+        vall = sliderValue;
+        return sliderValue;
+    }
+
+
+
 
 
 
@@ -107,12 +130,23 @@ public class SurveyManager : MonoBehaviour
     void Start()
     {
         //inputField.contentType = InputField.ContentType.IntegerNumber;
+        //_slider.onValueChanged.AddListener((v) =>
+        //{
+        //    _sliderText.text = v.ToString("0.00");    
+
+        //});
         SwitchSegment(currentSegment);
     }
+
+    public Slider slider;
+    public TextMeshProUGUI sliderText;
 
     // Update is called once per frame
     void Update()
     {
-        
+        string val;
+        sliderText.text = slider.value.ToString();
+        val = slider.value.ToString();
+        GetSliderValue(val);
     }
 }
