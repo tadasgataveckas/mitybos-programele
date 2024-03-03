@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\unity_auth\LoginController.cs" />
+    <Compile Include="Assets\Scripts\Survey\ButtonTransitions.cs" />
     <Compile Include="Assets\SoftEffects\Scripts\CGHolder.cs" />
     <Compile Include="Assets\SoftEffects\Scripts\SoftEffects.cs" />
     <Compile Include="Assets\SoftEffects\Scripts\Styles.cs" />
@@ -72,7 +73,6 @@
     <Compile Include="Assets\SoftEffects\Scripts\SoftEffectsFont.cs" />
     <Compile Include="Assets\Scripts\Login\LoginManager.cs" />
     <Compile Include="Assets\Scripts\unity_auth\UILogin.cs" />
-    <Compile Include="Assets\Scripts\Survey\ButtonTransitions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
