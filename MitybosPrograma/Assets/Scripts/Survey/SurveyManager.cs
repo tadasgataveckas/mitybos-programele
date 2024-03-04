@@ -85,24 +85,17 @@ public class SurveyManager : MonoBehaviour
         }
     }
 
+    public Slider slider;
+    public TextMeshProUGUI sliderText;
     public void InputActivity(string newactivity)
     {
-        newactivity = GetSliderValue(newactivity);
-        if (int.TryParse(vall, out activity))
+        Debug.Log("Input activity is: " + slider.value);
+        newactivity = slider.value.ToString();
+        if (int.TryParse(newactivity, out activity))
         {
             Debug.Log("Input activity is: " + activity);
         }
     }
-    string vall = "";
-    //[SerializedField] private Slider _slider;
-    //[SerializedField] private TextMeshProUGUI _sliderText;
-    public string GetSliderValue(string sliderValue)
-    {
-        vall = sliderValue;
-        return sliderValue;
-    }
-
-
 
 
 
@@ -138,15 +131,11 @@ public class SurveyManager : MonoBehaviour
         SwitchSegment(currentSegment);
     }
 
-    public Slider slider;
-    public TextMeshProUGUI sliderText;
+    
 
     // Update is called once per frame
     void Update()
     {
-        string val;
-        sliderText.text = slider.value.ToString();
-        val = slider.value.ToString();
-        GetSliderValue(val);
+        //sliderText.text = slider.value.ToString();
     }
 }
