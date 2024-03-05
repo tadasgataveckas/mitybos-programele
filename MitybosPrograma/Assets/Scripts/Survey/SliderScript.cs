@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,9 +10,17 @@ public class SliderScript : MonoBehaviour
     public Slider slider;
     public TextMeshProUGUI sliderText;
     public TextMeshProUGUI descriptionText;
+
+    SurveyManager survey;
     public void PrintSliderValue()
     {
         Debug.Log("Slider Value: " + slider.value);
+        
+    }
+
+    public string ReturnActivity()
+    {
+        return slider.value.ToString();
     }
 
     void Start()

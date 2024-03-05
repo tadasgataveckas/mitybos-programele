@@ -25,6 +25,9 @@ public class SurveyManager : MonoBehaviour
 
     public int activity;
 
+    //activity slider
+    SliderScript slider;
+
     private double BMI;
 
 
@@ -88,15 +91,20 @@ public class SurveyManager : MonoBehaviour
         }
     }
 
-    public Slider slider;
-    public TextMeshProUGUI sliderText;
-    public void InputActivity(string newactivity)
+    public void InputActivity()
     {
-        Debug.Log("Input activity is: " + slider.value);
-        newactivity = slider.value.ToString();
-        if (int.TryParse(newactivity, out activity))
+        if (slider != null)
         {
-            Debug.Log("Input activity is: " + activity);
+            string newActivity = slider.ReturnActivity();
+            Debug.Log("Activity: " + newActivity);
+            if (int.TryParse(newActivity, out activity))
+            {
+                Debug.Log("Input activity is: " + activity);
+            }
+        }
+        else
+        {
+            Debug.LogError("Slider object is not initialized.");
         }
     }
 
@@ -211,23 +219,17 @@ public class SurveyManager : MonoBehaviour
         SwitchSegment(currentSegment + 1);
     }
 
+
     // Start is called before the first frame update
     void Start()
     {
-        //inputField.contentType = InputField.ContentType.IntegerNumber;
-        //_slider.onValueChanged.AddListener((v) =>
-        //{
-        //    _sliderText.text = v.ToString("0.00");    
-
-        //});
         SwitchSegment(currentSegment);
     }
-
     
 
     // Update is called once per frame
     void Update()
     {
-        //sliderText.text = slider.value.ToString();
+       
     }
 }
