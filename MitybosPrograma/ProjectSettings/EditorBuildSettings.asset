@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Survey.unity
     guid: 9430a4b17866dd84eb18e71fa08ea7dd
+  - enabled: 1
+    path: Assets/PlanoValdymas.unity
+    guid: f6ce6a0eac9439846b9550be66f19524
   m_configObjects: {}
