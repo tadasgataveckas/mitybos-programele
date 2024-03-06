@@ -26,7 +26,7 @@ public class SurveyManager : MonoBehaviour
     public int activity;
 
     //activity slider
-    SliderScript slider;
+    public SliderScript slider;
 
     private double BMI;
 
@@ -122,7 +122,7 @@ public class SurveyManager : MonoBehaviour
     //Printing BMI result
     public string BMIResult(double RBMI)
     {
-        if(RBMI > 18.5)
+        if(RBMI < 18.5)
         {
             return "Underweight";
         }

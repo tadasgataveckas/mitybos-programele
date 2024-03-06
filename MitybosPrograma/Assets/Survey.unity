@@ -618,7 +618,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1527,7 +1527,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &363036490
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2151,7 +2151,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &432693089
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2212,6 +2212,7 @@ MonoBehaviour:
   weight: 0
   allergies: []
   activity: 0
+  slider: {fileID: 0}
   segments: []
 --- !u!1 &436595682
 GameObject:
@@ -4269,7 +4270,6 @@ GameObject:
   - component: {fileID: 836018808}
   - component: {fileID: 836018809}
   - component: {fileID: 836018810}
-  - component: {fileID: 836018811}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -4351,7 +4351,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 432693091}
+      - m_Target: {fileID: 1237100514}
         m_TargetAssemblyTypeName: SurveyManager, Assembly-CSharp
         m_MethodName: InputActivity
         m_Mode: 1
@@ -4390,27 +4390,6 @@ MonoBehaviour:
   slider: {fileID: 836018809}
   sliderText: {fileID: 906940138}
   descriptionText: {fileID: 2104171054}
---- !u!114 &836018811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 836018807}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dfcfecfe59dee64a97163c544e81354, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gender: 
-  goal: 
-  eatingPreference: 
-  age: 0
-  height: 0
-  weight: 0
-  allergies: []
-  activity: 0
-  segments: []
 --- !u!1 &906940136
 GameObject:
   m_ObjectHideFlags: 0
@@ -6289,6 +6268,7 @@ MonoBehaviour:
   weight: 0
   allergies: []
   activity: 0
+  slider: {fileID: 836018810}
   segments:
   - {fileID: 1858329182}
   - {fileID: 645493827}
@@ -7341,7 +7321,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
