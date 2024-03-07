@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 07, 2024 at 11:54 PM
+-- Generation Time: Mar 02, 2024 at 04:27 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -63,8 +63,7 @@ CREATE TABLE `meal` (
 
 CREATE TABLE `meals_from_products` (
   `id_meal` int(6) NOT NULL,
-  `id_product` int(6) NOT NULL,
-  `amount` decimal(8,2) NOT NULL DEFAULT 0.00
+  `id_product` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -103,13 +102,13 @@ CREATE TABLE `user` (
 
 CREATE TABLE `user_data` (
   `id_user` int(6) NOT NULL,
-  `height` decimal(5,2) UNSIGNED NOT NULL,
-  `weight` decimal(5,2) UNSIGNED NOT NULL,
-  `gender` enum('Male','Female','Other') NOT NULL,
-  `goal` enum('Lose weight','Maintain weight','Gain weight','Gain muscle') NOT NULL,
-  `physical_activity` int(1) UNSIGNED NOT NULL,
-  `date_of_birth` date NOT NULL,
-  `last_updated_date` datetime NOT NULL DEFAULT current_timestamp()
+  `height` decimal(5,2) UNSIGNED DEFAULT NULL,
+  `weight` decimal(5,2) UNSIGNED DEFAULT NULL,
+  `gender` enum('Male','Female','Other') DEFAULT NULL,
+  `goal` enum('Lose weight','Maintain weight','Gain weight','Gain muscle') DEFAULT NULL,
+  `physical_activity` int(1) UNSIGNED NOT NULL DEFAULT 0,
+  `date_of_birth` date DEFAULT NULL,
+  `creation_date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -228,6 +227,12 @@ ALTER TABLE `product`
 --
 ALTER TABLE `user`
   MODIFY `id_user` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `user_data`
+--
+ALTER TABLE `user_data`
+  MODIFY `id_user` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
