@@ -20,7 +20,7 @@ public class ButtonTransitions : MonoBehaviour, IPointerDownHandler, IPointerUpH
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (!isSelected)
+        //if (!isSelected)
             buttonImage.color = hoveredColor; // Change color when button is pressed
     }
 
@@ -31,9 +31,9 @@ public class ButtonTransitions : MonoBehaviour, IPointerDownHandler, IPointerUpH
     }
 
     // You may have a method to set the button as selected, where you change the color to 'selectedColor'
-    public void SetSelected(bool selected)
+    public void SetSelected()
     {
-        isSelected = selected;
+        isSelected = !isSelected;
         if (isSelected)
             buttonImage.color = selectedColor;
         else
