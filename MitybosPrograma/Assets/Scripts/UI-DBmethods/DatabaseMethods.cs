@@ -130,8 +130,8 @@ public class DatabaseMethods
         try
         {
             command_insert.CommandText = "INSERT INTO `food_db`.`user_data` " +
-                                        "(`id_user`,`height`,`weight`,`gender`,`date_of_birth`,`goal`)" +
-                                        " VALUES(@expr1, 0.0, 0.0, 'Vyras', CURRENT_DATE(), 'Lose weight')";
+                                        "(`id_user`,`height`,`weight`,`gender`,`goal`,`physical_activity`,`date_of_birth`)" +
+                                        " VALUES(@expr1, 0.0, 0.0, 'Male', 'Lose weight', 1, CURRENT_DATE())";
             command_insert.Parameters.Add("@expr1", MySqlDbType.Int64, 6).Value = id;
             command_insert.Connection = ConnectionObject;
             ConnectionObject.Open();    
@@ -144,31 +144,29 @@ public class DatabaseMethods
         finally {ConnectionObject.Close(); }
     }
 
-    public void UpdateProfile(int id, string gender, double height, double weight, string goal, string constring)
+    public void UpdateProfile(int id, string gender, double height, double weight, string goal,int dateOfBirth, int activity, string constring)
     {
         MySqlCommand command_update = new MySqlCommand();
         MySqlConnection ConnectionObject = new MySqlConnection();
         ConnectionObject.ConnectionString = constring;
+        //pakeisti kai prideti menesio ir dienos pasirinkimai.(metodas sukurti YYYY-mm-dd string);
+        string year = dateOfBirth.ToString();
         try
         {
             command_update.CommandText = "UPDATE `food_db`.`user_data`" +
                                         " SET `height` = @expr2, `weight` = @expr3," +
-                                        " `gender` = @expr4, `date_of_birth` = CURRENT_DATE(), " +
-                                        "`goal` = @expr5 " +
+                                        " `gender` = @expr4,  `goal` = @expr5, " +
+                                        "`physical_activity` = @expr6, `date_of_birth` = @expr7 " +
                                         "WHERE `id_user` = @expr1";
             command_update.Parameters.Add("@expr1", MySqlDbType.Int64, 6).Value = id;
             command_update.Parameters.Add("@expr2", MySqlDbType.Decimal, 5).Value = height;
-            command_update.Parameters.Add("@expr3", MySqlDbType.Decimal, 6).Value = weight;
-            //pakeisti kai pakeista duombaze VVV
-            if (gender == "Man")
-            {
-                command_update.Parameters.Add("@expr4", MySqlDbType.Enum, 6).Value = "Vyras";
-            }
-            else
-                command_update.Parameters.Add("@expr4", MySqlDbType.Enum, 6).Value = "Moteris";
-            ///
-
+            command_update.Parameters.Add("@expr3", MySqlDbType.Decimal, 5).Value = weight;
+            command_update.Parameters.Add("@expr4", MySqlDbType.Enum, 6).Value = gender;
             command_update.Parameters.Add("@expr5", MySqlDbType.Enum, 6).Value = goal;
+            command_update.Parameters.Add("@expr6", MySqlDbType.Int64, 1).Value = activity;
+            command_update.Parameters.Add("@expr7", MySqlDbType.Date, 10).Value = dateOfBirth + "-01-01";
+            Debug.Log(dateOfBirth + "-01-01");
+
 
             command_update.Connection = ConnectionObject;
             ConnectionObject.Open();

@@ -36,7 +36,7 @@ public class SurveyManager : MonoBehaviour
     public void SubmitSurvey()
     {
         Debug.Log(LoginManager.id);
-        c.UpdateProfile(LoginManager.id,gender,height,weight,goal,constring);
+        c.UpdateProfile(LoginManager.id,gender,height,weight,goal,age,activity,constring);
     }
 
     public void InputGender(string newGender) 
