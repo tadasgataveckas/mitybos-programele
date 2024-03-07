@@ -14,6 +14,7 @@ public class ButtonTransitions : MonoBehaviour, IPointerDownHandler, IPointerUpH
 
     void Start()
     {
+        isSelected = false;
         buttonImage = GetComponent<Image>(); // Assuming the button has an Image component
         buttonImage.color = originalColor; // Set the initial color
     }
@@ -30,10 +31,14 @@ public class ButtonTransitions : MonoBehaviour, IPointerDownHandler, IPointerUpH
             buttonImage.color = originalColor; // Change color back to original when button is released
     }
 
-    // You may have a method to set the button as selected, where you change the color to 'selectedColor'
-    public void SetSelected()
+
+    public void SetSelected(bool selectionState)
     {
-        isSelected = !isSelected;
+        if (isSelected && selectionState) {
+            isSelected = false; } // Deselect option, clicking on button while it is already selected
+        else {
+            isSelected = selectionState; }
+
         if (isSelected)
             buttonImage.color = selectedColor;
         else
