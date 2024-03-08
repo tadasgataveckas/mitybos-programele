@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 08, 2024 at 09:19 PM
+-- Generation Time: Mar 08, 2024 at 09:46 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -108,7 +108,7 @@ CREATE TABLE `user_data` (
   `gender` enum('Male','Female','Other') NOT NULL,
   `goal` enum('Lose weight','Maintain weight','Gain weight','Gain muscle') NOT NULL,
   `physical_activity` int(1) UNSIGNED NOT NULL,
-  `date_of_birth` date NOT NULL,
+  `date_of_birth` int(4) NOT NULL,
   `last_updated_date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -222,7 +222,6 @@ ALTER TABLE `meal`
 --
 ALTER TABLE `product`
   MODIFY `id_product` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=338;
-
 
 --
 -- Constraints for dumped tables
