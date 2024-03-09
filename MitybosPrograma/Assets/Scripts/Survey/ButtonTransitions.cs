@@ -10,9 +10,9 @@ public class ButtonTransitions : MonoBehaviour, IPointerDownHandler, IPointerUpH
     public Color hoveredColor;
     public Color selectedColor;
 
-    private Image buttonImage;
+    public Image buttonImage;
 
-    void Start()
+    void Awake()
     {
         isSelected = false;
         buttonImage = GetComponent<Image>(); // Assuming the button has an Image component
@@ -32,7 +32,7 @@ public class ButtonTransitions : MonoBehaviour, IPointerDownHandler, IPointerUpH
     }
 
 
-    public void SetSelected(bool selectionState)
+    public void SetSelectedOption(bool selectionState)
     {
         if (isSelected && selectionState) {
             isSelected = false; } // Deselect option, clicking on button while it is already selected
@@ -43,5 +43,18 @@ public class ButtonTransitions : MonoBehaviour, IPointerDownHandler, IPointerUpH
             buttonImage.color = selectedColor;
         else
             buttonImage.color = originalColor;
+    }
+    public void SetSelectedSegment(bool selectionState)
+    {
+        isSelected = selectionState;
+
+        if (isSelected)
+        {
+            buttonImage.color = selectedColor;
+        }
+        else
+        {
+            buttonImage.color = originalColor;
+        }
     }
 }

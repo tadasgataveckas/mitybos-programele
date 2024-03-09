@@ -16,15 +16,15 @@ public class SegmentManager : MonoBehaviour
             {
                 if (button == pressedButton)
                 {
-                    button.GetComponent<ButtonTransitions>().SetSelected(true);
+                    button.GetComponent<ButtonTransitions>().SetSelectedOption(true);
                 }
                 else 
                 {
-                    button.GetComponent<ButtonTransitions>().SetSelected(false);
+                    button.GetComponent<ButtonTransitions>().SetSelectedOption(false);
                 }
             }
         }
-        else { pressedButton.GetComponent<ButtonTransitions>().SetSelected(true); }
+        else { pressedButton.GetComponent<ButtonTransitions>().SetSelectedOption(true); }
         
     }
 }
