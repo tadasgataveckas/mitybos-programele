@@ -28,6 +28,12 @@ public class SurveyManager : MonoBehaviour
     //activity slider
     public SliderScript slider;
 
+    // Continue and Back buttons
+
+    public GameObject Continue;
+    public GameObject Back;
+
+
     private double BMI;
 
 
@@ -212,11 +218,33 @@ public class SurveyManager : MonoBehaviour
             segments[i].SetActive(i == switchTo); // Turns on chosen segment, turns off other segments
         }
         currentSegment = switchTo;
+
+        // Change button positions
+        //First Segment
+        if (currentSegment == 0)
+        {
+            Continue.transform.localPosition = new Vector3(0f, Continue.transform.localPosition.y, 0f);
+        }
+        else { Continue.transform.localPosition = new Vector3(81f, Continue.transform.localPosition.y, 0f); }
+        // Last segment
+        if (currentSegment == segments.Count-1) 
+        {
+            Back.transform.localPosition = new Vector3(0f, Back.transform.localPosition.y, 0f); ;
+        }
+        else { Back.transform.localPosition = new Vector3(-293f, Back.transform.localPosition.y, 0f); }
+        // Turn on off
+        Back.SetActive(currentSegment != 0);
+        Continue.SetActive(currentSegment != segments.Count-1);
+
     }
 
     public void NextSegment() 
     {
         SwitchSegment(currentSegment + 1);
+    }
+    public void PreviousSegment()
+    {
+        SwitchSegment(currentSegment - 1);
     }
 
 
