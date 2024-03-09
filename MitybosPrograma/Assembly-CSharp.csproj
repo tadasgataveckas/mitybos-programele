@@ -105,6 +105,8 @@
     <Compile Include="Assets\Scripts\unity_auth\UILogin.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerCache.cs" />
     <Compile Include="Assets\Scripts\Main\MainManager.cs" />
+    <Compile Include="Assets\Scripts\Main\CameraScroll.cs" />
+    <Compile Include="Assets\Scripts\Main\SegmentInformation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

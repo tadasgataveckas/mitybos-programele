@@ -21,6 +21,8 @@ public class MainManager : MonoBehaviour
         {
             segmentButtons[i].GetComponent<ButtonTransitions>().SetSelectedSegment(i == switchTo);
         }
+        camera.GetComponent<CameraScroll>().minY = segments[currentSegment].GetComponent<SegmentInformation>().minYScroll;
+        camera.GetComponent<CameraScroll>().maxY = segments[currentSegment].GetComponent<SegmentInformation>().maxYScroll;
     }
 
     void Start()
