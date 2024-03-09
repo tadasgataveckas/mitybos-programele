@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SurveyManager : MonoBehaviour
 {
@@ -43,6 +44,7 @@ public class SurveyManager : MonoBehaviour
     {
         Debug.Log(LoginManager.id);
         c.UpdateProfile(LoginManager.id,gender,height,weight,goal,age,activity,constring);
+        GoToMain();
     }
 
     public void InputGender(string newGender) 
@@ -247,17 +249,13 @@ public class SurveyManager : MonoBehaviour
         SwitchSegment(currentSegment - 1);
     }
 
-
-    // Start is called before the first frame update
     void Start()
     {
         SwitchSegment(currentSegment);
     }
     
-
-    // Update is called once per frame
-    void Update()
-    {
-       
+    void GoToMain() {
+        //Go to Main scene
+        SceneManager.LoadScene("Main");
     }
 }
