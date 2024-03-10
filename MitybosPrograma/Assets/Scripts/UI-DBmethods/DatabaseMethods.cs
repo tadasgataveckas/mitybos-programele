@@ -8,9 +8,14 @@ using Mysqlx.Expr;
 using Mysqlx.Crud;
 using UnityEngine.Analytics;
 using Unity.VisualScripting;
+using UnityEngine.UIElements;
+using System.Text;
+using static Unity.VisualScripting.Member;
+using static UnityEngine.UIElements.UxmlAttributeDescription;
+using System.Runtime.InteropServices.WindowsRuntime;
 public class DatabaseMethods
 {
-  
+    
 	public int Login(string username, string password, out int id, string constring)
 	{
         
@@ -174,5 +179,63 @@ public class DatabaseMethods
         }
         catch (MySqlException e) { System.Console.WriteLine(e.Message);}
         finally { ConnectionObject.Close(); }
+    }
+
+    private string BuildString(string[] array)
+    {
+        int length = array.Length;
+        StringBuilder sBuilder = new StringBuilder();
+        for (int i = 0; i < length; i++)
+        {
+            sBuilder.Append(array[i]).Append(';');
+        }
+        Debug.Log(sBuilder.ToString());
+        return sBuilder.ToString();
+    }
+
+    public bool CheckSurveyCompleted(int id, string constring)
+    {
+        string PlaceholderString = "0.0;0.0;Male;1;";
+        bool result = false;
+        MySqlCommand command_check = new MySqlCommand();
+        MySqlConnection ConnectionObject = new MySqlConnection();
+        ConnectionObject.ConnectionString = constring;
+        try
+        {
+            command_check.CommandText = "SELECT `user_data`.`height`,`user_data`.`weight`," +
+                                        "`user_data`.`gender`,`user_data`.`physical_activity`" +
+                "FROM `food_db`.`user_data`" +
+                "WHERE `user_data`.`id_user` =@expr1;";
+            command_check.Parameters.Add("@expr1", MySqlDbType.Int64, 6).Value = id;
+            command_check.Connection = ConnectionObject;
+            ConnectionObject.Open();
+            using (MySqlDataReader reader = command_check.ExecuteReader())
+            {
+
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    string height = (string)reader.GetValue(0);
+                    string weight = (string)reader.GetValue(1);
+                    string gender = (string)reader.GetValue(2);
+                    string physicalActivity = (string)reader.GetValue(3);
+                    string[] array = { height, weight, gender, physicalActivity };
+                    string currentString = BuildString(array);
+                    result = (currentString == PlaceholderString) ? false : true;
+
+                }
+
+            }
+            return result;
+        }
+        catch (MySqlException e)
+        {
+            Console.WriteLine(e.Message);
+            return false;
+        }
+        finally
+        {
+            ConnectionObject.Close();
+        }
     }
 }

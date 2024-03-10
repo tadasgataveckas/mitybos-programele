@@ -51,4 +51,9 @@ public class ClientMethods : IClientInterface
     {
         _databaseMethods.UpdateProfile(id, gender, height, weight, goal,dateOfBirth,activity, constring);
     }
+
+    public bool CheckSurveyCompleted(int id, string constring)
+    {
+        return true;
+    }
 }
