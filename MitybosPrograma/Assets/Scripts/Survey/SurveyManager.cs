@@ -240,14 +240,89 @@ public class SurveyManager : MonoBehaviour
 
     }
 
-    public void NextSegment() 
+    //Old NextSegment
+    //public void NextSegment() 
+    //{
+    //    SwitchSegment(currentSegment + 1);
+    //}
+
+    public TextMeshProUGUI errorGender;
+    public TextMeshProUGUI errorEating;
+    public TextMeshProUGUI errorGoal;
+    public TextMeshProUGUI errorAHW;
+
+    public void NextSegment()
     {
-        SwitchSegment(currentSegment + 1);
+        if (currentSegment + 1 < segments.Count)
+        {
+            // Tikriname, ar visi reikiami duomenys yra įvesti
+            if (currentSegment == 0 && !GenderEntered())
+            {
+                Debug.Log("Please fill in all required fields.");
+                errorGender.text = "Please choose your gender to continue the survey!";
+            }
+            else if (currentSegment == 1 && !EatingEntered())
+            {
+                Debug.Log("Please fill in all required fields.");
+                errorEating.text = "Please choose your eating preference to continue the survey!";
+            }
+            else if (currentSegment == 2 && !GoalEntered())
+            {
+                Debug.Log("Please fill in all required fields.");
+                errorGoal.text = "Please choose your goal to continue the survey!";
+            }
+            else if (currentSegment == 3 && !AHWEntered())
+            {
+                Debug.Log("Please fill in all required fields.");
+                errorAHW.text = "Please write all your physical data in correct form!";
+            }
+            else
+            {
+                SwitchSegment(currentSegment + 1);
+                // Išvalome klaidų pranešimus, jei vartotojas tęsia į kitą segmentą
+                errorGender.text = "";
+                errorEating.text = "";
+                errorGoal.text = "";
+                errorAHW.text = "";
+            }
+        }
     }
+
+
     public void PreviousSegment()
     {
-        SwitchSegment(currentSegment - 1);
+        SwitchSegment(currentSegment - 1);       
     }
+
+    // Checking if survey has gender
+    private bool GenderEntered()
+    {
+        return !string.IsNullOrEmpty(gender);
+    }
+
+    // Checking if survey has goal
+    private bool EatingEntered()
+    {
+        return !string.IsNullOrEmpty(eatingPreference);
+    }
+
+    // Checking if survey has goal
+    private bool GoalEntered()
+    {
+        return !string.IsNullOrEmpty(goal);
+    }
+
+    // Checking if survey has goal
+    private bool AHWEntered()
+    {
+        return 2023 > age && age > 1960  &&  250 > height && height > 120  &&  350 > weight && weight > 30;
+    }
+
+
+    //public void PreviousSegment()
+    //{
+    //    SwitchSegment(currentSegment - 1);
+    //}
 
     void Start()
     {
