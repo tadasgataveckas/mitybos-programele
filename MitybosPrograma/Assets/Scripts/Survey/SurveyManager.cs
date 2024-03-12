@@ -246,10 +246,11 @@ public class SurveyManager : MonoBehaviour
     //    SwitchSegment(currentSegment + 1);
     //}
 
-    public TextMeshProUGUI errorGender;
-    public TextMeshProUGUI errorEating;
-    public TextMeshProUGUI errorGoal;
-    public TextMeshProUGUI errorAHW;
+    //public TextMeshProUGUI errorGender;
+    //public TextMeshProUGUI errorEating;
+    //public TextMeshProUGUI errorGoal;
+    //public TextMeshProUGUI errorAHW;
+    public TextMeshProUGUI error;
 
     public void NextSegment()
     {
@@ -259,31 +260,36 @@ public class SurveyManager : MonoBehaviour
             if (currentSegment == 0 && !GenderEntered())
             {
                 Debug.Log("Please fill in all required fields.");
-                errorGender.text = "Please choose your gender to continue the survey!";
+                //errorGender.text = "Please choose your gender to continue the survey!";
+                error.text = "Please choose your gender to continue the survey!";
             }
             else if (currentSegment == 1 && !EatingEntered())
             {
                 Debug.Log("Please fill in all required fields.");
-                errorEating.text = "Please choose your eating preference to continue the survey!";
+                //errorEating.text = "Please choose your eating preference to continue the survey!";
+                error.text = "Please choose your eating preference to continue the survey!";
             }
             else if (currentSegment == 2 && !GoalEntered())
             {
                 Debug.Log("Please fill in all required fields.");
-                errorGoal.text = "Please choose your goal to continue the survey!";
+                //errorGoal.text = "Please choose your goal to continue the survey!";
+                error.text = "Please choose your goal to continue the survey!";
             }
             else if (currentSegment == 3 && !AHWEntered())
             {
                 Debug.Log("Please fill in all required fields.");
-                errorAHW.text = "Please write all your physical data in correct form!";
+                //errorAHW.text = "Please write all your physical data in correct form!";
+                error.text = "Please write all your physical data in correct form!";
             }
             else
             {
                 SwitchSegment(currentSegment + 1);
                 // Išvalome klaidų pranešimus, jei vartotojas tęsia į kitą segmentą
-                errorGender.text = "";
-                errorEating.text = "";
-                errorGoal.text = "";
-                errorAHW.text = "";
+                error.text = "";
+                //errorGender.text = "";
+                //errorEating.text = "";
+                //errorGoal.text = "";
+                //errorAHW.text = "";
             }
         }
     }
