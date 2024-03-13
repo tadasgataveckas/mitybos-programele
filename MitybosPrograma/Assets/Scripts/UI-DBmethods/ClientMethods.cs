@@ -54,6 +54,6 @@ public class ClientMethods : IClientInterface
 
     public bool CheckSurveyCompleted(int id, string constring)
     {
-        return true;
+        return _databaseMethods.CheckSurveyCompleted(id, constring);
     }
 }
