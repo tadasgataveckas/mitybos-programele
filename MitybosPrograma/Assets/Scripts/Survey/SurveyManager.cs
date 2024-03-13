@@ -176,56 +176,47 @@ public class SurveyManager : MonoBehaviour
     }
 
     //Calculating daily calories
-    public double CalculateDailyCalories(int activityLevel, string cGender, int cAge, double cWeight)
+    public double CalculateDailyCalories()
     {
-        //basic metabolism
-        double PMA = 0;
+        // The Basal Metabolic Rate
+        double BMR = 0;
 
         //physical activity level
         double FAL = 0;
 
-        if (activityLevel == 1)
+        if (activity == 1)
         {
             FAL = 1.2;
         }
-        else if (activityLevel == 2)
+        else if (activity == 2)
         {
             FAL = 1.375;
         }
-        else if (activityLevel == 3)
+        else if (activity == 3)
         {
             FAL = 1.55;
         }
-        else if (activityLevel == 4)
+        else if (activity == 4)
         {
             FAL = 1.725;
         }
-
-        if(cGender == "Woman")
+        else if (activity == 5)
         {
-            if (cAge < 30)
-            {
-                PMA = (0.0615 * cWeight + 2.08) * 240;
-            }
-            else if(cAge < 60)
-            {
-                PMA = (0.0364 * cWeight + 3.47) * 240;
-            }
+            FAL = 1.9;
+        }
+
+        if (gender == "Woman")
+        {
+            BMR = (10 * weight) + (6.25 * height) - (5 * (2024-age)) - 161;
+
         }
         else
         {
-            if (cAge < 30)
-            {
-                PMA = (0.064 * cWeight + 2.84) * 240;
-            }
-            else if (cAge < 60)
-            {
-                PMA = (0.0485 * cWeight + 3.67) * 240;
-            }
+            BMR = (10 * weight) + (6.25 * height) - (5 * (2024 - age)) + 5;
         }
 
         //daily calories = metabolism * physical activity level
-        CALORIES = PMA * FAL;
+        CALORIES = BMR * FAL;
         return Math.Round(CALORIES,2);
     }
 
@@ -321,8 +312,8 @@ public class SurveyManager : MonoBehaviour
                     "Activity level: " + activity + "\n" +
                     "\n" +
                     "Your BMI: " + bmi + "\n" +
-                    "Your BMI result: " + BMIResult(bmi) + "\n"; //+
-                    //"Needed daily calories: " + CalculateDailyCalories(activity, gender, age, weight) + "\n";
+                    "Your BMI result: " + BMIResult(bmi) + "\n" +
+                    "Needed daily calories: " + CalculateDailyCalories() + "\n";
             }
         }
     }
