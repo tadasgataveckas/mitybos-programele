@@ -42,18 +42,20 @@ public class LoginManager : MonoBehaviour
 
     public void SubmitLogin() 
     {
-        bool completed;
         int id = c.Login(username, password, out id,constring);
         
         SetID(id);
-
+        
         if (id > 0) {
+
             if (c.CheckSurveyCompleted(id, constring))
             {
                 SceneManager.LoadScene("Main");
             }
             else
                 SceneManager.LoadScene("Survey");
+            
+            
         }
         else
             SwitchSegment(0);

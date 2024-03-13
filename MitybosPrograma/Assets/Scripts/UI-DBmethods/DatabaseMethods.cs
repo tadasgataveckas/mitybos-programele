@@ -187,6 +187,7 @@ public class DatabaseMethods
         StringBuilder sBuilder = new StringBuilder();
         for (int i = 0; i < length; i++)
         {
+            array[i].Replace(',', '.');
             sBuilder.Append(array[i]).Append(';');
         }
         Debug.Log(sBuilder.ToString());
@@ -195,7 +196,8 @@ public class DatabaseMethods
 
     public bool CheckSurveyCompleted(int id, string constring)
     {
-        string PlaceholderString = "0.0;0.0;Male;1;";
+     
+        string PlaceholderString = "0,00;0,00;Male;1;";
         bool result = false;
         MySqlCommand command_check = new MySqlCommand();
         MySqlConnection ConnectionObject = new MySqlConnection();
@@ -211,18 +213,16 @@ public class DatabaseMethods
             ConnectionObject.Open();
             using (MySqlDataReader reader = command_check.ExecuteReader())
             {
-
                 if (reader.HasRows)
                 {
                     reader.Read();
-                    string height = (string)reader.GetValue(0);
-                    string weight = (string)reader.GetValue(1);
-                    string gender = (string)reader.GetValue(2);
-                    string physicalActivity = (string)reader.GetValue(3);
+                    string height = reader.GetValue(0).ToString();
+                    string weight = reader.GetValue(1).ToString();
+                    string gender = reader.GetValue(2).ToString();
+                    string physicalActivity = reader.GetValue(3).ToString();
                     string[] array = { height, weight, gender, physicalActivity };
                     string currentString = BuildString(array);
                     result = (currentString == PlaceholderString) ? false : true;
-
                 }
 
             }
