@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 08, 2024 at 09:46 PM
+-- Generation Time: Mar 13, 2024 at 12:41 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -89,7 +89,7 @@ CREATE TABLE `product` (
 --
 
 CREATE TABLE `user` (
-  `id_user` varchar(100) NOT NULL,
+  `id_user` int(6) NOT NULL,
   `email` varchar(100) NOT NULL,
   `username` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL
@@ -102,14 +102,14 @@ CREATE TABLE `user` (
 --
 
 CREATE TABLE `user_data` (
-  `id_user` varchar(100) NOT NULL,
+  `id_user` int(6) NOT NULL,
   `height` decimal(5,2) UNSIGNED NOT NULL,
   `weight` decimal(5,2) UNSIGNED NOT NULL,
   `gender` enum('Male','Female','Other') NOT NULL,
   `goal` enum('Lose weight','Maintain weight','Gain weight','Gain muscle') NOT NULL,
   `physical_activity` int(1) UNSIGNED NOT NULL,
-  `date_of_birth` int(4) NOT NULL,
-  `last_updated_date` datetime NOT NULL DEFAULT current_timestamp()
+  `date_of_birth` date NOT NULL,
+  `creation_date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -119,7 +119,7 @@ CREATE TABLE `user_data` (
 --
 
 CREATE TABLE `user_filtered_products` (
-  `id_user` varchar(100) NOT NULL,
+  `id_user` int(6) NOT NULL,
   `id_product` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -130,7 +130,7 @@ CREATE TABLE `user_filtered_products` (
 --
 
 CREATE TABLE `user_selected_allergies` (
-  `id_user` varchar(100) NOT NULL,
+  `id_user` int(6) NOT NULL,
   `id_allergy` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -215,13 +215,19 @@ ALTER TABLE `allergy`
 -- AUTO_INCREMENT for table `meal`
 --
 ALTER TABLE `meal`
-  MODIFY `id_meal` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id_meal` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id_product` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=338;
+  MODIFY `id_product` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id_user` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 
 --
 -- Constraints for dumped tables
