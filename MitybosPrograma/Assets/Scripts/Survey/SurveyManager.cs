@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,6 +37,7 @@ public class SurveyManager : MonoBehaviour
 
 
     private double BMI;
+    private double CALORIES;
 
 
     string constring = "Server=localhost;User ID=root;Password=root;Database=food_db";
@@ -99,6 +101,28 @@ public class SurveyManager : MonoBehaviour
         }
     }
 
+    public string GetAllergiesAsString()
+    {
+        // Use StringBuilder to efficiently build the string
+        StringBuilder sb = new StringBuilder();
+
+        // Append each allergy to the string
+        foreach (string allergy in allergies)
+        {
+            sb.Append(allergy);
+            sb.Append(", "); // Add a comma and space to separate allergies
+        }
+
+        // Remove the last comma and space
+        if (sb.Length > 0)
+        {
+            sb.Length -= 2;
+        }
+
+        // Return the concatenated string
+        return sb.ToString();
+    }
+
     public void InputActivity()
     {
         if (slider != null)
@@ -117,6 +141,8 @@ public class SurveyManager : MonoBehaviour
     }
 
 
+    
+
 
     //Calculating features
 
@@ -124,7 +150,7 @@ public class SurveyManager : MonoBehaviour
     public double CalculateBMI(double Bheight, double Bweight)
     {
         BMI = Bweight / Math.Pow(Bheight,2);
-        return BMI;
+        return Math.Round(BMI * 10000, 2);
     }
 
     //Printing BMI result
@@ -150,60 +176,48 @@ public class SurveyManager : MonoBehaviour
     }
 
     //Calculating daily calories
-    public double CalculateDailyCalories(int activityLevel, string cGender, int cAge, double cWeight)
+    public double CalculateDailyCalories()
     {
-        //daily calories
-        double dCalories = 0.0;
-
-        //basic metabolism
-        double PMA = 0.0;
+        // The Basal Metabolic Rate
+        double BMR = 0;
 
         //physical activity level
-        double FAL = 0.0;
+        double FAL = 0;
 
-        if (activityLevel == 1)
+        if (activity == 1)
         {
             FAL = 1.2;
         }
-        else if (activityLevel == 2)
+        else if (activity == 2)
         {
             FAL = 1.375;
         }
-        else if (activityLevel == 3)
+        else if (activity == 3)
         {
             FAL = 1.55;
         }
-        else if (activityLevel == 4)
+        else if (activity == 4)
         {
             FAL = 1.725;
         }
-
-        if(cGender == "Woman")
+        else if (activity == 5)
         {
-            if (cAge < 30)
-            {
-                PMA = (0.0615 * cWeight + 2.08) * 240;
-            }
-            else if(cAge < 60)
-            {
-                PMA = (0.0364 * cWeight + 3.47) * 240;
-            }
+            FAL = 1.9;
+        }
+
+        if (gender == "Woman")
+        {
+            BMR = (10 * weight) + (6.25 * height) - (5 * (2024-age)) - 161;
+
         }
         else
         {
-            if (cAge < 30)
-            {
-                PMA = (0.064 * cWeight + 2.84) * 240;
-            }
-            else if (cAge < 60)
-            {
-                PMA = (0.0485 * cWeight + 3.67) * 240;
-            }
+            BMR = (10 * weight) + (6.25 * height) - (5 * (2024 - age)) + 5;
         }
 
         //daily calories = metabolism * physical activity level
-        dCalories = PMA * FAL;
-        return dCalories;
+        CALORIES = BMR * FAL;
+        return Math.Round(CALORIES,2);
     }
 
 
@@ -240,14 +254,105 @@ public class SurveyManager : MonoBehaviour
 
     }
 
-    public void NextSegment() 
+    //Old NextSegment
+    //public void NextSegment() 
+    //{
+    //    SwitchSegment(currentSegment + 1);
+    //}
+
+    // User survey info
+    public TextMeshProUGUI info;
+
+    // Survey errors
+    public TextMeshProUGUI error;
+
+    public void NextSegment()
     {
-        SwitchSegment(currentSegment + 1);
+        if (currentSegment + 1 < segments.Count)
+        {
+            // Tikriname, ar visi reikiami duomenys yra įvesti
+            if (currentSegment == 0 && !GenderEntered())
+            {
+                Debug.Log("Please fill in all required fields.");
+                error.text = "Please choose your gender to continue the survey!";
+            }
+            else if (currentSegment == 1 && !EatingEntered())
+            {
+                Debug.Log("Please fill in all required fields.");
+                error.text = "Please choose your eating preference to continue the survey!";
+            }
+            else if (currentSegment == 2 && !GoalEntered())
+            {
+                Debug.Log("Please fill in all required fields.");
+                error.text = "Please choose your goal to continue the survey!";
+            }
+            else if (currentSegment == 3 && !AHWEntered())
+            {
+                Debug.Log("Please fill in all required fields.");
+                error.text = "Please write all your physical data in correct form!";
+            }
+            else
+            {
+                SwitchSegment(currentSegment + 1);
+                // Išvalome klaidų pranešimus, jei vartotojas tęsia į kitą segmentą
+                error.text = "";
+
+                double bmi = CalculateBMI(height, weight);
+                //double calories = CalculateDailyCalories(activity, gender, age, weight);
+                // Printing user survey data 
+                info.text = "Your submitted info: " + "\n" +
+                    "\n" +
+                    "Gender: " + gender + "\n" +
+                    "Goal: " + goal + "\n" +
+                    "Eating preference: " + eatingPreference + "\n" +
+                    "Age: " + age + "\n" +
+                    "Height: " + height + "\n" +
+                    "Weight: " + weight + "\n" +
+                    "Allergies: " + GetAllergiesAsString() + "\n" +
+                    "Activity level: " + activity + "\n" +
+                    "\n" +
+                    "Your BMI: " + bmi + "\n" +
+                    "Your BMI result: " + BMIResult(bmi) + "\n" +
+                    "Needed daily calories: " + CalculateDailyCalories() + "\n";
+            }
+        }
     }
+
+
     public void PreviousSegment()
     {
-        SwitchSegment(currentSegment - 1);
+        SwitchSegment(currentSegment - 1);       
     }
+
+    // Checking if survey has gender
+    private bool GenderEntered()
+    {
+        return !string.IsNullOrEmpty(gender);
+    }
+
+    // Checking if survey has goal
+    private bool EatingEntered()
+    {
+        return !string.IsNullOrEmpty(eatingPreference);
+    }
+
+    // Checking if survey has goal
+    private bool GoalEntered()
+    {
+        return !string.IsNullOrEmpty(goal);
+    }
+
+    // Checking if survey has goal
+    private bool AHWEntered()
+    {
+        return 2023 > age && age > 1960  &&  250 > height && height > 120  &&  350 > weight && weight > 30;
+    }
+
+
+    //public void PreviousSegment()
+    //{
+    //    SwitchSegment(currentSegment - 1);
+    //}
 
     void Start()
     {
