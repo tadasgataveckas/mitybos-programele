@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 13, 2024 at 12:41 PM
+-- Generation Time: Mar 15, 2024 at 05:32 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -52,7 +52,8 @@ CREATE TABLE `allergy` (
 CREATE TABLE `meal` (
   `id_meal` int(6) NOT NULL,
   `meal_name` varchar(50) NOT NULL,
-  `meal_type` enum('Breakfast','Lunch - Dinner','Snack') NOT NULL
+  `meal_type` enum('Breakfast','Lunch','Dinner','Snack') NOT NULL,
+  `servings` int(4) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -227,7 +228,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+  MODIFY `id_user` int(6) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables

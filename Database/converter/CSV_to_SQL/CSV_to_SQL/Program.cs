@@ -73,15 +73,17 @@ class Program
             {
                 if (worksheet.Cell(i, 16).ToString() == "" ||
                     worksheet.Cell(i, 17).ToString() == "" ||
-                    worksheet.Cell(i, 18).ToString() == "")
+                    worksheet.Cell(i, 18).ToString() == "" ||
+                    worksheet.Cell(i, 19).ToString() == "")
                     break;
 
                 string id = worksheet.Cell(i, 16).Value.ToString();
                 string name = worksheet.Cell(i, 17).Value.ToString();
-                string type = worksheet.Cell(i, 18).Value.ToString();;
+                string type = worksheet.Cell(i, 18).Value.ToString();
+                string servings = worksheet.Cell(i, 19).Value.ToString();
 
-                string line = ("insert into meal (id_meal, meal_name, meal_type) values (" +
-                    id + ", '" + name + "', '" + type + "');");
+                string line = ("insert into meal (id_meal, meal_name, meal_type, servings) values (" +
+                    id + ", '" + name + "', '" + type + "', " + servings + ");");
 
                 writer.WriteLine(line);
             }
