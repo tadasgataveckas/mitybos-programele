@@ -71,6 +71,7 @@
     <Compile Include="Assets\UI\DatePicker\DatePickerExtensions.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_DayButton_Pool.cs" />
     <Compile Include="Assets\SoftEffects\Scripts\SoftEffects.cs" />
+    <Compile Include="Assets\Scripts\Tutorial\TutorialManager.cs" />
     <Compile Include="Assets\Scripts\Survey\SliderScript.cs" />
     <Compile Include="Assets\SoftEffects\Scripts\Styles.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_DateRange.cs" />
@@ -87,6 +88,7 @@
     <Compile Include="Assets\UI\DatePicker\DatePicker_DayButton.cs" />
     <Compile Include="Assets\UI\TableLayout\Example\TableLayoutExampleController.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_Instantiation.cs" />
+    <Compile Include="Assets\Scripts\Search\FoodSearch.cs" />
     <Compile Include="Assets\UI\DatePicker\SerializableDate.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_InputField.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_Button.cs" />
