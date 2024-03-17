@@ -207,6 +207,7 @@ public class SurveyManager : MonoBehaviour
 
         if (gender == "Woman")
         {
+            //pakeisti 2024 i time now
             BMR = (10 * weight) + (6.25 * height) - (5 * (2024-age)) - 161;
 
         }
