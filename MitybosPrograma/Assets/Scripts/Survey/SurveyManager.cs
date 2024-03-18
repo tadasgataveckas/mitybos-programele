@@ -33,7 +33,7 @@ public class SurveyManager : MonoBehaviour
     // Continue and Back buttons
 
     public GameObject Continue;
-    public GameObject Back;
+    public GameObject Back; 
 
 
     private double BMI;
@@ -51,17 +51,38 @@ public class SurveyManager : MonoBehaviour
 
     public void InputGender(string newGender) 
     {
-        gender = newGender;
+        if (newGender == gender)
+        {
+            gender = "";
+        }
+        else
+        {
+            gender = newGender;
+        }
     }
 
     public void InputGoal(string newGoal)
     {
-        goal = newGoal;
+        if (newGoal == goal)
+        {
+            goal = "";
+        }
+        else
+        {
+            goal = newGoal;
+        }
     }
 
     public void InputEatingPreference(string newEatingPreference)
     {
-        eatingPreference = newEatingPreference;
+        if (newEatingPreference == eatingPreference)
+        {
+            eatingPreference = "";
+        }
+        else
+        {
+            eatingPreference = newEatingPreference;
+        }
     }
 
     public void InputAge(string newAge)
@@ -363,5 +384,18 @@ public class SurveyManager : MonoBehaviour
     void GoToMain() {
         //Go to Main scene
         SceneManager.LoadScene("Main");
+    }
+
+    // Progress Bar
+    public Slider ProgressBar;
+    float goalSliderValue = 0;
+    public float progressBarSpeed = 0.5f;
+    void Update()
+    {
+        goalSliderValue = 1f / (segments.Count - 1) * currentSegment;
+        if(!Mathf.Approximately(ProgressBar.value, goalSliderValue)) 
+        {
+            ProgressBar.value = Mathf.MoveTowards(ProgressBar.value, goalSliderValue, progressBarSpeed * Time.deltaTime);
+        }
     }
 }
