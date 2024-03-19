@@ -88,9 +88,11 @@ public class LoginManager : MonoBehaviour
                     SceneManager.LoadScene("Survey");
             }
             else
+            {
                 // If there is no acc with provided data, back to first page + err
                 SwitchSegment(0);
-            errorAcc.text = "There is no account with this data, please create it!";
+                errorAcc.text = "There is no account with this data, please create it!";
+            }
         }
     }
 
