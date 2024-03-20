@@ -7,9 +7,6 @@ using UnityEngine;
 /// </summary>
 public class ClientMethods : IClientInterface
 {
-	
-	
-
 	private readonly DatabaseMethods _databaseMethods;
 
 	public ClientMethods(DatabaseMethods databaseMethods)
@@ -55,5 +52,10 @@ public class ClientMethods : IClientInterface
     public bool CheckSurveyCompleted(int id, string constring)
     {
         return _databaseMethods.CheckSurveyCompleted(id, constring);
+    }
+
+    public string ReturnUserData(int id, string constring)
+    {
+        return _databaseMethods.ReturnUserData(id, constring); ;
     }
 }

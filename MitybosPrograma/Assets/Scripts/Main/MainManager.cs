@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
+
 
 public class MainManager : MonoBehaviour
 {
@@ -11,6 +14,17 @@ public class MainManager : MonoBehaviour
     public List<GameObject> segmentButtons;
 
     public int currentSegment = 0;
+
+    public DatabaseMethods databaseMethods;
+
+    string constring = "Server=localhost;User ID=root;Password=root;Database=food_db";
+    // User survey info
+    public TextMeshPro info;
+
+    ClientMethods c = new ClientMethods(new DatabaseMethods());
+
+
+    public static int id;
 
     public void SwitchSegment(int switchTo)
     {
@@ -28,6 +42,12 @@ public class MainManager : MonoBehaviour
     void Start()
     {
         SwitchSegment(currentSegment);
+        info.text = c.ReturnUserData(LoginManager.id, constring);
+    }
+
+    public void GetInfo()
+    {
+        //info.text = BS;
     }
 
 }

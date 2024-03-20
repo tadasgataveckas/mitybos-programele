@@ -340,6 +340,10 @@ public class SurveyManager : MonoBehaviour
         }
     }
 
+    public string ReturnInfoToMain()
+    {
+        return info.text.ToString();
+    }
 
     public void PreviousSegment()
     {

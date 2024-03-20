@@ -238,4 +238,58 @@ public class DatabaseMethods
             ConnectionObject.Close();
         }
     }
+
+    public string ReturnUserData(int id, string constring)
+    {
+        string PlaceholderString = "0,00;0,00;Male;1;";
+        string result = "";
+        MySqlCommand command_return = new MySqlCommand();
+        MySqlConnection ConnectionObject = new MySqlConnection();
+        ConnectionObject.ConnectionString = constring;
+
+        try
+        {
+            command_return.CommandText = "SELECT `user_data`.`id_user`,`user_data`.`height`," +
+                "`user_data`.`weight`,`user_data`.`gender`,`user_data`.`goal`," +
+                "`user_data`.`physical_activity`,`user_data`.`date_of_birth`," +
+                "`user_data`.`creation_date` FROM `food_db`.`user_data` WHERE `user_data`.`id_user` = @expr1;";
+
+            command_return.Parameters.Add("@expr1", MySqlDbType.Int64, 6).Value = id;
+            command_return.Connection = ConnectionObject;
+            ConnectionObject.Open();
+
+            using (MySqlDataReader reader = command_return.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    string height = reader.GetValue(0).ToString();
+                    string weight = reader.GetValue(1).ToString();
+                    string gender = reader.GetValue(2).ToString();
+                    string goal = reader.GetValue(3).ToString();
+                    string physicalActivity = reader.GetValue(4).ToString();
+                    string dateBirth = reader.GetValue(5).ToString();
+                    string creationDate = reader.GetValue(6).ToString();
+                    string[] array = { height, weight, gender, goal, physicalActivity, dateBirth, creationDate };
+                    string currentString = BuildString(array);
+                    result = currentString;
+                }
+
+            }
+            return result;
+        }
+        catch(MySqlException e)
+        {
+            Console.WriteLine(e.Message);
+            return "Error!";
+        }
+
+        finally
+        {
+            ConnectionObject.Close();
+        }
+
+    }
+        
+
 }

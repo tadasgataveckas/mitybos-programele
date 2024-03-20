@@ -11,4 +11,6 @@ public interface IClientInterface
     void UpdateProfile(int id, string gender, double height, double weight, string goal, int dateOfBirth, int activity, string constring);
 
     bool CheckSurveyCompleted(int id, string constring);
+
+    string ReturnUserData(int id, string constring);
 }
