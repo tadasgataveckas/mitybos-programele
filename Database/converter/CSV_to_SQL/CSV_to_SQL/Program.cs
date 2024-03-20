@@ -27,10 +27,31 @@ class Program
         spreadsheet.LoadFromFile(INPUT_FILE);
         Worksheet worksheet = spreadsheet.Workbook.Worksheets[0];
 
+        ClearData(OUTPUT_FILE);
         AddProducts(OUTPUT_FILE, worksheet);
         AddMeals(OUTPUT_FILE, worksheet);
         AddMealsFromProducts(OUTPUT_FILE, worksheet);
+        AddAllergies(OUTPUT_FILE, worksheet);
+        AddAllergiesFromProducts(OUTPUT_FILE, worksheet);
         Console.WriteLine("Done!");
+    }
+
+
+
+    static void ClearData(string file)
+    {
+        using (StreamWriter writer = new StreamWriter(file, append: true))
+        {
+            string line = 
+                "DELETE FROM meals_from_products;\n" +
+                "DELETE FROM allergies_from_products;\n" +
+                "DELETE FROM meal;\n" +
+                "DELETE FROM product;\n" +
+                "DELETE FROM allergy;";
+
+            writer.WriteLine(line);
+            Console.WriteLine("Cleared earlier data");
+        }
     }
 
     static void AddProducts(string file, Worksheet worksheet)
@@ -105,7 +126,7 @@ class Program
 
                 string id_meal = worksheet.Cell(i, 8).Value.ToString();
                 string id_product = worksheet.Cell(i, 9).Value.ToString();
-                string amount = worksheet.Cell(i, 11).Value.ToString(); ;
+                string amount = worksheet.Cell(i, 11).Value.ToString();
 
                 string line = ("insert into meals_from_products (id_meal, id_product, amount) values (" +
                     id_meal + ", " + id_product + ", " + amount + ");");
@@ -113,6 +134,52 @@ class Program
                 writer.WriteLine(line);
             }
             Console.WriteLine("Added " + i.ToString() + " product - meal links");
+        }
+    }
+
+    static void AddAllergies(string file, Worksheet worksheet)
+    {
+        using (StreamWriter writer = new StreamWriter(file, append: true))
+        {
+            int i;
+            for (i = 1; i < MAX_ENTRIES; i++)
+            {
+                if (worksheet.Cell(i, 23).ToString() == "" ||
+                    worksheet.Cell(i, 24).ToString() == "")
+                    break;
+
+                string id_allergy = worksheet.Cell(i, 23).Value.ToString();
+                string allergy_name = worksheet.Cell(i, 24).Value.ToString();
+
+                string line = ("insert into allergy (id_allergy, allergy_name) values (" +
+                    id_allergy + ", '" + allergy_name + "');");
+
+                writer.WriteLine(line);
+            }
+            Console.WriteLine("Added " + i.ToString() + " allergies");
+        }
+    }
+
+    static void AddAllergiesFromProducts(string file, Worksheet worksheet)
+    {
+        using (StreamWriter writer = new StreamWriter(file, append: true))
+        {
+            int i;
+            for (i = 1; i < MAX_ENTRIES; i++)
+            {
+                if (worksheet.Cell(i, 27).ToString() == "" ||
+                    worksheet.Cell(i, 28).ToString() == "")
+                    break;
+
+                string id_allergy = worksheet.Cell(i, 27).Value.ToString();
+                string id_product = worksheet.Cell(i, 28).Value.ToString();
+
+                string line = ("insert into allergies_from_products (id_allergy, id_product) values (" +
+                    id_allergy + ", " + id_product + ");");
+
+                writer.WriteLine(line);
+            }
+            Console.WriteLine("Added " + i.ToString() + " allergies from products");
         }
     }
 }
