@@ -16,7 +16,9 @@ public class SurveyManager : MonoBehaviour
     public string goal;
 
     public string eatingPreference;
-   
+
+    int currentYear = DateTime.Now.Year;
+
     public int age;
 
     public double height;
@@ -111,13 +113,13 @@ public class SurveyManager : MonoBehaviour
 
     public void AddAllergy(string allergy)
     {
-        if (allergies.Contains(allergy)) // Patikriname, ar alergija jau yra sąraše
+        if (allergies.Contains(allergy)) // Check if the allergy is in list
         {
-            allergies.Remove(allergy); // Jei taip, pašaliname ją
+            allergies.Remove(allergy); // If yes, remove it
         }
         else
         {
-            allergies.Add(allergy); // Jei ne, pridedame ją
+            allergies.Add(allergy); // If not, add it
             Debug.Log("Added allergy: " + allergy);
         }
     }
@@ -161,10 +163,6 @@ public class SurveyManager : MonoBehaviour
         }
     }
 
-
-    
-
-
     //Calculating features
 
     //Calculating BMI
@@ -177,9 +175,17 @@ public class SurveyManager : MonoBehaviour
     //Printing BMI result
     public string BMIResult(double RBMI)
     {
-        if(RBMI < 18.5)
+        if (RBMI < 16.0)
         {
-            return "Underweight";
+            return "Severe Underweight";
+        }
+        else if (16.0 < RBMI && RBMI < 17.0)
+        {
+            return "Moderate Underweight";
+        }
+        else if(17.0 < RBMI && RBMI < 18.5)
+        {
+            return "Mild Underweight";
         }
         else if (18.5 < RBMI && RBMI < 25.0)
         {
@@ -189,9 +195,17 @@ public class SurveyManager : MonoBehaviour
         {
             return "Overweight";
         }
-        else if (RBMI > 30.0)
+        else if (30.0 < RBMI && RBMI < 35.0)
         {
-            return "Obese";
+            return "Obese Class I";
+        }
+        else if (35.0 < RBMI && RBMI < 40.0)
+        {
+            return "Obese Class II";
+        }
+        else if (RBMI > 40.0)
+        {
+            return "Obese Class III";
         }
         return "";
     }
@@ -228,17 +242,26 @@ public class SurveyManager : MonoBehaviour
 
         if (gender == "Woman")
         {
-            //pakeisti 2024 i time now
-            BMR = (10 * weight) + (6.25 * height) - (5 * (2024-age)) - 161;
+            BMR = (10 * weight) + (6.25 * height) - (5 * (currentYear - age)) - 161;
 
         }
         else
         {
-            BMR = (10 * weight) + (6.25 * height) - (5 * (2024 - age)) + 5;
+            BMR = (10 * weight) + (6.25 * height) - (5 * (currentYear - age)) + 5;
         }
 
-        //daily calories = metabolism * physical activity level
+        // Daily calories = metabolism * physical activity level
         CALORIES = BMR * FAL;
+
+        // Daily calories adjusted on user goal 
+        if(goal == "Lose weight")
+        {
+            CALORIES = CALORIES * 0.9;
+        }
+        else if (goal == "Gain weight" || goal == "Gain muscle")
+        {
+            CALORIES = CALORIES + 500;
+        }
         return Math.Round(CALORIES,2);
     }
 
@@ -276,12 +299,6 @@ public class SurveyManager : MonoBehaviour
 
     }
 
-    //Old NextSegment
-    //public void NextSegment() 
-    //{
-    //    SwitchSegment(currentSegment + 1);
-    //}
-
     // User survey info
     public TextMeshProUGUI info;
 
@@ -292,7 +309,7 @@ public class SurveyManager : MonoBehaviour
     {
         if (currentSegment + 1 < segments.Count)
         {
-            // Tikriname, ar visi reikiami duomenys yra įvesti
+            // Checking if all data are in input
             if (currentSegment == 0 && !GenderEntered())
             {
                 Debug.Log("Please fill in all required fields.");
@@ -319,15 +336,24 @@ public class SurveyManager : MonoBehaviour
                 // Išvalome klaidų pranešimus, jei vartotojas tęsia į kitą segmentą
                 error.text = "";
 
+                string goalText = "";
+                if (goal == "Gain weight" || goal == "Gain muscle")
+                {
+                    goalText = " (added 500cal)";
+                }
+                else if(goal == "Lose weight")
+                {
+                    goalText = " (reduced by 10%)";
+                }
+
                 double bmi = CalculateBMI(height, weight);
-                //double calories = CalculateDailyCalories(activity, gender, age, weight);
                 // Printing user survey data 
                 info.text = "Your submitted info: " + "\n" +
                     "\n" +
                     "Gender: " + gender + "\n" +
                     "Goal: " + goal + "\n" +
                     "Eating preference: " + eatingPreference + "\n" +
-                    "Age: " + age + "\n" +
+                    "Age: " + (currentYear - age) + "\n" +
                     "Height: " + height + "\n" +
                     "Weight: " + weight + "\n" +
                     "Allergies: " + GetAllergiesAsString() + "\n" +
@@ -335,7 +361,7 @@ public class SurveyManager : MonoBehaviour
                     "\n" +
                     "Your BMI: " + bmi + "\n" +
                     "Your BMI result: " + BMIResult(bmi) + "\n" +
-                    "Needed daily calories: " + CalculateDailyCalories() + "\n";
+                    "Needed daily calories: " + CalculateDailyCalories() + goalText + "\n";
             }
         }
     }
@@ -371,7 +397,7 @@ public class SurveyManager : MonoBehaviour
     // Checking if survey has goal
     private bool AHWEntered()
     {
-        return 2023 > age && age > 1960  &&  250 > height && height > 120  &&  350 > weight && weight > 30;
+        return currentYear > age && age > 1960  &&  250 > height && height > 120  &&  350 > weight && weight > 30;
     }
 
 
