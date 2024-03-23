@@ -58,4 +58,9 @@ public class ClientMethods : IClientInterface
     {
         return _databaseMethods.ReturnUserData(id, constring); ;
     }
+
+    public string ReturnUsername(int id, string constring)
+    {
+        return _databaseMethods.ReturnUsername(id, constring); ;
+    }
 }

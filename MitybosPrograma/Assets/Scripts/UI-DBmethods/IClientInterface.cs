@@ -13,4 +13,6 @@ public interface IClientInterface
     bool CheckSurveyCompleted(int id, string constring);
 
     string ReturnUserData(int id, string constring);
+
+    string ReturnUsername(int id, string constring);
 }

@@ -31,7 +31,7 @@ public class LoginManager : MonoBehaviour
     {
         username = newUsername;
     }
-
+   
     public void InputPassword(string newPassword)
     {
         password = newPassword;

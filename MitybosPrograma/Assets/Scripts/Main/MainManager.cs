@@ -19,10 +19,11 @@ public class MainManager : MonoBehaviour
 
     string constring = "Server=localhost;User ID=root;Password=root;Database=food_db";
     // User survey info
+
+    public TextMeshPro user;
     public TextMeshPro info;
 
     ClientMethods c = new ClientMethods(new DatabaseMethods());
-
 
     public static int id;
 
@@ -42,12 +43,15 @@ public class MainManager : MonoBehaviour
     void Start()
     {
         SwitchSegment(currentSegment);
-        info.text = c.ReturnUserData(LoginManager.id, constring);
+        user.text = "User: " + c.ReturnUsername(LoginManager.id, constring);
+        string userDataString = c.ReturnUserData(LoginManager.id, constring);
+        string[] userDataParts = userDataString.Split(';');
+        info.text = $"Height: {userDataParts[0]}\n" +
+                    $"Weight: {userDataParts[1]}\n" +
+                    $"Gender: {userDataParts[2]}\n" +
+                    $"Goal: {userDataParts[3]}\n" +
+                    $"Physical Activity: {userDataParts[4]}\n" +
+                    $"Date of Birth: {userDataParts[5]}\n" +
+                    $"Creation Date: {userDataParts[6]}";
     }
-
-    public void GetInfo()
-    {
-        //info.text = BS;
-    }
-
 }
