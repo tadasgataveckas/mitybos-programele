@@ -266,7 +266,6 @@ public class SurveyManager : MonoBehaviour
     }
 
 
-
     // Survey Segments
 
     public List<GameObject> segments; // Each segment of survey (picking gender, picking eating preference, etc.)
@@ -398,13 +397,7 @@ public class SurveyManager : MonoBehaviour
     private bool AHWEntered()
     {
         return currentYear > age && age > 1960  &&  250 > height && height > 120  &&  350 > weight && weight > 30;
-    }
-
-
-    //public void PreviousSegment()
-    //{
-    //    SwitchSegment(currentSegment - 1);
-    //}
+    }   
 
     void Start()
     {
