@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2553853604386667580}
   - component: {fileID: 6983264999911026617}
   - component: {fileID: 1038119435405760909}
-  - component: {fileID: 265903226783620463}
+  - component: {fileID: 4392553504270586164}
   m_Layer: 0
   m_Name: MiniGameCard
   m_TagString: Untagged
@@ -96,7 +96,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -112,7 +112,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 9.57, y: 4.96}
   m_EdgeRadius: 0
---- !u!114 &265903226783620463
+--- !u!114 &4392553504270586164
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,6 +121,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7196848125156514161}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56c44e8535dc6904ba7c0b6016483b66, type: 3}
+  m_Script: {fileID: 11500000, guid: cbd4c7f787a5aad4ab865dc3e70a7408, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameColor: {r: 0.8584906, g: 0, b: 0, a: 1}

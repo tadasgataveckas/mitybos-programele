@@ -10,11 +10,11 @@ public class ButtonObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("Enter");
+        //Debug.Log("Enter");
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log("Exit");
+        //Debug.Log("Exit");
     }
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -29,6 +29,7 @@ public class ButtonObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     }
     public void OnPointerUp(PointerEventData eventData)
     {
+        //Debug.Log("DebugName2");
         if (eventData.button == PointerEventData.InputButton.Left) // LMB
         {
           
@@ -37,5 +38,10 @@ public class ButtonObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public void DebugLog()
     {
         Debug.Log("DebugName");
+    }
+
+    void Start()
+    {
+        //Debug.Log("Start");
     }
 }
