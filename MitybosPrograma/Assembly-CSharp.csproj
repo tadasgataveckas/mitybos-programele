@@ -75,11 +75,13 @@
     <Compile Include="Assets\UI\DatePicker\DatePickerUtilities.cs" />
     <Compile Include="Assets\UI\TableLayout\TableRow.cs" />
     <Compile Include="Assets\UI\TableLayout\TableCell.cs" />
+    <Compile Include="Assets\Input\PlayerInput.cs" />
     <Compile Include="Assets\Scripts\Main\MainManager.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerTimerComponent.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_HoldButton.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerTimer.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\DatabaseMethods.cs" />
+    <Compile Include="Assets\Scripts\Main\SettingsManager.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_DayButton.cs" />
     <Compile Include="Assets\UI\TableLayout\Example\TableLayoutExampleController.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_Instantiation.cs" />
@@ -101,8 +103,6 @@
     <Compile Include="Assets\UI\TableLayout\TableLayout.cs" />
     <Compile Include="Assets\Scripts\unity_auth\UILogin.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerCache.cs" />
-    <Compile Include="Assets\Input\PlayerInput.cs" />
-    <Compile Include="Assets\Scripts\Main\SettingsManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
