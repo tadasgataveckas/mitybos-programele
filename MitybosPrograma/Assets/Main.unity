@@ -770,11 +770,11 @@ RectTransform:
   - {fileID: 1609100373}
   - {fileID: 1471893873}
   m_Father: {fileID: 519998056}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 99, y: 482.14}
+  m_AnchoredPosition: {x: 99, y: 218}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &190654239
@@ -827,15 +827,27 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Man
+    - m_Text: Male
       m_Image: {fileID: 0}
-    - m_Text: Woman
+    - m_Text: Female
       m_Image: {fileID: 0}
     - m_Text: Other
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1140004984}
+        m_TargetAssemblyTypeName: MainManager, Assembly-CSharp
+        m_MethodName: InputGender
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &190654240
 MonoBehaviour:
@@ -1143,9 +1155,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SurveyManager, Assembly-CSharp
-        m_MethodName: NextSegment
+      - m_Target: {fileID: 519998055}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1140004984}
+        m_TargetAssemblyTypeName: MainManager, Assembly-CSharp
+        m_MethodName: UpdateInfo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2573,11 +2597,11 @@ RectTransform:
   m_Children:
   - {fileID: 1408093479}
   m_Father: {fileID: 519998056}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 99, y: 341}
+  m_AnchoredPosition: {x: 99, y: 482.14}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &405861810
@@ -2647,7 +2671,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1140004982}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 0
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls: []
@@ -2659,7 +2695,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1140004984}
+        m_TargetAssemblyTypeName: MainManager, Assembly-CSharp
+        m_MethodName: InputHeight
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3258,11 +3306,11 @@ RectTransform:
   - {fileID: 106338987}
   - {fileID: 1303581449}
   m_Father: {fileID: 519998056}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 99, y: -69}
+  m_AnchoredPosition: {x: 99, y: 79}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &475684655
@@ -3325,7 +3373,19 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1140004984}
+        m_TargetAssemblyTypeName: MainManager, Assembly-CSharp
+        m_MethodName: InputGoal
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &475684656
 MonoBehaviour:
@@ -3759,7 +3819,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &519998056
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3779,12 +3839,12 @@ RectTransform:
   - {fileID: 429725851}
   - {fileID: 510618420}
   - {fileID: 225981390}
-  - {fileID: 190654238}
   - {fileID: 405861809}
   - {fileID: 1299238112}
-  - {fileID: 520149743}
+  - {fileID: 190654238}
   - {fileID: 475684654}
   - {fileID: 1281222510}
+  - {fileID: 520149743}
   m_Father: {fileID: 826546778}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3826,11 +3886,11 @@ RectTransform:
   m_Children:
   - {fileID: 1374504138}
   m_Father: {fileID: 519998056}
-  m_RootOrder: 10
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 162.85, y: 65}
+  m_AnchoredPosition: {x: 160.95, y: -209}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &520149744
@@ -3912,7 +3972,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1140004984}
+        m_TargetAssemblyTypeName: MainManager, Assembly-CSharp
+        m_MethodName: InputBirth
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4631,7 +4703,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Man
+  m_text: Male
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6144,6 +6216,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48a2159a2b5fef049b397483da962cc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  main: {fileID: 0}
+  height: 0
+  weight: 0
+  gender: 
+  goal: 
+  activity: 0
+  birth: 
 --- !u!1 &970548202
 GameObject:
   m_ObjectHideFlags: 0
@@ -7684,6 +7763,12 @@ MonoBehaviour:
   currentSegment: 2
   user: {fileID: 986402756}
   info: {fileID: 1060218265}
+  height: 0
+  weight: 0
+  gender: 
+  goal: 
+  activity: 0
+  birth: 
 --- !u!1 &1174628608
 GameObject:
   m_ObjectHideFlags: 0
@@ -8638,11 +8723,11 @@ RectTransform:
   - {fileID: 226056862}
   - {fileID: 78993799}
   m_Father: {fileID: 519998056}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 259, y: -211}
+  m_AnchoredPosition: {x: 259, y: -72}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1281222511
@@ -8707,7 +8792,19 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1140004984}
+        m_TargetAssemblyTypeName: MainManager, Assembly-CSharp
+        m_MethodName: InputActivity
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &1281222512
 MonoBehaviour:
@@ -8984,11 +9081,11 @@ RectTransform:
   m_Children:
   - {fileID: 236071092}
   m_Father: {fileID: 519998056}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 99, y: 201}
+  m_AnchoredPosition: {x: 99, y: 350}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1299238113
@@ -9070,7 +9167,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1140004984}
+        m_TargetAssemblyTypeName: MainManager, Assembly-CSharp
+        m_MethodName: InputWeight
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -9831,23 +9940,24 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Gender
-
-
-    Height
+  m_text: 'Height
 
 
     Weight
 
 
-    Birth date
+    Gender
 
 
     Goal
 
 
-    Physical
-    activity
+    Physical activity
+
+
+    Birth
+    date
+
 
 '
   m_isRightToLeft: 0

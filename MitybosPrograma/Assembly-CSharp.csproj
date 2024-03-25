@@ -81,7 +81,6 @@
     <Compile Include="Assets\UI\DatePicker\DatePicker_HoldButton.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerTimer.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\DatabaseMethods.cs" />
-    <Compile Include="Assets\Scripts\Main\SettingsManager.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_DayButton.cs" />
     <Compile Include="Assets\UI\TableLayout\Example\TableLayoutExampleController.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_Instantiation.cs" />

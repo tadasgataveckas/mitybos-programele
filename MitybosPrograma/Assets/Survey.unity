@@ -2448,13 +2448,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 559990404204870485, guid: ef38286cb479bab448a0040de44a4c2e, type: 3}
       propertyPath: m_text
-      value: 'Woman
-
-'
+      value: Female
       objectReference: {fileID: 0}
     - target: {fileID: 873658333204427413, guid: ef38286cb479bab448a0040de44a4c2e, type: 3}
       propertyPath: m_Name
-      value: Woman
+      value: Female
       objectReference: {fileID: 0}
     - target: {fileID: 4951444116319168413, guid: ef38286cb479bab448a0040de44a4c2e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -2809,13 +2807,13 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 559990404204870485, guid: ef38286cb479bab448a0040de44a4c2e, type: 3}
       propertyPath: m_text
-      value: 'Man
+      value: 'Male
 
 '
       objectReference: {fileID: 0}
     - target: {fileID: 873658333204427413, guid: ef38286cb479bab448a0040de44a4c2e, type: 3}
       propertyPath: m_Name
-      value: Man
+      value: Male
       objectReference: {fileID: 0}
     - target: {fileID: 4951444116319168413, guid: ef38286cb479bab448a0040de44a4c2e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size

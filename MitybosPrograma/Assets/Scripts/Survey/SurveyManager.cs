@@ -240,7 +240,7 @@ public class SurveyManager : MonoBehaviour
             FAL = 1.9;
         }
 
-        if (gender == "Woman")
+        if (gender == "Female")
         {
             BMR = (10 * weight) + (6.25 * height) - (5 * (currentYear - age)) - 161;
 
