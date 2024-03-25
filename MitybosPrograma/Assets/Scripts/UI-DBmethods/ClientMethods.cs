@@ -44,7 +44,7 @@ public class ClientMethods : IClientInterface
     {
         _databaseMethods.InsertRegisterPlaceholder(id, constring);
     }
-    public void UpdateProfile(int id, string gender, double height, double weight, string goal, int dateOfBirth, int activity, string constring)
+    public void UpdateProfile(int id, string gender, double height, double weight, string goal, string dateOfBirth, int activity, string constring)
     {
         _databaseMethods.UpdateProfile(id, gender, height, weight, goal,dateOfBirth,activity, constring);
     }

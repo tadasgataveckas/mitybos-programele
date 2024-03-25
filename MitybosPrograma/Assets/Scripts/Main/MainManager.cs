@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,7 +34,7 @@ public class MainManager : MonoBehaviour
     public string gender;
     public string goal;
     public int activity;
-    public int birth;
+    public string birth;
 
     //int currentYear = DateTime.Now.Year;
 
@@ -69,7 +70,7 @@ public class MainManager : MonoBehaviour
         gender = userDataParts[2];
         goal = userDataParts[3];
         int.TryParse(userDataParts[4], out activity);
-        int.TryParse(userDataParts[5], out birth);
+        birth = userDataParts[5];
         Debug.Log("height is: " + height);
         Debug.Log("weight is: " + weight);
         Debug.Log("gender is: " + gender);
@@ -189,9 +190,7 @@ public class MainManager : MonoBehaviour
 
     public void InputBirth(string newBirth)
     {
-        if (int.TryParse(newBirth, out birth))
-        {
-            Debug.Log("Input age is: " + birth);
-        }
+        birth = newBirth;
+        Debug.Log("Edited birth is: " + birth);
     }
 }

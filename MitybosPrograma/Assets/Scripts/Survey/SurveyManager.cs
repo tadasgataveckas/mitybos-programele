@@ -19,7 +19,7 @@ public class SurveyManager : MonoBehaviour
 
     int currentYear = DateTime.Now.Year;
 
-    public int age;
+    public string age;
 
     public double height;
 
@@ -89,10 +89,11 @@ public class SurveyManager : MonoBehaviour
 
     public void InputAge(string newAge)
     {
-        if (int.TryParse(newAge, out age))
-        {
-            Debug.Log("Input age is: " + age);
-        }
+        age = newAge;
+        //if (int.TryParse(newAge, out age))
+        //{
+        //    Debug.Log("Input age is: " + age);
+        //}
     }
 
     public void InputHeight(string newHeight)
@@ -209,6 +210,16 @@ public class SurveyManager : MonoBehaviour
         }
         return "";
     }
+    public int metai;
+    DateTime date;
+    public void Metai()
+    {
+        if (DateTime.TryParse(age, out date))
+        {
+            int metai = date.Year;
+            Debug.Log("Metai: " + metai);
+        }
+    }
 
     //Calculating daily calories
     public double CalculateDailyCalories()
@@ -242,12 +253,12 @@ public class SurveyManager : MonoBehaviour
 
         if (gender == "Female")
         {
-            BMR = (10 * weight) + (6.25 * height) - (5 * (currentYear - age)) - 161;
+            BMR = (10 * weight) + (6.25 * height) - (5 * (currentYear - metai)) - 161;
 
         }
         else
         {
-            BMR = (10 * weight) + (6.25 * height) - (5 * (currentYear - age)) + 5;
+            BMR = (10 * weight) + (6.25 * height) - (5 * (currentYear - metai)) + 5;
         }
 
         // Daily calories = metabolism * physical activity level
@@ -352,7 +363,7 @@ public class SurveyManager : MonoBehaviour
                     "Gender: " + gender + "\n" +
                     "Goal: " + goal + "\n" +
                     "Eating preference: " + eatingPreference + "\n" +
-                    "Age: " + (currentYear - age) + "\n" +
+                    "Age: " + (currentYear - metai) + "\n" +
                     "Height: " + height + "\n" +
                     "Weight: " + weight + "\n" +
                     "Allergies: " + GetAllergiesAsString() + "\n" +
@@ -396,7 +407,7 @@ public class SurveyManager : MonoBehaviour
     // Checking if survey has goal
     private bool AHWEntered()
     {
-        return currentYear > age && age > 1960  &&  250 > height && height > 120  &&  350 > weight && weight > 30;
+        return   250 > height && height > 120  &&  350 > weight && weight > 30;
     }   
 
     void Start()
