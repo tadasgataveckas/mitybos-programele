@@ -65,6 +65,7 @@
     <Compile Include="Assets\SoftEffects\Scripts\CGHolder.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_Header.cs" />
     <Compile Include="Assets\Scripts\Survey\SegmentManager.cs" />
+    <Compile Include="Assets\Scripts\PlanCreation\AutoPlan.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_Enums.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_Animator.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker.cs" />
@@ -112,7 +113,6 @@
     <Compile Include="Assets\UI\TableLayout\TableLayout.cs" />
     <Compile Include="Assets\Scripts\unity_auth\UILogin.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerCache.cs" />
-    <Compile Include="Assets\Scripts\PlanCreation\AutoPlan.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

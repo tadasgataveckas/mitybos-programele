@@ -341,28 +341,35 @@ public class DatabaseMethods
         try
         {
             //!!!!
-            command_return.CommandText = "";
+            command_return.CommandText = "SELECT * FROM food_db.v_meal_kcal_per_serving";
             command_return.Connection = ConnectionObject;
             ConnectionObject.Open();
             List<FoodClass> foodlist = new List<FoodClass>();
-
+            
             using (MySqlDataReader reader = command_return.ExecuteReader())
             {
-                while (reader.HasRows)
+                if (reader.HasRows)
                 {
-                    reader.Read();
-                    
+                    while (reader.Read())
+                    {
+                        string foodname = reader.GetValue(1).ToString();
+                        double kcal = Convert.ToDouble(reader.GetValue(3));
+                        foodlist.Add(new FoodClass(foodname, kcal));
+                    }
                 }
+                return foodlist;
             }
+            
         }
         catch (MySqlException e)
         {
             Debug.unityLogger.Log(e.Message);
+            return new List<FoodClass>();
         }
         finally
         {
             ConnectionObject.Close();
         }
-            return new List<FoodClass>();
+           
     }
 }

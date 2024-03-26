@@ -16,7 +16,7 @@ public class BranchAndBound
         this.queue = new PriorityQueue<Node>();
     }
 
-    public List<FoodClass> FindClosestCalorieCombination(double targetCalories)
+    public List<FoodClass> FindClosestCalorieCombination(double targetCalories, int nfoods)
     {
         double initialBound = CalculateInitialBound();
         for (int i = 0; i < foods.Count; i++)
@@ -40,7 +40,7 @@ public class BranchAndBound
             }
 
             // Expand node and add children to queue
-            if (currentNode.Foods.Count < 3)
+            if (currentNode.Foods.Count < nfoods)
             {
                 for (int i = currentNode.LastIndex + 1; i < foods.Count; i++)
                 {
