@@ -7312,7 +7312,7 @@ MonoBehaviour:
   gender: 
   goal: 
   eatingPreference: 
-  age: 0
+  birthDate: 
   height: 0
   weight: 0
   allergies: []
@@ -7320,7 +7320,7 @@ MonoBehaviour:
   slider: {fileID: 836018810}
   Continue: {fileID: 2073546039}
   Back: {fileID: 1718864336}
-  metai: 0
+  year: 0
   segments:
   - {fileID: 1858329182}
   - {fileID: 645493827}
@@ -7895,6 +7895,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: SurveyManager, Assembly-CSharp
         m_MethodName: InputAge
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1237100514}
+        m_TargetAssemblyTypeName: SurveyManager, Assembly-CSharp
+        m_MethodName: Year
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
