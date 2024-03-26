@@ -15,4 +15,6 @@ public interface IClientInterface
     string ReturnUserData(int id, string constring);
 
     string ReturnUsername(int id, string constring);
+
+    List<FoodClass> ReturnFoodList(string constring);
 }

@@ -330,4 +330,39 @@ public class DatabaseMethods
         }
 
     }
+
+    public List<FoodClass> ReturnFoodList(string constring)
+    {
+
+        MySqlCommand command_return = new MySqlCommand();
+        MySqlConnection ConnectionObject = new MySqlConnection();
+        ConnectionObject.ConnectionString = constring;
+
+        try
+        {
+            //!!!!
+            command_return.CommandText = "";
+            command_return.Connection = ConnectionObject;
+            ConnectionObject.Open();
+            List<FoodClass> foodlist = new List<FoodClass>();
+
+            using (MySqlDataReader reader = command_return.ExecuteReader())
+            {
+                while (reader.HasRows)
+                {
+                    reader.Read();
+                    
+                }
+            }
+        }
+        catch (MySqlException e)
+        {
+            Debug.unityLogger.Log(e.Message);
+        }
+        finally
+        {
+            ConnectionObject.Close();
+        }
+            return new List<FoodClass>();
+    }
 }

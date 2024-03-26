@@ -63,4 +63,9 @@ public class ClientMethods : IClientInterface
     {
         return _databaseMethods.ReturnUsername(id, constring); ;
     }
+
+    public List<FoodClass> ReturnFoodList(string constring)
+    {
+        return _databaseMethods.ReturnFoodList(constring);
+    }
 }

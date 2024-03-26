@@ -172,7 +172,7 @@ CREATE TABLE `v_meal_kcal_per_serving` (
 --
 DROP TABLE IF EXISTS `v_meal_kcal_per_serving`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_meal_kcal_per_serving`  AS SELECT `meal`.`id_meal` AS `id_meal`, `meal`.`meal_name` AS `meal_name`, `meal`.`meal_type` AS `meal_type`, round(sum(`product`.`kcal` * `meals_from_products`.`amount` * 0.01 / `meal`.`servings`),2) AS `total_kcal` FROM ((`meal` left join `meals_from_products` on(`meal`.`id_meal` = `meals_from_products`.`id_meal`)) left join `product` on(`product`.`id_product` = `meals_from_products`.`id_product`)) GROUP BY `meal`.`id_meal``id_meal`  ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_meal_kcal_per_serving`  AS SELECT `meal`.`id_meal` AS `id_meal`, `meal`.`meal_name` AS `meal_name`, `meal`.`meal_type` AS `meal_type`, round(sum(`product`.`kcal` * `meals_from_products`.`amount` * 0.01 / `meal`.`servings`),2) AS `total_kcal` FROM ((`meal` left join `meals_from_products` on(`meal`.`id_meal` = `meals_from_products`.`id_meal`)) left join `product` on(`product`.`id_product` = `meals_from_products`.`id_product`)) GROUP BY `meal`.`id_meal`  ;
 
 --
 -- Indexes for dumped tables
