@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 15, 2024 at 05:32 AM
+-- Generation Time: Mar 22, 2024 at 02:17 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -46,12 +46,29 @@ CREATE TABLE `allergy` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `consumed_user_meals`
+--
+
+CREATE TABLE `consumed_user_meals` (
+  `id_cum` int(6) NOT NULL,
+  `id_user` int(6) NOT NULL,
+  `id_meal` int(6) NOT NULL,
+  `consumption_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `kcal` decimal(7,2) NOT NULL,
+  `protein` decimal(7,2) NOT NULL,
+  `fat` decimal(7,2) NOT NULL,
+  `carbohydrates` decimal(7,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `meal`
 --
 
 CREATE TABLE `meal` (
   `id_meal` int(6) NOT NULL,
-  `meal_name` varchar(50) NOT NULL,
+  `meal_name` varchar(100) NOT NULL,
   `meal_type` enum('Breakfast','Lunch','Dinner','Snack') NOT NULL,
   `servings` int(4) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -135,6 +152,28 @@ CREATE TABLE `user_selected_allergies` (
   `id_allergy` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `v_meal_kcal_per_serving`
+-- (See below for the actual view)
+--
+CREATE TABLE `v_meal_kcal_per_serving` (
+`id_meal` int(6)
+,`meal_name` varchar(100)
+,`meal_type` enum('Breakfast','Lunch','Dinner','Snack')
+,`total_kcal` decimal(37,2)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `v_meal_kcal_per_serving`
+--
+DROP TABLE IF EXISTS `v_meal_kcal_per_serving`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_meal_kcal_per_serving`  AS SELECT `meal`.`id_meal` AS `id_meal`, `meal`.`meal_name` AS `meal_name`, `meal`.`meal_type` AS `meal_type`, round(sum(`product`.`kcal` * `meals_from_products`.`amount` * 0.01 / `meal`.`servings`),2) AS `total_kcal` FROM ((`meal` left join `meals_from_products` on(`meal`.`id_meal` = `meals_from_products`.`id_meal`)) left join `product` on(`product`.`id_product` = `meals_from_products`.`id_product`)) GROUP BY `meal`.`id_meal``id_meal`  ;
+
 --
 -- Indexes for dumped tables
 --
@@ -152,6 +191,14 @@ ALTER TABLE `allergies_from_products`
 ALTER TABLE `allergy`
   ADD PRIMARY KEY (`id_allergy`),
   ADD UNIQUE KEY `allergy_name` (`allergy_name`);
+
+--
+-- Indexes for table `consumed_user_meals`
+--
+ALTER TABLE `consumed_user_meals`
+  ADD PRIMARY KEY (`id_cum`),
+  ADD KEY `cum_id_user` (`id_user`),
+  ADD KEY `cum_id_meal` (`id_meal`);
 
 --
 -- Indexes for table `meal`
@@ -210,7 +257,13 @@ ALTER TABLE `user_selected_allergies`
 -- AUTO_INCREMENT for table `allergy`
 --
 ALTER TABLE `allergy`
-  MODIFY `id_allergy` int(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_allergy` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+
+--
+-- AUTO_INCREMENT for table `consumed_user_meals`
+--
+ALTER TABLE `consumed_user_meals`
+  MODIFY `id_cum` int(6) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `meal`
@@ -228,7 +281,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(6) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_user` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 
 --
 -- Constraints for dumped tables
@@ -240,6 +293,13 @@ ALTER TABLE `user`
 ALTER TABLE `allergies_from_products`
   ADD CONSTRAINT `afp_id_allergy_fk` FOREIGN KEY (`id_allergy`) REFERENCES `allergy` (`id_allergy`),
   ADD CONSTRAINT `afp_id_product_fk` FOREIGN KEY (`id_product`) REFERENCES `product` (`id_product`);
+
+--
+-- Constraints for table `consumed_user_meals`
+--
+ALTER TABLE `consumed_user_meals`
+  ADD CONSTRAINT `cum_id_meal` FOREIGN KEY (`id_meal`) REFERENCES `meal` (`id_meal`),
+  ADD CONSTRAINT `cum_id_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
 
 --
 -- Constraints for table `meals_from_products`

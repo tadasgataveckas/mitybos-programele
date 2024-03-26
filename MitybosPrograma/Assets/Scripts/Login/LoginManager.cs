@@ -31,7 +31,7 @@ public class LoginManager : MonoBehaviour
     {
         username = newUsername;
     }
-
+   
     public void InputPassword(string newPassword)
     {
         password = newPassword;
@@ -127,7 +127,10 @@ public class LoginManager : MonoBehaviour
         else
         {
             // If everything correct, success and survey
-            c.Register(username, username, password, constring);           
+            c.Register(username, username, password, constring);
+            int id = c.Login(username, password, out id, constring);
+
+            SetID(id);
             SceneManager.LoadScene("Survey");
         }       
     }
