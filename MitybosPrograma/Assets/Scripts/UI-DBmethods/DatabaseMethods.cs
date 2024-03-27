@@ -169,8 +169,8 @@ public class DatabaseMethods
             command_update.Parameters.Add("@expr4", MySqlDbType.Enum, 6).Value = gender;
             command_update.Parameters.Add("@expr5", MySqlDbType.Enum, 6).Value = goal;
             command_update.Parameters.Add("@expr6", MySqlDbType.Int64, 1).Value = activity;
-            command_update.Parameters.Add("@expr7", MySqlDbType.Date, 10).Value = dateOfBirth;
-            Debug.Log(dateOfBirth);
+            command_update.Parameters.Add("@expr7", MySqlDbType.Date, 10).Value = dateOfBirth + "-01-01";
+            Debug.Log(dateOfBirth + "-01-01");
 
 
             command_update.Connection = ConnectionObject;
@@ -329,5 +329,47 @@ public class DatabaseMethods
             ConnectionObject.Close();
         }
 
+    }
+
+    public List<FoodClass> ReturnFoodList(string constring)
+    {
+
+        MySqlCommand command_return = new MySqlCommand();
+        MySqlConnection ConnectionObject = new MySqlConnection();
+        ConnectionObject.ConnectionString = constring;
+
+        try
+        {
+            //!!!!
+            command_return.CommandText = "SELECT * FROM food_db.v_meal_kcal_per_serving";
+            command_return.Connection = ConnectionObject;
+            ConnectionObject.Open();
+            List<FoodClass> foodlist = new List<FoodClass>();
+            
+            using (MySqlDataReader reader = command_return.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        string foodname = reader.GetValue(1).ToString();
+                        double kcal = Convert.ToDouble(reader.GetValue(3));
+                        foodlist.Add(new FoodClass(foodname, kcal));
+                    }
+                }
+                return foodlist;
+            }
+            
+        }
+        catch (MySqlException e)
+        {
+            Debug.unityLogger.Log(e.Message);
+            return new List<FoodClass>();
+        }
+        finally
+        {
+            ConnectionObject.Close();
+        }
+           
     }
 }
