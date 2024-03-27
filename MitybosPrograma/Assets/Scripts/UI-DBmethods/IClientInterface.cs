@@ -8,7 +8,7 @@ public interface IClientInterface
     bool Register(string email, string name, string password, string constring);
 
     void InsertRegisterPlaceholder(int id, string constring);
-    void UpdateProfile(int id, string gender, double height, double weight, string goal, int dateOfBirth, int activity, string constring);
+    void UpdateProfile(int id, string gender, double height, double weight, string goal, string dateOfBirth, int activity, string constring);
 
     bool CheckSurveyCompleted(int id, string constring);
 

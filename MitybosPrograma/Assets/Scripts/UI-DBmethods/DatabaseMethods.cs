@@ -149,7 +149,7 @@ public class DatabaseMethods
         finally {ConnectionObject.Close(); }
     }
 
-    public void UpdateProfile(int id, string gender, double height, double weight, string goal,int dateOfBirth, int activity, string constring)
+    public void UpdateProfile(int id, string gender, double height, double weight, string goal,string dateOfBirth, int activity, string constring)
     {
         MySqlCommand command_update = new MySqlCommand();
         MySqlConnection ConnectionObject = new MySqlConnection();
@@ -169,8 +169,8 @@ public class DatabaseMethods
             command_update.Parameters.Add("@expr4", MySqlDbType.Enum, 6).Value = gender;
             command_update.Parameters.Add("@expr5", MySqlDbType.Enum, 6).Value = goal;
             command_update.Parameters.Add("@expr6", MySqlDbType.Int64, 1).Value = activity;
-            command_update.Parameters.Add("@expr7", MySqlDbType.Date, 10).Value = dateOfBirth + "-01-01";
-            Debug.Log(dateOfBirth + "-01-01");
+            command_update.Parameters.Add("@expr7", MySqlDbType.Date, 10).Value = dateOfBirth;
+            Debug.Log(dateOfBirth);
 
 
             command_update.Connection = ConnectionObject;

@@ -19,7 +19,7 @@ public class SurveyManager : MonoBehaviour
 
     int currentYear = DateTime.Now.Year;
 
-    public int age;
+    public string birthDate;
 
     public double height;
 
@@ -47,7 +47,7 @@ public class SurveyManager : MonoBehaviour
     public void SubmitSurvey()
     {
         Debug.Log(LoginManager.id);
-        c.UpdateProfile(LoginManager.id,gender,height,weight,goal,age,activity,constring);
+        c.UpdateProfile(LoginManager.id,gender,height,weight,goal,birthDate,activity,constring);
         GoToMain();
     }
 
@@ -87,12 +87,14 @@ public class SurveyManager : MonoBehaviour
         }
     }
 
-    public void InputAge(string newAge)
+    public void InputAge(string newBirthDate)
     {
-        if (int.TryParse(newAge, out age))
-        {
-            Debug.Log("Input age is: " + age);
-        }
+        birthDate = newBirthDate;
+        Debug.Log("Input birth date is: " + birthDate);
+        //if (int.TryParse(newAge, out age))
+        //{
+        //    Debug.Log("Input age is: " + age);
+        //}
     }
 
     public void InputHeight(string newHeight)
@@ -210,6 +212,26 @@ public class SurveyManager : MonoBehaviour
         return "";
     }
 
+    public int year;
+    public void Year()
+    {
+        // Konvertuojame string'ą į DateTime objektą
+        DateTime dataObj;
+        if (DateTime.TryParseExact(birthDate, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out dataObj))
+        {
+            // Ištraukiame metus
+            year = dataObj.Year;
+
+            // Spausdiname metus
+            Debug.Log("Konvertuoti metai: " + year);
+        }
+        else
+        {
+            error.text = "Please write your birth date in correct form! (yyyy-MM-dd)";
+            Debug.Log("Please write your birth date in correct form! (yyyy-MM-dd)");
+        }
+    }
+
     //Calculating daily calories
     public double CalculateDailyCalories()
     {
@@ -240,14 +262,14 @@ public class SurveyManager : MonoBehaviour
             FAL = 1.9;
         }
 
-        if (gender == "Woman")
+        if (gender == "Female")
         {
-            BMR = (10 * weight) + (6.25 * height) - (5 * (currentYear - age)) - 161;
+            BMR = (10 * weight) + (6.25 * height) - (5 * (currentYear - year)) - 161;
 
         }
         else
         {
-            BMR = (10 * weight) + (6.25 * height) - (5 * (currentYear - age)) + 5;
+            BMR = (10 * weight) + (6.25 * height) - (5 * (currentYear - year)) + 5;
         }
 
         // Daily calories = metabolism * physical activity level
@@ -352,14 +374,15 @@ public class SurveyManager : MonoBehaviour
                     "Gender: " + gender + "\n" +
                     "Goal: " + goal + "\n" +
                     "Eating preference: " + eatingPreference + "\n" +
-                    "Age: " + (currentYear - age) + "\n" +
+                    //"Age: " + (currentYear - year) + "\n" +
+                    "Birth date: " + birthDate + "\n" +
                     "Height: " + height + "\n" +
                     "Weight: " + weight + "\n" +
                     "Allergies: " + GetAllergiesAsString() + "\n" +
                     "Activity level: " + activity + "\n" +
                     "\n" +
-                    "Your BMI: " + bmi + "\n" +
-                    "Your BMI result: " + BMIResult(bmi) + "\n" +
+                    //"Your BMI: " + bmi + "\n" +
+                    //"Your BMI result: " + BMIResult(bmi) + "\n" +
                     "Needed daily calories: " + CalculateDailyCalories() + goalText + "\n";
             }
         }
@@ -396,7 +419,8 @@ public class SurveyManager : MonoBehaviour
     // Checking if survey has goal
     private bool AHWEntered()
     {
-        return currentYear > age && age > 1960  &&  250 > height && height > 120  &&  350 > weight && weight > 30;
+        return (DateTime.TryParseExact(birthDate, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out _)) && 
+            (250 > height && height > 120) && (350 > weight && weight > 30);
     }   
 
     void Start()

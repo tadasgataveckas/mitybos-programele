@@ -1,0 +1,107 @@
+-- Database creation
+PRAGMA foreign_keys = ON; -- Enable foreign key constraints
+
+-- Table: allergy
+CREATE TABLE IF NOT EXISTS allergy (
+  id_allergy INTEGER PRIMARY KEY AUTOINCREMENT,
+  allergy_name TEXT NOT NULL UNIQUE
+);
+
+-- Table: allergies_from_products
+CREATE TABLE IF NOT EXISTS allergies_from_products (
+  id_allergy INTEGER NOT NULL,
+  id_product INTEGER NOT NULL,
+  PRIMARY KEY (id_allergy, id_product),
+  FOREIGN KEY (id_allergy) REFERENCES allergy (id_allergy),
+  FOREIGN KEY (id_product) REFERENCES product (id_product)
+);
+
+-- Table: consumed_user_meals
+CREATE TABLE IF NOT EXISTS consumed_user_meals (
+  id_cum INTEGER PRIMARY KEY AUTOINCREMENT,
+  id_user INTEGER NOT NULL,
+  id_meal INTEGER NOT NULL,
+  consumption_date TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  kcal REAL NOT NULL,
+  protein REAL NOT NULL,
+  fat REAL NOT NULL,
+  carbohydrates REAL NOT NULL,
+  FOREIGN KEY (id_user) REFERENCES user (id_user),
+  FOREIGN KEY (id_meal) REFERENCES meal (id_meal)
+);
+
+-- Table: meal
+CREATE TABLE IF NOT EXISTS meal (
+  id_meal INTEGER PRIMARY KEY AUTOINCREMENT,
+  meal_name TEXT NOT NULL UNIQUE,
+  meal_type TEXT NOT NULL CHECK (meal_type IN ('Breakfast', 'Lunch', 'Dinner', 'Snack')),
+  servings INTEGER NOT NULL DEFAULT 1
+);
+
+-- Table: meals_from_products
+CREATE TABLE IF NOT EXISTS meals_from_products (
+  id_meal INTEGER NOT NULL,
+  id_product INTEGER NOT NULL,
+  amount REAL NOT NULL DEFAULT 0.00,
+  PRIMARY KEY (id_meal, id_product),
+  FOREIGN KEY (id_meal) REFERENCES meal (id_meal),
+  FOREIGN KEY (id_product) REFERENCES product (id_product)
+);
+
+-- Table: product
+CREATE TABLE IF NOT EXISTS product (
+  id_product INTEGER PRIMARY KEY AUTOINCREMENT,
+  product_name TEXT NOT NULL UNIQUE,
+  kcal REAL NOT NULL DEFAULT 0.00,
+  protein REAL NOT NULL DEFAULT 0.00,
+  carbohydrates REAL NOT NULL DEFAULT 0.00,
+  fat REAL NOT NULL DEFAULT 0.00
+);
+
+-- Table: user
+CREATE TABLE IF NOT EXISTS user (
+  id_user INTEGER PRIMARY KEY AUTOINCREMENT,
+  email TEXT NOT NULL UNIQUE,
+  username TEXT NOT NULL UNIQUE,
+  password TEXT NOT NULL
+);
+
+-- Table: user_data
+CREATE TABLE IF NOT EXISTS user_data (
+  id_user INTEGER PRIMARY KEY,
+  height REAL NOT NULL,
+  weight REAL NOT NULL,
+  gender TEXT NOT NULL CHECK (gender IN ('Male', 'Female', 'Other')),
+  goal TEXT NOT NULL CHECK (goal IN ('Lose weight', 'Maintain weight', 'Gain weight', 'Gain muscle')),
+  physical_activity INTEGER NOT NULL,
+  date_of_birth TEXT NOT NULL,
+  creation_date TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (id_user) REFERENCES user (id_user)
+);
+
+-- Table: user_filtered_products
+CREATE TABLE IF NOT EXISTS user_filtered_products (
+  id_user INTEGER NOT NULL,
+  id_product INTEGER NOT NULL,
+  PRIMARY KEY (id_user, id_product),
+  FOREIGN KEY (id_user) REFERENCES user (id_user),
+  FOREIGN KEY (id_product) REFERENCES product (id_product)
+);
+
+-- Table: user_selected_allergies
+CREATE TABLE IF NOT EXISTS user_selected_allergies (
+  id_user INTEGER NOT NULL,
+  id_allergy INTEGER NOT NULL,
+  PRIMARY KEY (id_user, id_allergy),
+  FOREIGN KEY (id_user) REFERENCES user (id_user),
+  FOREIGN KEY (id_allergy) REFERENCES allergy (id_allergy)
+);
+
+-- View: v_meal_kcal_per_serving
+CREATE VIEW IF NOT EXISTS v_meal_kcal_per_serving AS
+SELECT meal.id_meal AS id_meal, meal.meal_name AS meal_name, meal.meal_type AS meal_type, 
+ROUND(SUM(product.kcal * meals_from_products.amount * 0.01 / meal.servings), 2) AS total_kcal
+FROM meal
+LEFT JOIN meals_from_products ON meal.id_meal = meals_from_products.id_meal
+LEFT JOIN product ON product.id_product = meals_from_products.id_product
+GROUP BY meal.id_meal;
