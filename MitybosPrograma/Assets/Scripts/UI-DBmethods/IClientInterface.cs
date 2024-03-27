@@ -17,4 +17,5 @@ public interface IClientInterface
     string ReturnUsername(int id, string constring);
 
     List<FoodClass> ReturnFoodList(string constring);
+    bool CheckIfUserExists(string username, string constring);
 }

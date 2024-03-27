@@ -99,41 +99,51 @@ public class LoginManager : MonoBehaviour
 
     public void SubmitSignUp()
     {
-        // Validating with username and password
-        if (username.Length == 0 && password.Length == 0)
+        // Validating username and password
+        if (string.IsNullOrEmpty(username) && string.IsNullOrEmpty(password))
         {
             errorData.text = "You need to input your username and password!";
         }
-        else if (username.Length == 0)
+        else if (string.IsNullOrEmpty(username))
         {
             errorData.text = "You need to input your username!";
         }
-        else if (password.Length == 0)
+        else if (string.IsNullOrEmpty(password))
         {
             errorData.text = "You need to input your password!";
         }
         else if (username.Length <= 4 && password.Length <= 4)
         {
-            errorData.text = "Your username and password are too short, need to be at least 5!";
+            errorData.text = "Your username and password are too short, they need to be at least 5 characters long!";
         }
         else if (password.Length <= 4)
         {
-            errorData.text = "Your password is too short, at least 5!";
+            errorData.text = "Your password is too short, it needs to be at least 5 characters long!";
         }
         else if (username.Length <= 4)
         {
-            errorData.text = "Your username is too short, at least 5!";
+            errorData.text = "Your username is too short, it needs to be at least 5 characters long!";
         }
         else
         {
-            // If everything correct, success and survey
-            c.Register(username, username, password, constring);
-            int id = c.Login(username, password, out id, constring);
+            // Check if user  with username already exists in the database
+            bool userExists = c.CheckIfUserExists(username, constring);
 
-            SetID(id);
-            SceneManager.LoadScene("Survey");
-        }       
+            if (userExists)
+            {
+                errorData.text = "User with this username already exists!";
+            }
+            else
+            {
+                // If everything is correct, register the user, log them in, and proceed to the survey
+                c.Register(username, username, password, constring);
+                int id = c.Login(username, password, out id, constring);
+                SetID(id);
+                SceneManager.LoadScene("Survey");
+            }
+        }
     }
+
     public void LoginWithAPI()
     {
         // ...

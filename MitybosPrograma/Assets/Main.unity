@@ -4343,7 +4343,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &519998056
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8699,6 +8699,7 @@ MonoBehaviour:
   goal: 
   activity: 0
   birth: 0
+  currHeight: {fileID: 1440780346}
 --- !u!1 &1174628608
 GameObject:
   m_ObjectHideFlags: 0

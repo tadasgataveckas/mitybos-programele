@@ -51,6 +51,9 @@ public class MainManager : MonoBehaviour
         camera.GetComponent<CameraScroll>().maxY = segments[currentSegment].GetComponent<SegmentInformation>().maxYScroll;
     }
 
+
+    public TextMeshProUGUI currHeight;
+
     void Start()
     {
         SwitchSegment(currentSegment);
@@ -65,6 +68,7 @@ public class MainManager : MonoBehaviour
                     $"Date of Birth: {userDataParts[5]}\n" +
                     $"Creation Date: {userDataParts[6]}";
 
+        currHeight.text = userDataParts[0]; 
         double.TryParse(userDataParts[0], out height);
         double.TryParse(userDataParts[1], out weight);
         gender = userDataParts[2];
@@ -98,6 +102,11 @@ public class MainManager : MonoBehaviour
         //$"Creation Date: {userDataParts[6]}";
         c.UpdateProfile(LoginManager.id, gender, height, weight, goal, birth, activity, constring);
     }
+
+    
+    
+
+
 
     public void InputHeight(string newHeight)
     {

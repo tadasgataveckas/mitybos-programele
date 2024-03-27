@@ -169,8 +169,8 @@ public class DatabaseMethods
             command_update.Parameters.Add("@expr4", MySqlDbType.Enum, 6).Value = gender;
             command_update.Parameters.Add("@expr5", MySqlDbType.Enum, 6).Value = goal;
             command_update.Parameters.Add("@expr6", MySqlDbType.Int64, 1).Value = activity;
-            command_update.Parameters.Add("@expr7", MySqlDbType.Date, 10).Value = dateOfBirth + "-01-01";
-            Debug.Log(dateOfBirth + "-01-01");
+            command_update.Parameters.Add("@expr7", MySqlDbType.Date, 10).Value = dateOfBirth;
+            Debug.Log(dateOfBirth);
 
 
             command_update.Connection = ConnectionObject;
@@ -372,4 +372,31 @@ public class DatabaseMethods
         }
            
     }
+
+    public bool CheckIfUserExists(string username, string constring)
+    {
+        MySqlCommand command_check = new MySqlCommand();
+        MySqlConnection ConnectionObject = new MySqlConnection();
+        ConnectionObject.ConnectionString = constring;
+        try
+        {
+            command_check.CommandText = "SELECT COUNT(*) FROM `food_db`.`user` WHERE `username` = @expr1";
+            command_check.Parameters.Add("@expr1", MySqlDbType.VarChar, 100).Value = username;
+            command_check.Connection = ConnectionObject;
+            ConnectionObject.Open();
+
+            int count = Convert.ToInt32(command_check.ExecuteScalar());
+            return count > 0;
+        }
+        catch (MySqlException e)
+        {
+            Console.WriteLine(e.Message);
+            return false;
+        }
+        finally
+        {
+            ConnectionObject.Close();
+        }
+    }
+
 }

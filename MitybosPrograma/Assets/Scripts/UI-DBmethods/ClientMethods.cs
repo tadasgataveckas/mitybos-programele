@@ -68,4 +68,9 @@ public class ClientMethods : IClientInterface
     {
         return _databaseMethods.ReturnFoodList(constring);
     }
+
+    public bool CheckIfUserExists(string username, string constring)
+    {
+        return _databaseMethods.CheckIfUserExists(username, constring);
+    }
 }
