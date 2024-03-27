@@ -39,7 +39,7 @@ public class SurveyManager : MonoBehaviour
 
 
     private double BMI;
-    private double CALORIES;
+    public static double CALORIES;
 
 
     string constring = "Server=localhost;User ID=root;Password=root;Database=food_db";
