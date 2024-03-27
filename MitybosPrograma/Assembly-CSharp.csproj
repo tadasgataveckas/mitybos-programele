@@ -61,15 +61,18 @@
     <Compile Include="Assets\Scripts\Survey\ButtonTransitions.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_Header.cs" />
     <Compile Include="Assets\Scripts\Survey\SegmentManager.cs" />
+    <Compile Include="Assets\Scripts\UI-DBmethods\DatabaseMethods.cs" />
     <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\AutoPlan.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_Enums.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_Animator.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerExtensions.cs" />
+    <Compile Include="Assets\Scripts\Main\ButtonObject.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_DayButton_Pool.cs" />
     <Compile Include="Assets\Scripts\Tutorial\TutorialManager.cs" />
     <Compile Include="Assets\Scripts\Survey\SliderScript.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_DateRange.cs" />
+    <Compile Include="Assets\Scripts\UI-DBmethods\IClientInterface.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerUtilities.cs" />
     <Compile Include="Assets\UI\TableLayout\TableRow.cs" />
     <Compile Include="Assets\UI\TableLayout\TableCell.cs" />
@@ -81,6 +84,7 @@
     <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\BranchAndBound.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerTimer.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_DayButton.cs" />
+    <Compile Include="Assets\Scripts\UI-DBmethods\ClientMethods.cs" />
     <Compile Include="Assets\UI\TableLayout\Example\TableLayoutExampleController.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_Instantiation.cs" />
     <Compile Include="Assets\Scripts\Search\FoodSearch.cs" />
@@ -103,15 +107,6 @@
     <Compile Include="Assets\Scripts\unity_auth\UILogin.cs" />
     <Compile Include="Assets\sqlite\DBManager.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerCache.cs" />
-<<<<<<< Updated upstream
-    <Compile Include="Assets\Scripts\UI-DBmethods\DatabaseMethods.cs" />
-    <Compile Include="Assets\Scripts\UI-DBmethods\IClientInterface.cs" />
-    <Compile Include="Assets\Scripts\UI-DBmethods\ClientMethods.cs" />
-=======
-    <Compile Include="Assets\Scripts\Main\GameCard.cs" />
-    <Compile Include="Assets\Scripts\Main\ButtonObject.cs" />
-    <Compile Include="Assets\Input\PlayerInput.cs" />
->>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\sqlite\plugins\sqlite3.dll" />
@@ -520,13 +515,10 @@
       <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.2.1\Runtime\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
-<<<<<<< Updated upstream
     <Reference Include="Mono.Data.Sqlite">
       <HintPath>Assets\sqlite\plugins\Mono.Data.Sqlite.dll</HintPath>
       <Private>False</Private>
     </Reference>
-=======
->>>>>>> Stashed changes
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>C:\Unity\Unity 2021.3.35f1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
       <Private>False</Private>
@@ -1075,6 +1067,10 @@
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.InputSystem">
+      <HintPath>Library\ScriptAssemblies\Unity.InputSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
       <Private>False</Private>
@@ -1191,6 +1187,10 @@
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.InputSystem.ForUI">
+      <HintPath>Library\ScriptAssemblies\Unity.InputSystem.ForUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.Services.Core.Environments">
       <HintPath>Library\ScriptAssemblies\Unity.Services.Core.Environments.dll</HintPath>
       <Private>False</Private>
@@ -1229,14 +1229,6 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.InputSystem">
-      <HintPath>Library\ScriptAssemblies\Unity.InputSystem.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Unity.InputSystem.ForUI">
-      <HintPath>Library\ScriptAssemblies\Unity.InputSystem.ForUI.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
