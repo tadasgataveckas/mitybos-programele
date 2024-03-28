@@ -380,7 +380,7 @@ public class SurveyManager : MonoBehaviour
                     "Weight: " + weight + "\n" +
                     "Allergies: " + GetAllergiesAsString() + "\n" +
                     "Activity level: " + activity + "\n" +
-                    "\n" +
+                    //"\n" +
                     //"Your BMI: " + bmi + "\n" +
                     //"Your BMI result: " + BMIResult(bmi) + "\n" +
                     "Needed daily calories: " + CalculateDailyCalories() + goalText + "\n";
