@@ -2,43 +2,38 @@
 using System.Data;
 using System.Collections.Generic;
 using UnityEngine;
-using MySql.Data.MySqlClient;
-using static UnityEngine.UI.GridLayoutGroup;
-using Mysqlx.Expr;
-using Mysqlx.Crud;
-using UnityEngine.Analytics;
-using Unity.VisualScripting;
-using UnityEngine.UIElements;
 using System.Text;
-using static Unity.VisualScripting.Member;
-using static UnityEngine.UIElements.UxmlAttributeDescription;
-using System.Runtime.InteropServices.WindowsRuntime;
+using Mono.Data.Sqlite;
+
 public class DatabaseMethods
 {
-    
-	public int Login(string username, string password, out int id, string constring)
-	{
-        
-        MySqlCommand command_login = new MySqlCommand();
-        MySqlConnection ConnectionObject = new MySqlConnection();
-        ConnectionObject.ConnectionString = constring;
+    public int Login(string username, string password, out int id, string constring)
+    {
         id = -1;
         try
         {
-            command_login.CommandText = "SELECT * FROM food_db.user WHERE " +
-                                    "username = @expr1 AND password = @expr2";
-            command_login.Parameters.Add("@expr1", MySqlDbType.VarChar, 100).Value = username;
-            command_login.Parameters.Add("@expr2", MySqlDbType.VarChar, 255).Value = password;
-            command_login.Connection = ConnectionObject;
-            ConnectionObject.Open();
-            using (MySqlDataReader reader = command_login.ExecuteReader())
-            {
+            DBManager.OpenConnection();
+            IDbCommand command_login = DBManager.connection.CreateCommand();
+            command_login.CommandText = "SELECT * FROM user WHERE " +
+                                    "username = @expr1 AND password = @expr2;";
 
-                if (reader.HasRows)
+            // username parameter
+            IDbDataParameter p_username = command_login.CreateParameter();
+            p_username.ParameterName = "@expr1";
+            p_username.Value = username;
+            command_login.Parameters.Add(p_username);
+
+            // password parameter
+            IDbDataParameter p_password = command_login.CreateParameter();
+            p_password.ParameterName = "@expr2";
+            p_password.Value = password;
+            command_login.Parameters.Add(p_password);
+
+            using (IDataReader reader = command_login.ExecuteReader())
+            {
+                if (reader.Read() != false)
                 {
-                    reader.Read();
-                    id = (int)reader.GetValue(0);
-                    id = (int)reader.GetValue(0);
+                    id = int.Parse(reader[0].ToString());
                     return id;
                 }
                 else
@@ -47,7 +42,7 @@ public class DatabaseMethods
             }
 
         }
-        catch (MySqlException e)
+        catch (SqliteException e)
         {
             System.Console.WriteLine(e.Message);
             return id;
@@ -59,60 +54,56 @@ public class DatabaseMethods
         }
         finally
         {
-            ConnectionObject.Close();
+            DBManager.CloseConnection();
         }
     }
 
     public bool Register(string email, string username, string password, string constring)
     {
-        MySqlCommand command_register = new MySqlCommand();
-        MySqlCommand command_select = new MySqlCommand();
-        MySqlConnection ConnectionObject = new MySqlConnection();
-        ConnectionObject.ConnectionString = constring;
-        int id = -1;
         try
         {
-            command_register.CommandText = "INSERT INTO `food_db`.`user` " +
-                                "(`email`,`username`,`password`) " +
-                                "VALUES (@expr1, @expr2, @expr3)";
-            command_register.Parameters.Add("@expr1", MySqlDbType.VarChar, 100).Value = email;
-            command_register.Parameters.Add("@expr2", MySqlDbType.VarChar, 100).Value = username;
-            command_register.Parameters.Add("@expr3", MySqlDbType.VarChar, 255).Value = password;
+            DBManager.OpenConnection();
 
-            command_select.CommandText = "SELECT `user`.`id_user` FROM `food_db`.`user`" +
-                                        " WHERE username = @expr1 AND password = @expr2";
-            command_select.Parameters.Add("@expr1", MySqlDbType.VarChar, 100).Value = username;
-            command_select.Parameters.Add("@expr2", MySqlDbType.VarChar, 255).Value = password;
+            // adds user to db -------------------------------------------------
+            IDbCommand command_register = DBManager.connection.CreateCommand();
+            command_register.CommandText =
+                "INSERT INTO user " +
+                "(email, username, password) " +
+                "VALUES (@expr1, @expr2, @expr3);";
 
-            
+            IDbDataParameter p_email = command_register.CreateParameter();
+            p_email.ParameterName = "@expr1"; p_email.Value = email;
+            command_register.Parameters.Add(p_email);
 
-            command_register.Connection = ConnectionObject;
-            command_select.Connection = ConnectionObject; 
-            ConnectionObject.Open();
-            
-            
-            int rowcount = command_register.ExecuteNonQuery();
-            using (MySqlDataReader reader = command_select.ExecuteReader())
+            IDbDataParameter p_username = command_register.CreateParameter();
+            p_username.ParameterName = "@expr2"; p_username.Value = username;
+            command_register.Parameters.Add(p_username);
+
+            IDbDataParameter p_password = command_register.CreateParameter();
+            p_password.ParameterName = "@expr3"; p_password.Value = password;
+            command_register.Parameters.Add(p_password);
+
+            int rowCount = command_register.ExecuteNonQuery();
+
+            // adds a placeholder for user_data --------------------------------
+            IDbCommand command_select = DBManager.connection.CreateCommand();
+            command_select.CommandText =
+                "SELECT id_user FROM user WHERE" +
+                "username = @expr1 AND " +
+                "password = @expr2;";
+
+            command_select.Parameters.Add(p_username);
+            command_select.Parameters.Add(p_password);
+
+            int id = -1;
+            using (IDataReader reader = command_select.ExecuteReader())
             {
-
-
-                if (reader.HasRows)
+                if (reader.Read() != false)
                 {
-                    reader.Read();
-                    id = (int)reader.GetValue(0);
-                    
-                    id = (int)reader.GetValue(0);
-                    
+                    id = int.Parse(reader[0].ToString());
                 }
-                else
-                    id = -1;
             }
-
-
-
-
-
-            if (rowcount > 0)
+            if (rowCount > 0)
             {
                 InsertRegisterPlaceholder(id, constring);
                 return true;
@@ -120,65 +111,86 @@ public class DatabaseMethods
             else
                 return false;
         }
-        catch (MySqlException e)
+        catch (SqliteException e)
         {
             System.Console.WriteLine(e.Message); return false;
         }
-        finally { ConnectionObject.Close(); }
+        finally { DBManager.CloseConnection(); }
     }
 
     public void InsertRegisterPlaceholder(int id, string constring)
     {
-        MySqlCommand command_insert = new MySqlCommand();
-        MySqlConnection ConnectionObject = new MySqlConnection();
-        ConnectionObject.ConnectionString = constring;
         try
         {
-            command_insert.CommandText = "INSERT INTO `food_db`.`user_data` " +
-                                        "(`id_user`,`height`,`weight`,`gender`,`goal`,`physical_activity`,`date_of_birth`)" +
-                                        " VALUES(@expr1, 0.0, 0.0, 'Male', 'Lose weight', 1, CURRENT_DATE())";
-            command_insert.Parameters.Add("@expr1", MySqlDbType.Int64, 6).Value = id;
-            command_insert.Connection = ConnectionObject;
-            ConnectionObject.Open();    
+            DBManager.OpenConnection();
+            IDbCommand command_insert = DBManager.connection.CreateCommand();
+            command_insert.CommandText =
+                "INSERT INTO user_data" +
+                "(id_user, height, weight, gender, goal, physical_activity, date_of_birth)" +
+                " VALUES(@expr1, 0.0, 0.0, 'Male', 'Lose weight', 1, CURRENT_TIMESTAMP);";
+
+            IDbDataParameter p_id = command_insert.CreateParameter();
+            p_id.ParameterName = "@expr1"; p_id.Value = id;
+            command_insert.Parameters.Add(p_id);
+
             command_insert.ExecuteNonQuery();
         }
-        catch (MySqlException e)
+        catch (SqliteException e)
         {
             System.Console.WriteLine(e.Message);
         }
-        finally {ConnectionObject.Close(); }
+        finally { DBManager.CloseConnection(); }
     }
 
-    public void UpdateProfile(int id, string gender, double height, double weight, string goal,string dateOfBirth, int activity, string constring)
+    public void UpdateProfile(int id, string gender, double height, double weight, string goal, string dateOfBirth, int activity, string constring)
     {
-        MySqlCommand command_update = new MySqlCommand();
-        MySqlConnection ConnectionObject = new MySqlConnection();
-        ConnectionObject.ConnectionString = constring;
         //pakeisti kai prideti menesio ir dienos pasirinkimai.(metodas sukurti YYYY-mm-dd string);
         string year = dateOfBirth.ToString();
         try
         {
-            command_update.CommandText = "UPDATE `food_db`.`user_data`" +
-                                        " SET `height` = @expr2, `weight` = @expr3," +
-                                        " `gender` = @expr4,  `goal` = @expr5, " +
-                                        "`physical_activity` = @expr6, `date_of_birth` = @expr7 " +
-                                        "WHERE `id_user` = @expr1";
-            command_update.Parameters.Add("@expr1", MySqlDbType.Int64, 6).Value = id;
-            command_update.Parameters.Add("@expr2", MySqlDbType.Decimal, 5).Value = height;
-            command_update.Parameters.Add("@expr3", MySqlDbType.Decimal, 5).Value = weight;
-            command_update.Parameters.Add("@expr4", MySqlDbType.Enum, 6).Value = gender;
-            command_update.Parameters.Add("@expr5", MySqlDbType.Enum, 6).Value = goal;
-            command_update.Parameters.Add("@expr6", MySqlDbType.Int64, 1).Value = activity;
-            command_update.Parameters.Add("@expr7", MySqlDbType.Date, 10).Value = dateOfBirth;
-            Debug.Log(dateOfBirth);
+            DBManager.OpenConnection();
+            IDbCommand command_update = DBManager.connection.CreateCommand();
+
+            command_update.CommandText =
+                "UPDATE user_data SET " +
+                "height = @expr2, weight = @expr3, gender = @expr4, " +
+                "goal = @expr5, physical_activity = @expr6, " +
+                "date_of_birth = @expr7 " +
+                "WHERE id_user = @expr1";
 
 
-            command_update.Connection = ConnectionObject;
-            ConnectionObject.Open();
+            IDbDataParameter p_id = command_update.CreateParameter();
+            p_id.ParameterName = "@expr1"; p_id.Value = id;
+            command_update.Parameters.Add(p_id);
+
+            IDbDataParameter p_height = command_update.CreateParameter();
+            p_height.ParameterName = "@expr2"; p_height.Value = height;
+            command_update.Parameters.Add(p_height);
+
+            IDbDataParameter p_weight = command_update.CreateParameter();
+            p_weight.ParameterName = "@expr3"; p_weight.Value = weight;
+            command_update.Parameters.Add(p_weight);
+
+            IDbDataParameter p_gender = command_update.CreateParameter();
+            p_gender.ParameterName = "@expr4"; p_gender.Value = gender;
+            command_update.Parameters.Add(p_gender);
+
+            IDbDataParameter p_goal = command_update.CreateParameter();
+            p_goal.ParameterName = "@expr5"; p_goal.Value = goal;
+            command_update.Parameters.Add(p_goal);
+
+            IDbDataParameter p_activity = command_update.CreateParameter();
+            p_activity.ParameterName = "@expr6"; p_activity.Value = activity;
+            command_update.Parameters.Add(p_activity);
+
+            IDbDataParameter p_dateOfBirth = command_update.CreateParameter();
+            p_dateOfBirth.ParameterName = "@expr7"; p_dateOfBirth.Value = dateOfBirth;
+            command_update.Parameters.Add(p_dateOfBirth);
+
             command_update.ExecuteNonQuery();
         }
-        catch (MySqlException e) { System.Console.WriteLine(e.Message);}
-        finally { ConnectionObject.Close(); }
+        catch (SqliteException e) { System.Console.WriteLine(e.Message); }
+        finally { DBManager.CloseConnection(); }
     }
 
     private string BuildString(string[] array)
@@ -196,26 +208,28 @@ public class DatabaseMethods
 
     public bool CheckSurveyCompleted(int id, string constring)
     {
-     
         string PlaceholderString = "0,00;0,00;Male;1;";
         bool result = false;
-        MySqlCommand command_check = new MySqlCommand();
-        MySqlConnection ConnectionObject = new MySqlConnection();
-        ConnectionObject.ConnectionString = constring;
+
         try
         {
-            command_check.CommandText = "SELECT `user_data`.`height`,`user_data`.`weight`," +
-                                        "`user_data`.`gender`,`user_data`.`physical_activity`" +
-                "FROM `food_db`.`user_data`" +
-                "WHERE `user_data`.`id_user` =@expr1;";
-            command_check.Parameters.Add("@expr1", MySqlDbType.Int64, 6).Value = id;
-            command_check.Connection = ConnectionObject;
-            ConnectionObject.Open();
-            using (MySqlDataReader reader = command_check.ExecuteReader())
+            DBManager.OpenConnection();
+            IDbCommand command_check = DBManager.connection.CreateCommand();
+
+            command_check.CommandText =
+                "SELECT height, weight, gender, physical_activity " +
+                "FROM user_data " +
+                "WHERE id_user = @expr1;";
+
+
+            IDbDataParameter p_id = command_check.CreateParameter();
+            p_id.ParameterName = "@expr1"; p_id.Value = id;
+            command_check.Parameters.Add(p_id);
+
+            using (IDataReader reader = command_check.ExecuteReader())
             {
-                if (reader.HasRows)
+                if (reader.Read())
                 {
-                    reader.Read();
                     string height = reader.GetValue(0).ToString();
                     string weight = reader.GetValue(1).ToString();
                     string gender = reader.GetValue(2).ToString();
@@ -228,14 +242,14 @@ public class DatabaseMethods
             }
             return result;
         }
-        catch (MySqlException e)
+        catch (SqliteException e)
         {
             Console.WriteLine(e.Message);
             return false;
         }
         finally
         {
-            ConnectionObject.Close();
+            DBManager.CloseConnection();
         }
     }
 
@@ -243,26 +257,22 @@ public class DatabaseMethods
     {
         string PlaceholderString = "0,00;0,00;Male;1;";
         string result = "";
-        MySqlCommand command_return = new MySqlCommand();
-        MySqlConnection ConnectionObject = new MySqlConnection();
-        ConnectionObject.ConnectionString = constring;
 
         try
         {
-            command_return.CommandText = "SELECT `user_data`.`id_user`,`user_data`.`height`," +
-                "`user_data`.`weight`,`user_data`.`gender`,`user_data`.`goal`," +
-                "`user_data`.`physical_activity`,`user_data`.`date_of_birth`," +
-                "`user_data`.`creation_date` FROM `food_db`.`user_data` WHERE `user_data`.`id_user` = @expr1;";
+            DBManager.OpenConnection();
+            IDbCommand command_return = DBManager.connection.CreateCommand();
+            command_return.CommandText =
+                "SELECT id_user, height, weight, gender, goal, physical_activity, date_of_birth, creation_date FROM user_data WHERE id_user = @expr1;";
 
-            command_return.Parameters.Add("@expr1", MySqlDbType.Int64, 6).Value = id;
-            command_return.Connection = ConnectionObject;
-            ConnectionObject.Open();
+            IDbDataParameter p_id = command_return.CreateParameter();
+            p_id.ParameterName = "@expr1"; p_id.Value = id;
+            command_return.Parameters.Add(p_id);
 
-            using (MySqlDataReader reader = command_return.ExecuteReader())
+            using (IDataReader reader = command_return.ExecuteReader())
             {
-                if (reader.HasRows)
+                if (reader.Read())
                 {
-                    reader.Read();
                     string height = reader.GetValue(1).ToString();
                     string weight = reader.GetValue(2).ToString();
                     string gender = reader.GetValue(3).ToString();
@@ -274,11 +284,10 @@ public class DatabaseMethods
                     string currentString = BuildString(array);
                     result = currentString;
                 }
-
             }
             return result;
         }
-        catch(MySqlException e)
+        catch (SqliteException e)
         {
             Console.WriteLine(e.Message);
             return "Error!";
@@ -286,116 +295,106 @@ public class DatabaseMethods
 
         finally
         {
-            ConnectionObject.Close();
+            DBManager.CloseConnection();
         }
     }
 
     public string ReturnUsername(int id, string constring)
-    {        
+    {
         string result = "";
-        MySqlCommand command_return = new MySqlCommand();
-        MySqlConnection ConnectionObject = new MySqlConnection();
-        ConnectionObject.ConnectionString = constring;
 
         try
         {
+            DBManager.OpenConnection();
+            IDbCommand command_return = DBManager.connection.CreateCommand();
             command_return.CommandText = "SELECT `user`.`username`" +
                 " FROM `food_db`.`user` WHERE `user`.`id_user` = @expr1;";
-            command_return.Parameters.Add("@expr1", MySqlDbType.Int64, 6).Value = id;
-            command_return.Connection = ConnectionObject;
-            ConnectionObject.Open();
 
-            using (MySqlDataReader reader = command_return.ExecuteReader())
+
+            IDbDataParameter p_id = command_return.CreateParameter();
+            p_id.ParameterName = "@expr1";
+            p_id.Value = id;
+
+            using (IDataReader reader = command_return.ExecuteReader())
             {
-                if (reader.HasRows)
+                if (reader.Read())
                 {
-                    reader.Read();
-                    string username = reader.GetValue(0).ToString();                    
-                    
+                    string username = reader.GetValue(0).ToString();
                     result = username;
                 }
-
             }
             return result;
         }
-        catch (MySqlException e)
+        catch (SqliteException e)
         {
             Console.WriteLine(e.Message);
             return "Error!";
         }
-
         finally
         {
-            ConnectionObject.Close();
+            DBManager.CloseConnection();
         }
 
     }
 
     public List<FoodClass> ReturnFoodList(string constring)
     {
-
-        MySqlCommand command_return = new MySqlCommand();
-        MySqlConnection ConnectionObject = new MySqlConnection();
-        ConnectionObject.ConnectionString = constring;
-
         try
         {
+            DBManager.OpenConnection();
+            IDbCommand command_return = DBManager.connection.CreateCommand();
+
             //!!!!
-            command_return.CommandText = "SELECT * FROM food_db.v_meal_kcal_per_serving";
-            command_return.Connection = ConnectionObject;
-            ConnectionObject.Open();
+            command_return.CommandText = "SELECT * FROM v_meal_kcal_per_serving";
             List<FoodClass> foodlist = new List<FoodClass>();
-            
-            using (MySqlDataReader reader = command_return.ExecuteReader())
+
+            using (IDataReader reader = command_return.ExecuteReader())
             {
-                if (reader.HasRows)
+                while (reader.Read())
                 {
-                    while (reader.Read())
-                    {
-                        string foodname = reader.GetValue(1).ToString();
-                        double kcal = Convert.ToDouble(reader.GetValue(3));
-                        foodlist.Add(new FoodClass(foodname, kcal));
-                    }
+                    string foodname = reader.GetValue(1).ToString();
+                    double kcal = Convert.ToDouble(reader.GetValue(3));
+                    foodlist.Add(new FoodClass(foodname, kcal));
                 }
+
                 return foodlist;
             }
-            
         }
-        catch (MySqlException e)
+        catch (SqliteException e)
         {
             Debug.unityLogger.Log(e.Message);
             return new List<FoodClass>();
         }
         finally
         {
-            ConnectionObject.Close();
+            DBManager.CloseConnection();
         }
-           
+
     }
 
     public bool CheckIfUserExists(string username, string constring)
     {
-        MySqlCommand command_check = new MySqlCommand();
-        MySqlConnection ConnectionObject = new MySqlConnection();
-        ConnectionObject.ConnectionString = constring;
         try
         {
-            command_check.CommandText = "SELECT COUNT(*) FROM `food_db`.`user` WHERE `username` = @expr1";
-            command_check.Parameters.Add("@expr1", MySqlDbType.VarChar, 100).Value = username;
-            command_check.Connection = ConnectionObject;
-            ConnectionObject.Open();
+            DBManager.OpenConnection();
+            IDbCommand command_check = DBManager.connection.CreateCommand();
+            command_check.CommandText = "SELECT COUNT(*) FROM user WHERE username = @expr1;";
+
+            IDbDataParameter p_username = command_check.CreateParameter();
+            p_username.ParameterName = "@expr1"; p_username.Value = username;
+            command_check.Parameters.Add(p_username);
 
             int count = Convert.ToInt32(command_check.ExecuteScalar());
             return count > 0;
         }
-        catch (MySqlException e)
+        catch (SqliteException e)
         {
             Console.WriteLine(e.Message);
             return false;
         }
         finally
         {
-            ConnectionObject.Close();
+            DBManager.CloseConnection();
         }
     }
 

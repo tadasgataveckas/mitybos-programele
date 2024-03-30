@@ -35,7 +35,7 @@ public class SurveyManager : MonoBehaviour
     // Continue and Back buttons
 
     public GameObject Continue;
-    public GameObject Back; 
+    public GameObject Back;
 
 
     private double BMI;
@@ -46,12 +46,12 @@ public class SurveyManager : MonoBehaviour
     ClientMethods c = new ClientMethods(new DatabaseMethods());
     public void SubmitSurvey()
     {
-        Debug.Log(LoginManager.id);
-        c.UpdateProfile(LoginManager.id,gender,height,weight,goal,birthDate,activity,constring);
+        Debug.Log("LoginManager id is: " + LoginManager.id);
+        c.UpdateProfile(LoginManager.id, gender, height, weight, goal, birthDate, activity, constring);
         GoToMain();
     }
 
-    public void InputGender(string newGender) 
+    public void InputGender(string newGender)
     {
         if (newGender == gender)
         {
@@ -170,7 +170,7 @@ public class SurveyManager : MonoBehaviour
     //Calculating BMI
     public double CalculateBMI(double Bheight, double Bweight)
     {
-        BMI = Bweight / Math.Pow(Bheight,2);
+        BMI = Bweight / Math.Pow(Bheight, 2);
         return Math.Round(BMI * 10000, 2);
     }
 
@@ -185,7 +185,7 @@ public class SurveyManager : MonoBehaviour
         {
             return "Moderate Underweight";
         }
-        else if(17.0 < RBMI && RBMI < 18.5)
+        else if (17.0 < RBMI && RBMI < 18.5)
         {
             return "Mild Underweight";
         }
@@ -276,7 +276,7 @@ public class SurveyManager : MonoBehaviour
         CALORIES = BMR * FAL;
 
         // Daily calories adjusted on user goal 
-        if(goal == "Lose weight")
+        if (goal == "Lose weight")
         {
             CALORIES = CALORIES * 0.9;
         }
@@ -284,7 +284,7 @@ public class SurveyManager : MonoBehaviour
         {
             CALORIES = CALORIES + 500;
         }
-        return Math.Round(CALORIES,2);
+        return Math.Round(CALORIES, 2);
     }
 
 
@@ -293,9 +293,9 @@ public class SurveyManager : MonoBehaviour
     public List<GameObject> segments; // Each segment of survey (picking gender, picking eating preference, etc.)
     private int currentSegment = 0;
 
-    public void SwitchSegment(int switchTo) 
+    public void SwitchSegment(int switchTo)
     {
-        for(int i=0;i<segments.Count;i++)
+        for (int i = 0; i < segments.Count; i++)
         {
             segments[i].SetActive(i == switchTo); // Turns on chosen segment, turns off other segments
         }
@@ -309,14 +309,14 @@ public class SurveyManager : MonoBehaviour
         }
         else { Continue.transform.localPosition = new Vector3(81f, Continue.transform.localPosition.y, 0f); }
         // Last segment
-        if (currentSegment == segments.Count-1) 
+        if (currentSegment == segments.Count - 1)
         {
             Back.transform.localPosition = new Vector3(0f, Back.transform.localPosition.y, 0f); ;
         }
         else { Back.transform.localPosition = new Vector3(-293f, Back.transform.localPosition.y, 0f); }
         // Turn on off
         Back.SetActive(currentSegment != 0);
-        Continue.SetActive(currentSegment != segments.Count-1);
+        Continue.SetActive(currentSegment != segments.Count - 1);
 
     }
 
@@ -362,7 +362,7 @@ public class SurveyManager : MonoBehaviour
                 {
                     goalText = " (added 500cal)";
                 }
-                else if(goal == "Lose weight")
+                else if (goal == "Lose weight")
                 {
                     goalText = " (reduced by 10%)";
                 }
@@ -395,7 +395,7 @@ public class SurveyManager : MonoBehaviour
 
     public void PreviousSegment()
     {
-        SwitchSegment(currentSegment - 1);       
+        SwitchSegment(currentSegment - 1);
     }
 
     // Checking if survey has gender
@@ -419,16 +419,17 @@ public class SurveyManager : MonoBehaviour
     // Checking if survey has goal
     private bool AHWEntered()
     {
-        return (DateTime.TryParseExact(birthDate, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out _)) && 
+        return (DateTime.TryParseExact(birthDate, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out _)) &&
             (250 > height && height > 120) && (350 > weight && weight > 30);
-    }   
+    }
 
     void Start()
     {
         SwitchSegment(currentSegment);
     }
-    
-    void GoToMain() {
+
+    void GoToMain()
+    {
         //Go to Main scene
         SceneManager.LoadScene("Main");
     }
@@ -440,7 +441,7 @@ public class SurveyManager : MonoBehaviour
     void Update()
     {
         goalSliderValue = 1f / (segments.Count - 1) * currentSegment;
-        if(!Mathf.Approximately(ProgressBar.value, goalSliderValue)) 
+        if (!Mathf.Approximately(ProgressBar.value, goalSliderValue))
         {
             ProgressBar.value = Mathf.MoveTowards(ProgressBar.value, goalSliderValue, progressBarSpeed * Time.deltaTime);
         }

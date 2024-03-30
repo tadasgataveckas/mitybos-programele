@@ -3,12 +3,12 @@ using Mono.Data.Sqlite;
 using System.Data;
 using System.IO;
 
-public class DBManager : MonoBehaviour
+public static class DBManager
 {
     // path for all database files
-    private static string dbPath = "Assets/sqlite/";
-    private string dbTables = "food_db.txt";
-    private string dbData = "food_data.txt";
+    private static string dbPath = "Assets/Scripts/UI-DBmethods/";
+    private static string dbTables = "food_db.txt";
+    private static string dbData = "food_data.txt";
 
     // database uri
     private static string dbURI = "URI=file:";
@@ -18,36 +18,25 @@ public class DBManager : MonoBehaviour
     // database connection
     public static IDbConnection connection;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        // check if .db file exists
-        if (!File.Exists(dbPath + dbName))
-        {
-            CreateDatabase();
-            Debug.Log("Database created!");
-        }
-
-        ReadData();
-        Debug.Log("Finished!");
-    }
-
     // creates base database
-    private void CreateDatabase()
+    public static void CreateDatabase()
     {
+        if (File.Exists(dbPath + dbName))
+            return;
+
         // Open connection
-        openConnection();
+        OpenConnection();
 
         // create tables and data
         CreateTables();
         InsertData();
 
         // Close connection
-        closeConnection();
+        CloseConnection();
     }
 
     // creates base database tables
-    private void CreateTables()
+    private static void CreateTables()
     {
         using (StreamReader sr = new StreamReader(dbPath + dbTables))
         {
@@ -63,7 +52,7 @@ public class DBManager : MonoBehaviour
     }
 
     // inserts base database data
-    private void InsertData()
+    private static void InsertData()
     {
         //Read the text from directly from the test.txt file
         using (StreamReader sr = new StreamReader(dbPath + dbData))
@@ -80,9 +69,9 @@ public class DBManager : MonoBehaviour
     }
 
     // reads all allergies
-    private void ReadData()
+    private static void ReadDataTest()
     {
-        openConnection();
+        OpenConnection();
 
         // Read and print all values in table
         IDbCommand command = connection.CreateCommand();
@@ -91,14 +80,14 @@ public class DBManager : MonoBehaviour
 
         while (reader.Read() != false)
         {
-            Debug.Log("Id: " + reader[0] + "; Allergy: " + reader[1]);
+            Debug.Log(reader[0].GetType().ToString());
         }
 
-        closeConnection();
+        CloseConnection();
     }
 
     // opens connection
-    public static void openConnection()
+    public static void OpenConnection()
     {
         // define connection to database
         if (connection == null)
@@ -110,7 +99,7 @@ public class DBManager : MonoBehaviour
     }
 
     // closes connection
-    public static void closeConnection()
+    public static void CloseConnection()
     {
         if (connection.State != ConnectionState.Closed)
             connection.Close();

@@ -1,10 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class LoginManager : MonoBehaviour
@@ -79,7 +75,6 @@ public class LoginManager : MonoBehaviour
             SetID(id);
             if (id > 0)
             {
-
                 if (c.CheckSurveyCompleted(id, constring))
                 {
                     SceneManager.LoadScene("Main");

@@ -23,6 +23,7 @@ public class MainManager : MonoBehaviour
 
     public TextMeshPro user;
     public TextMeshPro info;
+    public TextMeshProUGUI currHeight;
 
     ClientMethods c = new ClientMethods(new DatabaseMethods());
 
@@ -43,7 +44,7 @@ public class MainManager : MonoBehaviour
         //teleport camera to position
         camera.transform.position = new Vector3(segments[switchTo].transform.position.x, 0, -10);
         currentSegment = switchTo;
-        for(int i = 0; i < segmentButtons.Count;i++)
+        for (int i = 0; i < segmentButtons.Count; i++)
         {
             segmentButtons[i].GetComponent<ButtonTransitions>().SetSelectedSegment(i == switchTo);
         }
@@ -52,13 +53,15 @@ public class MainManager : MonoBehaviour
     }
 
 
-    public TextMeshProUGUI currHeight;
-
     void Start()
     {
         SwitchSegment(currentSegment);
+
         user.text = "User: " + c.ReturnUsername(LoginManager.id, constring);
         string userDataString = c.ReturnUserData(LoginManager.id, constring);
+
+        Debug.Log("Some string is: " + userDataString);
+
         string[] userDataParts = userDataString.Split(';');
         info.text = $"Height: {userDataParts[0]}\n" +
                     $"Weight: {userDataParts[1]}\n" +
@@ -68,19 +71,22 @@ public class MainManager : MonoBehaviour
                     $"Date of Birth: {userDataParts[5]}\n" +
                     $"Creation Date: {userDataParts[6]}";
 
-        currHeight.text = userDataParts[0]; 
+        currHeight.text = userDataParts[0];
         double.TryParse(userDataParts[0], out height);
         double.TryParse(userDataParts[1], out weight);
         gender = userDataParts[2];
         goal = userDataParts[3];
         int.TryParse(userDataParts[4], out activity);
         birth = userDataParts[5];
+
+
         Debug.Log("height is: " + height);
         Debug.Log("weight is: " + weight);
         Debug.Log("gender is: " + gender);
         Debug.Log("goal is: " + goal);
         Debug.Log("phy ac is: " + activity);
         Debug.Log("birth is: " + birth);
+
         //height = userDataParts[0];
         //weight = userDataParts[1];
         //gender = userDataParts[2];
@@ -102,11 +108,6 @@ public class MainManager : MonoBehaviour
         //$"Creation Date: {userDataParts[6]}";
         c.UpdateProfile(LoginManager.id, gender, height, weight, goal, birth, activity, constring);
     }
-
-    
-    
-
-
 
     public void InputHeight(string newHeight)
     {
@@ -141,7 +142,7 @@ public class MainManager : MonoBehaviour
             gender = "Other";
             Debug.Log("Edited gender is: " + gender);
         }
-        
+
     }
 
     public void InputGoal(int val1)
