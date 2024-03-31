@@ -1,0 +1,725 @@
+fileFormatVersion: 2
+guid: 2c6cdb0652aa7bf41b6b05932d67586e
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMasterTextureLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: FarmPineapple_Frame_0
+    originalName: 
+    pivot: {x: 0.5357143, y: -0.15789473}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 199
+      y: 99
+      width: 28
+      height: 38
+    spriteID: 3141c46b752055042bb7a91966d13ca9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 199, y: 99}
+  - name: FarmPineapple_Frame_1
+    originalName: 
+    pivot: {x: 0.5357143, y: -0.16216215}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 76
+      y: 147
+      width: 28
+      height: 37
+    spriteID: a7529ad637d3a95478afa78ba47074d1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 76, y: 147}
+  - name: FarmPineapple_Frame_2
+    originalName: 
+    pivot: {x: 0.5357143, y: -0.16216215}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 112
+      y: 147
+      width: 28
+      height: 37
+    spriteID: 83378ca7d0cf43943b879632f6632901
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 112, y: 147}
+  - name: FarmPineapple_Frame_3
+    originalName: 
+    pivot: {x: 0.5357143, y: -0.16216215}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 148
+      y: 147
+      width: 28
+      height: 37
+    spriteID: e20d851462408c645813760d749af773
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 148, y: 147}
+  - name: FarmPineapple_Frame_4
+    originalName: 
+    pivot: {x: 0.5357143, y: -0.15789473}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 147
+      width: 28
+      height: 38
+    spriteID: b9ae2fd37dee5e24faa0bf6cc34ce830
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 147}
+  - name: FarmPineapple_Frame_5
+    originalName: 
+    pivot: {x: 0.5357143, y: -0.15789473}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 147
+      width: 28
+      height: 38
+    spriteID: f3fe51f765a0de94baa57b6ebe24bb26
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 40, y: 147}
+  - name: FarmPineapple_Frame_6
+    originalName: 
+    pivot: {x: 0.5357143, y: -0.15384616}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 40
+      y: 99
+      width: 28
+      height: 39
+    spriteID: 531fa2864a639e94fab26c8deab5f68c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 40, y: 99}
+  - name: FarmPineapple_Frame_7
+    originalName: 
+    pivot: {x: 0.5666667, y: -0.22727273}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 47
+      width: 30
+      height: 44
+    spriteID: fa376b35ab3951e4888605b13e3d6c2d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 47}
+  - name: FarmPineapple_Frame_8
+    originalName: 
+    pivot: {x: 0.5666667, y: -0.23809524}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 173
+      y: 47
+      width: 30
+      height: 42
+    spriteID: c65da6e64233adf48aca799258c2265c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 173, y: 47}
+  - name: FarmPineapple_Frame_9
+    originalName: 
+    pivot: {x: 0.5357143, y: -0.15384616}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 76
+      y: 99
+      width: 28
+      height: 39
+    spriteID: 470d7fe542879bb43becf802b794be18
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 76, y: 99}
+  - name: FarmPineapple_Frame_10
+    originalName: 
+    pivot: {x: 0.5, y: -0.1590909}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 42
+      y: 47
+      width: 30
+      height: 44
+    spriteID: 6b8f3d921165fe141a4aa60e579c8ba7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 47}
+  - name: FarmPineapple_Frame_11
+    originalName: 
+    pivot: {x: 0.5, y: -0.16279069}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 80
+      y: 47
+      width: 30
+      height: 43
+    spriteID: 770ac015381a3a148b336f61680875aa
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 80, y: 47}
+  - name: FarmPineapple_Frame_12
+    originalName: 
+    pivot: {x: 0.6086957, y: -0.34285715}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 46
+      height: 35
+    spriteID: d91038270b512f8439356e6175c58ca5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: FarmPineapple_Frame_13
+    originalName: 
+    pivot: {x: 0.61702126, y: -0.8148148}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 118
+      y: 47
+      width: 47
+      height: 27
+    spriteID: 278ed2803d088b44ba7de0be9b4dc594
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 118, y: 47}
+  - name: FarmPineapple_Frame_14
+    originalName: 
+    pivot: {x: 0.5714286, y: -0.7692308}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 112
+      y: 99
+      width: 42
+      height: 26
+    spriteID: b3320023e6903b140b9f8b13e88cb70e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 112, y: 99}
+  - name: FarmPineapple_Frame_15
+    originalName: 
+    pivot: {x: 0.53846157, y: -0.73913044}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 109
+      y: 4
+      width: 39
+      height: 23
+    spriteID: 9d9ac6cdba0b38147b82ae1de2bb27c9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 109, y: 4}
+  - name: FarmPineapple_Frame_16
+    originalName: 
+    pivot: {x: 0.5357143, y: -0.175}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 99
+      width: 28
+      height: 40
+    spriteID: e47ac11fbc0ca2745bcf53b11575c4de
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 99}
+  - name: FarmPineapple_Frame_17
+    originalName: 
+    pivot: {x: 0.53125, y: -0.17948718}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 211
+      y: 47
+      width: 32
+      height: 39
+    spriteID: ac8219571134e17479cda476076e9fe7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 211, y: 47}
+  - name: FarmPineapple_Frame_18
+    originalName: 
+    pivot: {x: 0.53488374, y: -0.3043478}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 58
+      y: 4
+      width: 43
+      height: 23
+    spriteID: 18d12e556dbba2741be959fa8ad59fb2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 58, y: 4}
+  - name: FarmPineapple_Frame_19
+    originalName: 
+    pivot: {x: 0.6060606, y: -0.19354838}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 184
+      y: 147
+      width: 33
+      height: 31
+    spriteID: 23109d81889f291429025b7f6d11c0ad
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 184, y: 147}
+  - name: FarmPineapple_Frame_20
+    originalName: 
+    pivot: {x: 0.51724136, y: -0.16216215}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 162
+      y: 99
+      width: 29
+      height: 37
+    spriteID: dd6eb0253580ff0418026a3d0d7e16c3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 162, y: 99}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: -680372712
+    name: FarmPineapple
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: FarmPineapple_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 17
+        y: 6
+        width: 28
+        height: 38
+      spriteId: 3141c46b752055042bb7a91966d13ca9
+    - name: FarmPineapple_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 17
+        y: 6
+        width: 28
+        height: 37
+      spriteId: a7529ad637d3a95478afa78ba47074d1
+    - name: FarmPineapple_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 17
+        y: 6
+        width: 28
+        height: 37
+      spriteId: 83378ca7d0cf43943b879632f6632901
+    - name: FarmPineapple_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 17
+        y: 6
+        width: 28
+        height: 37
+      spriteId: e20d851462408c645813760d749af773
+    - name: FarmPineapple_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 17
+        y: 6
+        width: 28
+        height: 38
+      spriteId: b9ae2fd37dee5e24faa0bf6cc34ce830
+    - name: FarmPineapple_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 17
+        y: 6
+        width: 28
+        height: 38
+      spriteId: f3fe51f765a0de94baa57b6ebe24bb26
+    - name: FarmPineapple_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 17
+        y: 6
+        width: 28
+        height: 39
+      spriteId: 531fa2864a639e94fab26c8deab5f68c
+    - name: FarmPineapple_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 15
+        y: 10
+        width: 30
+        height: 44
+      spriteId: fa376b35ab3951e4888605b13e3d6c2d
+    - name: FarmPineapple_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 15
+        y: 10
+        width: 30
+        height: 42
+      spriteId: c65da6e64233adf48aca799258c2265c
+    - name: FarmPineapple_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 17
+        y: 6
+        width: 28
+        height: 39
+      spriteId: 470d7fe542879bb43becf802b794be18
+    - name: FarmPineapple_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 17
+        y: 7
+        width: 30
+        height: 44
+      spriteId: 6b8f3d921165fe141a4aa60e579c8ba7
+    - name: FarmPineapple_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 17
+        y: 7
+        width: 30
+        height: 43
+      spriteId: 770ac015381a3a148b336f61680875aa
+    - name: FarmPineapple_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 4
+        y: 12
+        width: 46
+        height: 35
+      spriteId: d91038270b512f8439356e6175c58ca5
+    - name: FarmPineapple_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 3
+        y: 22
+        width: 47
+        height: 27
+      spriteId: 278ed2803d088b44ba7de0be9b4dc594
+    - name: FarmPineapple_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: 8
+        y: 20
+        width: 42
+        height: 26
+      spriteId: b3320023e6903b140b9f8b13e88cb70e
+    - name: FarmPineapple_Frame_15
+      frameIndex: 15
+      cellRect:
+        x: 11
+        y: 17
+        width: 39
+        height: 23
+      spriteId: 9d9ac6cdba0b38147b82ae1de2bb27c9
+    - name: FarmPineapple_Frame_16
+      frameIndex: 16
+      cellRect:
+        x: 17
+        y: 7
+        width: 28
+        height: 40
+      spriteId: e47ac11fbc0ca2745bcf53b11575c4de
+    - name: FarmPineapple_Frame_17
+      frameIndex: 17
+      cellRect:
+        x: 15
+        y: 7
+        width: 32
+        height: 39
+      spriteId: ac8219571134e17479cda476076e9fe7
+    - name: FarmPineapple_Frame_18
+      frameIndex: 18
+      cellRect:
+        x: 9
+        y: 7
+        width: 43
+        height: 23
+      spriteId: 18d12e556dbba2741be959fa8ad59fb2
+    - name: FarmPineapple_Frame_19
+      frameIndex: 19
+      cellRect:
+        x: 12
+        y: 6
+        width: 33
+        height: 31
+      spriteId: 23109d81889f291429025b7f6d11c0ad
+    - name: FarmPineapple_Frame_20
+      frameIndex: 20
+      cellRect:
+        x: 17
+        y: 6
+        width: 29
+        height: 37
+      spriteId: dd6eb0253580ff0418026a3d0d7e16c3
+    linkedCells: []
+    parentIndex: -1
+  platformSettings: []
+  generatePhysicsShape: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 64, y: 100}
