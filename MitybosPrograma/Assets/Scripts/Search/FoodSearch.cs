@@ -17,13 +17,13 @@ public class ProductDetails
 
 public class FoodSearch : MonoBehaviour
 {
-   
+
 
     public TMP_InputField searchInputField;
     public ScrollRect scrollView;
 
     public GameObject resultPrefab;
-    public GameObject productDetailPanel; 
+    public GameObject productDetailPanel;
     public GameObject searchPanel;
     public GameObject mainPanel;
 
@@ -40,15 +40,11 @@ public class FoodSearch : MonoBehaviour
 
     public TMP_InputField amountInputField;
 
-    private MySqlConnection connection;
-    private string connectionString;
     private ProductDetails selectedProduct;
     private List<ProductDetails> eatenProducts = new List<ProductDetails>(); // List to store eaten products
 
     void Start()
     {
-        connectionString = "Server=localhost;User ID=root;Password=root;Database=food_db";
-        connection = new MySqlConnection(connectionString);
         productDetailPanel.SetActive(false);
         searchPanel.SetActive(false);
         DisplayEatenProducts();
@@ -62,13 +58,15 @@ public class FoodSearch : MonoBehaviour
 
         try
         {
-            connection.Open();
-            MySqlCommand cmd = new MySqlCommand(query, connection);
-            MySqlDataReader reader = cmd.ExecuteReader();
+            DBManager.OpenConnection();
+            IDbCommand command = DBManager.connection.CreateCommand();
+            command.CommandText = query;
+            IDataReader reader = command.ExecuteReader();
+
 
             ClearResultPanel();
 
-            if (!reader.HasRows)
+            if (!reader.Read())
             {
                 Debug.Log("No such food :((");
                 GameObject resultObj = Instantiate(resultPrefab, scrollView.content);
@@ -76,13 +74,16 @@ public class FoodSearch : MonoBehaviour
             }
             else
             {
+                // called reader execute again to restart reader, cuz IDataReader doesn't have "hasrows()" method  :(
+                reader.Close();
+                reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    string name = reader.GetString("product_name");
-                    float kcal = reader.GetFloat("kcal");
-                    float protein = reader.GetFloat("protein");
-                    float carbs = reader.GetFloat("carbohydrates");
-                    float fat = reader.GetFloat("fat");
+                    string name = reader[reader.GetOrdinal("product_name")].ToString();
+                    float kcal = float.Parse(reader[reader.GetOrdinal("kcal")].ToString());
+                    float protein = float.Parse(reader[reader.GetOrdinal("protein")].ToString());
+                    float carbs = float.Parse(reader[reader.GetOrdinal("carbohydrates")].ToString());
+                    float fat = float.Parse(reader[reader.GetOrdinal("fat")].ToString());
 
                     GameObject resultObj = Instantiate(resultPrefab, scrollView.content);
 
@@ -100,8 +101,7 @@ public class FoodSearch : MonoBehaviour
         }
         finally
         {
-            if (connection.State == ConnectionState.Open)
-                connection.Close();
+            DBManager.connection.Close();
         }
     }
 
@@ -117,17 +117,17 @@ public class FoodSearch : MonoBehaviour
             Fat = fat
         };
 
-        
+
         searchPanel.SetActive(false);
 
-       
+
         productNameText.text = productName;
         kcalText.text = "Kcal: " + kcal.ToString();
         proteinText.text = "Protein: " + protein.ToString() + "g";
         carbsText.text = "Carbs: " + carbs.ToString() + "g";
         fatText.text = "Fat: " + fat.ToString() + "g";
 
-        
+
         productDetailPanel.SetActive(true);
     }
 

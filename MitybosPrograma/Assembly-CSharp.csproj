@@ -56,7 +56,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
-    <Analyzer Include="C:\Users\12345\OneDrive\Documents\GitHub\mitybos-programele\MitybosPrograma\Assets\Scripts\UI-DBmethods\plugins\Mono.Data.Sqlite.dll" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\unity_auth\LoginController.cs" />
@@ -109,10 +108,10 @@
     <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\FoodClass.cs" />
     <Compile Include="Assets\UI\TableLayout\TableLayout.cs" />
     <Compile Include="Assets\Scripts\unity_auth\UILogin.cs" />
+    <Compile Include="Assets\Scripts\Models\UserData.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\DBManager.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerCache.cs" />
-    <Compile Include="Assets\Scripts\UI-DBmethods\Z___TEST.cs" />
-    <Compile Include="Assets\Scripts\Models\UserData.cs" />
+    <Compile Include="Assets\Scripts\Session\SessionManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scripts\UI-DBmethods\plugins\sqlite3.dll" />

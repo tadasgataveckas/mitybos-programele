@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
 /// <summary>
 /// Klasė skirta naudoti bendravimui su duomenu baze.
@@ -69,8 +67,18 @@ public class ClientMethods : IClientInterface
         return _databaseMethods.ReturnFoodList(constring);
     }
 
-    public bool CheckIfUserExists(string username, string constring)
+    public bool IsUsernameTaken(string username, string constring)
     {
-        return _databaseMethods.CheckIfUserExists(username, constring);
+        return _databaseMethods.IsUsernameTaken(username, constring);
+    }
+
+    public bool IsEmailInUse(string email)
+    {
+        return _databaseMethods.IsEmailInUse(email);
+    }
+
+    public bool IsPasswordCorrect(string username, string email)
+    {
+        return _databaseMethods.IsPasswordCorrect(username, email);
     }
 }

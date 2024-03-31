@@ -19,19 +19,17 @@ public class DatabaseMethods
 
             // username parameter
             IDbDataParameter p_username = command_login.CreateParameter();
-            p_username.ParameterName = "@expr1";
-            p_username.Value = username;
+            p_username.ParameterName = "@expr1"; p_username.Value = username;
             command_login.Parameters.Add(p_username);
 
             // password parameter
             IDbDataParameter p_password = command_login.CreateParameter();
-            p_password.ParameterName = "@expr2";
-            p_password.Value = password;
+            p_password.ParameterName = "@expr2"; p_password.Value = password;
             command_login.Parameters.Add(p_password);
 
             using (IDataReader reader = command_login.ExecuteReader())
             {
-                if (reader.Read() != false)
+                if (reader.Read())
                 {
                     id = int.Parse(reader[0].ToString());
                     return id;
@@ -221,7 +219,6 @@ public class DatabaseMethods
                 "FROM user_data " +
                 "WHERE id_user = @expr1;";
 
-
             IDbDataParameter p_id = command_check.CreateParameter();
             p_id.ParameterName = "@expr1"; p_id.Value = id;
             command_check.Parameters.Add(p_id);
@@ -307,13 +304,13 @@ public class DatabaseMethods
         {
             DBManager.OpenConnection();
             IDbCommand command_return = DBManager.connection.CreateCommand();
-            command_return.CommandText = "SELECT `user`.`username`" +
-                " FROM `food_db`.`user` WHERE `user`.`id_user` = @expr1;";
+            command_return.CommandText = "SELECT username FROM user WHERE id_user = @expr1;";
 
 
             IDbDataParameter p_id = command_return.CreateParameter();
-            p_id.ParameterName = "@expr1";
-            p_id.Value = id;
+            p_id.ParameterName = "@expr1"; p_id.Value = id;
+            command_return.Parameters.Add(p_id);
+            
 
             using (IDataReader reader = command_return.ExecuteReader())
             {
@@ -372,7 +369,7 @@ public class DatabaseMethods
 
     }
 
-    public bool CheckIfUserExists(string username, string constring)
+    public bool IsUsernameTaken(string username, string constring)
     {
         try
         {
@@ -383,6 +380,62 @@ public class DatabaseMethods
             IDbDataParameter p_username = command_check.CreateParameter();
             p_username.ParameterName = "@expr1"; p_username.Value = username;
             command_check.Parameters.Add(p_username);
+
+            int count = Convert.ToInt32(command_check.ExecuteScalar());
+            return count > 0;
+        }
+        catch (SqliteException e)
+        {
+            Console.WriteLine(e.Message);
+            return false;
+        }
+        finally
+        {
+            DBManager.CloseConnection();
+        }
+    }
+
+    public bool IsEmailInUse(string email)
+    {
+        try
+        {
+            DBManager.OpenConnection();
+            IDbCommand command_check = DBManager.connection.CreateCommand();
+            command_check.CommandText = "SELECT COUNT(*) FROM user WHERE email = @expr1;";
+
+            IDbDataParameter p_email = command_check.CreateParameter();
+            p_email.ParameterName = "@expr1"; p_email.Value = email;
+            command_check.Parameters.Add(p_email);
+
+            int count = Convert.ToInt32(command_check.ExecuteScalar());
+            return count > 0;
+        }
+        catch (SqliteException e)
+        {
+            Console.WriteLine(e.Message);
+            return false;
+        }
+        finally
+        {
+            DBManager.CloseConnection();
+        }
+    }
+
+    public bool IsPasswordCorrect(string username, string password)
+    {
+        try
+        {
+            DBManager.OpenConnection();
+            IDbCommand command_check = DBManager.connection.CreateCommand();
+            command_check.CommandText = "SELECT COUNT(*) FROM user WHERE username = @expr1 AND password = @expr2;";
+
+            IDbDataParameter p_username = command_check.CreateParameter();
+            p_username.ParameterName = "@expr1"; p_username.Value = username;
+            command_check.Parameters.Add(p_username);
+
+            IDbDataParameter p_password = command_check.CreateParameter();
+            p_password.ParameterName = "@expr2"; p_password.Value = password;
+            command_check.Parameters.Add(p_password);
 
             int count = Convert.ToInt32(command_check.ExecuteScalar());
             return count > 0;

@@ -10,33 +10,25 @@ using UnityEngine.SceneManagement;
 public class SurveyManager : MonoBehaviour
 {
     // Physical Data
+    private int id_user;
 
     public string gender;
-
     public string goal;
-
     public string eatingPreference;
-
     int currentYear = DateTime.Now.Year;
-
     public string birthDate;
-
     public double height;
-
     public double weight;
+    public int activity;
 
     public List<string> allergies;
-
-    public int activity;
 
     //activity slider
     public SliderScript slider;
 
     // Continue and Back buttons
-
     public GameObject Continue;
     public GameObject Back;
-
 
     private double BMI;
     public static double CALORIES;
@@ -46,8 +38,9 @@ public class SurveyManager : MonoBehaviour
     ClientMethods c = new ClientMethods(new DatabaseMethods());
     public void SubmitSurvey()
     {
-        Debug.Log("LoginManager id is: " + LoginManager.id);
-        c.UpdateProfile(LoginManager.id, gender, height, weight, goal, birthDate, activity, constring);
+        //Debug.Log("LoginManager id is: " + LoginManager.id);
+        //c.UpdateProfile(LoginManager.id, gender, height, weight, goal, birthDate, activity, constring);
+        c.UpdateProfile(id_user, gender, height, weight, goal, birthDate, activity, constring);
         GoToMain();
     }
 
@@ -426,6 +419,8 @@ public class SurveyManager : MonoBehaviour
     void Start()
     {
         SwitchSegment(currentSegment);
+        // retrieves id from playerprefs
+        id_user = SessionManager.GetIdKey();
     }
 
     void GoToMain()
