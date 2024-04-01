@@ -46,6 +46,10 @@ public class UserData
         GainMuscle = 4
     }
 
+    /// <summary>
+    /// Returns goal value as string
+    /// </summary>
+    /// <returns>Goal string value</returns>
     public string GetGoalString()
     {
         switch (goal)
@@ -63,7 +67,21 @@ public class UserData
         }
     }
 
-    private Goal ParseGoal(string goal_string)
+    /// <summary>
+    /// Returns gender value as string
+    /// </summary>
+    /// <returns>Gender string</returns>
+    public string GetGenderString()
+    {
+        return gender.ToString();
+    }
+
+    /// <summary>
+    /// Returns Goal enum equivalent of string
+    /// </summary>
+    /// <param name="goal_string"></param>
+    /// <returns>Goal enum</returns>
+    public static Goal ParseGoal(string goal_string)
     {
         switch (goal_string)
         {
@@ -80,7 +98,19 @@ public class UserData
         }
     }
 
-    // updates UserData object according to id_user
+    /// <summary>
+    /// Returns Gender enum equivalent of string
+    /// </summary>
+    /// <param name="gender_string"></param>
+    /// <returns>Gender enum</returns>
+    public static Gender ParseGender(string gender_string)
+    {
+        return (Gender)Enum.Parse(typeof(UserData.Gender), gender_string);
+    }
+
+    /// <summary>
+    /// Updates UserData object according to id_user
+    /// </summary>
     public void SynchData()
     {
         try
@@ -98,7 +128,7 @@ public class UserData
             {
                 weight = double.Parse(reader[0].ToString());
                 height = double.Parse(reader[1].ToString());
-                gender = (Gender)Enum.Parse(typeof(UserData.Gender), reader[2].ToString());
+                gender = ParseGender(reader[2].ToString());
                 goal = ParseGoal(reader[3].ToString());
                 physical_activity = int.Parse(reader[4].ToString());
 

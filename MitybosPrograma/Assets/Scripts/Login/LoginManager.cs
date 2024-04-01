@@ -7,17 +7,14 @@ using System.Text.RegularExpressions;
 public class LoginManager : MonoBehaviour
 {
     // Login data
-    public static int id; //iki kol pakeista i string
-    public string username;
-    public string email;
-    public string password;
-    public string passwordConfirm;
+    private string username;
+    private string email;
+    private string password;
+    private string passwordConfirm;
 
     public TextMeshProUGUI errorAcc;
     public TextMeshProUGUI errorData;
     public List<GameObject> segments;
-
-    string constring = "Server=localhost;User ID=root;Password=root;Database=food_db";
 
     ClientMethods c = new ClientMethods(new DatabaseMethods());
 
@@ -41,12 +38,6 @@ public class LoginManager : MonoBehaviour
         passwordConfirm = newPasswordConfirm;
     }
 
-    public void SetID(int newid)
-    {
-        id = newid;
-    }
-
-
     public void SubmitLogin()
     {
         // Validating with username and password 
@@ -60,13 +51,13 @@ public class LoginManager : MonoBehaviour
         }
         else if (username.Length <= 4)
         {
-            errorData.text = "Current username is too short, it must be at least 5 characters long!";
+            errorData.text = "Username must be at least 5 characters long!";
         }
         else if (password.Length <= 4)
         {
-            errorData.text = "Current password is too short, it must be at least 5 characters long!";
+            errorData.text = "Password must be at least 5 characters long!";
         }
-        else if (!c.IsUsernameTaken(username, ""))
+        else if (!c.IsUsernameTaken(username))
         {
             errorData.text = "User does not exist!";
         }
@@ -76,16 +67,15 @@ public class LoginManager : MonoBehaviour
         }
         else
         {
-            int id = c.Login(username, password, out id, constring);
+            // logs in
+            int id = c.Login(username, password);
 
             // stores id_user in playerprefs as session id
             SessionManager.StoreIdKey(id);
 
             // goes to survey if it's not completed yet
-            if (c.CheckSurveyCompleted(id, constring))
-            {
+            if (c.CheckIfSurveyCompleted(id))
                 SceneManager.LoadScene("Main");
-            }
             else
                 SceneManager.LoadScene("Survey");
         }
@@ -131,27 +121,32 @@ public class LoginManager : MonoBehaviour
 
         else if (username.Length <= 4)
         {
-            errorData.text = "Current username is too short, it must be at least 5 characters long!";
+            errorData.text = "Username must be at least 5 characters long!";
         }
-        else if (c.IsUsernameTaken(username, ""))
+        else if (c.IsUsernameTaken(username))
         {
             errorData.text = "This username is already in use!";
         }
 
         else if (password.Length <= 4)
         {
-            errorData.text = "Current password is too short, it must be at least 5 characters long!";
+            errorData.text = "Password must be at least 5 characters long!";
         }
         else if (password != passwordConfirm)
         {
-            errorData.text = "Current password does not match the password confirmation!";
+            errorData.text = "Password does not match password confirmation!";
         }
         else
         {
-            c.Register(username, username, password, constring);
-            //int id = c.Login(username, password, out id, constring);
+            if (c.RegisterUser(email, username, password))
+                Debug.Log("Account successfully created");
+            else
+                Debug.Log("Account creation failed");
 
             // TO DO: show account creation success pop up
+            //
+            //
+
             SceneManager.LoadScene("Login");
         }
     }

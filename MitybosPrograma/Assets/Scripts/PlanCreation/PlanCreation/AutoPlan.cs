@@ -20,10 +20,9 @@ public class AutoPlan : MonoBehaviour
     }
 
 
-    string constring = "Server=localhost;User ID=root;Password=root;Database=food_db";
     public void OnClickAutoPlan()
     {
-        returnedfoodlist = c.ReturnFoodList(constring);
+        returnedfoodlist = c.ReturnFoodList();
         BranchAndBound branchAndBoundFood = new BranchAndBound(returnedfoodlist);
         createdlist = branchAndBoundFood.FindClosestCalorieCombination(3000,3);
         Debug.Log(createdlist.Count);

@@ -10,18 +10,11 @@ using UnityEngine.SceneManagement;
 public class SurveyManager : MonoBehaviour
 {
     // Physical Data
-    private int id_user;
+    private UserData userData;
+    private int eatingPreference = -1;
+    private List<int> allergies = new List<int>();
 
-    public string gender;
-    public string goal;
-    public string eatingPreference;
-    int currentYear = DateTime.Now.Year;
-    public string birthDate;
-    public double height;
-    public double weight;
-    public int activity;
-
-    public List<string> allergies;
+    ClientMethods c = new ClientMethods(new DatabaseMethods());
 
     //activity slider
     public SliderScript slider;
@@ -30,83 +23,108 @@ public class SurveyManager : MonoBehaviour
     public GameObject Continue;
     public GameObject Back;
 
+    // User survey info
+    public TextMeshProUGUI info;
+
+    // Survey errors
+    public TextMeshProUGUI error;
+
+    // Progress Bar
+    public Slider ProgressBar;
+    float goalSliderValue = 0;
+    public float progressBarSpeed = 0.5f;
+
     private double BMI;
     public static double CALORIES;
+    public int year;
 
 
-    string constring = "Server=localhost;User ID=root;Password=root;Database=food_db";
-    ClientMethods c = new ClientMethods(new DatabaseMethods());
+    void Start()
+    {
+        SwitchSegment(currentSegment);
+
+        // retrieves id from playerprefs
+        int id = SessionManager.GetIdKey();
+        userData = new UserData(id);
+        // added base value cuz slider can be ignored
+        userData.physical_activity = 1;
+    }
+
+    void Update()
+    {
+        // update progressbar
+        goalSliderValue = 1f / (segments.Count - 1) * currentSegment;
+        if (!Mathf.Approximately(ProgressBar.value, goalSliderValue))
+        {
+            ProgressBar.value = Mathf.MoveTowards(ProgressBar.value, goalSliderValue, progressBarSpeed * Time.deltaTime);
+        }
+    }
+
+    public void GoToMain()
+    {
+        //Go to Main scene
+        SceneManager.LoadScene("Main");
+    }
+
     public void SubmitSurvey()
     {
-        //Debug.Log("LoginManager id is: " + LoginManager.id);
-        //c.UpdateProfile(LoginManager.id, gender, height, weight, goal, birthDate, activity, constring);
-        c.UpdateProfile(id_user, gender, height, weight, goal, birthDate, activity, constring);
+        Debug.ClearDeveloperConsole();
+
+        // user_data
+        c.InsertUserData(userData);
+
+        // allergies
+        if (eatingPreference > 0)
+            allergies.Add(eatingPreference);
+
+        foreach (int allergy in allergies)
+            c.InsertUserAllergy(userData.id_user, allergy);
+
         GoToMain();
     }
 
+    // input features ----------------------------------------------------------
+
     public void InputGender(string newGender)
     {
-        if (newGender == gender)
-        {
-            gender = "";
-        }
+        if (userData.gender == UserData.ParseGender(newGender))
+            userData.gender = UserData.Gender.Null;
         else
-        {
-            gender = newGender;
-        }
+            userData.gender = UserData.ParseGender(newGender);
     }
 
     public void InputGoal(string newGoal)
     {
-        if (newGoal == goal)
-        {
-            goal = "";
-        }
+        if (userData.goal == UserData.ParseGoal(newGoal))
+            userData.goal = UserData.Goal.Null;
         else
-        {
-            goal = newGoal;
-        }
+            userData.goal = UserData.ParseGoal(newGoal);
     }
 
-    public void InputEatingPreference(string newEatingPreference)
+    public void InputEatingPreference(int newEatingPreference)
     {
-        if (newEatingPreference == eatingPreference)
-        {
-            eatingPreference = "";
-        }
+        if (eatingPreference == newEatingPreference)
+            eatingPreference = -1;
         else
-        {
             eatingPreference = newEatingPreference;
-        }
     }
 
     public void InputAge(string newBirthDate)
     {
-        birthDate = newBirthDate;
-        Debug.Log("Input birth date is: " + birthDate);
-        //if (int.TryParse(newAge, out age))
-        //{
-        //    Debug.Log("Input age is: " + age);
-        //}
+        userData.date_of_birth = newBirthDate;
     }
 
     public void InputHeight(string newHeight)
     {
-        if (double.TryParse(newHeight, out height))
-        {
-            Debug.Log("Input height is: " + height);
-        }
+        double.TryParse(newHeight, out userData.height);
     }
 
     public void InputWeight(string newWeight)
     {
-        if (double.TryParse(newWeight, out weight))
-        {
-            Debug.Log("Input weight is: " + weight);
-        }
+        double.TryParse(newWeight, out userData.weight);
     }
 
-    public void AddAllergy(string allergy)
+    public void AddAllergy(int allergy)
     {
         if (allergies.Contains(allergy)) // Check if the allergy is in list
         {
@@ -125,10 +143,14 @@ public class SurveyManager : MonoBehaviour
         StringBuilder sb = new StringBuilder();
 
         // Append each allergy to the string
-        foreach (string allergy in allergies)
+        foreach (int allergy in allergies)
         {
-            sb.Append(allergy);
-            sb.Append(", "); // Add a comma and space to separate allergies
+            // skips vegetarianism and veganism
+            if (allergy < 10)
+            {
+                sb.Append(Allergy.ReturnAllergyName(allergy));
+                sb.Append(", "); // Add a comma and space to separate allergies
+            }
         }
 
         // Remove the last comma and space
@@ -147,10 +169,7 @@ public class SurveyManager : MonoBehaviour
         {
             string newActivity = slider.ReturnActivity();
             Debug.Log("Activity: " + newActivity);
-            if (int.TryParse(newActivity, out activity))
-            {
-                Debug.Log("Input activity is: " + activity);
-            }
+            int.TryParse(newActivity, out userData.physical_activity);
         }
         else
         {
@@ -158,7 +177,7 @@ public class SurveyManager : MonoBehaviour
         }
     }
 
-    //Calculating features
+    // Calculating features ----------------------------------------------------
 
     //Calculating BMI
     public double CalculateBMI(double Bheight, double Bweight)
@@ -205,12 +224,11 @@ public class SurveyManager : MonoBehaviour
         return "";
     }
 
-    public int year;
     public void Year()
     {
         // Konvertuojame string'ą į DateTime objektą
         DateTime dataObj;
-        if (DateTime.TryParseExact(birthDate, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out dataObj))
+        if (DateTime.TryParseExact(userData.date_of_birth, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out dataObj))
         {
             // Ištraukiame metus
             year = dataObj.Year;
@@ -234,56 +252,52 @@ public class SurveyManager : MonoBehaviour
         //physical activity level
         double FAL = 0;
 
-        if (activity == 1)
+
+        switch (userData.physical_activity)
         {
-            FAL = 1.2;
-        }
-        else if (activity == 2)
-        {
-            FAL = 1.375;
-        }
-        else if (activity == 3)
-        {
-            FAL = 1.55;
-        }
-        else if (activity == 4)
-        {
-            FAL = 1.725;
-        }
-        else if (activity == 5)
-        {
-            FAL = 1.9;
+            case 1:
+                FAL = 1.2;
+                break;
+            case 2:
+                FAL = 1.375;
+                break;
+            case 3:
+                FAL = 1.55;
+                break;
+            case 4:
+                FAL = 1.725;
+                break;
+            case 5:
+                FAL = 1.9;
+                break;
         }
 
-        if (gender == "Female")
-        {
-            BMR = (10 * weight) + (6.25 * height) - (5 * (currentYear - year)) - 161;
-
-        }
+        int currentYear = DateTime.Now.Year;
+        if (userData.gender == UserData.Gender.Female)
+            BMR = (10 * userData.weight) + (6.25 * userData.height) - (5 * (currentYear - year)) - 161;
         else
-        {
-            BMR = (10 * weight) + (6.25 * height) - (5 * (currentYear - year)) + 5;
-        }
+            BMR = (10 * userData.weight) + (6.25 * userData.height) - (5 * (currentYear - year)) + 5;
 
         // Daily calories = metabolism * physical activity level
         CALORIES = BMR * FAL;
 
         // Daily calories adjusted on user goal 
-        if (goal == "Lose weight")
+        if (userData.goal == UserData.Goal.LoseWeight)
         {
             CALORIES = CALORIES * 0.9;
         }
-        else if (goal == "Gain weight" || goal == "Gain muscle")
+        else if (userData.goal == UserData.Goal.GainWeight ||
+                 userData.goal == UserData.Goal.GainMuscle)
         {
             CALORIES = CALORIES + 500;
         }
         return Math.Round(CALORIES, 2);
     }
 
+    // Survey Segments ---------------------------------------------------------
 
-    // Survey Segments
-
-    public List<GameObject> segments; // Each segment of survey (picking gender, picking eating preference, etc.)
+    // Each segment of survey (picking gender, picking eating preference, etc.)
+    public List<GameObject> segments;
     private int currentSegment = 0;
 
     public void SwitchSegment(int switchTo)
@@ -310,14 +324,7 @@ public class SurveyManager : MonoBehaviour
         // Turn on off
         Back.SetActive(currentSegment != 0);
         Continue.SetActive(currentSegment != segments.Count - 1);
-
     }
-
-    // User survey info
-    public TextMeshProUGUI info;
-
-    // Survey errors
-    public TextMeshProUGUI error;
 
     public void NextSegment()
     {
@@ -350,29 +357,31 @@ public class SurveyManager : MonoBehaviour
                 // Išvalome klaidų pranešimus, jei vartotojas tęsia į kitą segmentą
                 error.text = "";
 
+
                 string goalText = "";
-                if (goal == "Gain weight" || goal == "Gain muscle")
+                if (userData.goal == UserData.Goal.GainWeight ||
+                    userData.goal == UserData.Goal.GainMuscle)
                 {
-                    goalText = " (added 500cal)";
+                    goalText = " (added 500 kcal)";
                 }
-                else if (goal == "Lose weight")
+                else if (userData.goal == UserData.Goal.LoseWeight)
                 {
                     goalText = " (reduced by 10%)";
                 }
 
-                double bmi = CalculateBMI(height, weight);
+                double bmi = CalculateBMI(userData.height, userData.weight);
+
                 // Printing user survey data 
                 info.text = "Your submitted info: " + "\n" +
                     "\n" +
-                    "Gender: " + gender + "\n" +
-                    "Goal: " + goal + "\n" +
-                    "Eating preference: " + eatingPreference + "\n" +
-                    //"Age: " + (currentYear - year) + "\n" +
-                    "Birth date: " + birthDate + "\n" +
-                    "Height: " + height + "\n" +
-                    "Weight: " + weight + "\n" +
+                    "Gender: " + userData.GetGenderString() + "\n" +
+                    "Goal: " + userData.GetGoalString() + "\n" +
+                    "Eating preference: " + Allergy.ReturnAllergyName(eatingPreference) + "\n" +
+                    "Date of birth: " + userData.date_of_birth + "\n" +
+                    "Height: " + userData.height + "\n" +
+                    "Weight: " + userData.weight + "\n" +
                     "Allergies: " + GetAllergiesAsString() + "\n" +
-                    "Activity level: " + activity + "\n" +
+                    "Activity level: " + userData.physical_activity + "\n" +
                     //"\n" +
                     //"Your BMI: " + bmi + "\n" +
                     //"Your BMI result: " + BMIResult(bmi) + "\n" +
@@ -394,51 +403,26 @@ public class SurveyManager : MonoBehaviour
     // Checking if survey has gender
     private bool GenderEntered()
     {
-        return !string.IsNullOrEmpty(gender);
+        return userData.gender != UserData.Gender.Null;
     }
 
-    // Checking if survey has goal
+    // Checking if survey has eating preference
     private bool EatingEntered()
     {
-        return !string.IsNullOrEmpty(eatingPreference);
+        Debug.Log("EATING THING IS: " + eatingPreference);
+        return eatingPreference != -1;
     }
 
     // Checking if survey has goal
     private bool GoalEntered()
     {
-        return !string.IsNullOrEmpty(goal);
+        return userData.goal != UserData.Goal.Null;
     }
 
-    // Checking if survey has goal
+    // Checking if survey parameters are correct
     private bool AHWEntered()
     {
-        return (DateTime.TryParseExact(birthDate, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out _)) &&
-            (250 > height && height > 120) && (350 > weight && weight > 30);
-    }
-
-    void Start()
-    {
-        SwitchSegment(currentSegment);
-        // retrieves id from playerprefs
-        id_user = SessionManager.GetIdKey();
-    }
-
-    void GoToMain()
-    {
-        //Go to Main scene
-        SceneManager.LoadScene("Main");
-    }
-
-    // Progress Bar
-    public Slider ProgressBar;
-    float goalSliderValue = 0;
-    public float progressBarSpeed = 0.5f;
-    void Update()
-    {
-        goalSliderValue = 1f / (segments.Count - 1) * currentSegment;
-        if (!Mathf.Approximately(ProgressBar.value, goalSliderValue))
-        {
-            ProgressBar.value = Mathf.MoveTowards(ProgressBar.value, goalSliderValue, progressBarSpeed * Time.deltaTime);
-        }
+        return (DateTime.TryParseExact(userData.date_of_birth, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out _)) &&
+            (250 > userData.height && userData.height > 120) && (350 > userData.weight && userData.weight > 30);
     }
 }

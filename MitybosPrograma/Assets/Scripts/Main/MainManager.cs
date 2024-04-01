@@ -14,7 +14,6 @@ public class MainManager : MonoBehaviour
     public int currentSegment = 0;
     //public DatabaseMethods databaseMethods;
 
-    string constring = "Server=localhost;User ID=root;Password=root;Database=food_db";
     // User survey info
 
     public TextMeshPro user;
@@ -56,13 +55,12 @@ public class MainManager : MonoBehaviour
 
     public void UpdateInfo()
     {
-        user.text = "User: " + c.ReturnUsername(userData.id_user, constring);
+        user.text = "User: " + c.ReturnUsername(userData.id_user);
+        c.UpdateUserData(userData);
 
-        c.UpdateProfile(LoginManager.id, userData.gender.ToString(), userData.height, userData.weight, userData.GetGoalString(), userData.date_of_birth, userData.physical_activity, constring);
-        
         info.text = $"Height: {userData.height}\n" +
                     $"Weight: {userData.weight}\n" +
-                    $"Gender: {userData.gender.ToString()}\n" +
+                    $"Gender: {userData.GetGenderString()}\n" +
                     $"Goal: {userData.GetGoalString()}\n" +
                     $"Physical Activity: {userData.physical_activity}\n" +
                     $"Date of Birth: {userData.date_of_birth}\n" +
