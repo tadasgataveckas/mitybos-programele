@@ -21,7 +21,7 @@ public class MovePlayer : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (movementJoystick.joystickVec.y != 0)
+        if (Mathf.Abs(movementJoystick.joystickVec.x) > 0.2f || Mathf.Abs(movementJoystick.joystickVec.y) > 0.2f)
         {
             animator.SetBool("walk", true);
             float horizontalInput = movementJoystick.joystickVec.x;
