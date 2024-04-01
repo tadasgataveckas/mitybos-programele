@@ -1,0 +1,473 @@
+fileFormatVersion: 2
+guid: 9d310302c5cfc6b408918b7779d8960c
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMasterTextureLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: BigBackground_Frame_0
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 384
+      height: 384
+    spriteID: 319c3cc48629ff544947a90456b30a1b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: BigBackground_Frame_1
+    originalName: 
+    pivot: {x: 0.5198777, y: -0.09597523}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 747
+      width: 327
+      height: 323
+    spriteID: 1aefc057705d2454493a09b5be9706ed
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 747}
+  - name: BigBackground_Frame_2
+    originalName: 
+    pivot: {x: 0.5198777, y: -0.09597523}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1078
+      width: 327
+      height: 323
+    spriteID: 1589f57d9df32d84fb8ccf2093373bbd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1078}
+  - name: BigBackground_Frame_3
+    originalName: 
+    pivot: {x: 0.5198777, y: -0.09597523}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 1409
+      width: 327
+      height: 323
+    spriteID: 6717e91648d933942bde9581b9d443d3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 1409}
+  - name: BigBackground_Frame_4
+    originalName: 
+    pivot: {x: 0.5198777, y: -0.09597523}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 396
+      y: 4
+      width: 327
+      height: 323
+    spriteID: b25e0111b6f6a0f4dab72adc265a0afa
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 396, y: 4}
+  - name: BigBackground_Frame_5
+    originalName: 
+    pivot: {x: 0.51724136, y: -0.046647232}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 396
+      width: 348
+      height: 343
+    spriteID: ce4d25f5080cc304787377566ad4dfb4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 396}
+  - name: BigBackground_Frame_6
+    originalName: 
+    pivot: {x: 0.5198777, y: -0.09597523}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 396
+      y: 335
+      width: 327
+      height: 323
+    spriteID: fe70393b2d274c34db9142fbc9d0c0ac
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 396, y: 335}
+  - name: BigBackground_Frame_7
+    originalName: 
+    pivot: {x: 0.5198777, y: -0.09597523}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 396
+      y: 666
+      width: 327
+      height: 323
+    spriteID: 1c1207bd299f55e4e870e51aaeffa5ad
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 396, y: 666}
+  - name: BigBackground_Frame_11
+    originalName: 
+    pivot: {x: 0.5198777, y: -0.09597523}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 396
+      y: 997
+      width: 327
+      height: 323
+    spriteID: 9d6428b92af84724b85cc1c634338c0f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 396, y: 997}
+  - name: BigBackground_Frame_8
+    originalName: 
+    pivot: {x: 0.5080906, y: -0.12101911}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 396
+      y: 1328
+      width: 309
+      height: 314
+    spriteID: 328e19006feed47488e52cfe020da9b4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 396, y: 1328}
+  - name: BigBackground_Frame_9
+    originalName: 
+    pivot: {x: 0.48571426, y: -2.409836}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 731
+      y: 87
+      width: 70
+      height: 61
+    spriteID: b5f46b74a09d47848b10768ad8a9e978
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 731, y: 87}
+  - name: BigBackground_Frame_10
+    originalName: 
+    pivot: {x: 0.55294126, y: -1.9599999}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 731
+      y: 4
+      width: 85
+      height: 75
+    spriteID: f3293f4645b717445bdb9f126b80d772
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 731, y: 4}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: 1846301088
+    name: BigBackground
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: BigBackground_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 0
+        y: 0
+        width: 384
+        height: 384
+      spriteId: 319c3cc48629ff544947a90456b30a1b
+    - name: BigBackground_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 22
+        y: 31
+        width: 327
+        height: 323
+      spriteId: 1aefc057705d2454493a09b5be9706ed
+    - name: BigBackground_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 22
+        y: 31
+        width: 327
+        height: 323
+      spriteId: 1589f57d9df32d84fb8ccf2093373bbd
+    - name: BigBackground_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 22
+        y: 31
+        width: 327
+        height: 323
+      spriteId: 6717e91648d933942bde9581b9d443d3
+    - name: BigBackground_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 22
+        y: 31
+        width: 327
+        height: 323
+      spriteId: b25e0111b6f6a0f4dab72adc265a0afa
+    - name: BigBackground_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 12
+        y: 16
+        width: 348
+        height: 343
+      spriteId: ce4d25f5080cc304787377566ad4dfb4
+    - name: BigBackground_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 22
+        y: 31
+        width: 327
+        height: 323
+      spriteId: fe70393b2d274c34db9142fbc9d0c0ac
+    - name: BigBackground_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 22
+        y: 31
+        width: 327
+        height: 323
+      spriteId: 1c1207bd299f55e4e870e51aaeffa5ad
+    - name: BigBackground_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 22
+        y: 31
+        width: 327
+        height: 323
+      spriteId: 9d6428b92af84724b85cc1c634338c0f
+    - name: BigBackground_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 35
+        y: 38
+        width: 309
+        height: 314
+      spriteId: 328e19006feed47488e52cfe020da9b4
+    - name: BigBackground_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 158
+        y: 147
+        width: 70
+        height: 61
+      spriteId: b5f46b74a09d47848b10768ad8a9e978
+    - name: BigBackground_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 145
+        y: 147
+        width: 85
+        height: 75
+      spriteId: f3293f4645b717445bdb9f126b80d772
+    linkedCells: []
+    parentIndex: -1
+  platformSettings: []
+  generatePhysicsShape: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 384, y: 384}
