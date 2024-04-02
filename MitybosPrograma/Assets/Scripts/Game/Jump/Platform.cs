@@ -6,8 +6,11 @@ public class Platform : MonoBehaviour
 {
     public float jumpForce = 5f;
 
+    private JumpGameManager jumpGameManager;
+    private float screenHeightInUnits;
 
-        private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.relativeVelocity.y <= 0f)
         {
@@ -19,6 +22,22 @@ public class Platform : MonoBehaviour
                 rb.velocity = velocity;
             }
             collision.gameObject.GetComponent<JumpPlayerController>().Land();
+        }
+    }
+
+    // When to destroy
+
+    void Start()
+    {
+        jumpGameManager = JumpGameManager.Instance;
+        screenHeightInUnits = jumpGameManager.screenHeightInUnits;
+    }
+
+    void Update()
+    {
+        if (jumpGameManager != null && jumpGameManager.player.position.y - screenHeightInUnits/2 - 0.5f > transform.position.y)
+        {
+            Destroy(gameObject);
         }
     }
 }
