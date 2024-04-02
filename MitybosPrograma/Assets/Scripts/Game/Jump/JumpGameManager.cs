@@ -52,10 +52,21 @@ public class JumpGameManager : MonoBehaviour
             maxScore = player.position.y;
             score.text = maxScore.ToString("F1") + " ft";
         }
-        if (player.position.y < cameraTransform.position.y - screenHeightInUnits/2)
+        // Check if player is below the camera vertically
+        if (player.position.y < cameraTransform.position.y - screenHeightInUnits / 2)
         {
+            // Game over
             gameOver.SetActive(true);
             player.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        }
+
+        // Check if player moves outside camera horizontally
+        if (Mathf.Abs(player.position.x - cameraTransform.position.x)-0.1f > screenWidthInUnits / 2)
+        {
+            // Teleport the player to the other side of the camera horizontally
+            Vector3 playerPos = player.position;
+            playerPos.x = cameraTransform.position.x - Mathf.Sign(playerPos.x - cameraTransform.position.x) * screenWidthInUnits / 2;
+            player.position = playerPos;
         }
     }
 
