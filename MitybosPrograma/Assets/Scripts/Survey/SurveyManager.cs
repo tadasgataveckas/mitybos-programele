@@ -11,6 +11,7 @@ public class SurveyManager : MonoBehaviour
 {
     // Physical Data
     private UserData userData;
+    private BmiCalories bmiCalories;
     private int eatingPreference = -1;
     private List<int> allergies = new List<int>();
 
@@ -34,13 +35,14 @@ public class SurveyManager : MonoBehaviour
     float goalSliderValue = 0;
     public float progressBarSpeed = 0.5f;
 
-    private double BMI;
-    public static double CALORIES;
+    public double BMI;
+    public double CALORIES;
     public int year;
 
 
     void Start()
     {
+        bmiCalories = new BmiCalories();
         SwitchSegment(currentSegment);
 
         // retrieves id from playerprefs
@@ -178,52 +180,6 @@ public class SurveyManager : MonoBehaviour
     }
 
     // Calculating features ----------------------------------------------------
-
-    //Calculating BMI
-    public double CalculateBMI(double Bheight, double Bweight)
-    {
-        BMI = Bweight / Math.Pow(Bheight, 2);
-        return Math.Round(BMI * 10000, 2);
-    }
-
-    //Printing BMI result
-    public string BMIResult(double RBMI)
-    {
-        if (RBMI < 16.0)
-        {
-            return "Severe Underweight";
-        }
-        else if (16.0 < RBMI && RBMI < 17.0)
-        {
-            return "Moderate Underweight";
-        }
-        else if (17.0 < RBMI && RBMI < 18.5)
-        {
-            return "Mild Underweight";
-        }
-        else if (18.5 < RBMI && RBMI < 25.0)
-        {
-            return "Normal weight";
-        }
-        else if (25.0 < RBMI && RBMI < 30.0)
-        {
-            return "Overweight";
-        }
-        else if (30.0 < RBMI && RBMI < 35.0)
-        {
-            return "Obese Class I";
-        }
-        else if (35.0 < RBMI && RBMI < 40.0)
-        {
-            return "Obese Class II";
-        }
-        else if (RBMI > 40.0)
-        {
-            return "Obese Class III";
-        }
-        return "";
-    }
-
     public void Year()
     {
         // Konvertuojame string'ą į DateTime objektą
@@ -242,56 +198,9 @@ public class SurveyManager : MonoBehaviour
             Debug.Log("Please write your birth date in correct form! (yyyy-MM-dd)");
         }
     }
-
-    //Calculating daily calories
-    public double CalculateDailyCalories()
+    public int ReturnYear()
     {
-        // The Basal Metabolic Rate
-        double BMR = 0;
-
-        //physical activity level
-        double FAL = 0;
-
-
-        switch (userData.physical_activity)
-        {
-            case 1:
-                FAL = 1.2;
-                break;
-            case 2:
-                FAL = 1.375;
-                break;
-            case 3:
-                FAL = 1.55;
-                break;
-            case 4:
-                FAL = 1.725;
-                break;
-            case 5:
-                FAL = 1.9;
-                break;
-        }
-
-        int currentYear = DateTime.Now.Year;
-        if (userData.gender == UserData.Gender.Female)
-            BMR = (10 * userData.weight) + (6.25 * userData.height) - (5 * (currentYear - year)) - 161;
-        else
-            BMR = (10 * userData.weight) + (6.25 * userData.height) - (5 * (currentYear - year)) + 5;
-
-        // Daily calories = metabolism * physical activity level
-        CALORIES = BMR * FAL;
-
-        // Daily calories adjusted on user goal 
-        if (userData.goal == UserData.Goal.LoseWeight)
-        {
-            CALORIES = CALORIES * 0.9;
-        }
-        else if (userData.goal == UserData.Goal.GainWeight ||
-                 userData.goal == UserData.Goal.GainMuscle)
-        {
-            CALORIES = CALORIES + 500;
-        }
-        return Math.Round(CALORIES, 2);
+        return year;
     }
 
     // Survey Segments ---------------------------------------------------------
@@ -369,8 +278,8 @@ public class SurveyManager : MonoBehaviour
                     goalText = " (reduced by 10%)";
                 }
 
-                double bmi = CalculateBMI(userData.height, userData.weight);
-
+                BMI = bmiCalories.CalculateBMI(userData.height, userData.weight);
+                CALORIES = bmiCalories.CalculateDailyCalories(userData, year);
                 // Printing user survey data 
                 info.text = "Your submitted info: " + "\n" +
                     "\n" +
@@ -382,10 +291,10 @@ public class SurveyManager : MonoBehaviour
                     "Weight: " + userData.weight + "\n" +
                     "Allergies: " + GetAllergiesAsString() + "\n" +
                     "Activity level: " + userData.physical_activity + "\n" +
-                    //"\n" +
-                    //"Your BMI: " + bmi + "\n" +
-                    //"Your BMI result: " + BMIResult(bmi) + "\n" +
-                    "Needed daily calories: " + CalculateDailyCalories() + goalText + "\n";
+                    "\n" +
+                    "Your BMI: " + BMI + "\n" +
+                    "Your BMI result: " + bmiCalories.BMIResult(BMI) + "\n" +
+                    "Needed daily calories: " + CALORIES + goalText + "\n";
             }
         }
     }

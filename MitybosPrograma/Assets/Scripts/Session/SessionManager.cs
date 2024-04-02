@@ -34,7 +34,6 @@ public static class SessionManager
         int id = int.Parse(encrypted_id.ToString());
 
         return id;
-    }
-
+    } 
 
 }

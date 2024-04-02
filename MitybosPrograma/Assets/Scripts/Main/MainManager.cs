@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,6 +25,14 @@ public class MainManager : MonoBehaviour
     // user_data object meant for storing and retrieving info
     UserData userData;
 
+    SurveyManager survey;
+    BmiCalories bmiCalories;
+
+    //private double bmi;
+    //private double calories;
+    public double BMI;
+    public double CALORIES;
+
     public void SwitchSegment(int switchTo)
     {
         //teleport camera to position
@@ -49,23 +57,31 @@ public class MainManager : MonoBehaviour
         SynchUserData();
         Debug.Log(userData.ToString());
 
+        bmiCalories = new BmiCalories();
+
         SwitchSegment(currentSegment);
         UpdateInfo();
-    }
+    }   
 
     public void UpdateInfo()
     {
+
         user.text = "User: " + c.ReturnUsername(userData.id_user);
         c.UpdateUserData(userData);
 
+        BMI = bmiCalories.CalculateBMI(userData.height, userData.weight);
+        //Need to fix Calories
+        //CALORIES = bmiCalories.CalculateDailyCalories(userData, survey.ReturnYear());
+        //Debug.Log("Year is: " + survey.year);
         info.text = $"Height: {userData.height}\n" +
                     $"Weight: {userData.weight}\n" +
                     $"Gender: {userData.GetGenderString()}\n" +
                     $"Goal: {userData.GetGoalString()}\n" +
                     $"Physical Activity: {userData.physical_activity}\n" +
                     $"Date of Birth: {userData.date_of_birth}\n" +
-                    $"Creation date: {userData.creation_date.Substring(0, 9)}";
-
+                    $"Creation date: {userData.creation_date.Substring(0, 9)}\n" +
+                    $"BMI: {BMI}";
+                    //$"Daily Calories: {CALORIES}";
     }
 
     // created this function to be called after pressing back on settings edit
