@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Prisijungimas.unity
+    path: Assets/Login.unity
     guid: d62f43d5121778f488de80f3b1e3afd5
   - enabled: 1
     path: Assets/Survey.unity

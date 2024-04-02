@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
 /// <summary>
 /// Klasė skirta naudoti bendravimui su duomenu baze.
 /// </summary>
-public class ClientMethods : IClientInterface
+public class ClientMethods// : IClientInterface
 {
 	private readonly DatabaseMethods _databaseMethods;
 
@@ -14,63 +12,71 @@ public class ClientMethods : IClientInterface
 		this._databaseMethods = databaseMethods;
 	}
 
-    /// <summary>
-    /// Prisijungimo patvirtinimo metodas
-    /// </summary>
-    /// <param name="username">Vartotojo ivestas vardas UI elemente</param>
-    /// <param name="password">Vartotojo ivestas slaptazodis UI elemente</param>
-    /// <param name="constring">DB prisijungimo eilute</param>
-    /// <param name="id">Vartotojo grazintas ID</param>
-    /// <returns>Vartotojo ID, -1 jeigu nera vartotojo</returns>
-    public int Login(string username, string password, out int id, string constring)
+   /// <summary>
+   /// Login confirmation methid
+   /// </summary>
+   /// <param name="username">Account username</param>
+   /// <param name="password">Account password</param>
+   /// <returns>Returns id if successful, otherwise returns -1</returns>
+    public int Login(string username, string password)
 	{
-		id = _databaseMethods.Login(username, password, out id, constring);
-		return id;
+        return _databaseMethods.Login(username, password);
 	}
+
     /// <summary>
-    /// Naujo vartotojo registracijos metodas
+    /// Register user in database
     /// </summary>
-    /// <param name="email">Vartotojo pateiktas el. pastas</param>
-    /// <param name="name">Vartotojo prisijungimo vardas</param>
-    /// <param name="password">Vartotojo slaptažodis</param>
-    /// <param name="constring">DB prisijungimo eilute</param>
-    /// <returns>True, jei pridėtas naujas irašas. False kitais atvejais</returns>
-    public bool Register(string email, string name, string password, string constring)
+    /// <param name="email">Account email</param>
+    /// <param name="username">Account username</param>
+    /// <param name="password">Account password</param>
+    /// <returns>If user account was created successfully</returns>
+    public bool RegisterUser(string email, string username, string password)
     {
-        return _databaseMethods.Register(email, name, password, constring);
+        return _databaseMethods.RegisterUser(email, username, password);
     }
 
-    public void InsertRegisterPlaceholder(int id, string constring)
+    public void InsertUserData(UserData userData)
     {
-        _databaseMethods.InsertRegisterPlaceholder(id, constring);
-    }
-    public void UpdateProfile(int id, string gender, double height, double weight, string goal, string dateOfBirth, int activity, string constring)
-    {
-        _databaseMethods.UpdateProfile(id, gender, height, weight, goal,dateOfBirth,activity, constring);
+        _databaseMethods.InsertUserData(userData);
     }
 
-    public bool CheckSurveyCompleted(int id, string constring)
+    public void UpdateUserData(UserData userData)
     {
-        return _databaseMethods.CheckSurveyCompleted(id, constring);
+        _databaseMethods.UpdateUserData(userData);
     }
 
-    public string ReturnUserData(int id, string constring)
+    public bool CheckIfSurveyCompleted(int id)
     {
-        return _databaseMethods.ReturnUserData(id, constring); ;
+        return _databaseMethods.CheckIfSurveyCompleted(id);
     }
 
-    public string ReturnUsername(int id, string constring)
+    public string ReturnUsername(int id)
     {
-        return _databaseMethods.ReturnUsername(id, constring); ;
+        return _databaseMethods.ReturnUsername(id); ;
     }
 
-    public List<FoodClass> ReturnFoodList(string constring)
+    public List<FoodClass> ReturnFoodList()
     {
-        return _databaseMethods.ReturnFoodList(constring);
+        return _databaseMethods.ReturnFoodList();
     }
 
-    public bool CheckIfUserExists(string username, string constring)
+    public bool IsUsernameTaken(string username)
     {
-        return _databaseMethods.CheckIfUserExists(username, constring);
+        return _databaseMethods.IsUsernameTaken(username);
+    }
+
+    public bool IsEmailInUse(string email)
+    {
+        return _databaseMethods.IsEmailInUse(email);
+    }
+
+    public bool IsPasswordCorrect(string username, string email)
+    {
+        return _databaseMethods.IsPasswordCorrect(username, email);
+    }
+
+    public bool InsertUserAllergy(int id_user, int id_allergy)
+    {
+        return _databaseMethods.InsertUserAllergy(id_user, id_allergy);
     }
 }

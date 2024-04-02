@@ -7,9 +7,9 @@ using Mono.Data.Sqlite;
 
 public class DatabaseMethods
 {
-    public int Login(string username, string password, out int id, string constring)
+    public int Login(string username, string password)
     {
-        id = -1;
+        int id = -1;
         try
         {
             DBManager.OpenConnection();
@@ -19,25 +19,22 @@ public class DatabaseMethods
 
             // username parameter
             IDbDataParameter p_username = command_login.CreateParameter();
-            p_username.ParameterName = "@expr1";
-            p_username.Value = username;
+            p_username.ParameterName = "@expr1"; p_username.Value = username;
             command_login.Parameters.Add(p_username);
 
             // password parameter
             IDbDataParameter p_password = command_login.CreateParameter();
-            p_password.ParameterName = "@expr2";
-            p_password.Value = password;
+            p_password.ParameterName = "@expr2"; p_password.Value = password;
             command_login.Parameters.Add(p_password);
 
             using (IDataReader reader = command_login.ExecuteReader())
             {
-                if (reader.Read() != false)
+                if (reader.Read())
                 {
                     id = int.Parse(reader[0].ToString());
                     return id;
                 }
-                else
-                    id = -1;
+
                 return id;
             }
 
@@ -58,7 +55,7 @@ public class DatabaseMethods
         }
     }
 
-    public bool Register(string email, string username, string password, string constring)
+    public bool RegisterUser(string email, string username, string password)
     {
         try
         {
@@ -84,32 +81,8 @@ public class DatabaseMethods
             command_register.Parameters.Add(p_password);
 
             int rowCount = command_register.ExecuteNonQuery();
+            return rowCount > 0;
 
-            // adds a placeholder for user_data --------------------------------
-            IDbCommand command_select = DBManager.connection.CreateCommand();
-            command_select.CommandText =
-                "SELECT id_user FROM user WHERE" +
-                "username = @expr1 AND " +
-                "password = @expr2;";
-
-            command_select.Parameters.Add(p_username);
-            command_select.Parameters.Add(p_password);
-
-            int id = -1;
-            using (IDataReader reader = command_select.ExecuteReader())
-            {
-                if (reader.Read() != false)
-                {
-                    id = int.Parse(reader[0].ToString());
-                }
-            }
-            if (rowCount > 0)
-            {
-                InsertRegisterPlaceholder(id, constring);
-                return true;
-            }
-            else
-                return false;
         }
         catch (SqliteException e)
         {
@@ -118,7 +91,7 @@ public class DatabaseMethods
         finally { DBManager.CloseConnection(); }
     }
 
-    public void InsertRegisterPlaceholder(int id, string constring)
+    public void InsertUserData(UserData userData)
     {
         try
         {
@@ -127,11 +100,14 @@ public class DatabaseMethods
             command_insert.CommandText =
                 "INSERT INTO user_data" +
                 "(id_user, height, weight, gender, goal, physical_activity, date_of_birth)" +
-                " VALUES(@expr1, 0.0, 0.0, 'Male', 'Lose weight', 1, CURRENT_TIMESTAMP);";
-
-            IDbDataParameter p_id = command_insert.CreateParameter();
-            p_id.ParameterName = "@expr1"; p_id.Value = id;
-            command_insert.Parameters.Add(p_id);
+                " VALUES("
+                + userData.id_user + ", "
+                + userData.height + ", "
+                + userData.weight + ", " +
+                "'" + userData.GetGenderString() + "', " +
+                "'" + userData.GetGoalString() + "', "
+                + userData.physical_activity + ", '"
+                + userData.date_of_birth + "');";
 
             command_insert.ExecuteNonQuery();
         }
@@ -142,10 +118,29 @@ public class DatabaseMethods
         finally { DBManager.CloseConnection(); }
     }
 
-    public void UpdateProfile(int id, string gender, double height, double weight, string goal, string dateOfBirth, int activity, string constring)
+    public bool InsertUserAllergy(int id_user, int id_allergy)
+    {
+        try
+        {
+            DBManager.OpenConnection();
+            IDbCommand command_insert = DBManager.connection.CreateCommand();
+            command_insert.CommandText =
+                "INSERT INTO user_selected_allergies" +
+                "(id_user, id_allergy)" +
+                " VALUES(" + id_user + ", " + id_allergy + ");";
+
+            return command_insert.ExecuteNonQuery() > 0;
+        }
+        catch (SqliteException e)
+        {
+            System.Console.WriteLine(e.Message); return false;
+        }
+        finally { DBManager.CloseConnection(); }
+    }
+
+    public void UpdateUserData(UserData userData)
     {
         //pakeisti kai prideti menesio ir dienos pasirinkimai.(metodas sukurti YYYY-mm-dd string);
-        string year = dateOfBirth.ToString();
         try
         {
             DBManager.OpenConnection();
@@ -160,31 +155,31 @@ public class DatabaseMethods
 
 
             IDbDataParameter p_id = command_update.CreateParameter();
-            p_id.ParameterName = "@expr1"; p_id.Value = id;
+            p_id.ParameterName = "@expr1"; p_id.Value = userData.id_user;
             command_update.Parameters.Add(p_id);
 
             IDbDataParameter p_height = command_update.CreateParameter();
-            p_height.ParameterName = "@expr2"; p_height.Value = height;
+            p_height.ParameterName = "@expr2"; p_height.Value = userData.height;
             command_update.Parameters.Add(p_height);
 
             IDbDataParameter p_weight = command_update.CreateParameter();
-            p_weight.ParameterName = "@expr3"; p_weight.Value = weight;
+            p_weight.ParameterName = "@expr3"; p_weight.Value = userData.weight;
             command_update.Parameters.Add(p_weight);
 
             IDbDataParameter p_gender = command_update.CreateParameter();
-            p_gender.ParameterName = "@expr4"; p_gender.Value = gender;
+            p_gender.ParameterName = "@expr4"; p_gender.Value = userData.GetGenderString();
             command_update.Parameters.Add(p_gender);
 
             IDbDataParameter p_goal = command_update.CreateParameter();
-            p_goal.ParameterName = "@expr5"; p_goal.Value = goal;
+            p_goal.ParameterName = "@expr5"; p_goal.Value = userData.GetGoalString();
             command_update.Parameters.Add(p_goal);
 
             IDbDataParameter p_activity = command_update.CreateParameter();
-            p_activity.ParameterName = "@expr6"; p_activity.Value = activity;
+            p_activity.ParameterName = "@expr6"; p_activity.Value = userData.physical_activity;
             command_update.Parameters.Add(p_activity);
 
             IDbDataParameter p_dateOfBirth = command_update.CreateParameter();
-            p_dateOfBirth.ParameterName = "@expr7"; p_dateOfBirth.Value = dateOfBirth;
+            p_dateOfBirth.ParameterName = "@expr7"; p_dateOfBirth.Value = userData.date_of_birth;
             command_update.Parameters.Add(p_dateOfBirth);
 
             command_update.ExecuteNonQuery();
@@ -193,54 +188,17 @@ public class DatabaseMethods
         finally { DBManager.CloseConnection(); }
     }
 
-    private string BuildString(string[] array)
+    public bool CheckIfSurveyCompleted(int id_user)
     {
-        int length = array.Length;
-        StringBuilder sBuilder = new StringBuilder();
-        for (int i = 0; i < length; i++)
-        {
-            array[i].Replace(',', '.');
-            sBuilder.Append(array[i]).Append(';');
-        }
-        Debug.Log(sBuilder.ToString());
-        return sBuilder.ToString();
-    }
-
-    public bool CheckSurveyCompleted(int id, string constring)
-    {
-        string PlaceholderString = "0,00;0,00;Male;1;";
-        bool result = false;
-
         try
         {
             DBManager.OpenConnection();
             IDbCommand command_check = DBManager.connection.CreateCommand();
-
             command_check.CommandText =
-                "SELECT height, weight, gender, physical_activity " +
-                "FROM user_data " +
-                "WHERE id_user = @expr1;";
+                "SELECT COUNT(*) FROM user_data WHERE id_user = " + id_user + ";";
 
-
-            IDbDataParameter p_id = command_check.CreateParameter();
-            p_id.ParameterName = "@expr1"; p_id.Value = id;
-            command_check.Parameters.Add(p_id);
-
-            using (IDataReader reader = command_check.ExecuteReader())
-            {
-                if (reader.Read())
-                {
-                    string height = reader.GetValue(0).ToString();
-                    string weight = reader.GetValue(1).ToString();
-                    string gender = reader.GetValue(2).ToString();
-                    string physicalActivity = reader.GetValue(3).ToString();
-                    string[] array = { height, weight, gender, physicalActivity };
-                    string currentString = BuildString(array);
-                    result = (currentString == PlaceholderString) ? false : true;
-                }
-
-            }
-            return result;
+            int count = Convert.ToInt32(command_check.ExecuteScalar());
+            return count > 0;
         }
         catch (SqliteException e)
         {
@@ -253,67 +211,21 @@ public class DatabaseMethods
         }
     }
 
-    public string ReturnUserData(int id, string constring)
+    public string ReturnUsername(int id)
     {
-        string PlaceholderString = "0,00;0,00;Male;1;";
         string result = "";
 
         try
         {
             DBManager.OpenConnection();
             IDbCommand command_return = DBManager.connection.CreateCommand();
-            command_return.CommandText =
-                "SELECT id_user, height, weight, gender, goal, physical_activity, date_of_birth, creation_date FROM user_data WHERE id_user = @expr1;";
+            command_return.CommandText = "SELECT username FROM user WHERE id_user = @expr1;";
+
 
             IDbDataParameter p_id = command_return.CreateParameter();
             p_id.ParameterName = "@expr1"; p_id.Value = id;
             command_return.Parameters.Add(p_id);
 
-            using (IDataReader reader = command_return.ExecuteReader())
-            {
-                if (reader.Read())
-                {
-                    string height = reader.GetValue(1).ToString();
-                    string weight = reader.GetValue(2).ToString();
-                    string gender = reader.GetValue(3).ToString();
-                    string goal = reader.GetValue(4).ToString();
-                    string physicalActivity = reader.GetValue(5).ToString();
-                    string dateBirth = reader.GetValue(6).ToString();
-                    string creationDate = reader.GetValue(7).ToString();
-                    string[] array = { height, weight, gender, goal, physicalActivity, dateBirth, creationDate };
-                    string currentString = BuildString(array);
-                    result = currentString;
-                }
-            }
-            return result;
-        }
-        catch (SqliteException e)
-        {
-            Console.WriteLine(e.Message);
-            return "Error!";
-        }
-
-        finally
-        {
-            DBManager.CloseConnection();
-        }
-    }
-
-    public string ReturnUsername(int id, string constring)
-    {
-        string result = "";
-
-        try
-        {
-            DBManager.OpenConnection();
-            IDbCommand command_return = DBManager.connection.CreateCommand();
-            command_return.CommandText = "SELECT `user`.`username`" +
-                " FROM `food_db`.`user` WHERE `user`.`id_user` = @expr1;";
-
-
-            IDbDataParameter p_id = command_return.CreateParameter();
-            p_id.ParameterName = "@expr1";
-            p_id.Value = id;
 
             using (IDataReader reader = command_return.ExecuteReader())
             {
@@ -337,7 +249,7 @@ public class DatabaseMethods
 
     }
 
-    public List<FoodClass> ReturnFoodList(string constring)
+    public List<FoodClass> ReturnFoodList()
     {
         try
         {
@@ -372,7 +284,7 @@ public class DatabaseMethods
 
     }
 
-    public bool CheckIfUserExists(string username, string constring)
+    public bool IsUsernameTaken(string username)
     {
         try
         {
@@ -383,6 +295,62 @@ public class DatabaseMethods
             IDbDataParameter p_username = command_check.CreateParameter();
             p_username.ParameterName = "@expr1"; p_username.Value = username;
             command_check.Parameters.Add(p_username);
+
+            int count = Convert.ToInt32(command_check.ExecuteScalar());
+            return count > 0;
+        }
+        catch (SqliteException e)
+        {
+            Console.WriteLine(e.Message);
+            return false;
+        }
+        finally
+        {
+            DBManager.CloseConnection();
+        }
+    }
+
+    public bool IsEmailInUse(string email)
+    {
+        try
+        {
+            DBManager.OpenConnection();
+            IDbCommand command_check = DBManager.connection.CreateCommand();
+            command_check.CommandText = "SELECT COUNT(*) FROM user WHERE email = @expr1;";
+
+            IDbDataParameter p_email = command_check.CreateParameter();
+            p_email.ParameterName = "@expr1"; p_email.Value = email;
+            command_check.Parameters.Add(p_email);
+
+            int count = Convert.ToInt32(command_check.ExecuteScalar());
+            return count > 0;
+        }
+        catch (SqliteException e)
+        {
+            Console.WriteLine(e.Message);
+            return false;
+        }
+        finally
+        {
+            DBManager.CloseConnection();
+        }
+    }
+
+    public bool IsPasswordCorrect(string username, string password)
+    {
+        try
+        {
+            DBManager.OpenConnection();
+            IDbCommand command_check = DBManager.connection.CreateCommand();
+            command_check.CommandText = "SELECT COUNT(*) FROM user WHERE username = @expr1 AND password = @expr2;";
+
+            IDbDataParameter p_username = command_check.CreateParameter();
+            p_username.ParameterName = "@expr1"; p_username.Value = username;
+            command_check.Parameters.Add(p_username);
+
+            IDbDataParameter p_password = command_check.CreateParameter();
+            p_password.ParameterName = "@expr2"; p_password.Value = password;
+            command_check.Parameters.Add(p_password);
 
             int count = Convert.ToInt32(command_check.ExecuteScalar());
             return count > 0;

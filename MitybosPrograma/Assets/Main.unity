@@ -3889,11 +3889,11 @@ MonoBehaviour:
     m_Options:
     - m_Text: Lose weight
       m_Image: {fileID: 0}
+    - m_Text: Maintain weight
+      m_Image: {fileID: 0}
     - m_Text: Gain weight
       m_Image: {fileID: 0}
     - m_Text: Gain muscle
-      m_Image: {fileID: 0}
-    - m_Text: Maintain weight
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8769,12 +8769,6 @@ MonoBehaviour:
   currentSegment: 2
   user: {fileID: 986402756}
   info: {fileID: 1060218265}
-  height: 0
-  weight: 0
-  gender: 
-  goal: 
-  activity: 0
-  birth: 0
   currHeight: {fileID: 1440780346}
 --- !u!1 &1174628608
 GameObject:
@@ -15077,11 +15071,11 @@ MonoBehaviour:
     m_Options:
     - m_Text: Lose weight
       m_Image: {fileID: 0}
+    - m_Text: Maintain weight
+      m_Image: {fileID: 0}
     - m_Text: Gain weight
       m_Image: {fileID: 0}
     - m_Text: Gain muscle
-      m_Image: {fileID: 0}
-    - m_Text: Maintain weight
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:

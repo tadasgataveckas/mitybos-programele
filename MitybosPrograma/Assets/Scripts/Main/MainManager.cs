@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,16 +9,11 @@ using UnityEngine.UI;
 public class MainManager : MonoBehaviour
 {
     public GameObject camera;
-
     public List<GameObject> segments;
-
     public List<GameObject> segmentButtons;
-
     public int currentSegment = 0;
+    //public DatabaseMethods databaseMethods;
 
-    public DatabaseMethods databaseMethods;
-
-    string constring = "Server=localhost;User ID=root;Password=root;Database=food_db";
     // User survey info
 
     public TextMeshPro user;
@@ -27,17 +22,16 @@ public class MainManager : MonoBehaviour
 
     ClientMethods c = new ClientMethods(new DatabaseMethods());
 
-    public static int id;
+    // user_data object meant for storing and retrieving info
+    UserData userData;
 
-    // User data for editing
-    public double height;
-    public double weight;
-    public string gender;
-    public string goal;
-    public int activity;
-    public string birth;
+    SurveyManager survey;
+    BmiCalories bmiCalories;
 
-    //int currentYear = DateTime.Now.Year;
+    //private double bmi;
+    //private double calories;
+    public double BMI;
+    public double CALORIES;
 
     public void SwitchSegment(int switchTo)
     {
@@ -55,152 +49,84 @@ public class MainManager : MonoBehaviour
 
     void Start()
     {
+        // gets stored user id
+        int id_user = SessionManager.GetIdKey();
+
+        // retrieves user_data into object
+        userData = new UserData(id_user);
+        SynchUserData();
+        Debug.Log(userData.ToString());
+
+        bmiCalories = new BmiCalories();
+
         SwitchSegment(currentSegment);
-
-        user.text = "User: " + c.ReturnUsername(LoginManager.id, constring);
-        string userDataString = c.ReturnUserData(LoginManager.id, constring);
-
-        Debug.Log("Some string is: " + userDataString);
-
-        string[] userDataParts = userDataString.Split(';');
-        info.text = $"Height: {userDataParts[0]}\n" +
-                    $"Weight: {userDataParts[1]}\n" +
-                    $"Gender: {userDataParts[2]}\n" +
-                    $"Goal: {userDataParts[3]}\n" +
-                    $"Physical Activity: {userDataParts[4]}\n" +
-                    $"Date of Birth: {userDataParts[5]}\n" +
-                    $"Creation Date: {userDataParts[6]}";
-
-        currHeight.text = userDataParts[0];
-        double.TryParse(userDataParts[0], out height);
-        double.TryParse(userDataParts[1], out weight);
-        gender = userDataParts[2];
-        goal = userDataParts[3];
-        int.TryParse(userDataParts[4], out activity);
-        birth = userDataParts[5];
-
-
-        Debug.Log("height is: " + height);
-        Debug.Log("weight is: " + weight);
-        Debug.Log("gender is: " + gender);
-        Debug.Log("goal is: " + goal);
-        Debug.Log("phy ac is: " + activity);
-        Debug.Log("birth is: " + birth);
-
-        //height = userDataParts[0];
-        //weight = userDataParts[1];
-        //gender = userDataParts[2];
-        //goal = userDataParts[3];
-        //activity = userDataParts[4];
-        //age = userDataParts[5];
-    }
+        UpdateInfo();
+    }   
 
     public void UpdateInfo()
     {
-        user.text = "User: " + c.ReturnUsername(LoginManager.id, constring);
 
-        info.text = $"Height: {height}\n" +
-                    $"Weight: {weight}\n" +
-                    $"Gender: {gender}\n" +
-                    $"Goal: {goal}\n" +
-                    $"Physical Activity: {activity}\n" +
-                    $"Date of Birth: {birth}\n";
-        //$"Creation Date: {userDataParts[6]}";
-        c.UpdateProfile(LoginManager.id, gender, height, weight, goal, birth, activity, constring);
+        user.text = "User: " + c.ReturnUsername(userData.id_user);
+        c.UpdateUserData(userData);
+
+        BMI = bmiCalories.CalculateBMI(userData.height, userData.weight);
+        //Need to fix Calories
+        //CALORIES = bmiCalories.CalculateDailyCalories(userData, survey.ReturnYear());
+        //Debug.Log("Year is: " + survey.year);
+        info.text = $"Height: {userData.height}\n" +
+                    $"Weight: {userData.weight}\n" +
+                    $"Gender: {userData.GetGenderString()}\n" +
+                    $"Goal: {userData.GetGoalString()}\n" +
+                    $"Physical Activity: {userData.physical_activity}\n" +
+                    $"Date of Birth: {userData.date_of_birth}\n" +
+                    $"Creation date: {userData.creation_date.Substring(0, 9)}\n" +
+                    $"BMI: {BMI}";
+                    //$"Daily Calories: {CALORIES}";
+    }
+
+    // created this function to be called after pressing back on settings edit
+    public void SynchUserData()
+    {
+        userData.SynchData();
     }
 
     public void InputHeight(string newHeight)
     {
-        if (double.TryParse(newHeight, out height))
+        if (double.TryParse(newHeight, out userData.height))
         {
-            Debug.Log("Edited height is: " + height);
+            Debug.Log("Edited height is: " + userData.height);
         }
     }
 
     public void InputWeight(string newWeight)
     {
-        if (double.TryParse(newWeight, out weight))
+        if (double.TryParse(newWeight, out userData.weight))
         {
-            Debug.Log("Edited weight is: " + weight);
+            Debug.Log("Edited weight is: " + userData.weight);
         }
     }
 
     public void InputGender(int val)
     {
-        if (val == 0)
-        {
-            gender = "Male";
-            Debug.Log("Edited gender is: " + gender);
-        }
-        if (val == 1)
-        {
-            gender = "Female";
-            Debug.Log("Edited gender is: " + gender);
-        }
-        if (val == 2)
-        {
-            gender = "Other";
-            Debug.Log("Edited gender is: " + gender);
-        }
-
+        userData.gender = (UserData.Gender)(val + 1);
+        Debug.Log("Edited gender is: " + userData.gender);
     }
 
     public void InputGoal(int val1)
     {
-        if (val1 == 0)
-        {
-            goal = "Lose weight";
-            Debug.Log("Edited goal is: " + goal);
-        }
-        if (val1 == 1)
-        {
-            goal = "Gain weight";
-            Debug.Log("Edited goal is: " + goal);
-        }
-        if (val1 == 2)
-        {
-            goal = "Gain muscle";
-            Debug.Log("Edited goal is: " + goal);
-        }
-        if (val1 == 3)
-        {
-            goal = "Maintain weight";
-            Debug.Log("Edited goal is: " + goal);
-        }
+        userData.goal = (UserData.Goal)(val1 + 1);
+        Debug.Log("Edited goal is: " + userData.goal);
     }
 
     public void InputActivity(int val2)
     {
-        if (val2 == 0)
-        {
-            activity = 1;
-            Debug.Log("Edited activity is: " + activity);
-        }
-        if (val2 == 1)
-        {
-            activity = 2;
-            Debug.Log("Edited activity is: " + activity);
-        }
-        if (val2 == 2)
-        {
-            activity = 3;
-            Debug.Log("Edited activity is: " + activity);
-        }
-        if (val2 == 3)
-        {
-            activity = 4;
-            Debug.Log("Edited activity is: " + activity);
-        }
-        if (val2 == 4)
-        {
-            activity = 5;
-            Debug.Log("Edited activity is: " + activity);
-        }
+        userData.physical_activity = (val2 + 1);
+        Debug.Log("Edited physical activity is: " + userData.physical_activity);
     }
 
     public void InputBirth(string newBirth)
     {
-        birth = newBirth;
-        Debug.Log("Edited birth is: " + birth);
+        userData.date_of_birth = newBirth;
+        Debug.Log("Edited birth is: " + userData.date_of_birth);
     }
 }

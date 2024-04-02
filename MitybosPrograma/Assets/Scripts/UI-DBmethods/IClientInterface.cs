@@ -4,18 +4,16 @@ using UnityEngine;
 
 public interface IClientInterface
 {
-    int Login(string name, string password, out int id, string constring);
-    bool Register(string email, string name, string password, string constring);
+    int Login(string name, string password, out int id);
+    bool RegisterUser(string email, string name, string password);
 
-    void InsertRegisterPlaceholder(int id, string constring);
-    void UpdateProfile(int id, string gender, double height, double weight, string goal, string dateOfBirth, int activity, string constring);
+    void InsertUserData(UserData userData);
+    void UpdateUserData(UserData userData);
 
-    bool CheckSurveyCompleted(int id, string constring);
+    bool CheckIfSurveyCompleted(int id);
 
-    string ReturnUserData(int id, string constring);
+    string ReturnUsername(int id);
 
-    string ReturnUsername(int id, string constring);
-
-    List<FoodClass> ReturnFoodList(string constring);
-    bool CheckIfUserExists(string username, string constring);
+    List<FoodClass> ReturnFoodList();
+    bool IsUsernameTaken(string username);
 }
