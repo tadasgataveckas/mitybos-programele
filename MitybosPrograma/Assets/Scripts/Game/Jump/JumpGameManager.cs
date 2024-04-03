@@ -10,6 +10,9 @@ public class JumpGameManager : MonoBehaviour
     public static JumpGameManager Instance; // Singleton instance
 
     public GameObject platformPrefab;
+    public GameObject oneTimePlatformPrefab;
+    public GameObject highJumpPlatformPrefab;
+    public GameObject relaxPlatformPrefab;
     public int platformCount = 300;
     //
     public TextMeshProUGUI score;
@@ -18,6 +21,8 @@ public class JumpGameManager : MonoBehaviour
 
     public Transform player;
     public Transform cameraTransform;
+
+    private int spawnRelaxStationsPerXft = 100;
 
     void Awake()
     {
@@ -30,18 +35,43 @@ public class JumpGameManager : MonoBehaviour
             Debug.LogWarning("Multiple instances of JumpGameManager detected!");
             Destroy(gameObject);
         }
+        CountCameraSize();
     }
 
     void Start()
     {
-        CountCameraSize();
         Vector3 spawnPosition = new Vector3();
 
         for (int i = 0; i < platformCount; i++)
         {
             spawnPosition.y += Random.Range(.2f, 1f);
-            spawnPosition.x = Random.Range(-1f, 1f);
-            Instantiate(platformPrefab, spawnPosition, Quaternion.identity);
+            spawnPosition.x = Random.Range(0.2f-screenWidthInUnits/2, screenWidthInUnits / 2 - 0.2f);
+            // Relax Station
+            if ((int)spawnPosition.y % spawnRelaxStationsPerXft == 0 && (int)spawnPosition.y != 0)
+            {
+                Instantiate(relaxPlatformPrefab, new Vector3(0f, spawnPosition.y, 0f), Quaternion.identity);
+                spawnPosition.y += 2f;
+            } 
+            else // Regular
+            {
+                float percentage = Random.Range(0f, 100f);
+                // One time platform, 30%
+                if (percentage < 30)
+                {
+                    Instantiate(oneTimePlatformPrefab, spawnPosition, Quaternion.identity);
+                }
+                // High jump platform, 10%
+                else if (percentage < 40) 
+                {
+                    Instantiate(highJumpPlatformPrefab, spawnPosition, Quaternion.identity);
+                }
+                // Regular, 60%
+                else
+                {
+                    Instantiate(platformPrefab, spawnPosition, Quaternion.identity);
+                }
+                
+            }
         }
     }
 
