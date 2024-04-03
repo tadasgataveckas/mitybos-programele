@@ -19,6 +19,11 @@ public class MainManager : MonoBehaviour
     public TextMeshPro user;
     public TextMeshPro info;
     public TextMeshProUGUI currHeight;
+    public TextMeshProUGUI currWeight;
+    public TextMeshProUGUI currGender;
+    public TextMeshProUGUI currGoal;
+    public TextMeshProUGUI currPA;
+    public TextMeshProUGUI currBirth;
 
     ClientMethods c = new ClientMethods(new DatabaseMethods());
 
@@ -81,7 +86,19 @@ public class MainManager : MonoBehaviour
                     $"Date of Birth: {userData.date_of_birth}\n" +
                     $"Creation date: {userData.creation_date.Substring(0, 9)}\n" +
                     $"BMI: {BMI}";
-                    //$"Daily Calories: {CALORIES}";
+        //$"Daily Calories: {CALORIES}";
+
+        currHeight.text = userData.height.ToString();
+        currWeight.text = userData.weight.ToString();
+        currGender.text = userData.GetGenderString();
+        //Goal not showing
+        currGoal.text = userData.GetGoalString();
+        //Debug.Log(userData.GetGoalString());
+        //Not working
+        currPA.text = userData.physical_activity.ToString();
+        currBirth.text = userData.date_of_birth;
+
+
     }
 
     // created this function to be called after pressing back on settings edit
@@ -89,6 +106,11 @@ public class MainManager : MonoBehaviour
     {
         userData.SynchData();
     }
+
+    //public void CurrentHeight()
+    //{
+    //    currHeight.text = userData.height.ToString();
+    //}
 
     public void InputHeight(string newHeight)
     {
@@ -129,4 +151,6 @@ public class MainManager : MonoBehaviour
         userData.date_of_birth = newBirth;
         Debug.Log("Edited birth is: " + userData.date_of_birth);
     }
+
+    
 }

@@ -80,8 +80,9 @@
     <Compile Include="Assets\UI\DatePicker\DatePicker_InputField.cs" />
     <Compile Include="Assets\UI\TableLayout\Example\DynamicRowsExampleController.cs" />
     <Compile Include="Assets\UI\DatePicker\TextMesh Pro\DatePicker_TextMeshProUtilities.cs" />
-    <Compile Include="Assets\Scripts\Game\MovePlayer.cs" />
+    <Compile Include="Assets\Scripts\Game\Harvest\MovePlayer.cs" />
     <Compile Include="Assets\Scripts\Main\CameraScroll.cs" />
+    <Compile Include="Assets\Scripts\Calculations\BmiCalories.cs" />
     <Compile Include="Assets\Scripts\Login\LoginManager.cs" />
     <Compile Include="Assets\UI\TableLayout\TableLayout.cs" />
     <Compile Include="Assets\Scripts\unity_auth\UILogin.cs" />
@@ -98,7 +99,7 @@
     <Compile Include="Assets\UI\DatePicker\DatePicker_HoldButton.cs" />
     <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\BranchAndBound.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_DayButton.cs" />
-    <Compile Include="Assets\Scripts\Game\MovementJoystick.cs" />
+    <Compile Include="Assets\Scripts\Game\Harvest\MovementJoystick.cs" />
     <Compile Include="Assets\Scripts\Models\Allergy.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_Button.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_DayHeader.cs" />
@@ -112,7 +113,10 @@
     <Compile Include="Assets\Scripts\Models\UserData.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\DBManager.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerCache.cs" />
-    <Compile Include="Assets\Scripts\Calculations\BmiCalories.cs" />
+    <Compile Include="Assets\Scripts\Game\Jump\Platform.cs" />
+    <Compile Include="Assets\Scripts\Game\Jump\JumpGameManager.cs" />
+    <Compile Include="Assets\Scripts\Game\Jump\JumpPlayerController.cs" />
+    <Compile Include="Assets\Scripts\Game\Jump\JumpCameraFollow.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scripts\UI-DBmethods\plugins\sqlite3.dll" />
