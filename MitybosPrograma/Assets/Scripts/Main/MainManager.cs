@@ -12,26 +12,28 @@ public class MainManager : MonoBehaviour
     public List<GameObject> segments;
     public List<GameObject> segmentButtons;
     public int currentSegment = 0;
-    //public DatabaseMethods databaseMethods;
 
-    // User survey info
-
+    // Current User survey info in the edit fields
     public TextMeshPro user;
     public TextMeshPro info;
+
     public TextMeshProUGUI currHeight;
+    public TextMeshProUGUI currWeight;
+    public TextMeshProUGUI currGender;
+    public TextMeshProUGUI currGoal;
+    public TextMeshProUGUI currPA;
+    public TextMeshProUGUI currBirth;
 
     ClientMethods c = new ClientMethods(new DatabaseMethods());
 
     // user_data object meant for storing and retrieving info
     UserData userData;
 
-    SurveyManager survey;
+    // bmiCalories - class that calculates user's bmi index and number of daily calories
     BmiCalories bmiCalories;
-
-    //private double bmi;
-    //private double calories;
     public double BMI;
     public double CALORIES;
+    int year;
 
     public void SwitchSegment(int switchTo)
     {
@@ -45,7 +47,6 @@ public class MainManager : MonoBehaviour
         camera.GetComponent<CameraScroll>().minY = segments[currentSegment].GetComponent<SegmentInformation>().minYScroll;
         camera.GetComponent<CameraScroll>().maxY = segments[currentSegment].GetComponent<SegmentInformation>().maxYScroll;
     }
-
 
     void Start()
     {
@@ -69,10 +70,11 @@ public class MainManager : MonoBehaviour
         user.text = "User: " + c.ReturnUsername(userData.id_user);
         c.UpdateUserData(userData);
 
+        // Bmi and daily calories
         BMI = bmiCalories.CalculateBMI(userData.height, userData.weight);
-        //Need to fix Calories
-        //CALORIES = bmiCalories.CalculateDailyCalories(userData, survey.ReturnYear());
-        //Debug.Log("Year is: " + survey.year);
+        CALORIES = bmiCalories.CalculateDailyCalories(userData, Year());
+
+        Debug.Log("Year is: " + Year());
         info.text = $"Height: {userData.height}\n" +
                     $"Weight: {userData.weight}\n" +
                     $"Gender: {userData.GetGenderString()}\n" +
@@ -80,15 +82,25 @@ public class MainManager : MonoBehaviour
                     $"Physical Activity: {userData.physical_activity}\n" +
                     $"Date of Birth: {userData.date_of_birth}\n" +
                     $"Creation date: {userData.creation_date.Substring(0, 9)}\n" +
-                    $"BMI: {BMI}";
-                    //$"Daily Calories: {CALORIES}";
+                    $"BMI: {BMI}\n" +
+                    $"Daily Calories: {CALORIES}";
+
+        currHeight.text = userData.height.ToString();
+        currWeight.text = userData.weight.ToString();
+        currGender.text = userData.GetGenderString();
+        //Goal and PA not working
+        currGoal.text = userData.GetGoalString();        
+        currPA.text = userData.physical_activity.ToString();
+        currBirth.text = userData.date_of_birth;
+
+
     }
 
     // created this function to be called after pressing back on settings edit
     public void SynchUserData()
     {
         userData.SynchData();
-    }
+    }   
 
     public void InputHeight(string newHeight)
     {
@@ -128,5 +140,28 @@ public class MainManager : MonoBehaviour
     {
         userData.date_of_birth = newBirth;
         Debug.Log("Edited birth is: " + userData.date_of_birth);
+    }
+
+    /// <summary>
+    /// Transfering from birth date to year
+    /// </summary>
+    /// <returns></returns>
+    public int Year()
+    {
+        // Konvertuojame string'ą į DateTime objektą
+        DateTime dataObj;
+        if (DateTime.TryParseExact(userData.date_of_birth, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out dataObj))
+        {
+            // Ištraukiame metus
+            year = dataObj.Year;
+
+            // Spausdiname metus
+            Debug.Log("Konvertuoti metai: " + year);
+        }
+        else
+        {         
+            Debug.Log("Please write your birth date in correct form! (yyyy-MM-dd)");
+        }
+        return year;
     }
 }

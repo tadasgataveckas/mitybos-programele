@@ -256,9 +256,9 @@ public class SurveyManager : MonoBehaviour
                 error.text = "Please choose your goal to continue the survey!";
             }
             else if (currentSegment == 3 && !AHWEntered())
-            {
-                Debug.Log("Please fill in all required fields.");
-                error.text = "Please write all your physical data in correct form!";
+            {               
+                 Debug.Log("Please fill in all required fields.");
+                 error.text = "Please write all your physical data in correct form!";                
             }
             else
             {
@@ -330,7 +330,7 @@ public class SurveyManager : MonoBehaviour
 
     // Checking if survey parameters are correct
     private bool AHWEntered()
-    {
+    {        
         return (DateTime.TryParseExact(userData.date_of_birth, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out _)) &&
             (250 > userData.height && userData.height > 120) && (350 > userData.weight && userData.weight > 30);
     }
