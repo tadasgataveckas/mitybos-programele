@@ -38,18 +38,27 @@ public class MainManager : MonoBehaviour
     public void SwitchSegment(int switchTo)
     {
         //teleport camera to position
-        camera.transform.position = new Vector3(segments[switchTo].transform.position.x, 0, -10);
+        //camera.transform.position = new Vector3(segments[switchTo].transform.position.x, 0, -10);
+
+        //changed for canvas
+        for (int i = 0; i < segments.Count; i++)
+        {
+            segments[i].SetActive(i == switchTo); // Turns on chosen segment, turns off other segments
+        }
+
         currentSegment = switchTo;
         for (int i = 0; i < segmentButtons.Count; i++)
         {
             segmentButtons[i].GetComponent<ButtonTransitions>().SetSelectedSegment(i == switchTo);
         }
-        camera.GetComponent<CameraScroll>().minY = segments[currentSegment].GetComponent<SegmentInformation>().minYScroll;
-        camera.GetComponent<CameraScroll>().maxY = segments[currentSegment].GetComponent<SegmentInformation>().maxYScroll;
+        //camera.GetComponent<CameraScroll>().minY = segments[currentSegment].GetComponent<SegmentInformation>().minYScroll;
+        //camera.GetComponent<CameraScroll>().maxY = segments[currentSegment].GetComponent<SegmentInformation>().maxYScroll;
     }
 
     void Start()
     {
+        SwitchSegment(currentSegment);
+
         // gets stored user id
         int id_user = SessionManager.GetIdKey();
 
@@ -60,7 +69,6 @@ public class MainManager : MonoBehaviour
 
         bmiCalories = new BmiCalories();
 
-        SwitchSegment(currentSegment);
         UpdateInfo();
     }   
 
