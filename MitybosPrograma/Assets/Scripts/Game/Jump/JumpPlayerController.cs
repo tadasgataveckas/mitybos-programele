@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class JumpPlayerController : MonoBehaviour
 {
     public float moveSpeed = 10f;
+    public float jumpForce = 8f;
     public Rigidbody2D rb;
     public Animator anim;
 
@@ -13,16 +14,21 @@ public class JumpPlayerController : MonoBehaviour
 
     //Player Movement
     [SerializeField] InputAction WASD;
+    [SerializeField] InputAction Jump;
     Vector2 movementInput;
 
     private void OnEnable()
     {
         WASD.Enable();
+        Jump.Enable();
+        Jump.performed += OnJumpPerformed;
     }
 
     private void OnDisable()
     {
         WASD.Disable();
+        Jump.Disable();
+        Jump.performed -= OnJumpPerformed;
     }
     //
 
@@ -45,6 +51,24 @@ public class JumpPlayerController : MonoBehaviour
     }
     public void Land() 
     {
+        if (rb.velocity.y == 0) { anim.SetBool("grounded", true); }
         anim.SetTrigger("land");
+    }
+
+    void JumpAction()
+    {
+        if (rb.velocity.y == 0)
+        {
+            anim.SetBool("grounded", false);
+            Vector2 velocity = rb.velocity;
+            velocity.y = jumpForce;
+            rb.velocity = velocity;
+        }
+    }
+
+    // Method to handle the performed event of Jump action
+    void OnJumpPerformed(InputAction.CallbackContext context)
+    {
+        JumpAction();
     }
 }

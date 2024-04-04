@@ -9,6 +9,12 @@ public class Platform : MonoBehaviour
     private JumpGameManager jumpGameManager;
     private float screenHeightInUnits;
 
+    // for not sending duplicate triggers
+    private bool hasTriggeredAnimation = false;
+
+    //Special Platform types:
+    public bool BreakAfterTouch = false;
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -21,9 +27,28 @@ public class Platform : MonoBehaviour
                 velocity.y = jumpForce;
                 rb.velocity = velocity;
             }
-            collision.gameObject.GetComponent<JumpPlayerController>().Land();
+            if (!hasTriggeredAnimation)
+            {
+                collision.gameObject.GetComponent<JumpPlayerController>().Land();
+                hasTriggeredAnimation = true;
+                StartCoroutine(ResetAnimationTriger(0.3f));
+            }
+
+            if(BreakAfterTouch)
+            {
+                Destroy(gameObject);
+            }
+            
         }
     }
+    // After delay
+    private IEnumerator ResetAnimationTriger(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        hasTriggeredAnimation = false; // Reset hasTriggeredAnimation after delay
+    }
+
+
 
     // When to destroy
 
@@ -35,7 +60,7 @@ public class Platform : MonoBehaviour
 
     void Update()
     {
-        if (jumpGameManager != null && jumpGameManager.player.position.y - screenHeightInUnits/2 - 0.5f > transform.position.y)
+        if (jumpGameManager != null && jumpGameManager.player.position.y - screenHeightInUnits > transform.position.y)
         {
             Destroy(gameObject);
         }
