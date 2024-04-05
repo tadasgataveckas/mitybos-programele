@@ -32,7 +32,7 @@ public class MainManager : MonoBehaviour
     // bmiCalories - class that calculates user's bmi index and number of daily calories
     BmiCalories bmiCalories;
     public double BMI;
-    public double CALORIES;
+    public static double CALORIES;
     int year;
 
     public void SwitchSegment(int switchTo)
