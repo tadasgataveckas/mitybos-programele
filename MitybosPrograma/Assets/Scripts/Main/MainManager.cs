@@ -14,8 +14,8 @@ public class MainManager : MonoBehaviour
     public int currentSegment = 0;
 
     // Current User survey info in the edit fields
-    public TextMeshPro user;
-    public TextMeshPro info;
+    public TextMeshProUGUI user;
+    public TextMeshProUGUI info;
 
     public TextMeshProUGUI currHeight;
     public TextMeshProUGUI currWeight;
@@ -74,7 +74,6 @@ public class MainManager : MonoBehaviour
 
     public void UpdateInfo()
     {
-
         user.text = "User: " + c.ReturnUsername(userData.id_user);
         c.UpdateUserData(userData);
 

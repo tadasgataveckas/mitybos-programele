@@ -12726,8 +12726,8 @@ MonoBehaviour:
   - {fileID: 1733226170}
   - {fileID: 1794593897}
   currentSegment: 2
-  user: {fileID: 986402756}
-  info: {fileID: 1060218265}
+  user: {fileID: 2003143169}
+  info: {fileID: 1536282608}
   currHeight: {fileID: 1277502372}
   currWeight: {fileID: 720790851}
   currGender: {fileID: 667790942}
