@@ -23,6 +23,7 @@ public class MainManager : MonoBehaviour
     public TextMeshProUGUI currGoal;
     public TextMeshProUGUI currPA;
     public TextMeshProUGUI currBirth;
+    public TextMeshProUGUI dailyCalories;
 
     ClientMethods c = new ClientMethods(new DatabaseMethods());
 
@@ -34,6 +35,9 @@ public class MainManager : MonoBehaviour
     public double BMI;
     public static double CALORIES;
     int year;
+
+    public GameObject food;
+    public float currCalories;    
 
     public void SwitchSegment(int switchTo)
     {
@@ -68,6 +72,7 @@ public class MainManager : MonoBehaviour
         Debug.Log(userData.ToString());
 
         bmiCalories = new BmiCalories();
+        food.GetComponent<FoodSearch>();       
 
         UpdateInfo();
     }   
@@ -100,7 +105,9 @@ public class MainManager : MonoBehaviour
         currPA.text = userData.physical_activity.ToString();
         currBirth.text = userData.date_of_birth;
 
-
+        currCalories = food.GetComponent<FoodSearch>().ReturnTotalKcal();
+        Debug.Log("Curr Calories: " + currCalories);
+        dailyCalories.text = currCalories + " / " + CALORIES + " cal";
     }
 
     // created this function to be called after pressing back on settings edit
@@ -171,4 +178,6 @@ public class MainManager : MonoBehaviour
         }
         return year;
     }
+
+    
 }

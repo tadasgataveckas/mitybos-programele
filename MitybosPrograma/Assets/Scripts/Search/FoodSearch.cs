@@ -165,7 +165,7 @@ public class FoodSearch : MonoBehaviour
         searchPanel.SetActive(false);
     }
 
-
+    public float allCalories;
     public void OnAddToEatenList()
     {
         if (selectedProduct != null)
@@ -183,6 +183,8 @@ public class FoodSearch : MonoBehaviour
             eatenProducts.Add(selectedProduct);
             Debug.Log(selectedProduct.Name + " added to eaten products list.");
             DisplayEatenProducts();
+            allCalories += selectedProduct.Kcal;
+            Debug.Log("All calories: " + allCalories);
         }
         else
         {
@@ -210,6 +212,43 @@ public class FoodSearch : MonoBehaviour
         Total_carbsText.text = "Total Carbs: " + totalCarbs.ToString() + "g";
         Totoal_fatText.text = "Total Fat: " + totalFat.ToString() + "g";
     }
+
+    public float ReturnTotalKcal()
+    {
+        return allCalories;
+        //float totalKcal = 0;
+        //float totalProtein = 0;
+        //float totalCarbs = 0;
+        //float totalFat = 0;
+
+        //foreach (ProductDetails product in eatenProducts)
+        //{
+        //    totalKcal += product.Kcal;
+        //    totalProtein += product.Protein;
+        //    totalCarbs += product.Carbs;
+        //    totalFat += product.Fat;
+        //}
+        //return totalKcal;
+    }
+
+    //public TMP_Text ReturnTotalKcalText()
+    //{
+    //    float totalKcal = 0;
+    //    float totalProtein = 0;
+    //    float totalCarbs = 0;
+    //    float totalFat = 0;
+
+    //    foreach (ProductDetails product in eatenProducts)
+    //    {
+    //        totalKcal += product.Kcal;
+    //        totalProtein += product.Protein;
+    //        totalCarbs += product.Carbs;
+    //        totalFat += product.Fat;
+    //    }
+
+    //    Total_kcalText.text = totalKcal.ToString();
+    //    return Total_kcalText; 
+    //}
 }
 
 
