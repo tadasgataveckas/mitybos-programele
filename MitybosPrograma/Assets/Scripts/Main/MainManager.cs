@@ -36,8 +36,8 @@ public class MainManager : MonoBehaviour
     public static double CALORIES;
     int year;
 
-    public GameObject food;
-    public float currCalories;    
+    public FoodSearch food;
+    public float currCalories;
 
     public void SwitchSegment(int switchTo)
     {
@@ -74,7 +74,7 @@ public class MainManager : MonoBehaviour
         bmiCalories = new BmiCalories();
         food.GetComponent<FoodSearch>();       
 
-        UpdateInfo();
+        UpdateInfo();       
     }   
 
     public void UpdateInfo()
@@ -105,9 +105,9 @@ public class MainManager : MonoBehaviour
         currPA.text = userData.physical_activity.ToString();
         currBirth.text = userData.date_of_birth;
 
-        currCalories = food.GetComponent<FoodSearch>().ReturnTotalKcal();
+        currCalories = food.ReturnTotalKcal();
         Debug.Log("Curr Calories: " + currCalories);
-        dailyCalories.text = currCalories + " / " + CALORIES + " cal";
+        dailyCalories.text = currCalories + " / " + CALORIES + "cal";
     }
 
     // created this function to be called after pressing back on settings edit

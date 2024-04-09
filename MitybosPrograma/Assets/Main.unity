@@ -8108,7 +8108,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &654683610
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12874,7 +12874,7 @@ MonoBehaviour:
   currBirth: {fileID: 2065003692}
   dailyCalories: {fileID: 2125314564}
   BMI: 0
-  food: {fileID: 184102233}
+  food: {fileID: 184102235}
   currCalories: 0
 --- !u!1 &1182635503
 GameObject:
@@ -21418,6 +21418,18 @@ MonoBehaviour:
       - m_Target: {fileID: 184102235}
         m_TargetAssemblyTypeName: FoodSearch, Assembly-CSharp
         m_MethodName: GoToMain
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1140004984}
+        m_TargetAssemblyTypeName: MainManager, Assembly-CSharp
+        m_MethodName: UpdateInfo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
