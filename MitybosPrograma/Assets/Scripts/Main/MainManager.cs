@@ -120,6 +120,7 @@ public class MainManager : MonoBehaviour
         UnselectDropdown();
         UpdateAllergyDisplay();
 
+        currCalories = food.ReturnTotalKcal();
         dailyCalories.text = currCalories + " / " + userCalories.calories + "cal";
 
         user.text = "User: " + username;
@@ -128,6 +129,7 @@ public class MainManager : MonoBehaviour
     public void UpdateInfo()
     {
         c.UpdateUserData(userData);
+        userCalories.SynchData();
 
         c.DeleteUserAllergies(userData.id_user);
         foreach (int allergy in newAllergies)

@@ -5688,7 +5688,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Enter food here :))
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9a99f5448547f684cb0aaa37d68c2da3, type: 2}
   m_sharedMaterial: {fileID: -7847992683517947466, guid: 9a99f5448547f684cb0aaa37d68c2da3, type: 2}
@@ -7596,7 +7596,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &519998056
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22233,7 +22233,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1140004984}
         m_TargetAssemblyTypeName: MainManager, Assembly-CSharp
-        m_MethodName: UpdateInfo
+        m_MethodName: UpdateUserDisplay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
