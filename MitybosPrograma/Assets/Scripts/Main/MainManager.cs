@@ -120,9 +120,7 @@ public class MainManager : MonoBehaviour
         UnselectDropdown();
         UpdateAllergyDisplay();
 
-        food.GetComponent<FoodSearch>();
-        currCalories = food.ReturnTotalKcal();
-        dailyCalories.text = currCalories + " / " + userCalories.calories + "Kcal";
+        dailyCalories.text = currCalories + " / " + userCalories.calories + "cal";
 
         user.text = "User: " + username;
     }
@@ -130,8 +128,7 @@ public class MainManager : MonoBehaviour
     public void UpdateInfo()
     {
         c.UpdateUserData(userData);
-        userCalories.SynchData();
-        //currCalories = food.ReturnTotalKcal();
+
         c.DeleteUserAllergies(userData.id_user);
         foreach (int allergy in newAllergies)
             c.InsertUserAllergy(userData.id_user, allergy);
