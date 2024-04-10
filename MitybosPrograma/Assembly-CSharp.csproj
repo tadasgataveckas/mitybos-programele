@@ -98,6 +98,7 @@
     <Compile Include="Assets\UI\DatePicker\DatePicker.cs" />
     <Compile Include="Assets\Scripts\Main\ButtonObject.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_DateRange.cs" />
+    <Compile Include="Assets\Scripts\Models\UserCalories.cs" />
     <Compile Include="Assets\Scripts\Session\SessionManager.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerUtilities.cs" />
     <Compile Include="Assets\Input\PlayerInput.cs" />
@@ -121,7 +122,6 @@
     <Compile Include="Assets\Scripts\Models\UserData.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\DBManager.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerCache.cs" />
-    <Compile Include="Assets\Scripts\Models\UserCalories.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scripts\UI-DBmethods\plugins\sqlite3.dll" />

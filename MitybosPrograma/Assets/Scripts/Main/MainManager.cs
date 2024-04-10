@@ -5,6 +5,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Google.Protobuf.WellKnownTypes;
 
 public class MainManager : MonoBehaviour
 {
@@ -27,6 +28,8 @@ public class MainManager : MonoBehaviour
     public TextMeshProUGUI allergySettingDisplay;
     public TMP_Dropdown currPreferences;
     public TextMeshProUGUI dailyCalories;
+    public TextMeshProUGUI errorData;
+    public GameObject editSettings;
 
     ClientMethods c = new ClientMethods(new DatabaseMethods());
 
@@ -84,6 +87,7 @@ public class MainManager : MonoBehaviour
 
     public void UpdateUserDisplay()
     {
+        errorData.text = "";
         //Debug.Log("Year is: " + Year());
         info.text = $"Height: {userData.height}\n" +
                     $"Weight: {userData.weight}\n" +
@@ -286,5 +290,30 @@ public class MainManager : MonoBehaviour
     {
         SessionManager.CloseSession();
         GoToLogin();
+    }
+
+    public void SubmitChanges()
+    {
+        DateTime dataObj;
+
+        if (250 <= userData.height || userData.height <= 120)
+        {
+            errorData.text = "Height is invalid";
+            return;
+        }
+        else if (350 <= userData.weight || userData.weight <= 30)
+        {
+            errorData.text = "Weight is invalid";
+            return;
+        }
+        else if (!DateTime.TryParseExact(userData.date_of_birth, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out dataObj))
+        {
+            errorData.text = "Please write your birth date in correct form! (yyyy-MM-dd)";
+            return;
+        }
+
+        editSettings.SetActive(false);
+        UpdateInfo();
+        UpdateUserDisplay();
     }
 }
