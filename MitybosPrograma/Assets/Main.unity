@@ -21889,6 +21889,8 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Gain weight
       m_Image: {fileID: 0}
+    - m_Text: Gain muscle
+      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
