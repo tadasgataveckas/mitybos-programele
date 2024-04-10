@@ -268,8 +268,10 @@ public class SurveyManager : MonoBehaviour
 
 
                 string goalText = "";
-                if (userData.goal == UserData.Goal.GainWeight ||
-                    userData.goal == UserData.Goal.GainMuscle)
+                if (userData.goal == UserData.Goal.GainWeight 
+                    //||
+                    //userData.goal == UserData.Goal.GainMuscle
+                    )
                 {
                     goalText = " (added 500 kcal)";
                 }

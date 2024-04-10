@@ -38,8 +38,9 @@ public class UserData
         Null = 0,
         LoseWeight = 1,
         MaintainWeight = 2,
-        GainWeight = 3,
-        GainMuscle = 4
+        GainWeight = 3
+        //    ,
+        //GainMuscle = 4
     }
 
     /// <summary>
@@ -56,8 +57,8 @@ public class UserData
                 return "Maintain weight";
             case Goal.GainWeight:
                 return "Gain weight";
-            case Goal.GainMuscle:
-                return "Gain muscle";
+            //case Goal.GainMuscle:
+            //    return "Gain muscle";
             default:
                 return "";
         }
@@ -87,8 +88,8 @@ public class UserData
                 return UserData.Goal.MaintainWeight;
             case "Gain weight":
                 return UserData.Goal.GainWeight;
-            case "Gain muscle":
-                return UserData.Goal.GainMuscle;
+            //case "Gain muscle":
+            //    return UserData.Goal.GainMuscle;
             default:
                 return UserData.Goal.Null;
         }

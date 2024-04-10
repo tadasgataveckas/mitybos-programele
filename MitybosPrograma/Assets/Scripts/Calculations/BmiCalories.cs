@@ -106,8 +106,10 @@ public class BmiCalories : MonoBehaviour
         {
             CALORIES = CALORIES * 0.9;
         }
-        else if (userData.goal == UserData.Goal.GainWeight ||
-                 userData.goal == UserData.Goal.GainMuscle)
+        else if (userData.goal == UserData.Goal.GainWeight 
+            //||
+            //     userData.goal == UserData.Goal.GainMuscle
+                 )
         {
             CALORIES = CALORIES + 500;
         }
