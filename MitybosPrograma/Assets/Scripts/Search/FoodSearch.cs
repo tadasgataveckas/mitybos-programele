@@ -27,21 +27,42 @@ public class FoodSearch : MonoBehaviour
     public GameObject searchPanel;
     public GameObject mainPanel;
 
+    //Displaying product info
     public TMP_Text productNameText; // Text component to display product name
     public TMP_Text kcalText; // Text component to display kcal
     public TMP_Text proteinText; // Text component to display protein
     public TMP_Text carbsText; // Text component to display carbs
     public TMP_Text fatText; // Text component to display fat
 
+    //Displaying total amounts
     public TMP_Text Total_kcalText; // Text component to display kcal
+    public TMP_Text Total_kcal_header; // Text component to display kcal in the header element
     public TMP_Text Total_proteinText; // Text component to display protein
     public TMP_Text Total_carbsText; // Text component to display carbs
     public TMP_Text Totoal_fatText; // Text component to display fat
 
+    //Displaying water (temp)
+    public TMP_Text Water_field_plan;
+    public TMP_Text Water_field_header;
+
+    //Input field
     public TMP_InputField amountInputField;
 
     private ProductDetails selectedProduct;
     private List<ProductDetails> eatenProducts = new List<ProductDetails>(); // List to store eaten products
+
+    private double water; //Temp variable for storing water amount localy
+
+    public void AddWater()
+    {
+        water += 100;
+    }
+
+    public void DisplayWater()
+    {
+        Water_field_plan.text = "Total water: " + water.ToString();
+        Water_field_header.text = water.ToString() + " ml";
+    }
 
     void Start()
     {
@@ -209,6 +230,8 @@ public class FoodSearch : MonoBehaviour
             totalFat += product.Fat;
         }
 
+        Total_kcal_header.text = totalKcal.ToString() + " kcal";
+
         Total_kcalText.text = "Total Kcal: " + totalKcal.ToString();
         Total_proteinText.text = "Total Protein: " + totalProtein.ToString() + "g";
         Total_carbsText.text = "Total Carbs: " + totalCarbs.ToString() + "g";
@@ -220,5 +243,6 @@ public class FoodSearch : MonoBehaviour
         return allCalories;
     }
 }
+
 
 
