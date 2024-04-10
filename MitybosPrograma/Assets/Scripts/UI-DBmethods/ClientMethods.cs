@@ -79,4 +79,14 @@ public class ClientMethods// : IClientInterface
     {
         return _databaseMethods.InsertUserAllergy(id_user, id_allergy);
     }
+
+    public List<int> GetAllUserAllergies(int id_user)
+    {
+        return _databaseMethods.GetAllUserAllergies(id_user);
+    }
+
+    public bool DeleteUserAllergies(int id_user)
+    {
+        return _databaseMethods.DeleteUserAllergies(id_user);
+    }
 }

@@ -12,9 +12,17 @@ public static class SessionManager
         PlayerPrefs.SetString("id_user", encrypted_id);
     }
 
+    /// <summary>
+    /// Returns id, on failure - returns -1
+    /// </summary>
+    /// <returns>User id</returns>
     public static int GetIdKey()
     {
-        string encryptedId = PlayerPrefs.GetString("id_user");
+        string encryptedId = PlayerPrefs.GetString("id_user", "");
+
+        if (string.IsNullOrEmpty(encryptedId))
+            return -1;
+
         int id = DecryptId(encryptedId);
         return id;
     }
@@ -29,11 +37,15 @@ public static class SessionManager
 
     private static int DecryptId(string encrypted_id)
     {
-        Debug.Log("Encrypted ID is: " + encrypted_id);
         // TO DO: decryption
         int id = int.Parse(encrypted_id.ToString());
 
         return id;
-    } 
+    }
+
+    public static void CloseSession()
+    {
+        PlayerPrefs.DeleteAll();
+    }
 
 }

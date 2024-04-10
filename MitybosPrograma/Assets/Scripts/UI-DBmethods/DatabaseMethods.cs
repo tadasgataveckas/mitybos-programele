@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Text;
 using Mono.Data.Sqlite;
+using static UserData;
 
 public class DatabaseMethods
 {
@@ -366,4 +367,42 @@ public class DatabaseMethods
         }
     }
 
+    public List<int> GetAllUserAllergies(int id_user)
+    {
+        List<int> user_allergies = new List<int>();
+        try
+        {
+            DBManager.OpenConnection();
+            IDbCommand command_get = DBManager.connection.CreateCommand();
+            command_get.CommandText =
+                "SELECT id_allergy FROM user_selected_allergies " +
+                "WHERE id_user = " + id_user;
+            IDataReader reader = command_get.ExecuteReader();
+
+            while (reader.Read())
+            {
+                user_allergies.Add(int.Parse(reader[0].ToString()));
+            }
+            return user_allergies;
+        }
+        catch (Exception e) { System.Console.WriteLine(e.Message); return user_allergies; }
+        finally { DBManager.CloseConnection(); }
+    }
+
+
+    public bool DeleteUserAllergies(int id_user)
+    {
+        try
+        {
+            DBManager.OpenConnection();
+            IDbCommand command_delete = DBManager.connection.CreateCommand();
+            command_delete.CommandText =
+                "DELETE FROM user_selected_allergies " +
+                "WHERE id_user = " + id_user;
+
+            return command_delete.ExecuteNonQuery() > 0;
+        }
+        catch (SqliteException e) { System.Console.WriteLine(e.Message); return false; }
+        finally { DBManager.CloseConnection(); }
+    }
 }

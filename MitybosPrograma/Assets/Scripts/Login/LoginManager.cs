@@ -169,5 +169,6 @@ public class LoginManager : MonoBehaviour
     void Start()
     {
         SwitchSegment(0);
+        DBManager.CreateDatabase();
     }
 }

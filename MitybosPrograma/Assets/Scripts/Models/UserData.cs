@@ -22,11 +22,7 @@ public class UserData
         gender = 0;
         goal = 0;
         physical_activity = 0;
-
-        // will switch to int
-        //date_of_birth = 0;
         date_of_birth = "";
-        
         creation_date = "";
     }
 
@@ -131,9 +127,6 @@ public class UserData
                 gender = ParseGender(reader[2].ToString());
                 goal = ParseGoal(reader[3].ToString());
                 physical_activity = int.Parse(reader[4].ToString());
-
-                // will switch to int eventually
-                //date_of_birth = int.Parse(reader[5].ToString());
                 date_of_birth = reader[5].ToString();
 
                 creation_date = reader[6].ToString(); ;

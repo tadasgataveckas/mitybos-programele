@@ -105,3 +105,56 @@ FROM meal
 LEFT JOIN meals_from_products ON meal.id_meal = meals_from_products.id_meal
 LEFT JOIN product ON product.id_product = meals_from_products.id_product
 GROUP BY meal.id_meal;
+
+
+-- View: v_bmi_calculations
+CREATE VIEW IF NOT EXISTS v_bmi_calculations AS
+	WITH BMI as (
+			SELECT 
+				id_user, 
+				ROUND(weight / (height*height) * 10000, 2) AS bmi
+			FROM user_data
+	),
+	CALORIES as (
+		SELECT
+			id_user,
+			CASE gender
+				WHEN 'Female' THEN
+					(10 * weight) + (6.25 * height) - (5 * (CURRENT_DATE - date_of_birth)) - 161
+				ELSE
+					(10 * weight) + (6.25 * height) - (5 * (CURRENT_DATE - date_of_birth)) + 5
+			END AS bmr,
+			CASE physical_activity
+				WHEN 1 THEN 1.2
+				WHEN 2 THEN 1.375
+				WHEN 3 THEN 1.55
+				WHEN 4 THEN 1.725
+				ELSE 1.9
+			END AS fal
+		FROM
+			user_data
+	)
+	SELECT
+		user_data.id_user,
+		bmi,
+		CASE goal
+			WHEN "Lose weight" THEN round(bmr * fal * 0.9, 2)
+			WHEN "Maintain weight" THEN round(bmr * fal, 2)
+			ELSE round( bmr * fal + 500, 2)
+		END AS calories,
+		CASE
+			WHEN bmi < 16.0 THEN 'Severe Underweight'
+			WHEN bmi < 17.0 THEN 'Moderate Underweight'
+			WHEN bmi < 18.5 THEN 'Mild Underweight'
+			WHEN bmi < 25.0 THEN 'Normal weight'
+			WHEN bmi < 30.0 THEN 'Overweight'
+			WHEN bmi < 35.0 THEN 'Obese Class I'
+			WHEN bmi < 40.0 THEN 'Obese Class II'
+			ELSE 'Obese Class III'
+		END AS result
+	FROM
+		user_data
+	JOIN
+		BMI ON user_data.id_user = BMI.id_user,
+		CALORIES ON user_data.id_user = CALORIES.id_user
+GROUP BY user_data.id_user;

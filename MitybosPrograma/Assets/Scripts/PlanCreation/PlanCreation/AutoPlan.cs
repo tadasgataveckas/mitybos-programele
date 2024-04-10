@@ -24,7 +24,7 @@ public class AutoPlan : MonoBehaviour
     {
         returnedfoodlist = c.ReturnFoodList();
         BranchAndBound branchAndBoundFood = new BranchAndBound(returnedfoodlist);
-        createdlist = branchAndBoundFood.FindClosestCalorieCombination(MainManager.CALORIES,3);
+        createdlist = branchAndBoundFood.FindClosestCalorieCombination(MainManager.userCalories.calories,3);
         Debug.Log(createdlist.Count);
         TMP_Text textobjectBreakfast = GameObject.Find("BreakfastFoodnameText").GetComponent<TMP_Text>();
         TMP_Text textobjectLunch = GameObject.Find("LunchFoodnameText").GetComponent<TMP_Text>();
