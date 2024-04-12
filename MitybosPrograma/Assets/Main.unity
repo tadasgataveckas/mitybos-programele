@@ -9209,6 +9209,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 719964285}
+  - component: {fileID: 719964286}
   m_Layer: 5
   m_Name: GameSelect
   m_TagString: Untagged
@@ -9243,6 +9244,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &719964286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719964284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e35f146923c2300489d7fce2f90a36cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameSceneName: 
 --- !u!1 &720790848
 GameObject:
   m_ObjectHideFlags: 0
@@ -10200,9 +10214,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SurveyManager, Assembly-CSharp
-        m_MethodName: NextSegment
+      - m_Target: {fileID: 719964286}
+        m_TargetAssemblyTypeName: GameSelect, Assembly-CSharp
+        m_MethodName: ChangeToGameScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11355,12 +11369,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_renderer: {fileID: 986402757}
-  m_maskType: 0
   _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
+  m_hasFontAssetChanged: 0
+  m_renderer: {fileID: 986402757}
+  m_maskType: 0
 --- !u!23 &986402757
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -12346,12 +12360,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_renderer: {fileID: 1060218266}
-  m_maskType: 0
   _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
+  m_hasFontAssetChanged: 0
+  m_renderer: {fileID: 1060218266}
+  m_maskType: 0
 --- !u!23 &1060218266
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -20889,12 +20903,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_renderer: {fileID: 1853893513}
-  m_maskType: 0
   _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
+  m_hasFontAssetChanged: 0
+  m_renderer: {fileID: 1853893513}
+  m_maskType: 0
 --- !u!23 &1853893513
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -21419,12 +21433,12 @@ MonoBehaviour:
   m_margin: {x: 0.22762787, y: 0.9918833, z: 0.18573868, w: 0.89178437}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_renderer: {fileID: 1912681515}
-  m_maskType: 0
   _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
+  m_hasFontAssetChanged: 0
+  m_renderer: {fileID: 1912681515}
+  m_maskType: 0
 --- !u!23 &1912681515
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -24520,6 +24534,10 @@ PrefabInstance:
       value: 0.35686275
       objectReference: {fileID: 0}
     - target: {fileID: 2337899229301799058, guid: 17c41f697608120499e43259dcf89ee7, type: 3}
+      propertyPath: gameSceneName
+      value: VitaminHarvest
+      objectReference: {fileID: 0}
+    - target: {fileID: 2337899229301799058, guid: 17c41f697608120499e43259dcf89ee7, type: 3}
       propertyPath: gameSelectTitle
       value: 
       objectReference: {fileID: 717001051}
@@ -24827,12 +24845,12 @@ MonoBehaviour:
   m_margin: {x: 14.840363, y: 0.93309283, z: -0.5431061, w: 3.3929272}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_renderer: {fileID: 5992870554714128658}
-  m_maskType: 0
   _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
+  m_hasFontAssetChanged: 0
+  m_renderer: {fileID: 5992870554714128658}
+  m_maskType: 0
 --- !u!224 &5992870554714128660
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24999,12 +25017,12 @@ MonoBehaviour:
   m_margin: {x: 16.41542, y: 0, z: -0.5431061, w: 3.3929272}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_renderer: {fileID: 5992870554805272587}
-  m_maskType: 0
   _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
+  m_hasFontAssetChanged: 0
+  m_renderer: {fileID: 5992870554805272587}
+  m_maskType: 0
 --- !u!224 &5992870554805272589
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25239,12 +25257,12 @@ MonoBehaviour:
   m_margin: {x: 17.739433, y: 0.3133278, z: -0.5431061, w: 3.34483}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_renderer: {fileID: 5992870555584042555}
-  m_maskType: 0
   _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
+  m_hasFontAssetChanged: 0
+  m_renderer: {fileID: 5992870555584042555}
+  m_maskType: 0
 --- !u!224 &5992870555584042557
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25444,12 +25462,12 @@ MonoBehaviour:
   m_margin: {x: 14.840363, y: 0.93309283, z: -0.5431061, w: 3.3929272}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_renderer: {fileID: 5992870555648435571}
-  m_maskType: 0
   _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
+  m_hasFontAssetChanged: 0
+  m_renderer: {fileID: 5992870555648435571}
+  m_maskType: 0
 --- !u!224 &5992870555648435573
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25616,12 +25634,12 @@ MonoBehaviour:
   m_margin: {x: 14.840363, y: 0.93309283, z: -0.5431061, w: 3.3929272}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_renderer: {fileID: 5992870555791160198}
-  m_maskType: 0
   _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
+  m_hasFontAssetChanged: 0
+  m_renderer: {fileID: 5992870555791160198}
+  m_maskType: 0
 --- !u!224 &5992870555791160200
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25788,12 +25806,12 @@ MonoBehaviour:
   m_margin: {x: 12.902397, y: 0, z: -0.8409691, w: 3.4584024}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_renderer: {fileID: 5992870555977131085}
-  m_maskType: 0
   _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
+  m_hasFontAssetChanged: 0
+  m_renderer: {fileID: 5992870555977131085}
+  m_maskType: 0
 --- !u!224 &5992870555977131087
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25994,12 +26012,12 @@ MonoBehaviour:
   m_margin: {x: 17.523705, y: 0, z: -0.5431061, w: 3.3929272}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_renderer: {fileID: 5992870555998375848}
-  m_maskType: 0
   _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
+  m_hasFontAssetChanged: 0
+  m_renderer: {fileID: 5992870555998375848}
+  m_maskType: 0
 --- !u!224 &5992870555998375850
 RectTransform:
   m_ObjectHideFlags: 0
