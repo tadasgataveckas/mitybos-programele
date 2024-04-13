@@ -5,14 +5,20 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Login.unity
     guid: d62f43d5121778f488de80f3b1e3afd5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Survey.unity
     guid: 9430a4b17866dd84eb18e71fa08ea7dd
   - enabled: 1
     path: Assets/Main.unity
     guid: 9e854169a7c847a4f88f2e819e8e77c2
+  - enabled: 1
+    path: Assets/JumpGame.unity
+    guid: 3cd23881fb1859241a55f7e4caa6d90c
+  - enabled: 1
+    path: Assets/VitaminHarvest.unity
+    guid: d4261ff48a60a0743a0b0098a8fbc8fb
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 13d9351641e7f75488c5a380043400de, type: 2}
