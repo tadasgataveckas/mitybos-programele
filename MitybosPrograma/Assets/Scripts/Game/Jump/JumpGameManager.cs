@@ -22,7 +22,7 @@ public class JumpGameManager : MonoBehaviour
     public Transform player;
     public Transform cameraTransform;
 
-    private int spawnRelaxStationsPerXft = 100;
+    public int spawnRelaxStationsPerXft = 100;
 
     void Awake()
     {
@@ -88,6 +88,9 @@ public class JumpGameManager : MonoBehaviour
             // Game over
             gameOver.SetActive(true);
             player.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+
+            // Restart scene after 2 seconds
+            Invoke("RestartScene", 2f);
         }
 
         // Check if player moves outside camera horizontally
@@ -124,5 +127,10 @@ public class JumpGameManager : MonoBehaviour
 
         // Log the screen width in units
         //Debug.Log("Screen width in units: " + screenWidthInUnits);
+    }
+    void RestartScene()
+    {
+        // Restart the scene
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 }

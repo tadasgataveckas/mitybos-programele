@@ -7,6 +7,7 @@ public class GameCard : MonoBehaviour //, IPointerClickHandler, IPointerDownHand
 {
     public Color gameColor;
     public string gameName;
+    public string gameSceneName;
     public GameObject gameSelectObject;
     public TextMeshProUGUI gameSelectTitle;
     public Image gameSelectBackground;
@@ -37,5 +38,6 @@ public class GameCard : MonoBehaviour //, IPointerClickHandler, IPointerDownHand
         gameSelectObject.SetActive(true);
         gameSelectTitle.text = gameName;
         gameSelectBackground.color = gameColor;
+        gameSelectObject.GetComponent<GameSelect>().gameSceneName = gameSceneName;
     }
 }
