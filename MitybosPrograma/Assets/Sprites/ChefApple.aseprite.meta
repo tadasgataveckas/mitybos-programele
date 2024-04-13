@@ -1,0 +1,1061 @@
+fileFormatVersion: 2
+guid: c5b045ca856496a4e82485e9ca0dd6cd
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMasterTextureLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: ChefApple_Frame_0
+    originalName: 
+    pivot: {x: 0.5135135, y: -0.08571429}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 198
+      y: 466
+      width: 37
+      height: 35
+    spriteID: f7343fd08d289d247ac30da25eeb6d37
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 198, y: 466}
+  - name: ChefApple_Frame_1
+    originalName: 
+    pivot: {x: 0.5135135, y: -0.05882353}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 246
+      y: 202
+      width: 37
+      height: 51
+    spriteID: 39d6932d7aa29f64abe4e784c4aaee08
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 246, y: 202}
+  - name: ChefApple_Frame_2
+    originalName: 
+    pivot: {x: 0.33928573, y: -0.049180325}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 56
+      height: 61
+    spriteID: 9ed6353dd4d1f584fa3b632dd0389bf3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: ChefApple_Frame_3
+    originalName: 
+    pivot: {x: 0.3448276, y: -0.052631576}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 68
+      y: 4
+      width: 58
+      height: 57
+    spriteID: 028310d6db0d54d4d897d32b2d21132e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 68, y: 4}
+  - name: ChefApple_Frame_4
+    originalName: 
+    pivot: {x: 0.33928573, y: -0.051724136}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 73
+      width: 56
+      height: 58
+    spriteID: 028d6de87bf6e93409a74bce5d38811b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 73}
+  - name: ChefApple_Frame_5
+    originalName: 
+    pivot: {x: 0.33928573, y: -0.051724136}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 139
+      width: 56
+      height: 58
+    spriteID: 0ab06334c39fda8458d5512410fa5eee
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 139}
+  - name: ChefApple_Frame_6
+    originalName: 
+    pivot: {x: 0.33928573, y: -0.051724136}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 205
+      width: 56
+      height: 58
+    spriteID: 430b95a0b13f8a44aad78d12739e77fa
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 205}
+  - name: ChefApple_Frame_7
+    originalName: 
+    pivot: {x: 0.33928573, y: -0.051724136}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 271
+      width: 56
+      height: 58
+    spriteID: e6581d57b39b945429f2de1a55c0fb9e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 271}
+  - name: ChefApple_Frame_8
+    originalName: 
+    pivot: {x: 0.33928573, y: -0.051724136}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 337
+      width: 56
+      height: 58
+    spriteID: af17af47061a5f343b1cc2576b4a1923
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 337}
+  - name: ChefApple_Frame_9
+    originalName: 
+    pivot: {x: 0.33928573, y: -0.051724136}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 403
+      width: 56
+      height: 58
+    spriteID: 1b668675b9349c04187f36e668dfaedc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 403}
+  - name: ChefApple_Frame_10
+    originalName: 
+    pivot: {x: 0.33928573, y: -0.051724136}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 68
+      y: 69
+      width: 56
+      height: 58
+    spriteID: e1a470c965b015d4d851a80b4f18ec8c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 68, y: 69}
+  - name: ChefApple_Frame_11
+    originalName: 
+    pivot: {x: 0.33928573, y: -0.051724136}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 68
+      y: 135
+      width: 56
+      height: 58
+    spriteID: baac0581f34891c4f935b4c4a5b36e47
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 68, y: 135}
+  - name: ChefApple_Frame_12
+    originalName: 
+    pivot: {x: 0.33928573, y: -0.051724136}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 68
+      y: 201
+      width: 56
+      height: 58
+    spriteID: 8661c401856a0ff4199d440fa5843666
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 68, y: 201}
+  - name: ChefApple_Frame_13
+    originalName: 
+    pivot: {x: 0.33928573, y: -0.051724136}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 68
+      y: 267
+      width: 56
+      height: 58
+    spriteID: 904df1165e0ae7e4fa5701d4a6ef9c1e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 68, y: 267}
+  - name: ChefApple_Frame_14
+    originalName: 
+    pivot: {x: 0.33928573, y: -0.051724136}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 68
+      y: 333
+      width: 56
+      height: 58
+    spriteID: 23a4420ceb1349845b01a579d352d020
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 68, y: 333}
+  - name: ChefApple_Frame_15
+    originalName: 
+    pivot: {x: 0.33928573, y: -0.051724136}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 68
+      y: 399
+      width: 56
+      height: 58
+    spriteID: 9312b9450237ca54a9052c28f7f73d06
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 68, y: 399}
+  - name: ChefApple_Frame_16
+    originalName: 
+    pivot: {x: 0.33928573, y: -0.051724136}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 134
+      y: 4
+      width: 56
+      height: 58
+    spriteID: a0e87753b3a14b849b7fcba4c3feb459
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 134, y: 4}
+  - name: ChefApple_Frame_17
+    originalName: 
+    pivot: {x: 0.33928573, y: -0.051724136}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 134
+      y: 70
+      width: 56
+      height: 58
+    spriteID: 9de8a47e8d8083749a2bd35f7b8f1beb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 134, y: 70}
+  - name: ChefApple_Frame_18
+    originalName: 
+    pivot: {x: 0.33928573, y: -0.051724136}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 134
+      y: 136
+      width: 56
+      height: 58
+    spriteID: 5e156ef8bc71ce447add56dba189c13d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 134, y: 136}
+  - name: ChefApple_Frame_19
+    originalName: 
+    pivot: {x: 0.43181822, y: -0.051724136}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 134
+      y: 202
+      width: 44
+      height: 58
+    spriteID: c3c5b5f9806f55343ba9617b5a6d4df7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 134, y: 202}
+  - name: ChefApple_Frame_20
+    originalName: 
+    pivot: {x: 0.47500002, y: -0.051724136}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 134
+      y: 268
+      width: 40
+      height: 58
+    spriteID: 7f9dc5c8eef554847a3ee1cb42c229af
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 134, y: 268}
+  - name: ChefApple_Frame_21
+    originalName: 
+    pivot: {x: 0.48717955, y: -0.051724136}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 246
+      y: 136
+      width: 39
+      height: 58
+    spriteID: 4066c0c84454107408d67ce4c64e4143
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 246, y: 136}
+  - name: ChefApple_Frame_22
+    originalName: 
+    pivot: {x: 0.47500002, y: -0.051724136}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 134
+      y: 334
+      width: 40
+      height: 58
+    spriteID: 4d38e22a3dcb2324bb3461fe3589aca3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 134, y: 334}
+  - name: ChefApple_Frame_23
+    originalName: 
+    pivot: {x: 0.47500002, y: -0.051724136}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 134
+      y: 400
+      width: 40
+      height: 58
+    spriteID: c5e0cb05aec723f4ab0de0cebe89aff1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 134, y: 400}
+  - name: ChefApple_Frame_24
+    originalName: 
+    pivot: {x: 0.47500002, y: -0.051724136}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 198
+      y: 4
+      width: 40
+      height: 58
+    spriteID: 6e067bfcf64941f449fcc36dce0d3702
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 198, y: 4}
+  - name: ChefApple_Frame_25
+    originalName: 
+    pivot: {x: 0.47500002, y: -0.051724136}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 198
+      y: 70
+      width: 40
+      height: 58
+    spriteID: 61799e314086c5d48b72326a688c2ded
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 198, y: 70}
+  - name: ChefApple_Frame_26
+    originalName: 
+    pivot: {x: 0.47500002, y: -0.051724136}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 198
+      y: 136
+      width: 40
+      height: 58
+    spriteID: 455458a5eff906d4484dfc3d05f9f6d2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 198, y: 136}
+  - name: ChefApple_Frame_27
+    originalName: 
+    pivot: {x: 0.47500002, y: -0.051724136}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 198
+      y: 202
+      width: 40
+      height: 58
+    spriteID: 8fe5d07cdd716da4ab78c5657fa86c2a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 198, y: 202}
+  - name: ChefApple_Frame_28
+    originalName: 
+    pivot: {x: 0.47500002, y: -0.051724136}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 198
+      y: 268
+      width: 40
+      height: 58
+    spriteID: ea17f3f9d136cc047ba11f753240eeb8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 198, y: 268}
+  - name: ChefApple_Frame_29
+    originalName: 
+    pivot: {x: 0.47500002, y: -0.051724136}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 198
+      y: 334
+      width: 40
+      height: 58
+    spriteID: 33d88ea2ff2554449b2932f52384eb78
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 198, y: 334}
+  - name: ChefApple_Frame_30
+    originalName: 
+    pivot: {x: 0.47500002, y: -0.051724136}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 198
+      y: 400
+      width: 40
+      height: 58
+    spriteID: 5fc8a55c7df811f47807959173f7c7ae
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 198, y: 400}
+  - name: ChefApple_Frame_31
+    originalName: 
+    pivot: {x: 0.47500002, y: -0.051724136}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 246
+      y: 4
+      width: 40
+      height: 58
+    spriteID: 2dd4809be53dad6418a7c62f98ae3372
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 246, y: 4}
+  - name: ChefApple_Frame_32
+    originalName: 
+    pivot: {x: 0.47500002, y: -0.051724136}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 246
+      y: 70
+      width: 40
+      height: 58
+    spriteID: 868a82cb30006d2448a962ff23078ab8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 246, y: 70}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: 1379950850
+    name: ChefApple
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: ChefApple_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 21
+        y: 3
+        width: 37
+        height: 35
+      spriteId: f7343fd08d289d247ac30da25eeb6d37
+    - name: ChefApple_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 21
+        y: 3
+        width: 37
+        height: 51
+      spriteId: 39d6932d7aa29f64abe4e784c4aaee08
+    - name: ChefApple_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 21
+        y: 3
+        width: 56
+        height: 61
+      spriteId: 9ed6353dd4d1f584fa3b632dd0389bf3
+    - name: ChefApple_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 20
+        y: 3
+        width: 58
+        height: 57
+      spriteId: 028310d6db0d54d4d897d32b2d21132e
+    - name: ChefApple_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 21
+        y: 3
+        width: 56
+        height: 58
+      spriteId: 028d6de87bf6e93409a74bce5d38811b
+    - name: ChefApple_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 21
+        y: 3
+        width: 56
+        height: 58
+      spriteId: 0ab06334c39fda8458d5512410fa5eee
+    - name: ChefApple_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 21
+        y: 3
+        width: 56
+        height: 58
+      spriteId: 430b95a0b13f8a44aad78d12739e77fa
+    - name: ChefApple_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 21
+        y: 3
+        width: 56
+        height: 58
+      spriteId: e6581d57b39b945429f2de1a55c0fb9e
+    - name: ChefApple_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 21
+        y: 3
+        width: 56
+        height: 58
+      spriteId: af17af47061a5f343b1cc2576b4a1923
+    - name: ChefApple_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 21
+        y: 3
+        width: 56
+        height: 58
+      spriteId: 1b668675b9349c04187f36e668dfaedc
+    - name: ChefApple_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 21
+        y: 3
+        width: 56
+        height: 58
+      spriteId: e1a470c965b015d4d851a80b4f18ec8c
+    - name: ChefApple_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 21
+        y: 3
+        width: 56
+        height: 58
+      spriteId: baac0581f34891c4f935b4c4a5b36e47
+    - name: ChefApple_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 21
+        y: 3
+        width: 56
+        height: 58
+      spriteId: 8661c401856a0ff4199d440fa5843666
+    - name: ChefApple_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 21
+        y: 3
+        width: 56
+        height: 58
+      spriteId: 904df1165e0ae7e4fa5701d4a6ef9c1e
+    - name: ChefApple_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: 21
+        y: 3
+        width: 56
+        height: 58
+      spriteId: 23a4420ceb1349845b01a579d352d020
+    - name: ChefApple_Frame_15
+      frameIndex: 15
+      cellRect:
+        x: 21
+        y: 3
+        width: 56
+        height: 58
+      spriteId: 9312b9450237ca54a9052c28f7f73d06
+    - name: ChefApple_Frame_16
+      frameIndex: 16
+      cellRect:
+        x: 21
+        y: 3
+        width: 56
+        height: 58
+      spriteId: a0e87753b3a14b849b7fcba4c3feb459
+    - name: ChefApple_Frame_17
+      frameIndex: 17
+      cellRect:
+        x: 21
+        y: 3
+        width: 56
+        height: 58
+      spriteId: 9de8a47e8d8083749a2bd35f7b8f1beb
+    - name: ChefApple_Frame_18
+      frameIndex: 18
+      cellRect:
+        x: 21
+        y: 3
+        width: 56
+        height: 58
+      spriteId: 5e156ef8bc71ce447add56dba189c13d
+    - name: ChefApple_Frame_19
+      frameIndex: 19
+      cellRect:
+        x: 21
+        y: 3
+        width: 44
+        height: 58
+      spriteId: c3c5b5f9806f55343ba9617b5a6d4df7
+    - name: ChefApple_Frame_20
+      frameIndex: 20
+      cellRect:
+        x: 21
+        y: 3
+        width: 40
+        height: 58
+      spriteId: 7f9dc5c8eef554847a3ee1cb42c229af
+    - name: ChefApple_Frame_21
+      frameIndex: 21
+      cellRect:
+        x: 21
+        y: 3
+        width: 39
+        height: 58
+      spriteId: 4066c0c84454107408d67ce4c64e4143
+    - name: ChefApple_Frame_22
+      frameIndex: 22
+      cellRect:
+        x: 21
+        y: 3
+        width: 40
+        height: 58
+      spriteId: 4d38e22a3dcb2324bb3461fe3589aca3
+    - name: ChefApple_Frame_23
+      frameIndex: 23
+      cellRect:
+        x: 21
+        y: 3
+        width: 40
+        height: 58
+      spriteId: c5e0cb05aec723f4ab0de0cebe89aff1
+    - name: ChefApple_Frame_24
+      frameIndex: 24
+      cellRect:
+        x: 21
+        y: 3
+        width: 40
+        height: 58
+      spriteId: 6e067bfcf64941f449fcc36dce0d3702
+    - name: ChefApple_Frame_25
+      frameIndex: 25
+      cellRect:
+        x: 21
+        y: 3
+        width: 40
+        height: 58
+      spriteId: 61799e314086c5d48b72326a688c2ded
+    - name: ChefApple_Frame_26
+      frameIndex: 26
+      cellRect:
+        x: 21
+        y: 3
+        width: 40
+        height: 58
+      spriteId: 455458a5eff906d4484dfc3d05f9f6d2
+    - name: ChefApple_Frame_27
+      frameIndex: 27
+      cellRect:
+        x: 21
+        y: 3
+        width: 40
+        height: 58
+      spriteId: 8fe5d07cdd716da4ab78c5657fa86c2a
+    - name: ChefApple_Frame_28
+      frameIndex: 28
+      cellRect:
+        x: 21
+        y: 3
+        width: 40
+        height: 58
+      spriteId: ea17f3f9d136cc047ba11f753240eeb8
+    - name: ChefApple_Frame_29
+      frameIndex: 29
+      cellRect:
+        x: 21
+        y: 3
+        width: 40
+        height: 58
+      spriteId: 33d88ea2ff2554449b2932f52384eb78
+    - name: ChefApple_Frame_30
+      frameIndex: 30
+      cellRect:
+        x: 21
+        y: 3
+        width: 40
+        height: 58
+      spriteId: 5fc8a55c7df811f47807959173f7c7ae
+    - name: ChefApple_Frame_31
+      frameIndex: 31
+      cellRect:
+        x: 21
+        y: 3
+        width: 40
+        height: 58
+      spriteId: 2dd4809be53dad6418a7c62f98ae3372
+    - name: ChefApple_Frame_32
+      frameIndex: 32
+      cellRect:
+        x: 21
+        y: 3
+        width: 40
+        height: 58
+      spriteId: 868a82cb30006d2448a962ff23078ab8
+    linkedCells: []
+    parentIndex: -1
+  platformSettings: []
+  generatePhysicsShape: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 80, y: 100}
