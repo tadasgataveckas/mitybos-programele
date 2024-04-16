@@ -7,7 +7,7 @@ public class JumpCameraFollow : MonoBehaviour
     public Transform target;
     // offset?
 
-    private void LateUpdate()
+    private void Update()
     {
         if (target.position.y > transform.position.y) 
         {
