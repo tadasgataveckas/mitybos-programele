@@ -45,15 +45,16 @@ namespace UI.Dates
                     case Animation.Slide:
                         {
                             // Start off by setting our Y scale to zero;
-                            SetPropertyValue(DatePicker_Animation_Property.ScaleY, 0);
+                            SetPropertyValue(DatePicker_Animation_Property.ScaleY, 1.65f);
+                           
                             // Then animate to full size
-                            Animate(DatePicker_Animation_Property.ScaleY, 1, AnimationDuration, onComplete);
+                            //Animate(DatePicker_Animation_Property.ScaleY, 1, AnimationDuration, onComplete);
                         }
                         break;
                     case Animation.Fade:
                         {
                             SetPropertyValue(DatePicker_Animation_Property.Alpha, 0);
-                            Animate(DatePicker_Animation_Property.Alpha, 1, AnimationDuration, onComplete);
+                            //Animate(DatePicker_Animation_Property.Alpha, 1, AnimationDuration, onComplete);
                         }
                         break;
                 }                
