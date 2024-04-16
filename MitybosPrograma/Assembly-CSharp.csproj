@@ -66,6 +66,7 @@
     <Compile Include="Assets\UI\DatePicker\DatePicker_Animator.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerExtensions.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_DayButton_Pool.cs" />
+    <Compile Include="Assets\Scripts\Main\GameSelect.cs" />
     <Compile Include="Assets\Scripts\Tutorial\TutorialManager.cs" />
     <Compile Include="Assets\Scripts\Survey\SliderScript.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\IClientInterface.cs" />
@@ -79,8 +80,10 @@
     <Compile Include="Assets\UI\DatePicker\DatePicker_Instantiation.cs" />
     <Compile Include="Assets\Scripts\Search\FoodSearch.cs" />
     <Compile Include="Assets\UI\DatePicker\SerializableDate.cs" />
+    <Compile Include="Assets\Scripts\Game\Jump\Chair.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_InputField.cs" />
     <Compile Include="Assets\UI\TableLayout\Example\DynamicRowsExampleController.cs" />
+    <Compile Include="Assets\Scripts\Game\Jump\ChairSlide.cs" />
     <Compile Include="Assets\UI\DatePicker\TextMesh Pro\DatePicker_TextMeshProUtilities.cs" />
     <Compile Include="Assets\Scripts\Game\Harvest\MovePlayer.cs" />
     <Compile Include="Assets\Scripts\Main\CameraScroll.cs" />
@@ -114,6 +117,7 @@
     <Compile Include="Assets\UI\TableLayout\TableLayoutUtilities.cs" />
     <Compile Include="Assets\Scripts\Survey\SurveyManager.cs" />
     <Compile Include="Assets\UI\DatePicker\Example\ExampleController.cs" />
+    <Compile Include="Assets\Scripts\Game\Jump\Booster.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_Config.cs" />
     <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\FoodClass.cs" />
     <Compile Include="Assets\Scripts\Models\UserData.cs" />

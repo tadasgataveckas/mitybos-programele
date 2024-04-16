@@ -40,6 +40,8 @@ public class SurveyManager : MonoBehaviour
     public int year;
 
 
+    public ScrollRect scrollHeightView;
+
     void Start()
     {
         bmiCalories = new BmiCalories();
@@ -50,6 +52,8 @@ public class SurveyManager : MonoBehaviour
         userData = new UserData(id);
         // added base value cuz slider can be ignored
         userData.physical_activity = 1;
+
+        AddHeightsToScrollView();
     }
 
     void Update()
@@ -116,10 +120,35 @@ public class SurveyManager : MonoBehaviour
         userData.date_of_birth = newBirthDate;
     }
 
-    public void InputHeight(string newHeight)
+    public TextMeshProUGUI heightTextPrefab; // Prefab, kuris bus naudojamas kaip pasirinkimų aukštis
+    public Transform contentParent;
+
+    void AddHeightsToScrollView()
     {
-        double.TryParse(newHeight, out userData.height);
+        // Patikriname, ar turime reikiamus komponentus
+        if (scrollHeightView == null || contentParent == null || heightTextPrefab == null)
+            return;
+
+        // Pridedame kiekvieną aukštį nuo 150 iki 180 į ScrollRect turinį
+        for (int height = 150; height <= 180; height++)
+        {
+            // Sukuriame naują aukščio teksto elementą
+            TextMeshProUGUI heightText = Instantiate(heightTextPrefab, contentParent);
+            heightText.text = height.ToString(); // Nustatome teksto reikšmę kaip aukštį
+            // Pridedame mygtuko paspaudimo įvykio klausytoją, kuris įvykdo InputHeight su šiuo aukščiu
+            heightText.GetComponent<Button>().onClick.AddListener(() => InputHeight(height));
+        }
     }
+    public void InputHeight(double newHeight)
+    {
+        userData.height = newHeight; // Priskiriame naują aukštį userData objektui
+        // Čia galite įdėti papildomą veiksmų, jei norite, pvz., atnaujinti interfeisą ar kitus duomenis
+    }
+
+    //public void InputHeight(string newHeight)
+    //{
+    //    double.TryParse(newHeight, out userData.height);
+    //}
 
     public void InputWeight(string newWeight)
     {
