@@ -5,15 +5,14 @@ using System.IO;
 
 public static class DBManager
 {
-    // path for all database files
-    private static string dbPath = "Assets/Scripts/UI-DBmethods/";
-    private static string dbTables = "food_db.txt";
-    private static string dbData = "food_data.txt";
+    private static TextAsset dbTables = Resources.Load<TextAsset>("food_db");
+    private static TextAsset dbData = Resources.Load<TextAsset>("food_data");
 
-    // database uri
+    // database uri (required)
     private static string dbURI = "URI=file:";
     // database name
     private static string dbName = "food_db.db";
+    private static string dbPath = Path.Combine(Application.persistentDataPath, dbName);
 
     // database connection
     public static IDbConnection connection;
@@ -21,8 +20,11 @@ public static class DBManager
     // creates base database
     public static void CreateDatabase()
     {
-        if (File.Exists(dbPath + dbName))
+        if (File.Exists(dbPath))
+        {
+            Debug.Log("Database already exists");
             return;
+        }
 
         // Open connection
         OpenConnection();
@@ -35,37 +37,30 @@ public static class DBManager
         CloseConnection();
     }
 
+    // creates base database
+    public static void DeleteDatabase()
+    {
+        if (File.Exists(dbPath))
+        {
+            File.Delete(dbPath);
+            Debug.Log("Database found and deleted");
+        }
+    }
+
     // creates base database tables
     private static void CreateTables()
     {
-        using (StreamReader sr = new StreamReader(dbPath + dbTables))
-        {
-            IDbCommand command = connection.CreateCommand();
-            string line;
-            while ((line = sr.ReadLine()) != null)
-            {
-                // insert tables in db
-                command.CommandText += line + "\n";
-            }
-            command.ExecuteNonQuery();
-        }
+        IDbCommand command = connection.CreateCommand();
+        command.CommandText = dbTables.text;
+        command.ExecuteNonQuery();
     }
 
     // inserts base database data
     private static void InsertData()
     {
-        //Read the text from directly from the test.txt file
-        using (StreamReader sr = new StreamReader(dbPath + dbData))
-        {
-            IDbCommand command = connection.CreateCommand();
-            string line;
-            while ((line = sr.ReadLine()) != null)
-            {
-                // Insert values in tables
-                command.CommandText += line;
-            }
-            command.ExecuteNonQuery();
-        }
+        IDbCommand command = connection.CreateCommand();
+        command.CommandText = dbData.text;
+        command.ExecuteNonQuery();
     }
 
     // reads all allergies
@@ -91,7 +86,7 @@ public static class DBManager
     {
         // define connection to database
         if (connection == null)
-            connection = new SqliteConnection(dbURI + dbPath + dbName);
+            connection = new SqliteConnection(dbURI + dbPath);
 
         // if connection is not open
         if (connection.State != ConnectionState.Open)
