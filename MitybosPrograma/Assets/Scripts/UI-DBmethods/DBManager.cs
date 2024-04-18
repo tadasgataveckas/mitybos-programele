@@ -20,6 +20,7 @@ public static class DBManager
     // creates base database
     public static void CreateDatabase()
     {
+        //File.Create(dbPath);
         if (File.Exists(dbPath))
         {
             Debug.Log("Database already exists");
