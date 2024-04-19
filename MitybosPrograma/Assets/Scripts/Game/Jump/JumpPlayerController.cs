@@ -13,6 +13,8 @@ public class JumpPlayerController : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public bool sitting;
 
+    [HideInInspector] public GameObject currentChef;
+
     private float moveX;
 
     //Player Movement
@@ -86,11 +88,20 @@ public class JumpPlayerController : MonoBehaviour
     {
         if (rb.velocity.y == 0)
         {
-            anim.SetBool("grounded", false);
-            Vector2 velocity = rb.velocity;
-            velocity.y = jumpForce;
-            rb.velocity = velocity;
-            sitting = false;
+            if(currentChef != null)
+            {
+                currentChef.GetComponent<Chef>().PlayerTriesToJump();
+                currentChef = null;
+                anim.SetTrigger("curious");
+            }
+            else
+            {
+                anim.SetBool("grounded", false);
+                Vector2 velocity = rb.velocity;
+                velocity.y = jumpForce;
+                rb.velocity = velocity;
+                sitting = false;
+            }
         }
     }
 
