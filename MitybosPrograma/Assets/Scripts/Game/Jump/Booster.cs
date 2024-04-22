@@ -24,6 +24,7 @@ public class Booster : MonoBehaviour
             rb.velocity = velocity;
             chair.GetComponent<ChairSlide>().slidingTarget = "Player";
             chef.SetActive(true);
+            other.GetComponent<JumpPlayerController>().currentChef = chef;
         }
     }
 

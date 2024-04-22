@@ -14,7 +14,7 @@ public class ChairSlide : MonoBehaviour
     void Start()
     {
         jumpGameManager = JumpGameManager.Instance;
-        playerTransform = jumpGameManager.player; // Assuming Player is a public property in JumpGameManager
+        playerTransform = jumpGameManager.player;
     }
 
     void Update()
@@ -49,7 +49,7 @@ public class ChairSlide : MonoBehaviour
             if (chairReached)
             {
                 slidingTarget = "";
-                StartCoroutine(SetHappyTriggerAfterDelay(0.5f)); //
+                //StartCoroutine(SetHappyTriggerAfterDelay(0.5f)); //
             }
         }
     }
