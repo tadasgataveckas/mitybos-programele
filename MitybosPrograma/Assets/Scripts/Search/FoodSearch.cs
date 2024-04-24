@@ -8,6 +8,7 @@ using System.Collections.Generic;
 
 public class ProductDetails
 {
+    public int ProductID;
     public string Name;
     public float Kcal;
     public float Protein;
@@ -100,7 +101,8 @@ public class FoodSearch : MonoBehaviour
                 reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    string name = reader[reader.GetOrdinal("product_name")].ToString();
+                    int product_id = int.Parse(reader[reader.GetOrdinal("id_product")].ToString());
+					string name = reader[reader.GetOrdinal("product_name")].ToString();
                     float kcal = float.Parse(reader[reader.GetOrdinal("kcal")].ToString());
                     float protein = float.Parse(reader[reader.GetOrdinal("protein")].ToString());
                     float carbs = float.Parse(reader[reader.GetOrdinal("carbohydrates")].ToString());
@@ -110,7 +112,7 @@ public class FoodSearch : MonoBehaviour
 
                     //resultObj.GetComponentInChildren<TMP_Text>().text = name + " - " + kcal + " kcal - Protein: " + protein + "g - Carbs: " + carbs + "g - Fat: " + fat + "g";
                     resultObj.GetComponentInChildren<TMP_Text>().text = name;
-                    resultObj.GetComponent<Button>().onClick.AddListener(() => OnSearchResultClicked(name, kcal, protein, carbs, fat));
+                    resultObj.GetComponent<Button>().onClick.AddListener(() => OnSearchResultClicked(name, kcal, protein, carbs, fat, product_id));
                 }
             }
 
@@ -126,12 +128,13 @@ public class FoodSearch : MonoBehaviour
         }
     }
 
-    void OnSearchResultClicked(string productName, float kcal, float protein, float carbs, float fat)
+    void OnSearchResultClicked(string productName, float kcal, float protein, float carbs, float fat, int product_id)
     {
         // Populate selected product details
         selectedProduct = new ProductDetails
         {
-            Name = productName,
+            ProductID = product_id,
+			Name = productName,
             Kcal = kcal,
             Protein = protein,
             Carbs = carbs,
@@ -186,12 +189,12 @@ public class FoodSearch : MonoBehaviour
         searchPanel.SetActive(false);
     }
 
-    public float allCalories;
+	public float allCalories;
     public void OnAddToEatenList()
     {
+        int userId = SessionManager.GetIdKey();
         if (selectedProduct != null)
         {
-
             float amount = float.Parse(amountInputField.text);
             Debug.Log(amount);
 
@@ -200,15 +203,23 @@ public class FoodSearch : MonoBehaviour
             selectedProduct.Carbs = selectedProduct.Carbs * amount / 100;
             selectedProduct.Fat = selectedProduct.Fat * amount / 100;
 
+			string query = "INSERT INTO consumed_user_meals (id_user, id_meal, kcal, protein,  fat, carbohydrates) " +
+						   $"VALUES ({userId}, {selectedProduct.ProductID}, {selectedProduct.Kcal}, {selectedProduct.Protein},  {selectedProduct.Fat}, {selectedProduct.Carbs})";
 
-            eatenProducts.Add(selectedProduct);
-            Debug.Log(selectedProduct.Name + " added to eaten products list.");
-            DisplayEatenProducts();
-            allCalories += selectedProduct.Kcal;
-            Debug.Log("All calories: " + allCalories);
-            
-            ReturnTotalKcal();
-        }
+			DBManager.OpenConnection();
+			IDbCommand command = DBManager.connection.CreateCommand();
+			command.CommandText = query;
+			command.ExecuteNonQuery();
+
+
+			eatenProducts.Add(selectedProduct);
+			
+			DisplayEatenProducts();
+			allCalories += selectedProduct.Kcal;
+			Debug.Log("All calories: " + allCalories);
+
+			ReturnTotalKcal();
+		}
         else
         {
             Debug.LogWarning("No product selected to add to eaten products list.");
@@ -221,16 +232,24 @@ public class FoodSearch : MonoBehaviour
         float totalProtein = 0;
         float totalCarbs = 0;
         float totalFat = 0;
+		int userId = SessionManager.GetIdKey();
 
-        foreach (ProductDetails product in eatenProducts)
-        {
-            totalKcal += product.Kcal;
-            totalProtein += product.Protein;
-            totalCarbs += product.Carbs;
-            totalFat += product.Fat;
-        }
+		string query = "SELECT kcal, protein, carbohydrates, fat FROM consumed_user_meals WHERE id_user = " + userId;
 
-        Total_kcal_header.text = totalKcal.ToString() + " kcal";
+		DBManager.OpenConnection();
+		IDbCommand command = DBManager.connection.CreateCommand();
+		command.CommandText = query;
+		IDataReader reader = command.ExecuteReader();
+
+		while (reader.Read())
+		{
+			totalKcal += Convert.ToSingle(reader["kcal"]);
+			totalProtein += Convert.ToSingle(reader["protein"]);
+			totalCarbs += Convert.ToSingle(reader["carbohydrates"]);
+			totalFat += Convert.ToSingle(reader["fat"]);
+		}
+
+		Total_kcal_header.text = totalKcal.ToString() + " kcal";
 
         Total_kcalText.text = "Total Kcal: " + totalKcal.ToString();
         Total_proteinText.text = "Total Protein: " + totalProtein.ToString() + "g";
