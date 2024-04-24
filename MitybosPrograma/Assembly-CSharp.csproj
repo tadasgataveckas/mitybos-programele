@@ -85,11 +85,14 @@
     <Compile Include="Assets\Scripts\Game\Jump\Chair.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_InputField.cs" />
     <Compile Include="Assets\UI\TableLayout\Example\DynamicRowsExampleController.cs" />
+    <Compile Include="Assets\Scripts\Game\Jump\Chef.cs" />
     <Compile Include="Assets\Scripts\Game\Jump\ChairSlide.cs" />
+    <Compile Include="Assets\Scripts\Game\Jump\ExplodeOnEnter.cs" />
     <Compile Include="Assets\UI\DatePicker\TextMesh Pro\DatePicker_TextMeshProUtilities.cs" />
     <Compile Include="Assets\Scripts\Game\Harvest\MovePlayer.cs" />
     <Compile Include="Assets\Scripts\Main\CameraScroll.cs" />
     <Compile Include="Assets\Scripts\Calculations\BmiCalories.cs" />
+    <Compile Include="Assets\Scripts\Models\ScoresChickenWings.cs" />
     <Compile Include="Assets\Scripts\Login\LoginManager.cs" />
     <Compile Include="Assets\UI\TableLayout\TableLayout.cs" />
     <Compile Include="Assets\Scripts\unity_auth\UILogin.cs" />
@@ -101,6 +104,7 @@
     <Compile Include="Assets\Scripts\Main\ButtonObject.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_DateRange.cs" />
     <Compile Include="Assets\Scripts\Models\UserCalories.cs" />
+    <Compile Include="Assets\Scripts\Game\PauseManager.cs" />
     <Compile Include="Assets\Scripts\Session\SessionManager.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerUtilities.cs" />
     <Compile Include="Assets\Input\PlayerInput.cs" />
@@ -125,6 +129,7 @@
     <Compile Include="Assets\Scripts\Models\UserData.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\DBManager.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerCache.cs" />
+    <Compile Include="Assets\Scripts\Game\Scoreboard.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -527,16 +532,16 @@
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.1\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="K4os.Compression.LZ4">
-      <HintPath>Assets\Scripts\DLLs\K4os.Compression.LZ4.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Mono.Data">
       <HintPath>Assets\Plugins\Mono.Data.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.Data.Sqlite">
       <HintPath>Assets\Plugins\Mono.Data.Sqlite.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4">
+      <HintPath>Assets\Scripts\DLLs\K4os.Compression.LZ4.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Android.Types">
