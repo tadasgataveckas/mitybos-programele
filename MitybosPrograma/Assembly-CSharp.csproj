@@ -126,10 +126,11 @@
     <Compile Include="Assets\Scripts\Game\Jump\Booster.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_Config.cs" />
     <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\FoodClass.cs" />
+    <Compile Include="Assets\Scripts\Game\Scoreboard.cs" />
     <Compile Include="Assets\Scripts\Models\UserData.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\DBManager.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerCache.cs" />
-    <Compile Include="Assets\Scripts\Game\Scoreboard.cs" />
+    <Compile Include="Assets\Scripts\Game\Coin.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

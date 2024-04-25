@@ -127,6 +127,7 @@ public class JumpGameManager : MonoBehaviour
         // Log the screen width in units
         //Debug.Log("Screen width in units: " + screenWidthInUnits);
     }
+
     public void RestartScene()
     {
         // Restart the scene
@@ -144,7 +145,7 @@ public class JumpGameManager : MonoBehaviour
         this.enabled = false;
     }
 
-    // inserts score and populates scoreboard
+    // inserts score into db and populates scoreboard
     private void PopulateScoreboard()
     {
         int id_user = SessionManager.GetIdKey();
