@@ -5,37 +5,67 @@ using System;
 
 public class PhysicalScrollers : MonoBehaviour
 {
-    public ScrollRect scrollRect;
-    public GameObject[] objects; // Čia įrašykite objektus, kuriuos norite scroll'inti
-    private RectTransform contentRect;
-    public Transform numberParent;
-    public GameObject numberPrefab;
+    //Height scroller 
+    public ScrollRect scrollRectHeight;
+    public Transform numberParentHeight;
+    public GameObject numberPrefabHeight;
+    float valueHeight;
 
+    //Weight scroller
+    public ScrollRect scrollRectWeight;
+    public Transform numberParentWeight;
+    public GameObject numberPrefabWeight;
+    float valueWeight;
 
     void Start()
-    {
-        
-        AddNumbers();
+    {       
+        AddNumbersHeight();
+        AddNumbersWeight();
     }
 
     void Update()
     {
         
-        //GetValue();
     }
 
-    
-    public void AddNumbers()
+    //Height scroller methods
+    public void AddNumbersHeight()
     {
         for (int i = 100; i <= 230; i++) {
-            GameObject spawnedNumber = Instantiate(numberPrefab, new Vector3(0f, 0f, 0f), Quaternion.identity, numberParent);
+            GameObject spawnedNumber = Instantiate(numberPrefabHeight, new Vector3(0f, 0f, 0f), Quaternion.identity, numberParentHeight);
             spawnedNumber.GetComponent<TextMeshProUGUI>().text =  i.ToString();//'\n' +
         }
     }
 
-    public void GetValue()
+    public void GetValueHeight()
     {
-        float value = (float)Math.Round(numberParent.localPosition.y / 100) + 100 ;
-        Debug.Log("Value: " + value);
+        valueHeight = (float)Math.Round(numberParentHeight.localPosition.y / 100) + 100 ;
+        Debug.Log("Height Value: " + valueHeight);
+    }
+
+    public string ReturnValueHeight()
+    {
+        return valueHeight.ToString();
+    }
+
+    //Weight scroller methods
+    public void AddNumbersWeight()
+    {
+        for (int i = 40; i <= 200; i++)
+        {
+            GameObject spawnedNumber = Instantiate(numberPrefabWeight, new Vector3(0f, 0f, 0f), Quaternion.identity, numberParentWeight);
+            spawnedNumber.GetComponent<TextMeshProUGUI>().text = i.ToString();//'\n' +
+        }
+    }
+
+    public void GetValueWeight()
+    {
+        valueWeight = (float)Math.Round(numberParentWeight.localPosition.y / 100) + 40;
+        Debug.Log("Weight Value: " + valueWeight);
+    }
+
+    public string ReturnValueWeight()
+    {
+        return valueWeight.ToString();
     }
 }
