@@ -71,6 +71,11 @@ public class SurveyManager : MonoBehaviour
         //Go to Main scene
         SceneManager.LoadScene("Main");
     }
+    public void GoToCongrats()
+    {
+        //Go to CongratsScreen scene
+        SceneManager.LoadScene("CongratsScreen");
+    }
 
     public void SubmitSurvey()
     {
@@ -86,7 +91,8 @@ public class SurveyManager : MonoBehaviour
         foreach (int allergy in allergies)
             c.InsertUserAllergy(userData.id_user, allergy);
 
-        GoToMain();
+        //GoToMain();
+        GoToCongrats();
     }
 
     // input features ----------------------------------------------------------
