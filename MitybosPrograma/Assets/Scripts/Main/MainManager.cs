@@ -9,7 +9,11 @@ using Google.Protobuf.WellKnownTypes;
 
 public class MainManager : MonoBehaviour
 {
-    public GameObject camera;
+	//Progres bar stuff ;)
+	public ProgressBar progressBar_instance;
+
+
+	public GameObject camera;
     public List<GameObject> segments;
     public List<GameObject> segmentButtons;
     public int currentSegment = 0;
@@ -123,7 +127,11 @@ public class MainManager : MonoBehaviour
         currCalories = food.ReturnTotalKcal();
         dailyCalories.text = currCalories + " / " + userCalories.calories + "cal";
 
-        user.text = "User: " + username;
+        //Progres barr stuff
+        progressBar_instance.max = userCalories.calories;
+
+
+		user.text = "User: " + username;
     }
 
     public void UpdateInfo()
