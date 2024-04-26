@@ -20,6 +20,9 @@ public class SurveyManager : MonoBehaviour
     //activity slider
     public SliderScript slider;
 
+    //scroller
+    public PhysicalScrollers ScrollAHW;
+
     // Continue and Back buttons
     public GameObject Continue;
     public GameObject Back;
@@ -39,6 +42,7 @@ public class SurveyManager : MonoBehaviour
     public double CALORIES;
     public int year;
 
+    
 
     void Start()
     {
@@ -67,6 +71,11 @@ public class SurveyManager : MonoBehaviour
         //Go to Main scene
         SceneManager.LoadScene("Main");
     }
+    public void GoToCongrats()
+    {
+        //Go to CongratsScreen scene
+        SceneManager.LoadScene("CongratsScreen");
+    }
 
     public void SubmitSurvey()
     {
@@ -82,7 +91,8 @@ public class SurveyManager : MonoBehaviour
         foreach (int allergy in allergies)
             c.InsertUserAllergy(userData.id_user, allergy);
 
-        GoToMain();
+        //GoToMain();
+        GoToCongrats();
     }
 
     // input features ----------------------------------------------------------
@@ -115,16 +125,44 @@ public class SurveyManager : MonoBehaviour
     {
         userData.date_of_birth = newBirthDate;
     }
-
-    public void InputHeight(string newHeight)
+    public void InputHeight()
     {
-        double.TryParse(newHeight, out userData.height);
+        if (ScrollAHW != null)
+        {
+            string currHeight = ScrollAHW.ReturnValueHeight();
+            
+            Debug.Log("Height: " + currHeight);
+            double.TryParse(currHeight, out userData.height);
+        }
+        else
+        {
+            Debug.LogError("Scroll object is not initialized.");
+        }
     }
 
-    public void InputWeight(string newWeight)
+    //public void InputHeight(string newHeight)
+    //{
+    //    double.TryParse(newHeight, out userData.height);
+    //}
+    public void InputWeight()
     {
-        double.TryParse(newWeight, out userData.weight);
+        if (ScrollAHW != null)
+        {
+            string currWeight = ScrollAHW.ReturnValueWeight();
+
+            Debug.Log("Weight: " + currWeight);
+            double.TryParse(currWeight, out userData.weight);
+        }
+        else
+        {
+            Debug.LogError("Scroll object is not initialized.");
+        }
     }
+
+    //public void InputWeight(string newWeight)
+    //{
+    //    double.TryParse(newWeight, out userData.weight);
+    //}
 
     public void AddAllergy(int allergy)
     {

@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/JumpGame.unity
     guid: 3cd23881fb1859241a55f7e4caa6d90c
   - enabled: 1
+    path: Assets/CongratsScreen.unity
+    guid: 19b449451301d0d459f19938ec9d70a7
+  - enabled: 1
     path: Assets/VitaminHarvest.unity
     guid: d4261ff48a60a0743a0b0098a8fbc8fb
   m_configObjects:
