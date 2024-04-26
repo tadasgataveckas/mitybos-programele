@@ -97,6 +97,15 @@ CREATE TABLE IF NOT EXISTS user_selected_allergies (
   FOREIGN KEY (id_allergy) REFERENCES allergy (id_allergy)
 );
 
+-- Table: chicken wings scores
+CREATE TABLE IF NOT EXISTS scores_chicken_wings (
+  id_score INTEGER PRIMARY KEY AUTOINCREMENT,
+  id_user INTEGER NOT NULL,
+  score REAL NOT NULL,
+  score_date TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (id_user) REFERENCES user (id_user)
+);
+
 -- View: v_meal_kcal_per_serving
 CREATE VIEW IF NOT EXISTS v_meal_kcal_per_serving AS
 SELECT meal.id_meal AS id_meal, meal.meal_name AS meal_name, meal.meal_type AS meal_type, 
