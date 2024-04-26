@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Platform : MonoBehaviour
@@ -13,7 +14,13 @@ public class Platform : MonoBehaviour
     private bool hasTriggeredAnimation = false;
 
     //Special Platform types:
-    public bool BreakAfterTouch = false;
+    public bool breakAfterTouch = false;
+    public bool killOnTouch = false;
+
+    // all for movement
+    public bool moveAround = false;
+    private float speed = 1f;
+    private bool moveLeft = true;
 
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -34,11 +41,16 @@ public class Platform : MonoBehaviour
                 StartCoroutine(ResetAnimationTriger(0.3f));
             }
 
-            if(BreakAfterTouch)
+            if (killOnTouch)
+            {
+                jumpGameManager.DamagePlayer();
+            }
+
+            if (breakAfterTouch)
             {
                 Destroy(gameObject);
             }
-            
+
         }
     }
     // After delay
@@ -51,7 +63,6 @@ public class Platform : MonoBehaviour
 
 
     // When to destroy
-
     void Start()
     {
         jumpGameManager = JumpGameManager.Instance;
@@ -64,5 +75,27 @@ public class Platform : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if (moveAround)
+        {
+            MoveInDirection();
+        }
+    }
+
+    private void MoveInDirection()
+    {
+        Vector3 target = transform.position;
+        if (moveLeft)
+        {
+            target.x = 0.2f - jumpGameManager.screenWidthInUnits / 2;
+            if (transform.position.x <= target.x)
+                moveLeft = false;
+        }
+        else
+        {
+            target.x = jumpGameManager.screenWidthInUnits / 2 - 0.2f;
+            if (transform.position.x >= target.x)
+                moveLeft = true;
+        }
+        transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
     }
 }

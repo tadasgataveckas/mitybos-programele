@@ -2,18 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Coin : MonoBehaviour
+public class Shield : MonoBehaviour
 {
-    public int Value = 10;
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             JumpGameManager jumpGameManager = JumpGameManager.Instance;
-            jumpGameManager.coins += Value;
+            jumpGameManager.hasShield = true;
+            jumpGameManager.shieldSprite.SetActive(true);
             Destroy(gameObject);
-
         }
     }
+
 }
