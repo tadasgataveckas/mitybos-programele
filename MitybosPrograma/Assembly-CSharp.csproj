@@ -88,6 +88,7 @@
     <Compile Include="Assets\Scripts\Game\Shield.cs" />
     <Compile Include="Assets\UI\TableLayout\Example\DynamicRowsExampleController.cs" />
     <Compile Include="Assets\Scripts\Game\Jump\Chef.cs" />
+    <Compile Include="Assets\Scripts\Main\ProgressBar.cs" />
     <Compile Include="Assets\Scripts\Game\Jump\ChairSlide.cs" />
     <Compile Include="Assets\Scripts\Game\Jump\ExplodeOnEnter.cs" />
     <Compile Include="Assets\UI\DatePicker\TextMesh Pro\DatePicker_TextMeshProUtilities.cs" />
@@ -95,13 +96,16 @@
     <Compile Include="Assets\Scripts\Main\CameraScroll.cs" />
     <Compile Include="Assets\Scripts\Calculations\BmiCalories.cs" />
     <Compile Include="Assets\Scripts\Models\ScoresChickenWings.cs" />
+    <Compile Include="Assets\Prefabs\Scroller\ScrollerPrefab.cs" />
     <Compile Include="Assets\Scripts\Login\LoginManager.cs" />
     <Compile Include="Assets\UI\TableLayout\TableLayout.cs" />
     <Compile Include="Assets\Scripts\unity_auth\UILogin.cs" />
+    <Compile Include="Assets\Scripts\Survey\PhysicalScrollers.cs" />
     <Compile Include="Assets\Scripts\Game\Jump\JumpPlayerController.cs" />
     <Compile Include="Assets\Scripts\unity_auth\LoginController.cs" />
     <Compile Include="Assets\Scripts\Main\SegmentInformation.cs" />
     <Compile Include="Assets\Scripts\Survey\ButtonTransitions.cs" />
+    <Compile Include="Assets\Scripts\Survey\Congrats.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker.cs" />
     <Compile Include="Assets\Scripts\Main\ButtonObject.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_DateRange.cs" />
@@ -128,7 +132,7 @@
     <Compile Include="Assets\Scripts\Game\Jump\Booster.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_Config.cs" />
     <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\FoodClass.cs" />
-    <Compile Include="Assets\Scripts\Game\Scoreboard.cs" />
+    <Compile Include="Assets\Prefabs\Scoreboard\Scoreboard.cs" />
     <Compile Include="Assets\Scripts\Models\UserData.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\DBManager.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerCache.cs" />

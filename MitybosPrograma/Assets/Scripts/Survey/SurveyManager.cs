@@ -21,7 +21,8 @@ public class SurveyManager : MonoBehaviour
     public SliderScript slider;
 
     //scroller
-    public PhysicalScrollers ScrollAHW;
+    public ScrollerPrefab HeightScroller;
+    public ScrollerPrefab WeightScroller;
 
     // Continue and Back buttons
     public GameObject Continue;
@@ -54,6 +55,9 @@ public class SurveyManager : MonoBehaviour
         userData = new UserData(id);
         // added base value cuz slider can be ignored
         userData.physical_activity = 1;
+
+        userData.height = HeightScroller.defaultValue;
+        userData.weight = WeightScroller.defaultValue;
     }
 
     void Update()
@@ -127,12 +131,12 @@ public class SurveyManager : MonoBehaviour
     }
     public void InputHeight()
     {
-        if (ScrollAHW != null)
+        if (HeightScroller != null)
         {
-            string currHeight = ScrollAHW.ReturnValueHeight();
-            
+            float currHeight = HeightScroller.GetValue();
+
             Debug.Log("Height: " + currHeight);
-            double.TryParse(currHeight, out userData.height);
+            userData.height = currHeight;
         }
         else
         {
@@ -140,29 +144,20 @@ public class SurveyManager : MonoBehaviour
         }
     }
 
-    //public void InputHeight(string newHeight)
-    //{
-    //    double.TryParse(newHeight, out userData.height);
-    //}
     public void InputWeight()
     {
-        if (ScrollAHW != null)
+        if (WeightScroller != null)
         {
-            string currWeight = ScrollAHW.ReturnValueWeight();
+            float currWeight = WeightScroller.GetValue();
 
             Debug.Log("Weight: " + currWeight);
-            double.TryParse(currWeight, out userData.weight);
+            userData.weight = currWeight;
         }
         else
         {
             Debug.LogError("Scroll object is not initialized.");
         }
     }
-
-    //public void InputWeight(string newWeight)
-    //{
-    //    double.TryParse(newWeight, out userData.weight);
-    //}
 
     public void AddAllergy(int allergy)
     {
