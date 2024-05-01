@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class VitaminHarvestPlayerManager : MonoBehaviour
 {
@@ -38,30 +39,33 @@ public class VitaminHarvestPlayerManager : MonoBehaviour
     void Update()
     {
         itemText.text = "Item: " + itemInHand;
+        pickUpButton.SetActive(itemInHand == "");
+        useButton.SetActive(itemInHand != "");
+        dropButton.SetActive(itemInHand != "");
         // Pick Up
         if (itemInHand == "")
         {
-            if (nearbyPickableObjects.Count > 0)
+            FindNearestPickableObject();
+            if (nearestPickableObject != null)
             {
-                FindNearestPickableObject();
-                pickUpButton.SetActive(true);
+                pickUpButton.GetComponent<Button>().interactable = true;
             }
             else
             {
-                pickUpButton.SetActive(false);
+                pickUpButton.GetComponent<Button>().interactable = false;
             }
         }
         // Use or Drop
         else
         {
-            if (nearbyUsableObjects.Count > 0)
+            FindNearestUsableObject();
+            if (nearestUsableObject != null)
             {
-                FindNearestUsableObject();
-                useButton.SetActive(true);
+                useButton.GetComponent<Button>().interactable = true;
             }
             else
             {
-                useButton.SetActive(false);
+                useButton.GetComponent<Button>().interactable = false;
             }
         }
     }
@@ -74,7 +78,7 @@ public class VitaminHarvestPlayerManager : MonoBehaviour
             Debug.Log("Picked up: " + nearestPickableObject.name);
             itemInHand = nearestPickableObject.GetComponent<PickableObject>().itemName;
             // Perform pickup logic here
-            nearestPickableObject.GetComponent<PickableObject>().ChangeHover(false);
+            nearestPickableObject.GetComponent<PickableObject>().PickUp();
             nearbyPickableObjects.Remove(nearestPickableObject);
             pickUpButton.SetActive(false);
         }
@@ -83,12 +87,36 @@ public class VitaminHarvestPlayerManager : MonoBehaviour
     {
         if (nearestUsableObject != null)
         {
-            Debug.Log("Used on: " + nearestPickableObject.name);
-            itemInHand = "";
+            Debug.Log("Used on: " + nearestUsableObject.name);
             // Perform use logic here
-            nearestUsableObject.GetComponent<UsableObject>().ChangeHover(false);
+            nearestUsableObject.GetComponent<UsableObject>().UseItem(itemInHand);
             nearbyUsableObjects.Remove(nearestUsableObject);
             useButton.SetActive(false);
+            itemInHand = "";
+        }
+    }
+    public void Drop()
+    {
+        if (itemInHand != "")
+        {
+            Debug.Log("Dropped: " + itemInHand);
+            // Perform drop logic here
+            GameObject prefabToDrop = VitaminHarvestItemManager.Instance.GetItemInformationByName(itemInHand).droppedItemPrefab;
+
+            // Check if the prefab is valid
+            if (prefabToDrop != null)
+            {
+                Vector3 objectPosition = transform.position;
+                Vector3 dropPosition = objectPosition - new Vector3(0f, 0.25f, 0f); //  drop it directly below
+                GameObject droppedItem = Instantiate(prefabToDrop, dropPosition, Quaternion.identity);
+                dropButton.SetActive(false);
+                itemInHand = "";
+                droppedItem.GetComponent<PickableObject>().Drop();
+            }
+            else
+            {
+                Debug.LogWarning("Prefab to drop is null!");
+            }
         }
     }
 
@@ -98,12 +126,13 @@ public class VitaminHarvestPlayerManager : MonoBehaviour
     {
         float minDistance = Mathf.Infinity;
         Vector3 playerPosition = transform.position;
+        nearestPickableObject = null;
 
         //Find the nearest one
         foreach (GameObject obj in nearbyPickableObjects)
         {
             float distance = Vector3.Distance(obj.transform.position, playerPosition);
-            if (distance < minDistance)
+            if (distance < minDistance && !obj.GetComponent<PickableObject>().disabled)
             {
                 minDistance = distance;
                 nearestPickableObject = obj;
@@ -120,12 +149,13 @@ public class VitaminHarvestPlayerManager : MonoBehaviour
     {
         float minDistance = Mathf.Infinity;
         Vector3 playerPosition = transform.position;
+        nearestUsableObject = null;
 
         //Find the nearest one
         foreach (GameObject obj in nearbyUsableObjects)
         {
             float distance = Vector3.Distance(obj.transform.position, playerPosition);
-            if (distance < minDistance)
+            if (distance < minDistance && !obj.GetComponent<UsableObject>().disabled)
             {
                 minDistance = distance;
                 nearestUsableObject = obj;

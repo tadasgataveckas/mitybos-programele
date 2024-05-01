@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickableItem : MonoBehaviour
+public class PickableObject : MonoBehaviour
 {
     public SpriteRenderer sprite;
+    public Animator animator;
     public string itemName;
     private bool hovered = false;
+    public bool destroyAfterPicking;
+    public bool disabled = false;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -28,11 +31,23 @@ public class PickableItem : MonoBehaviour
         hovered = isHover;
         if(hovered)
         {
-            sprite.color = Color.green;
+            sprite.color = new Color(0.8f, 0.8f, 0.8f);
         }
         else
         {
             sprite.color = Color.white;
         }
+    }
+    public void PickUp()
+    {
+        ChangeHover(false);
+        if (destroyAfterPicking)
+        {
+            Destroy(gameObject);
+        }
+    }
+    public void Drop()
+    {
+        animator.SetTrigger("drop");
     }
 }
