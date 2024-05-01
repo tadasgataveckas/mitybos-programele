@@ -18,9 +18,9 @@ public class ProductDetails
 
 public class FoodSearch : MonoBehaviour
 {
+    public ProgressBar progressBar_instance;
 
-
-    public TMP_InputField searchInputField;
+	public TMP_InputField searchInputField;
     public ScrollRect scrollView;
 
     public GameObject resultPrefab;
@@ -67,10 +67,25 @@ public class FoodSearch : MonoBehaviour
 
     void Start()
     {
-        productDetailPanel.SetActive(false);
+		//removes data from consumed meals table for debugin only
+		RemoveDbData();
+
+		DisplayEatenProducts();
+        progressBar_instance.UpdateCurr();
+
+		productDetailPanel.SetActive(false);
         searchPanel.SetActive(false);
-        DisplayEatenProducts();
     }
+
+    void RemoveDbData()
+    {
+		string query = "DELETE FROM consumed_user_meals";
+
+		DBManager.OpenConnection();
+		IDbCommand command = DBManager.connection.CreateCommand();
+		command.CommandText = query;
+		command.ExecuteNonQuery();
+	}
 
     public void Search()
     {
@@ -213,10 +228,11 @@ public class FoodSearch : MonoBehaviour
 
 
 			eatenProducts.Add(selectedProduct);
-			
+
+
 			DisplayEatenProducts();
-			allCalories += selectedProduct.Kcal;
-			Debug.Log("All calories: " + allCalories);
+			//allCalories += selectedProduct.Kcal;
+			//Debug.Log("All calories: " + allCalories);
 
 			ReturnTotalKcal();
 		}
@@ -255,7 +271,10 @@ public class FoodSearch : MonoBehaviour
         Total_proteinText.text = "Total Protein: " + totalProtein.ToString() + "g";
         Total_carbsText.text = "Total Carbs: " + totalCarbs.ToString() + "g";
         Totoal_fatText.text = "Total Fat: " + totalFat.ToString() + "g";
-    }
+        allCalories = totalKcal;
+
+		progressBar_instance.curr = totalKcal;
+	}
 
     public float ReturnTotalKcal()
     {

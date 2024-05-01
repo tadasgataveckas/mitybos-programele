@@ -6,10 +6,10 @@ using System;
 public class PhysicalScrollers : MonoBehaviour
 {
     //Height scroller 
-    public ScrollRect scrollRectHeight;
-    public Transform numberParentHeight;
-    public GameObject numberPrefabHeight;
-    float valueHeight;
+    //public ScrollRect scrollRectHeight;
+    //public Transform numberParentHeight;
+    //public GameObject numberPrefabHeight;
+    //float valueHeight;
 
     //Weight scroller
     public ScrollRect scrollRectWeight;
@@ -19,7 +19,7 @@ public class PhysicalScrollers : MonoBehaviour
 
     void Start()
     {       
-        AddNumbersHeight();
+        //AddNumbersHeight();
         AddNumbersWeight();
     }
 
@@ -28,25 +28,25 @@ public class PhysicalScrollers : MonoBehaviour
         
     }
 
-    //Height scroller methods
-    public void AddNumbersHeight()
-    {
-        for (int i = 100; i <= 230; i++) {
-            GameObject spawnedNumber = Instantiate(numberPrefabHeight, new Vector3(0f, 0f, 0f), Quaternion.identity, numberParentHeight);
-            spawnedNumber.GetComponent<TextMeshProUGUI>().text =  i.ToString();//'\n' +
-        }
-    }
+    ////Height scroller methods
+    //public void AddNumbersHeight()
+    //{
+    //    for (int i = 100; i <= 230; i++) {
+    //        GameObject spawnedNumber = Instantiate(numberPrefabHeight, new Vector3(0f, 0f, 0f), Quaternion.identity, numberParentHeight);
+    //        spawnedNumber.GetComponent<TextMeshProUGUI>().text =  i.ToString();//'\n' +
+    //    }
+    //}
 
-    public void GetValueHeight()
-    {
-        valueHeight = (float)Math.Round(numberParentHeight.localPosition.y / 100) + 100 ;
-        Debug.Log("Height Value: " + valueHeight);
-    }
+    //public void GetValueHeight()
+    //{
+    //    valueHeight = (int)numberParentHeight.localPosition.y / 20 + 100;
+    //    Debug.Log("Height Value: " + valueHeight);
+    //}
 
-    public string ReturnValueHeight()
-    {
-        return valueHeight.ToString();
-    }
+    //public string ReturnValueHeight()
+    //{
+    //    return valueHeight.ToString();
+    //}
 
     //Weight scroller methods
     public void AddNumbersWeight()
@@ -60,7 +60,7 @@ public class PhysicalScrollers : MonoBehaviour
 
     public void GetValueWeight()
     {
-        valueWeight = (float)Math.Round(numberParentWeight.localPosition.y / 100) + 40;
+        valueWeight = (int)numberParentWeight.localPosition.y / 20 + 40;
         Debug.Log("Weight Value: " + valueWeight);
     }
 

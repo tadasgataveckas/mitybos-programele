@@ -9,7 +9,6 @@ public class SegmentManager : MonoBehaviour
 
     public void ChangeSelectedButton(GameObject pressedButton) 
     {
-        Debug.Log(pressedButton);
         if (!listValueSegment) 
         {
             foreach(GameObject button in selectableButtons) 
