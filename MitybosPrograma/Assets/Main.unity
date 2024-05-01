@@ -13414,6 +13414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e899b78a6906ef41b6cac3b6f7ad6fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  progressBar_instance: {fileID: 2013801190}
   camera: {fileID: 480337850}
   segments:
   - {fileID: 5992870554340352526}
