@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: KiwiTree
+  m_Controller: {fileID: 9100000, guid: 329566f931da9184eb40c362ac68ae23, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: -7549223733200777613, guid: d9487236da204624fb01b486751a21bf, type: 3}
+    m_OverrideClip: {fileID: -7549223733200777613, guid: d9487236da204624fb01b486751a21bf, type: 3}
+  - m_OriginalClip: {fileID: -1368760226535883461, guid: d9487236da204624fb01b486751a21bf, type: 3}
+    m_OverrideClip: {fileID: 6857566601415391147, guid: d9487236da204624fb01b486751a21bf, type: 3}
+  - m_OriginalClip: {fileID: -3038226449926402116, guid: d9487236da204624fb01b486751a21bf, type: 3}
+    m_OverrideClip: {fileID: -8994599540289751001, guid: d9487236da204624fb01b486751a21bf, type: 3}
+  - m_OriginalClip: {fileID: 5009914037823229994, guid: d9487236da204624fb01b486751a21bf, type: 3}
+    m_OverrideClip: {fileID: 2453553909888096788, guid: d9487236da204624fb01b486751a21bf, type: 3}
+  - m_OriginalClip: {fileID: -6516215278641492253, guid: d9487236da204624fb01b486751a21bf, type: 3}
+    m_OverrideClip: {fileID: -273586268407948575, guid: d9487236da204624fb01b486751a21bf, type: 3}
+  - m_OriginalClip: {fileID: 797060097977922941, guid: d9487236da204624fb01b486751a21bf, type: 3}
+    m_OverrideClip: {fileID: -375445163254992237, guid: d9487236da204624fb01b486751a21bf, type: 3}
+  - m_OriginalClip: {fileID: 6901233756620737477, guid: d9487236da204624fb01b486751a21bf, type: 3}
+    m_OverrideClip: {fileID: 260575734167550201, guid: d9487236da204624fb01b486751a21bf, type: 3}
+  - m_OriginalClip: {fileID: -2289700658297227275, guid: d9487236da204624fb01b486751a21bf, type: 3}
+    m_OverrideClip: {fileID: 5800041446923343270, guid: d9487236da204624fb01b486751a21bf, type: 3}
