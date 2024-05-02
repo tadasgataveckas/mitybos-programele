@@ -48,6 +48,7 @@ public static class DBManager
         }
     }
 
+
     // creates base database tables
     private static void CreateTables()
     {
@@ -85,6 +86,10 @@ public static class DBManager
     // opens connection
     public static void OpenConnection()
     {
+        //creates db just in case
+        if(!File.Exists(dbPath))
+            CreateDatabase();
+
         // define connection to database
         if (connection == null)
             connection = new SqliteConnection(dbURI + dbPath);
