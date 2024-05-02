@@ -106,6 +106,7 @@
     <Compile Include="Assets\Input\PlayerInput.cs" />
     <Compile Include="Assets\Scripts\Game\Jump\JumpGameManager.cs" />
     <Compile Include="Assets\Scripts\Main\MainManager.cs" />
+    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\PlanFieldBehaviour.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_HoldButton.cs" />
     <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\BranchAndBound.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_DayButton.cs" />
@@ -125,7 +126,6 @@
     <Compile Include="Assets\Scripts\Models\UserData.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\DBManager.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerCache.cs" />
-    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\PlanFieldBehaviour.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scripts\UI-DBmethods\plugins\sqlite3.dll" />
