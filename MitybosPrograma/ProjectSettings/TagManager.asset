@@ -57,3 +57,6 @@ TagManager:
   - name: Weapon
     uniqueID: 2527300333
     locked: 0
+  - name: UI
+    uniqueID: 374541253
+    locked: 0

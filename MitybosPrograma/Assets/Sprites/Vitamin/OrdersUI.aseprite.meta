@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b69cd0a624c095347b3d6cca4649a8e0
+guid: cbb9e9a97501cf74090d35a09d47e588
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -119,38 +119,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: MapObjects_Frame_0
+  - name: OrdersUI_Frame_3
     originalName: 
-    pivot: {x: 0.5, y: -0.10526316}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 44
-      y: 91
-      width: 18
-      height: 38
-    spriteID: fa37b4523882a1946b219d3ad06d7d5d
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 44, y: 91}
-  - name: MapObjects_Frame_1
-    originalName: 
-    pivot: {x: 0.51470584, y: -0.027777778}
+    pivot: {x: 0.5, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 68
-      height: 36
-    spriteID: a31c418afe888564eb6f9544933efe19
+      width: 59
+      height: 31
+    spriteID: 0620e23765e21564d91cd5059c5768ba
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -159,78 +139,18 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: MapObjects_Frame_2
+  - name: OrdersUI_Frame_4
     originalName: 
-    pivot: {x: 0.5769231, y: -0.055555556}
+    pivot: {x: 0.2236842, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 131
-      width: 26
-      height: 36
-    spriteID: ea5b5ee569ef9ff4dbe6261c659c3fc2
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 131}
-  - name: MapObjects_Frame_3
-    originalName: 
-    pivot: {x: 0.5769231, y: -0.055555556}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 175
-      width: 26
-      height: 36
-    spriteID: b2953619dafce1243a0c3f391ba053f1
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 175}
-  - name: MapObjects_Frame_4
-    originalName: 
-    pivot: {x: 0.5555555, y: -0.057142857}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 48
-      width: 36
-      height: 35
-    spriteID: cb28bc95d87fe3e4bb4bc2d2f29f82df
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 48}
-  - name: MapObjects_Frame_5
-    originalName: 
-    pivot: {x: 0.55999994, y: -0.06451613}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 219
-      width: 25
+      x: 71
+      y: 4
+      width: 38
       height: 31
-    spriteID: 3c1af8c28efdca940a710f4ab6e2e93d
+    spriteID: 71e8fcc7a94603a48b3f375beddc5d86
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -238,19 +158,19 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 219}
-  - name: MapObjects_Frame_6
+    uvTransform: {x: 71, y: 4}
+  - name: OrdersUI_Frame_0
     originalName: 
-    pivot: {x: 0.5, y: -0.5}
+    pivot: {x: 0.2236842, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
-      y: 91
-      width: 32
-      height: 32
-    spriteID: 1728d24b281f61e4e92154b0778fe8af
+      y: 43
+      width: 38
+      height: 31
+    spriteID: f5ecdc9004b274f4abc88156e2a78129
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -258,76 +178,100 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 91}
+    uvTransform: {x: 4, y: 43}
+  - name: OrdersUI_Frame_1
+    originalName: 
+    pivot: {x: 0.2236842, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 50
+      y: 43
+      width: 38
+      height: 31
+    spriteID: f3b753c25bfedfd4e9eca51c4fddefb8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 50, y: 43}
+  - name: OrdersUI_Frame_2
+    originalName: 
+    pivot: {x: 0.2236842, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 82
+      width: 38
+      height: 31
+    spriteID: 6bfb254abaa2b954099036d9552768e6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 82}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 1904794336
-    name: MapObjects
+    guid: -1338798371
+    name: OrdersUI
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: MapObjects_Frame_0
-      frameIndex: 0
-      cellRect:
-        x: 41
-        y: 4
-        width: 18
-        height: 38
-      spriteId: fa37b4523882a1946b219d3ad06d7d5d
-    - name: MapObjects_Frame_1
-      frameIndex: 1
-      cellRect:
-        x: 15
-        y: 1
-        width: 68
-        height: 36
-      spriteId: a31c418afe888564eb6f9544933efe19
-    - name: MapObjects_Frame_2
-      frameIndex: 2
-      cellRect:
-        x: 35
-        y: 2
-        width: 26
-        height: 36
-      spriteId: ea5b5ee569ef9ff4dbe6261c659c3fc2
-    - name: MapObjects_Frame_3
+    - name: OrdersUI_Frame_3
       frameIndex: 3
       cellRect:
-        x: 35
-        y: 2
-        width: 26
-        height: 36
-      spriteId: b2953619dafce1243a0c3f391ba053f1
-    - name: MapObjects_Frame_4
+        x: 0
+        y: 0
+        width: 59
+        height: 31
+      spriteId: 0620e23765e21564d91cd5059c5768ba
+    - name: OrdersUI_Frame_4
       frameIndex: 4
       cellRect:
-        x: 30
-        y: 2
-        width: 36
-        height: 35
-      spriteId: cb28bc95d87fe3e4bb4bc2d2f29f82df
-    - name: MapObjects_Frame_5
-      frameIndex: 5
-      cellRect:
-        x: 36
-        y: 2
-        width: 25
+        x: 21
+        y: 0
+        width: 38
         height: 31
-      spriteId: 3c1af8c28efdca940a710f4ab6e2e93d
-    - name: MapObjects_Frame_6
-      frameIndex: 6
+      spriteId: 71e8fcc7a94603a48b3f375beddc5d86
+    - name: OrdersUI_Frame_0
+      frameIndex: 0
       cellRect:
-        x: 34
-        y: 16
-        width: 32
-        height: 32
-      spriteId: 1728d24b281f61e4e92154b0778fe8af
+        x: 21
+        y: 0
+        width: 38
+        height: 31
+      spriteId: f5ecdc9004b274f4abc88156e2a78129
+    - name: OrdersUI_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 21
+        y: 0
+        width: 38
+        height: 31
+      spriteId: f3b753c25bfedfd4e9eca51c4fddefb8
+    - name: OrdersUI_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 21
+        y: 0
+        width: 38
+        height: 31
+      spriteId: 6bfb254abaa2b954099036d9552768e6
     linkedCells: []
     parentIndex: -1
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 100, y: 64}
+  canvasSize: {x: 59, y: 31}

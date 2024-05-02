@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: HandsKiwiSeed
+  m_Controller: {fileID: 9100000, guid: 3e94bee7c0493f64e8200a109b71f6b3, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: -3100369314251171874, guid: 2c6cdb0652aa7bf41b6b05932d67586e, type: 3}
+    m_OverrideClip: {fileID: -8863098105722549789, guid: e7d50c668c81e8f47bcee5f7518c0e12, type: 3}
+  - m_OriginalClip: {fileID: 2667949614841947897, guid: 2c6cdb0652aa7bf41b6b05932d67586e, type: 3}
+    m_OverrideClip: {fileID: -5826636922851830762, guid: e7d50c668c81e8f47bcee5f7518c0e12, type: 3}

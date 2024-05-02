@@ -1,0 +1,837 @@
+fileFormatVersion: 2
+guid: 45d619359819e4e4993f9d6051b01df3
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMasterTextureLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: CustomerPear_Frame_0
+    originalName: 
+    pivot: {x: 0.5405406, y: -0.044776116}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 49
+      y: 77
+      width: 37
+      height: 67
+    spriteID: 8f7ba5d07b18241479fe53dc5c054515
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 49, y: 77}
+  - name: CustomerPear_Frame_1
+    originalName: 
+    pivot: {x: 0.5405406, y: -0.045454543}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 49
+      y: 377
+      width: 37
+      height: 66
+    spriteID: a9dacc97e027f884fba11dcff16d0c4b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 49, y: 377}
+  - name: CustomerPear_Frame_2
+    originalName: 
+    pivot: {x: 0.5405406, y: -0.045454543}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 4
+      width: 37
+      height: 66
+    spriteID: 0374ba3c2cd7eca498dc7c9b751d15b0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 96, y: 4}
+  - name: CustomerPear_Frame_3
+    originalName: 
+    pivot: {x: 0.5405406, y: -0.045454543}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 78
+      width: 37
+      height: 66
+    spriteID: 87879b01a627e3f42bebb836d1fcdf44
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 96, y: 78}
+  - name: CustomerPear_Frame_4
+    originalName: 
+    pivot: {x: 0.5405406, y: -0.044776116}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 49
+      y: 152
+      width: 37
+      height: 67
+    spriteID: d602d09d30fe54b4191028dd67d5c906
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 49, y: 152}
+  - name: CustomerPear_Frame_5
+    originalName: 
+    pivot: {x: 0.5405406, y: -0.044776116}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 49
+      y: 227
+      width: 37
+      height: 67
+    spriteID: 5871e1bfbb13a3d4390324dfb475b191
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 49, y: 227}
+  - name: CustomerPear_Frame_6
+    originalName: 
+    pivot: {x: 0.54285717, y: -0.044776116}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 141
+      y: 144
+      width: 35
+      height: 67
+    spriteID: 228ba294de4544c439a42709c2be452c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 141, y: 144}
+  - name: CustomerPear_Frame_7
+    originalName: 
+    pivot: {x: 0.53846157, y: -0.048387095}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 141
+      y: 4
+      width: 39
+      height: 62
+    spriteID: b2839b9a467572941a1976ea70371dbb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 141, y: 4}
+  - name: CustomerPear_Frame_8
+    originalName: 
+    pivot: {x: 0.5405406, y: -0.046875}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 226
+      width: 37
+      height: 64
+    spriteID: fbc3438dca9c6564d97c292655202b15
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 96, y: 226}
+  - name: CustomerPear_Frame_9
+    originalName: 
+    pivot: {x: 0.5405406, y: -0.04761905}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 141
+      y: 219
+      width: 37
+      height: 63
+    spriteID: 897d59578ee89204fbf08291d5fb9388
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 141, y: 219}
+  - name: CustomerPear_Frame_10
+    originalName: 
+    pivot: {x: 0.5405406, y: -0.04761905}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 141
+      y: 290
+      width: 37
+      height: 63
+    spriteID: 4bbd547cd84c5174bb42e3d9c094b9b7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 141, y: 290}
+  - name: CustomerPear_Frame_11
+    originalName: 
+    pivot: {x: 0.5405406, y: -0.04761905}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 141
+      y: 361
+      width: 37
+      height: 63
+    spriteID: b32d953c18ea8b647ae77c260e3a4c46
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 141, y: 361}
+  - name: CustomerPear_Frame_12
+    originalName: 
+    pivot: {x: 0.5405406, y: -0.046875}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 298
+      width: 37
+      height: 64
+    spriteID: 1ce6b3422624fe74eb7b228330cbda61
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 96, y: 298}
+  - name: CustomerPear_Frame_13
+    originalName: 
+    pivot: {x: 0.5405406, y: -0.046875}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 370
+      width: 37
+      height: 64
+    spriteID: eebd40ba35fe27b4faa3906befee502c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 96, y: 370}
+  - name: CustomerPear_Frame_14
+    originalName: 
+    pivot: {x: 0.53846157, y: -0.048387095}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 141
+      y: 74
+      width: 39
+      height: 62
+    spriteID: f4ab983d3659e334c91bbecf7b5067ab
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 141, y: 74}
+  - name: CustomerPear_Frame_15
+    originalName: 
+    pivot: {x: 0.54285717, y: -0.041666664}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 317
+      width: 35
+      height: 72
+    spriteID: 750ca1a570b20e94ebd52cebff00b758
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 317}
+  - name: CustomerPear_Frame_16
+    originalName: 
+    pivot: {x: 0.53846157, y: -0.046153847}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 49
+      y: 4
+      width: 39
+      height: 65
+    spriteID: 1913dd4af1ec8794faa39529261a1577
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 49, y: 4}
+  - name: CustomerPear_Frame_17
+    originalName: 
+    pivot: {x: 0.5405406, y: -0.045454543}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 152
+      width: 37
+      height: 66
+    spriteID: 6ebce244597265a4f855452bca936256
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 96, y: 152}
+  - name: CustomerPear_Frame_18
+    originalName: 
+    pivot: {x: 0.5405406, y: -0.044776116}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 49
+      y: 302
+      width: 37
+      height: 67
+    spriteID: c237587ee866e4541865287b91e06a50
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 49, y: 302}
+  - name: CustomerPear_Frame_19
+    originalName: 
+    pivot: {x: 0.5405406, y: -0.042857144}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 84
+      width: 37
+      height: 70
+    spriteID: 36f8e3fbb16b12b48936526487f4bdaf
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 84}
+  - name: CustomerPear_Frame_20
+    originalName: 
+    pivot: {x: 0.5405406, y: -0.04347826}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 240
+      width: 37
+      height: 69
+    spriteID: 8ae2d31bf3d76e0499765eae56bd3f8a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 240}
+  - name: CustomerPear_Frame_21
+    originalName: 
+    pivot: {x: 0.5405406, y: -0.044117644}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 397
+      width: 37
+      height: 68
+    spriteID: 9abc649721daabf4689236972f70ee71
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 397}
+  - name: CustomerPear_Frame_22
+    originalName: 
+    pivot: {x: 0.5405406, y: -0.041666664}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 37
+      height: 72
+    spriteID: fbbe11dfc0b0d714bbda0476496029f9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: CustomerPear_Frame_23
+    originalName: 
+    pivot: {x: 0.5405406, y: -0.042857144}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 162
+      width: 37
+      height: 70
+    spriteID: 4b8965c1350bb064781291947c72b330
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 162}
+  - name: CustomerPear_Frame_24
+    originalName: 
+    pivot: {x: 0.5405406, y: -0.046875}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 442
+      width: 37
+      height: 64
+    spriteID: b61fe9a139a3dba4e978e86ff6f263c7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 96, y: 442}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: -960637406
+    name: CustomerPear
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: CustomerPear_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 12
+        y: 3
+        width: 37
+        height: 67
+      spriteId: 8f7ba5d07b18241479fe53dc5c054515
+    - name: CustomerPear_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 12
+        y: 3
+        width: 37
+        height: 66
+      spriteId: a9dacc97e027f884fba11dcff16d0c4b
+    - name: CustomerPear_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 12
+        y: 3
+        width: 37
+        height: 66
+      spriteId: 0374ba3c2cd7eca498dc7c9b751d15b0
+    - name: CustomerPear_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 12
+        y: 3
+        width: 37
+        height: 66
+      spriteId: 87879b01a627e3f42bebb836d1fcdf44
+    - name: CustomerPear_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 12
+        y: 3
+        width: 37
+        height: 67
+      spriteId: d602d09d30fe54b4191028dd67d5c906
+    - name: CustomerPear_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 12
+        y: 3
+        width: 37
+        height: 67
+      spriteId: 5871e1bfbb13a3d4390324dfb475b191
+    - name: CustomerPear_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 13
+        y: 3
+        width: 35
+        height: 67
+      spriteId: 228ba294de4544c439a42709c2be452c
+    - name: CustomerPear_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 11
+        y: 3
+        width: 39
+        height: 62
+      spriteId: b2839b9a467572941a1976ea70371dbb
+    - name: CustomerPear_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 12
+        y: 3
+        width: 37
+        height: 64
+      spriteId: fbc3438dca9c6564d97c292655202b15
+    - name: CustomerPear_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 12
+        y: 3
+        width: 37
+        height: 63
+      spriteId: 897d59578ee89204fbf08291d5fb9388
+    - name: CustomerPear_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 12
+        y: 3
+        width: 37
+        height: 63
+      spriteId: 4bbd547cd84c5174bb42e3d9c094b9b7
+    - name: CustomerPear_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 12
+        y: 3
+        width: 37
+        height: 63
+      spriteId: b32d953c18ea8b647ae77c260e3a4c46
+    - name: CustomerPear_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 12
+        y: 3
+        width: 37
+        height: 64
+      spriteId: 1ce6b3422624fe74eb7b228330cbda61
+    - name: CustomerPear_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 12
+        y: 3
+        width: 37
+        height: 64
+      spriteId: eebd40ba35fe27b4faa3906befee502c
+    - name: CustomerPear_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: 11
+        y: 3
+        width: 39
+        height: 62
+      spriteId: f4ab983d3659e334c91bbecf7b5067ab
+    - name: CustomerPear_Frame_15
+      frameIndex: 15
+      cellRect:
+        x: 13
+        y: 3
+        width: 35
+        height: 72
+      spriteId: 750ca1a570b20e94ebd52cebff00b758
+    - name: CustomerPear_Frame_16
+      frameIndex: 16
+      cellRect:
+        x: 11
+        y: 3
+        width: 39
+        height: 65
+      spriteId: 1913dd4af1ec8794faa39529261a1577
+    - name: CustomerPear_Frame_17
+      frameIndex: 17
+      cellRect:
+        x: 12
+        y: 3
+        width: 37
+        height: 66
+      spriteId: 6ebce244597265a4f855452bca936256
+    - name: CustomerPear_Frame_18
+      frameIndex: 18
+      cellRect:
+        x: 12
+        y: 3
+        width: 37
+        height: 67
+      spriteId: c237587ee866e4541865287b91e06a50
+    - name: CustomerPear_Frame_19
+      frameIndex: 19
+      cellRect:
+        x: 12
+        y: 3
+        width: 37
+        height: 70
+      spriteId: 36f8e3fbb16b12b48936526487f4bdaf
+    - name: CustomerPear_Frame_20
+      frameIndex: 20
+      cellRect:
+        x: 12
+        y: 3
+        width: 37
+        height: 69
+      spriteId: 8ae2d31bf3d76e0499765eae56bd3f8a
+    - name: CustomerPear_Frame_21
+      frameIndex: 21
+      cellRect:
+        x: 12
+        y: 3
+        width: 37
+        height: 68
+      spriteId: 9abc649721daabf4689236972f70ee71
+    - name: CustomerPear_Frame_22
+      frameIndex: 22
+      cellRect:
+        x: 12
+        y: 3
+        width: 37
+        height: 72
+      spriteId: fbbe11dfc0b0d714bbda0476496029f9
+    - name: CustomerPear_Frame_23
+      frameIndex: 23
+      cellRect:
+        x: 12
+        y: 3
+        width: 37
+        height: 70
+      spriteId: 4b8965c1350bb064781291947c72b330
+    - name: CustomerPear_Frame_24
+      frameIndex: 24
+      cellRect:
+        x: 12
+        y: 3
+        width: 37
+        height: 64
+      spriteId: b61fe9a139a3dba4e978e86ff6f263c7
+    linkedCells: []
+    parentIndex: -1
+  platformSettings: []
+  generatePhysicsShape: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 64, y: 100}
