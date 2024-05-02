@@ -6,7 +6,8 @@ public enum UsableObjectType
 {
     FarmLand,
     Plant,
-    Finish
+    Finish,
+    PlacementArea
 }
 
 public class UsableObject : MonoBehaviour
@@ -14,14 +15,19 @@ public class UsableObject : MonoBehaviour
     public UsableObjectType type;
     private Plant plant;
     public SpriteRenderer sprite;
+    public Animator animator;
     public List<string> canBeUsedByTheseItems;
     private bool hovered = false;
     public bool disabled = false;
+    public bool hasHoverAnimation;
+
+    private GameObject player;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
+            player = other.gameObject;
             string playerItem = other.gameObject.GetComponent<VitaminHarvestPlayerManager>().itemInHand;
             if (canBeUsedByTheseItems.Contains(playerItem))
             {
@@ -43,16 +49,24 @@ public class UsableObject : MonoBehaviour
         if (hovered)
         {
             sprite.color = new Color(0.8f, 0.8f, 0.8f);
+            if (hasHoverAnimation)
+            {
+                animator.SetBool("hover", true);
+            }
         }
         else
         {
             sprite.color = Color.white;
+            if (hasHoverAnimation)
+            {
+                animator.SetBool("hover", false);
+            }
         }
     }
 
     void Update()
     {
-        if (disabled && plant == null)
+        if (disabled && plant == null && transform.childCount == 1) // plant checking for farmlands, children count for placeable area, 1 child is reserved for visuals
         {
             disabled = false;
         }
@@ -76,6 +90,9 @@ public class UsableObject : MonoBehaviour
                 case UsableObjectType.Finish:
                     Harvest();
                     break;
+                case UsableObjectType.PlacementArea:
+                    PlaceOnArea(item);
+                    break;
                 default:
                     Debug.LogWarning("Unknown UsableObjectType: " + type);
                     break;
@@ -97,7 +114,8 @@ public class UsableObject : MonoBehaviour
         spawnedPlant.GetComponent<PickableObject>().itemName = foodName;
         plant.StartGrowing(plantAnimator);
         disabled = true;
-        Debug.Log("Planted seed on " + gameObject.name);
+        VitaminHarvestItemManager.Instance.SpawnVFX("GrowStart", transform.position);
+        //Debug.Log("Planted seed on " + gameObject.name);
         // Implement planting logic here
     }
 
@@ -111,5 +129,25 @@ public class UsableObject : MonoBehaviour
     {
         Debug.Log("Harvested on " + gameObject.name);
         // Implement harvesting logic here
+    }
+
+    private void PlaceOnArea(string item)
+    {
+        // Drop item on my location
+        GameObject prefabToDrop = VitaminHarvestItemManager.Instance.GetItemInformationByName(item).droppedItemPrefab;
+
+        if (prefabToDrop != null)
+        {
+            GameObject droppedItem = Instantiate(prefabToDrop, transform.position, Quaternion.identity, transform);
+            droppedItem.GetComponent<PickableObject>().Drop();
+            disabled = true;
+
+            player.GetComponent<VitaminHarvestPlayerManager>().UnequipItem();
+        }
+        else
+        {
+            Debug.LogWarning("Prefab to drop is null!");
+        }
+
     }
 }

@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: DroppedKiwiSeed
+  m_Controller: {fileID: 9100000, guid: 083be4539fa629f41858b33edbb982e5, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 6103674741186732463, guid: 948cfd70d9004ad40b2dd28d996ac417, type: 3}
+    m_OverrideClip: {fileID: 4655634748401793978, guid: 948cfd70d9004ad40b2dd28d996ac417, type: 3}
+  - m_OriginalClip: {fileID: -175050306137414517, guid: 948cfd70d9004ad40b2dd28d996ac417, type: 3}
+    m_OverrideClip: {fileID: -5019638538296441288, guid: 948cfd70d9004ad40b2dd28d996ac417, type: 3}

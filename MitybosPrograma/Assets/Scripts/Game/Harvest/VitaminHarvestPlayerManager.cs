@@ -33,6 +33,8 @@ public class VitaminHarvestPlayerManager : MonoBehaviour
 
     public string itemInHand = "";
 
+    public Animator Hands;
+
     // If no item is in hand - player can PICK UP item
     // If an item is in hand - player can DROP or USE item 
 
@@ -82,6 +84,7 @@ public class VitaminHarvestPlayerManager : MonoBehaviour
             nearbyPickableObjects.Remove(nearestPickableObject);
             pickUpButton.SetActive(false);
         }
+        EndOfAction();
     }
     public void Use()
     {
@@ -94,6 +97,7 @@ public class VitaminHarvestPlayerManager : MonoBehaviour
             useButton.SetActive(false);
             itemInHand = "";
         }
+        EndOfAction();
     }
     public void Drop()
     {
@@ -118,6 +122,20 @@ public class VitaminHarvestPlayerManager : MonoBehaviour
                 Debug.LogWarning("Prefab to drop is null!");
             }
         }
+        EndOfAction();
+    }
+
+    public void UnequipItem()
+    {
+        dropButton.SetActive(false);
+        itemInHand = "";
+        EndOfAction();
+    }
+
+
+    private void EndOfAction()
+    {
+        Hands.runtimeAnimatorController = VitaminHarvestItemManager.Instance.GetItemInformationByName(itemInHand).handController;
     }
 
     // Calculations, finding nearest object for highlighting them, knowing which one to use
