@@ -56,24 +56,63 @@ public class FoodSearch : MonoBehaviour
 
     private double water; //Temp variable for storing water amount localy
 
-    public void AddWater()
-    {
-        water += 100;
-    }
+	public void AddWater()
+	{
+		water += 100;
 
-    public void DisplayWater()
-    {
-        Water_field_plan.text = "Total water: " + water.ToString();
-        Water_field_header.text = water.ToString() + " ml";
-    }
+		//int userId = SessionManager.GetIdKey();
 
-    void Start()
+		//string query = @"SELECT COUNT(*) FROM consumed_user_water WHERE id_user = " + userId + @";
+  //                  ";
+		//DBManager.OpenConnection();
+		//IDbCommand command = DBManager.connection.CreateCommand();
+		//command.CommandText = query;
+		//object result = command.ExecuteScalar();
+		//int count = result != null ? Convert.ToInt32(result) : 0;
+
+		//if (count > 0)
+		//{
+		//	query = @"UPDATE consumed_user_water SET water = water + 100 WHERE id_user = " + userId + ";";
+		//}
+		//else
+		//{
+		//	query = @"INSERT INTO consumed_user_water (id_user, water) VALUES (" + userId + ", 100);";
+		//}
+
+		//command.CommandText = query;
+		//command.ExecuteNonQuery();
+	}
+
+
+	public void DisplayWater()
+	{
+		//int userId = SessionManager.GetIdKey();
+
+		//string query = @"SELECT water FROM consumed_user_water WHERE id_user = " + userId + ";";
+
+		//DBManager.OpenConnection();
+		//IDbCommand command = DBManager.connection.CreateCommand();
+		//command.CommandText = query;
+		//object result = command.ExecuteScalar();
+
+		//int totalWater = result != null ? Convert.ToInt32(result) : 0;
+
+		//Water_field_plan.text = "Total water: " + totalWater.ToString() + " ml";
+		//Water_field_header.text = totalWater.ToString() + " ml";
+
+		Water_field_plan.text = "Total water: " + water.ToString() + " ml";
+		Water_field_header.text = water.ToString() + " ml";
+	}
+
+	void Start()
     {
 		//removes data from consumed meals table for debugin only
-		RemoveDbDataFoodSearch();
+		//RemoveDbDataFoodSearch();
 
 		DisplayEatenProducts();
-        progressBar_instance.UpdateCurr();
+        DisplayWater();
+
+		progressBar_instance.UpdateCurr();
 
 		productDetailPanel.SetActive(false);
         searchPanel.SetActive(false);
@@ -89,63 +128,62 @@ public class FoodSearch : MonoBehaviour
 		command.ExecuteNonQuery();
 	}
 
-    public void Search()
-    {
-        string input = searchInputField.text;
+	public void Search()
+	{
+		string input = searchInputField.text;
 
-        string query = "SELECT * FROM product WHERE product_name LIKE '%" + input + "%';";
+		string query = "SELECT * FROM product WHERE product_name LIKE '%" + input + "%';";
 
-        try
-        {
-            DBManager.OpenConnection();
-            IDbCommand command = DBManager.connection.CreateCommand();
-            command.CommandText = query;
-            IDataReader reader = command.ExecuteReader();
+		try
+		{
+			DBManager.OpenConnection();
+			IDbCommand command = DBManager.connection.CreateCommand();
+			command.CommandText = query;
+			IDataReader reader = command.ExecuteReader();
+
+			ClearResultPanel();
+
+			bool hasResult = false; // Flag to check if there's at least one result
+
+			while (reader.Read())
+			{
+				hasResult = true;
+
+				int product_id = int.Parse(reader[reader.GetOrdinal("id_product")].ToString());
+				string name = reader[reader.GetOrdinal("product_name")].ToString();
+				float kcal = float.Parse(reader[reader.GetOrdinal("kcal")].ToString());
+				float protein = float.Parse(reader[reader.GetOrdinal("protein")].ToString());
+				float carbs = float.Parse(reader[reader.GetOrdinal("carbohydrates")].ToString());
+				float fat = float.Parse(reader[reader.GetOrdinal("fat")].ToString());
+
+				GameObject resultObj = Instantiate(resultPrefab, scrollView.content);
+				resultObj.GetComponentInChildren<TMP_Text>().text = name;
+
+				// Add listener to the button
+				resultObj.GetComponent<Button>().onClick.AddListener(() => OnSearchResultClicked(name, kcal, protein, carbs, fat, product_id));
+			}
+
+			if (!hasResult)
+			{
+				Debug.Log("No such food :((");
+				GameObject resultObj = Instantiate(resultPrefab, scrollView.content);
+				resultObj.GetComponentInChildren<TMP_Text>().text = "No such food :((";
+			}
+
+			reader.Close();
+		}
+		catch (Exception e)
+		{
+			Debug.LogError("Error searching for food products: " + e.Message);
+		}
+		finally
+		{
+			DBManager.connection.Close();
+		}
+	}
 
 
-            ClearResultPanel();
-
-            if (!reader.Read())
-            {
-                Debug.Log("No such food :((");
-                GameObject resultObj = Instantiate(resultPrefab, scrollView.content);
-                resultObj.GetComponentInChildren<TMP_Text>().text = "No such food :((";
-            }
-            else
-            {
-                // called reader execute again to restart reader, cuz IDataReader doesn't have "hasrows()" method  :(
-                reader.Close();
-                reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    int product_id = int.Parse(reader[reader.GetOrdinal("id_product")].ToString());
-					string name = reader[reader.GetOrdinal("product_name")].ToString();
-                    float kcal = float.Parse(reader[reader.GetOrdinal("kcal")].ToString());
-                    float protein = float.Parse(reader[reader.GetOrdinal("protein")].ToString());
-                    float carbs = float.Parse(reader[reader.GetOrdinal("carbohydrates")].ToString());
-                    float fat = float.Parse(reader[reader.GetOrdinal("fat")].ToString());
-
-                    GameObject resultObj = Instantiate(resultPrefab, scrollView.content);
-
-                    //resultObj.GetComponentInChildren<TMP_Text>().text = name + " - " + kcal + " kcal - Protein: " + protein + "g - Carbs: " + carbs + "g - Fat: " + fat + "g";
-                    resultObj.GetComponentInChildren<TMP_Text>().text = name;
-                    resultObj.GetComponent<Button>().onClick.AddListener(() => OnSearchResultClicked(name, kcal, protein, carbs, fat, product_id));
-                }
-            }
-
-            reader.Close();
-        }
-        catch (Exception e)
-        {
-            Debug.LogError("Error searching for food products: " + e.Message);
-        }
-        finally
-        {
-            DBManager.connection.Close();
-        }
-    }
-
-    void OnSearchResultClicked(string productName, float kcal, float protein, float carbs, float fat, int product_id)
+	void OnSearchResultClicked(string productName, float kcal, float protein, float carbs, float fat, int product_id)
     {
         // Populate selected product details
         selectedProduct = new ProductDetails
@@ -190,7 +228,14 @@ public class FoodSearch : MonoBehaviour
         mainPanel.SetActive(true);
         productDetailPanel.SetActive(false);
         searchPanel.SetActive(false);
-        DisplayEatenProducts();
+
+		searchInputField.text = "";
+		foreach (Transform child in scrollView.content.transform)
+		{
+			Destroy(child.gameObject);
+		}
+
+		DisplayEatenProducts();
     }
 
     public void GoToSearch()
@@ -222,6 +267,7 @@ public class FoodSearch : MonoBehaviour
 
 			string query = "INSERT INTO consumed_user_meals (id_user, id_meal, kcal, protein,  fat, carbohydrates) " +
 						   $"VALUES ({userId}, {selectedProduct.ProductID}, {selectedProduct.Kcal}, {selectedProduct.Protein},  {selectedProduct.Fat}, {selectedProduct.Carbs})";
+
 
 			DBManager.OpenConnection();
 			IDbCommand command = DBManager.connection.CreateCommand();
