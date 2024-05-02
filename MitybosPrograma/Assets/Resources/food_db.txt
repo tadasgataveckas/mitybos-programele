@@ -97,7 +97,15 @@ CREATE TABLE IF NOT EXISTS user_selected_allergies (
   FOREIGN KEY (id_allergy) REFERENCES allergy (id_allergy)
 );
 
--- Table: chicken wings scores
+-- Table: consumed_user_water
+CREATE TABLE IF NOT EXISTS consumed_user_water (
+  id_water INTEGER PRIMARY KEY AUTOINCREMENT,
+  id_user INTEGER NOT NULL,
+  water REAL NOT NULL,
+  FOREIGN KEY (id_user) REFERENCES user (id_user)
+);
+
+-- Table: chicken_wings_scores
 CREATE TABLE IF NOT EXISTS scores_chicken_wings (
   id_score INTEGER PRIMARY KEY AUTOINCREMENT,
   id_user INTEGER NOT NULL,

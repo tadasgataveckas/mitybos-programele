@@ -189,6 +189,7 @@ public class JumpGameManager : MonoBehaviour
     public void RestartScene()
     {
         // Restart the scene
+        Destroy(gameObject);
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 
