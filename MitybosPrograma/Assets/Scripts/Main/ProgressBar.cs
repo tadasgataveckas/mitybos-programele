@@ -11,7 +11,7 @@ public class ProgressBar : MonoBehaviour
     public float curr;
     public Image mask;
 
-    // Update is called once per frame
+    //Update is called once per frame
     //void Update()
     //{
     //    GetCurrFill();

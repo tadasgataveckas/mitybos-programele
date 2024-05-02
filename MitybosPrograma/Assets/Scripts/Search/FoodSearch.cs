@@ -20,6 +20,8 @@ public class FoodSearch : MonoBehaviour
 {
     public ProgressBar progressBar_instance;
 
+    
+
 	public TMP_InputField searchInputField;
     public ScrollRect scrollView;
 
@@ -68,7 +70,7 @@ public class FoodSearch : MonoBehaviour
     void Start()
     {
 		//removes data from consumed meals table for debugin only
-		RemoveDbData();
+		RemoveDbDataFoodSearch();
 
 		DisplayEatenProducts();
         progressBar_instance.UpdateCurr();
@@ -77,7 +79,7 @@ public class FoodSearch : MonoBehaviour
         searchPanel.SetActive(false);
     }
 
-    void RemoveDbData()
+    void RemoveDbDataFoodSearch()
     {
 		string query = "DELETE FROM consumed_user_meals";
 
@@ -273,7 +275,9 @@ public class FoodSearch : MonoBehaviour
         Totoal_fatText.text = "Total Fat: " + totalFat.ToString() + "g";
         allCalories = totalKcal;
 
+        //PROGRES BAR STUFF DONT DELEETE
 		progressBar_instance.curr = totalKcal;
+		progressBar_instance.UpdateCurr();
 	}
 
     public float ReturnTotalKcal()

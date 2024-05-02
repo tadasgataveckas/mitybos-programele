@@ -9,8 +9,9 @@ using Google.Protobuf.WellKnownTypes;
 
 public class MainManager : MonoBehaviour
 {
-	//Progres bar stuff ;)
+	//PROGRES BAR STUFF DONT DELEETE
 	public ProgressBar progressBar_instance;
+	//PROGRES BAR STUFF DONT DELEETE
 
 
 	public GameObject camera;
@@ -55,8 +56,8 @@ public class MainManager : MonoBehaviour
         // gets stored user id
         id_user = SessionManager.GetIdKey();
 
-        // returns user to login screen if this scene is accessed without an id
-        if (id_user <= 0)
+		// returns user to login screen if this scene is accessed without an id
+		if (id_user <= 0)
         {
             GoToLogin();
 
@@ -127,8 +128,9 @@ public class MainManager : MonoBehaviour
         currCalories = food.ReturnTotalKcal();
         dailyCalories.text = currCalories + " / " + userCalories.calories + "cal";
 
-        //Progres barr stuff
-        progressBar_instance.max = userCalories.calories;
+		//PROGRES BAR STUFF DONT DELEETE
+		progressBar_instance.max = userCalories.calories;
+        progressBar_instance.UpdateCurr();
 
 
 		user.text = "User: " + username;
