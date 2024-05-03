@@ -19,7 +19,16 @@ public class PauseManager : MonoBehaviour
         pauseButton.SetActive(true);
         pauseScreen.SetActive(false);
     }
-    public void ExitScene()
+
+    public void PauseUniversal()
+    {
+        if (Time.timeScale == 0)
+            UnpauseGame();
+        else
+            PauseGame();
+    }
+
+    public void ReturnToMain()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
     }

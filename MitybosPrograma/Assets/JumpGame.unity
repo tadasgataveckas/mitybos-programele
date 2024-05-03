@@ -1818,7 +1818,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 749270697}
         m_TargetAssemblyTypeName: PauseManager, Assembly-CSharp
-        m_MethodName: ExitScene
+        m_MethodName: ReturnToMain
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2494,7 +2494,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1393608653
-  m_SortingLayer: 1
+  m_SortingLayer: 4
   m_SortingOrder: 2
   m_Sprite: {fileID: -3447860306115594076, guid: 2c6cdb0652aa7bf41b6b05932d67586e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

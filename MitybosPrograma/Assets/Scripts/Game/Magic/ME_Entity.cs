@@ -9,8 +9,6 @@ public abstract class ME_Entity : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        Debug.Log("Damage taken");
-
         HP -= damage;
         UpdateHealthBar();
 

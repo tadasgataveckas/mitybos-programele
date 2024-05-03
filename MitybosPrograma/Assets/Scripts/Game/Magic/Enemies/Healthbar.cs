@@ -15,7 +15,6 @@ public class Healthbar : MonoBehaviour
 
     public void UpdateHealthbar()
     {
-        Debug.Log("UPDATING HEALTH");
         healthBar.value = entity.HP;
 
         //if (healthBar.value >= healthBar.maxValue || healthBar.value <= 0)
