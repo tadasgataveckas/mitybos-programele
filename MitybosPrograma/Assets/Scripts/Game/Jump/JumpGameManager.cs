@@ -182,7 +182,7 @@ public class JumpGameManager : MonoBehaviour
         float aspectRatio = Screen.width / (float)Screen.height;
 
         // Calculate the screen width in world units
-        screenWidthInUnits = orthographicSize * 2 * aspectRatio;
+        screenWidthInUnits = orthographicSize;// * 2 * aspectRatio;
         screenHeightInUnits = orthographicSize * 2;
     }
 
