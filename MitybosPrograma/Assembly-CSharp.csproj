@@ -126,6 +126,8 @@
     <Compile Include="Assets\Scripts\Models\UserData.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\DBManager.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerCache.cs" />
+    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\FoodItem.cs" />
+    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\FoodManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scripts\UI-DBmethods\plugins\sqlite3.dll" />

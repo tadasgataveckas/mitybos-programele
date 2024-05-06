@@ -3,6 +3,7 @@ using Mysqlx.Crud;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UI.Tables;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,19 +14,32 @@ public class PlanFieldBehaviour : MonoBehaviour
     protected Button EditButton { get; set; }
     protected Button RemoveButton { get; set; }
     private GameObject parent { get; set; }
+    private List<TableCell> cellList = new List<TableCell>();
     [SerializeField]
     private GameObject prefab;
+
+    [SerializeField]
+    private TableCell Cell0, Cell1, Cell2, Cell3, Cell4, Cell5, Cell6, Cell7, Cell8, Cell9;
     void Start()
     {
-        InfoText = GetComponentInChildren<TMP_Text>();
-        EditButton = GameObject.Find("EditButton").GetComponent<Button>();
-        RemoveButton = GameObject.Find("RemoveButton").GetComponent<Button>();
-        parent = transform.parent.gameObject;
-    }
+		
+		parent = transform.parent.gameObject;
+		cellList.Add(Cell0);
+		cellList.Add(Cell1);
+		cellList.Add(Cell2);
+		cellList.Add(Cell3);
+		cellList.Add(Cell4);
+		cellList.Add(Cell5);
+		cellList.Add(Cell6);
+		cellList.Add(Cell7);
+		cellList.Add(Cell8);
+		cellList.Add(Cell9);                                        
+	}
 
     public void OnEditButtonClick()
     {
-        InfoText.text = "Editbutoun";
+		InfoText = GetComponentInChildren<TMP_Text>();
+		InfoText.text = "Editbutoun";
     }
 
     public void OnRemoveButtonClick()
@@ -35,17 +49,30 @@ public class PlanFieldBehaviour : MonoBehaviour
 
     public void OnAddButtonClick()
     {
-        GameObject _prefab = Instantiate(prefab);
-        SetPrefabParent(_prefab);
-        _prefab.transform.position = new Vector3(240, 360);
-
         
+        
+       // _prefab.transform.position = new Vector3(240, 360);
+
+        foreach( var item in cellList )
+        {
+            if (item.transform.childCount == 0)
+            {
+				GameObject _prefab = Instantiate(prefab);
+                SetPrefabParent(_prefab, item.transform);
+                _prefab.transform.localPosition = Vector3.zero;
+				
+				EditButton = GameObject.Find("EditButton").GetComponent<Button>();
+				
+				RemoveButton = GameObject.Find("RemoveButton").GetComponent<Button>();
+                
+                break;
+			}
+        }
     }
 
-    private void SetPrefabParent(GameObject o)
+    private void SetPrefabParent(GameObject o, Transform parent)
     {
-        GameObject container = GameObject.Find("FoodObjectContainer");  //.GetComponent<GameObject>();
-
-        o.transform.SetParent(container.transform);
+        
+        o.transform.SetParent(parent);
     }       
 }

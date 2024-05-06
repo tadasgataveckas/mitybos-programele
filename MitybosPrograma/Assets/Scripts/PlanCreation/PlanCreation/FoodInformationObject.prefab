@@ -35,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.9906, y: 2.1188}
-  m_SizeDelta: {x: 284.5215, y: 38.1273}
+  m_AnchoredPosition: {x: -17.304, y: 1.9251}
+  m_SizeDelta: {x: 244.614, y: 38.515}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5533866884294297603
 CanvasRenderer:
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -2.0486755, y: 0, z: 0, w: 0}
+  m_margin: {x: 10.016396, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -172,7 +172,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 167.5, y: -0.000014544}
+  m_AnchoredPosition: {x: 141.68, y: 1.0000465}
   m_SizeDelta: {x: 39.3337, y: 32.879}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5533866884492546490
@@ -615,7 +615,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 123.82, y: -0.000053987}
+  m_AnchoredPosition: {x: 98, y: 1}
   m_SizeDelta: {x: 38.1229, y: 32.8791}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5533866885418881926
@@ -748,8 +748,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -40.658295, y: 0.1949997}
-  m_SizeDelta: {x: -88.3469, y: -8.0566}
+  m_AnchoredPosition: {x: -39.167725, y: 1.0438995}
+  m_SizeDelta: {x: -91.3286, y: -9.7544}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5533866886125627823
 CanvasRenderer:
@@ -828,8 +828,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 17.5856, y: 235.18384}
-  m_SizeDelta: {x: 279.1806, y: -50.1843}
+  m_AnchoredPosition: {x: 23.345886, y: -5}
+  m_SizeDelta: {x: 238.8693, y: -57.2788}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5533866886153117781
 CanvasRenderer:
@@ -882,3 +882,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
+  Cell0: {fileID: 0}
+  Cell1: {fileID: 0}
+  Cell2: {fileID: 0}
+  Cell3: {fileID: 0}
+  Cell4: {fileID: 0}
+  Cell5: {fileID: 0}
+  Cell6: {fileID: 0}
+  Cell7: {fileID: 0}
+  Cell8: {fileID: 0}
+  Cell9: {fileID: 0}
