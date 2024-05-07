@@ -5,20 +5,28 @@ using UnityEngine;
 using TMPro;
 using UnityEditor;
 using UI.Dates;
+using UI.Tables;
+using Org.BouncyCastle.Utilities;
+using System;
 
 public class AutoPlan : MonoBehaviour
 {
-    ClientMethods c = new ClientMethods(new DatabaseMethods()); 
+    ClientMethods c = new ClientMethods(new DatabaseMethods());
     List<FoodClass> returnedfoodlist = new List<FoodClass>(); //allfoods
     List<FoodClass> createdlist = new List<FoodClass>(); //meals for the day
+    TMP_InputField _inputField { get; set; }
+
+    TableLayout _table { get; set; }
     private void Awake()
     {
-        //TMP_Text textobjectBreakfast = GameObject.Find("BreakfastFoodnameText").GetComponent<TMP_Text>();
-        //TMP_Text textobjectLunch = GameObject.Find("LunchFoodnameText").GetComponent<TMP_Text>();
-        //TMP_Text textobjectDinner = GameObject.Find("DinnerFoodnameText").GetComponent<TMP_Text>();
-        //TMP_Text textobjectDate = GameObject.Find("SelectedDateText").GetComponent<TMP_Text>();
-
-    }
+		//TMP_Text textobjectBreakfast = GameObject.Find("BreakfastFoodnameText").GetComponent<TMP_Text>();
+		//TMP_Text textobjectLunch = GameObject.Find("LunchFoodnameText").GetComponent<TMP_Text>();
+		//TMP_Text textobjectDinner = GameObject.Find("DinnerFoodnameText").GetComponent<TMP_Text>();
+		//TMP_Text textobjectDate = GameObject.Find("SelectedDateText").GetComponent<TMP_Text>();
+		_inputField = GameObject.Find("InputFieldNumber").GetComponent<TMP_InputField>();
+		_inputField.contentType = TMP_InputField.ContentType.Alphanumeric;
+        _table = GetComponent<TableLayout>();
+	}
 
     private void Update()
     {
@@ -27,16 +35,26 @@ public class AutoPlan : MonoBehaviour
     }
     public void OnClickAutoPlan()
     {
-        returnedfoodlist = c.ReturnFoodList();
+		//TMP_Text _textField = _inputField.GetComponentInChildren<TMP_Text>();
+        //Debug.Log(_textField.text);
+        string numberText = _inputField.text;
+        int number = Int32.Parse(numberText);
+
+		returnedfoodlist = c.ReturnFoodList();
         BranchAndBound branchAndBoundFood = new BranchAndBound(returnedfoodlist);
-        createdlist = branchAndBoundFood.FindClosestCalorieCombination(MainManager.userCalories.calories,3);
-        Debug.Log(createdlist.Count);
-        TMP_Text textobjectBreakfast = GameObject.Find("BreakfastFoodnameText").GetComponent<TMP_Text>();
-        TMP_Text textobjectLunch = GameObject.Find("LunchFoodnameText").GetComponent<TMP_Text>();
-        TMP_Text textobjectDinner = GameObject.Find("DinnerFoodnameText").GetComponent<TMP_Text>();
-        textobjectBreakfast.text = createdlist[0]?.ToString();
-        textobjectLunch.text = createdlist[1]?.ToString();
-        textobjectDinner.text = createdlist[2]?.ToString();
+        createdlist = branchAndBoundFood.FindClosestCalorieCombination(MainManager.userCalories.calories,number);
+
+        Debug.Log(createdlist.Count + " vnt.");
+
+
+
+
+        //TMP_Text textobjectBreakfast = GameObject.Find("BreakfastFoodnameText").GetComponent<TMP_Text>();
+        //TMP_Text textobjectLunch = GameObject.Find("LunchFoodnameText").GetComponent<TMP_Text>();
+        //TMP_Text textobjectDinner = GameObject.Find("DinnerFoodnameText").GetComponent<TMP_Text>();
+        //textobjectBreakfast.text = createdlist[0]?.ToString();
+        //textobjectLunch.text = createdlist[1]?.ToString();
+        //textobjectDinner.text = createdlist[2]?.ToString();
         
     }
 
