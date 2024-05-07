@@ -5,21 +5,27 @@ public class Healthbar : MonoBehaviour
 {
     public Slider healthBar;
     public ME_Entity entity;
+    private CanvasGroup canvas;
 
     // Start is called before the first frame update
     void Start()
     {
+        canvas = GetComponent<CanvasGroup>();
         healthBar.maxValue = entity.MaxHP;
-        UpdateHealthbar();
+        UpdateSlider();
     }
 
-    public void UpdateHealthbar()
+    public void UpdateSlider()
     {
-        healthBar.value = entity.HP;
+        if (entity.HP >= 0)
+            healthBar.value = entity.HP;
+        else
+            healthBar.value = 0;
 
-        //if (healthBar.value >= healthBar.maxValue || healthBar.value <= 0)
-        //    gameObject.SetActive(false);
-        //else gameObject.SetActive(true);
-
+        // hides when at full or 0 health
+        if (healthBar.value >= healthBar.maxValue || healthBar.value < 0)
+            canvas.alpha = 0f;
+        else
+            canvas.alpha = 1f;
     }
 }

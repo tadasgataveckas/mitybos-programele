@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5441604189807201860}
   - component: {fileID: 6103887243833745172}
   - component: {fileID: 3270374791911772429}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33,7 +33,7 @@ RectTransform:
   m_Children:
   - {fileID: 1813494194705482568}
   m_Father: {fileID: 180952669917814722}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -102,6 +102,68 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &1421555909731496879
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 736619680440770165}
+  - component: {fileID: 2269989572934209863}
+  - component: {fileID: 3234389866610471525}
+  m_Layer: 0
+  m_Name: Hitbox
+  m_TagString: Enemy Hitbox
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &736619680440770165
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421555909731496879}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 180952669917814722}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &2269989572934209863
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421555909731496879}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.2
+--- !u!114 &3234389866610471525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421555909731496879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eb75ceed22449b40a57499adebcb5a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 6519927248523119233}
 --- !u!1 &6692437357438632274
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,7 +178,7 @@ GameObject:
   - component: {fileID: 545019553323897987}
   - component: {fileID: -8587509295121574300}
   - component: {fileID: 6301460694309606800}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Snake
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -135,6 +197,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 736619680440770165}
   - {fileID: 6863999454794552154}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -204,11 +267,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 0
+  healthbar: {fileID: 6707773253830240396}
   MaxHP: 50
-  speed: 1
-  damage: 5
+  Xp: 10
+  Speed: 1
+  Damage: 5
+  DamageCooldown: 0.5
   Target: {fileID: 0}
-  Healthbar: {fileID: 6707773253830240396}
+  Player: {fileID: 0}
 --- !u!58 &545019553323897987
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -218,8 +284,8 @@ CircleCollider2D:
   m_GameObject: {fileID: 6692437357438632274}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 6200000, guid: 2ea345ae178042646af0269b91062939, type: 2}
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -237,7 +303,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -283,19 +349,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 565525456821928824, guid: 888d7133de3460c40ab9f159a53aa711, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 565525456821928824, guid: 888d7133de3460c40ab9f159a53aa711, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 565525456821928824, guid: 888d7133de3460c40ab9f159a53aa711, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 565525456821928824, guid: 888d7133de3460c40ab9f159a53aa711, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 565525456821928824, guid: 888d7133de3460c40ab9f159a53aa711, type: 3}
       propertyPath: m_SizeDelta.x
@@ -347,11 +413,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 565525456821928824, guid: 888d7133de3460c40ab9f159a53aa711, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -540
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 565525456821928824, guid: 888d7133de3460c40ab9f159a53aa711, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -959.65
+      value: 0.3499756
       objectReference: {fileID: 0}
     - target: {fileID: 565525456821928824, guid: 888d7133de3460c40ab9f159a53aa711, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -369,13 +435,29 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1100189223159124396, guid: 888d7133de3460c40ab9f159a53aa711, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1198538091908512040, guid: 888d7133de3460c40ab9f159a53aa711, type: 3}
       propertyPath: m_Name
       value: Healthbar
       objectReference: {fileID: 0}
     - target: {fileID: 1198538091908512040, guid: 888d7133de3460c40ab9f159a53aa711, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1198538091908512040, guid: 888d7133de3460c40ab9f159a53aa711, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1682910673678056381, guid: 888d7133de3460c40ab9f159a53aa711, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3680343788095211386, guid: 888d7133de3460c40ab9f159a53aa711, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3938626006066769823, guid: 888d7133de3460c40ab9f159a53aa711, type: 3}
       propertyPath: m_CullTransparentMesh
@@ -385,6 +467,22 @@ PrefabInstance:
       propertyPath: entity
       value: 
       objectReference: {fileID: 6519927248523119233}
+    - target: {fileID: 5023408685307480141, guid: 888d7133de3460c40ab9f159a53aa711, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5420679302302173145, guid: 888d7133de3460c40ab9f159a53aa711, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5986049699870350769, guid: 888d7133de3460c40ab9f159a53aa711, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7820102061155507407, guid: 888d7133de3460c40ab9f159a53aa711, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8286310669185934227, guid: 888d7133de3460c40ab9f159a53aa711, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

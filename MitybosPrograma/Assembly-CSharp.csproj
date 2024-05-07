@@ -68,7 +68,7 @@
     <Compile Include="Assets\UI\DatePicker\DatePicker_Enums.cs" />
     <Compile Include="Assets\Scripts\Game\Jump\JumpCameraFollow.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_Animator.cs" />
-    <Compile Include="Assets\Scripts\Game\Magic\ME_Player.cs" />
+    <Compile Include="Assets\Scripts\Game\Magic\Player\ME_Player.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerExtensions.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_DayButton_Pool.cs" />
     <Compile Include="Assets\Scripts\Main\GameSelect.cs" />
@@ -94,9 +94,11 @@
     <Compile Include="Assets\Scripts\Game\Harvest\PickableObject.cs" />
     <Compile Include="Assets\UI\TableLayout\Example\DynamicRowsExampleController.cs" />
     <Compile Include="Assets\Scripts\Game\Magic\ME_Game_Manager.cs" />
+    <Compile Include="Assets\Prefabs\FPS Counter\FPSCounter.cs" />
     <Compile Include="Assets\Scripts\Game\Jump\Chef.cs" />
     <Compile Include="Assets\Scripts\Main\ProgressBar.cs" />
     <Compile Include="Assets\Scripts\Game\Jump\ChairSlide.cs" />
+    <Compile Include="Assets\Scripts\Game\Magic\Enemies\ME_EnemyHitbox.cs" />
     <Compile Include="Assets\Scripts\Game\Harvest\Plant.cs" />
     <Compile Include="Assets\Scripts\Game\Jump\ExplodeOnEnter.cs" />
     <Compile Include="Assets\UI\DatePicker\TextMesh Pro\DatePicker_TextMeshProUtilities.cs" />
@@ -131,6 +133,8 @@
     <Compile Include="Assets\Scripts\Game\Harvest\VitaminHarvestPlayerManager.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_HoldButton.cs" />
     <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\BranchAndBound.cs" />
+    <Compile Include="Assets\Scripts\Models\ScoresMagicExpedition.cs" />
+    <Compile Include="Assets\Scripts\Game\Magic\Player\ME_PlayerHurtbox.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_DayButton.cs" />
     <Compile Include="Assets\Scripts\Game\Harvest\MovementJoystick.cs" />
     <Compile Include="Assets\Scripts\Models\Allergy.cs" />
@@ -154,7 +158,6 @@
     <Compile Include="Assets\Scripts\Models\UserData.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\DBManager.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerCache.cs" />
-    <Compile Include="Assets\Prefabs\FPS Counter\FPSCounter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

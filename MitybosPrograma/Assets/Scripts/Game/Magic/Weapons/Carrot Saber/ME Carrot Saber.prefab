@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Carrot Saber
   fireRate: 0.2
-  projectileCount: 2
+  projectileCount: 1
   damage: 25
   speed: 180
   lifespan: 0

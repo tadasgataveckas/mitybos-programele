@@ -4,7 +4,8 @@ using UnityEngine;
 
 public abstract class ME_Entity : MonoBehaviour
 {
-    [HideInInspector] public float HP;
+    public float HP;
+    public Healthbar healthbar;
     public float MaxHP;
 
     public void TakeDamage(float damage)

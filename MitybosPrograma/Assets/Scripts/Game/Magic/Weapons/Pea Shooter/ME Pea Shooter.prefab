@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Pea Shooter
   fireRate: 0.5
-  projectileCount: 15
+  projectileCount: 2
   damage: 15
   speed: 7
   lifespan: 3

@@ -1,41 +1,50 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ME_Enemy : ME_Entity
 {
-    public float speed = 1f;
-    public float damage = 5f;
+    public float Xp = 10;
+    public float Speed = 1f;
+    public float Damage = 5f;
+    public float DamageCooldown = 0.5f;
 
     public GameObject Target;
-    public Healthbar Healthbar;
+    public ME_Player Player;
+    private Rigidbody2D RB;
 
     // Start is called before the first frame update
     void Start()
     {
         HP = MaxHP;
+        Target = GameObject.FindWithTag("Player");
+        Player = Target.GetComponent<ME_Player>();
+        RB = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        // added so collisions won't fuck up
+        RB.velocity = Vector2.zero;
+
+        // movement
         if (Target != null)
             MoveToTarget(Target.transform.position - transform.position);
     }
 
     private void MoveToTarget(Vector2 direction)
     {
-        transform.Translate(direction * speed * Time.deltaTime);
+        direction.Normalize();
+        transform.Translate(direction * Speed * Time.deltaTime);
     }
 
     public override void Die()
     {
-        base.Die();
+        Player.GiveXp(Xp);
         Destroy(gameObject);
     }
 
     public override void UpdateHealthBar()
     {
-        Healthbar.UpdateHealthbar();
+        healthbar.UpdateSlider();
     }
 }
