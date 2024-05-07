@@ -60,48 +60,47 @@ public class FoodSearch : MonoBehaviour
 	{
 		water += 100;
 
-		//int userId = SessionManager.GetIdKey();
+		int userId = SessionManager.GetIdKey();
 
-		//string query = @"SELECT COUNT(*) FROM consumed_user_water WHERE id_user = " + userId + @";
-  //                  ";
-		//DBManager.OpenConnection();
-		//IDbCommand command = DBManager.connection.CreateCommand();
-		//command.CommandText = query;
-		//object result = command.ExecuteScalar();
-		//int count = result != null ? Convert.ToInt32(result) : 0;
+		string query = @"SELECT COUNT(*) FROM consumed_user_water WHERE id_user = " + userId + @";";
+		DBManager.OpenConnection();
+		IDbCommand command = DBManager.connection.CreateCommand();
+		command.CommandText = query;
+		object result = command.ExecuteScalar();
+		int count = result != null ? Convert.ToInt32(result) : 0;
 
-		//if (count > 0)
-		//{
-		//	query = @"UPDATE consumed_user_water SET water = water + 100 WHERE id_user = " + userId + ";";
-		//}
-		//else
-		//{
-		//	query = @"INSERT INTO consumed_user_water (id_user, water) VALUES (" + userId + ", 100);";
-		//}
+		if (count > 0)
+		{
+			query = @"UPDATE consumed_user_water SET water = water + 100 WHERE id_user = " + userId + ";";
+		}
+		else
+		{
+			query = @"INSERT INTO consumed_user_water (id_user, water) VALUES (" + userId + ", 100);";
+		}
 
-		//command.CommandText = query;
-		//command.ExecuteNonQuery();
+		command.CommandText = query;
+		command.ExecuteNonQuery();
 	}
 
 
 	public void DisplayWater()
 	{
-		//int userId = SessionManager.GetIdKey();
+		int userId = SessionManager.GetIdKey();
 
-		//string query = @"SELECT water FROM consumed_user_water WHERE id_user = " + userId + ";";
+		string query = @"SELECT water FROM consumed_user_water WHERE id_user = " + userId + ";";
 
-		//DBManager.OpenConnection();
-		//IDbCommand command = DBManager.connection.CreateCommand();
-		//command.CommandText = query;
-		//object result = command.ExecuteScalar();
+		DBManager.OpenConnection();
+		IDbCommand command = DBManager.connection.CreateCommand();
+		command.CommandText = query;
+		object result = command.ExecuteScalar();
 
-		//int totalWater = result != null ? Convert.ToInt32(result) : 0;
+		int totalWater = result != null ? Convert.ToInt32(result) : 0;
 
-		//Water_field_plan.text = "Total water: " + totalWater.ToString() + " ml";
-		//Water_field_header.text = totalWater.ToString() + " ml";
-
-		Water_field_plan.text = "Total water: " + water.ToString() + " ml";
-		Water_field_header.text = water.ToString() + " ml";
+		Water_field_plan.text = "Total water: " + totalWater.ToString() + " ml";
+		Water_field_header.text = totalWater.ToString() + " ml";
+		
+		//Water_field_plan.text = "Total water: " + water.ToString() + " ml";
+		//Water_field_header.text = water.ToString() + " ml";
 	}
 
 	void Start()
@@ -181,7 +180,6 @@ public class FoodSearch : MonoBehaviour
 			DBManager.connection.Close();
 		}
 	}
-
 
 	void OnSearchResultClicked(string productName, float kcal, float protein, float carbs, float fat, int product_id)
     {
