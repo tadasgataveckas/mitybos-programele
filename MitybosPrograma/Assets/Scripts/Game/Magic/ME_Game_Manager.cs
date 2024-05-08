@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -21,15 +22,20 @@ public class ME_Game_Manager : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1f;
+        StartCoroutine(EnemySpawner());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.time - lastSpawnTime >= EnemySpawnDelay)
+    }
+
+    IEnumerator EnemySpawner()
+    {
+        while (true)
         {
+            yield return new WaitForSeconds(EnemySpawnDelay);
             SpawnEnemy();
-            lastSpawnTime = Time.time;
         }
     }
 
@@ -41,34 +47,34 @@ public class ME_Game_Manager : MonoBehaviour
 
             int enemyIndex = Random.Range(0, Enemies.Count - 1);
             GameObject enemy = Instantiate(Enemies[0], GenerateSpawnLocation(), Quaternion.identity);
-            enemy.transform.SetParent(Player.transform.parent, false);
+            //enemy.transform.SetParent(Player.transform.parent, false);
             //enemy.GetComponent<ME_Enemy>().Target = Player;
         }
     }
 
     private Vector2 GenerateSpawnLocation()
     {
-        float randX;
-        float randY;
+        float randX = Player.transform.position.x;
+        float randY = Player.transform.position.y;
         float margin = 6f;
 
         switch (Random.Range(0, 4))
         {
             case 0:     //left
-                randX = -margin;
-                randY = Random.Range(-margin, margin);
+                randX += -margin;
+                randY += Random.Range(-margin, margin);
                 break;
             case 1:     //right
-                randX = margin;
-                randY = Random.Range(-margin, margin);
+                randX += margin;
+                randY += Random.Range(-margin, margin);
                 break;
             case 2:     //top
-                randX = Random.Range(-margin, margin);
-                randY = margin;
+                randX += Random.Range(-margin, margin);
+                randY += margin;
                 break;
             default:    //bottom
-                randX = Random.Range(-margin, margin);
-                randY = -margin;
+                randX += Random.Range(-margin, margin);
+                randY += -margin;
                 break;
         }
         return new Vector2(randX, randY);

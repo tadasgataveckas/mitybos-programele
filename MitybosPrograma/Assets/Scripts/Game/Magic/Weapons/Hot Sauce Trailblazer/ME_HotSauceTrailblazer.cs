@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ME_PeaShooter : ME_Weapon
+public class ME_HotSauceTrailblazer : ME_Weapon
 {
     public GameObject projectilePrefab;
 
@@ -18,10 +18,6 @@ public class ME_PeaShooter : ME_Weapon
 
     public override void SpawnProjectiles()
     {
-        for (int i = 0; i < projectileCount; i++)
-        {
-            GameObject projectile = BuildProjectileFragile(projectilePrefab);
-            projectile.transform.rotation = Quaternion.Euler(0, 0, 360 / projectileCount * i);
-        }
+        GameObject projectile = BuildProjectileFragile(projectilePrefab);
     }
 }

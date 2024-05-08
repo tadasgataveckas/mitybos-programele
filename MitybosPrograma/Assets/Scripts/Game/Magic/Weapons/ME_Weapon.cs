@@ -11,44 +11,51 @@ public abstract class ME_Weapon : MonoBehaviour
     private float lastShotTime;
 
     // transferred stats 
-    public float damage = 0;
+    public float damage = 1;
+    public float damageFrequency = 0.2f;
     public float speed = 1f;
+    public float rotationSpeed = 180f;
     public int lifespan = 2;
+    public Vector3 scale = Vector3.one;
 
-    public virtual void Shoot()
+    public void Shoot()
     {
         if (Time.time - lastShotTime >= fireRate)
         {
+            Debug.Log("Shooting!");
             SpawnProjectiles();
             lastShotTime = Time.time;
         }
     }
 
-    public virtual void SpawnProjectiles()
-    {
+    public abstract void SpawnProjectiles();
 
-    }
-
-    public virtual GameObject BuildProjectile(GameObject projectilePrefab)
+    private GameObject InstantiateProjectile(GameObject projectilePrefab)
     {
         GameObject projectile = Instantiate(projectilePrefab, transform.position, transform.rotation);
         ME_Projectile bullet = projectile.GetComponent<ME_Projectile>();
 
         bullet.damage = damage;
+        bullet.damageFrequency = damageFrequency;
         bullet.speed = speed;
+        bullet.rotationSpeed = rotationSpeed;
         bullet.lifespan = lifespan;
+        bullet.transform.localScale = scale;
 
         return projectile;
     }
 
-    public virtual GameObject BuildProjectileStatic(GameObject projectilePrefab)
+    public virtual GameObject BuildProjectileFragile(GameObject projectilePrefab)
     {
-        GameObject projectile = Instantiate(projectilePrefab, transform.position, transform.rotation);
-        projectile.transform.SetParent(this.transform);
-        ME_ProjectileStatic sword = projectile.GetComponent<ME_ProjectileStatic>();
+        GameObject projectile = InstantiateProjectile(projectilePrefab);
 
-        sword.damage = damage;
-        sword.speed = speed;
+        return projectile;
+    }
+
+    public virtual GameObject BuildProjectileSturdy(GameObject projectilePrefab)
+    {
+        GameObject projectile = InstantiateProjectile(projectilePrefab);
+        projectile.transform.SetParent(transform);
 
         return projectile;
     }

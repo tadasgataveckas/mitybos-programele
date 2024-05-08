@@ -9,13 +9,6 @@ public class ME_CarrotSaber : ME_Weapon
     // Start is called before the first frame update
     void Start()
     {
-        weaponName = "Carrot Saber";
-
-        //fireRate = 0.2f;
-        //damage = 10f;
-        //speed = 180f;
-        //projectileCount = 1;
-
         SpawnProjectiles();
     }
 
@@ -29,7 +22,7 @@ public class ME_CarrotSaber : ME_Weapon
     {
         for (int i = 0; i < projectileCount; i++)
         {
-            GameObject projectile = BuildProjectileStatic(projectilePrefab);
+            GameObject projectile = BuildProjectileSturdy(projectilePrefab);
             swords.Add(projectile);
             projectile.transform.rotation = Quaternion.Euler(0, 0, 360 / projectileCount * i);
         }

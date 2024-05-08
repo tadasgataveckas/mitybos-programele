@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473366015801601521}
-  - component: {fileID: -5968345341088268789}
+  - component: {fileID: -1033339297019470492}
   m_Layer: 0
-  m_Name: ME Pea Shooter
+  m_Name: Hot Sauce Trailblazer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-5968345341088268789
+--- !u!114 &-1033339297019470492
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,13 +41,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 7432806643361047562}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d16546a9ce4a4c64c9108e1b19b82970, type: 3}
+  m_Script: {fileID: 11500000, guid: 1bd7be5afa2fd2e438dfd9c80b0cae67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: Pea Shooter
-  fireRate: 0.5
-  projectileCount: 2
-  damage: 15
-  speed: 7
-  lifespan: 3
-  projectilePrefab: {fileID: 922292497825179408, guid: dc131d4f5fa6c5f4885d97e4395cd136, type: 3}
+  weaponName: Hot Sauce Trailblazer
+  fireRate: 1
+  projectileCount: 0
+  damage: 2
+  damageFrequency: 0.1
+  speed: 0
+  rotationSpeed: 0
+  lifespan: 2
+  scale: {x: 2, y: 2, z: 2}
+  projectilePrefab: {fileID: 922292497825179408, guid: fede0dd0a68340248b2a875e1706893b, type: 3}

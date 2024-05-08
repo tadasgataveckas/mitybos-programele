@@ -4,42 +4,76 @@ using UnityEngine;
 
 public class ME_Projectile : MonoBehaviour
 {
-    [HideInInspector] public float lifespan = 3f;
     [HideInInspector] public float damage = 0f;
+    [HideInInspector] public float damageFrequency = 0.2f;
     [HideInInspector] public float speed = 10f;
+    [HideInInspector] public float rotationSpeed = 180f;
+    [HideInInspector] public float lifespan = 3f;
 
-    // Start is called before the first frame update
-    void Start()
+    public void TriggerTimedDestruction()
     {
         Destroy(gameObject, lifespan);
+    }
 
-        // movement forward (right)
+    public void TriggerDestruction()
+    {
+        Destroy(gameObject);
+    }
+
+    // starts straight line movement
+    public void TriggerMovement()
+    {
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         Vector2 direction = rb.transform.right;
         rb.velocity = direction * speed;
     }
 
-    // Update is called once per frame
-    public virtual void Update()
+    // base damage function
+    public void DealDamage(ME_Enemy enemy)
     {
-
+        enemy.TakeDamage(damage);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    // checks if object is enemy
+    public bool IsEnemy(GameObject gameObject)
     {
-        //if (collision.gameObject.CompareTag("Environment"))
-        //    TriggerDestruction();
-        if (collision.gameObject.CompareTag("Enemy"))
+        return gameObject.gameObject.CompareTag("Enemy");
+    }
+
+    // rotation should be called every frame
+    public void RotateProjectile()
+    {
+        if (rotationSpeed != 0)
+            transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
+    }
+
+    // Coroutine to deal damage over time
+    public IEnumerator DealContinuousAOEDamage()
+    {
+        while (true)
         {
-            ME_Enemy enemy = collision.gameObject.GetComponent<ME_Enemy>();
-            if (enemy != null)
-                enemy.TakeDamage(damage);
-            TriggerDestruction();
+            DealAOEDamage();
+            yield return new WaitForSeconds(damageFrequency);
         }
     }
 
-    private void TriggerDestruction()
+    // damage to enemies within the trigger area
+    public virtual void DealAOEDamage()
     {
-        Destroy(gameObject);
+        // collision list
+        List<Collider2D> colliders = new List<Collider2D>();
+
+        // filters through enemy collision
+        ContactFilter2D filter = new ContactFilter2D();
+        filter.SetLayerMask(LayerMask.GetMask("Enemy"));
+
+        Physics2D.OverlapCollider(GetComponent<Collider2D>(), filter, colliders);
+
+        foreach (Collider2D collider in colliders)
+        {
+            ME_Enemy enemy = collider.gameObject.GetComponent<ME_Enemy>();
+            if (enemy != null)
+                DealDamage(enemy);
+        }
     }
 }

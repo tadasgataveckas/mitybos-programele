@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473366015801601521}
-  - component: {fileID: -1032504093855369757}
+  - component: {fileID: -5968345341088268789}
   m_Layer: 0
-  m_Name: ME Carrot Saber
+  m_Name: Pea Shooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-1032504093855369757
+--- !u!114 &-5968345341088268789
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,13 +41,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 7432806643361047562}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac8f96e53466a964ea1db9ca3fe298ca, type: 3}
+  m_Script: {fileID: 11500000, guid: d16546a9ce4a4c64c9108e1b19b82970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: Carrot Saber
-  fireRate: 0.2
-  projectileCount: 1
+  weaponName: Pea Shooter
+  fireRate: 0.75
+  projectileCount: 2
   damage: 25
-  speed: 180
-  lifespan: 0
-  projectilePrefab: {fileID: 922292497825179408, guid: c0c82f96872bf0a4a9f25b97d117ab9c, type: 3}
+  damageFrequency: 0.2
+  speed: 7
+  rotationSpeed: 180
+  lifespan: 3
+  scale: {x: 1, y: 1, z: 1}
+  projectilePrefab: {fileID: 922292497825179408, guid: dc131d4f5fa6c5f4885d97e4395cd136, type: 3}
