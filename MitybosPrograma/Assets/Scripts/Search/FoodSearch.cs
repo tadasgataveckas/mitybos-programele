@@ -18,6 +18,11 @@ public class ProductDetails
 
 public class FoodSearch : MonoBehaviour
 {
+	// Add a reference to the prefab for displaying eaten products
+	public GameObject eatenProductPrefab;
+	// Add a reference to the scroll view where eaten products will be displayed
+	public RectTransform eatenProductsScrollViewContent;
+
     public ProgressBar progressBar_instance;
 
     
@@ -54,12 +59,8 @@ public class FoodSearch : MonoBehaviour
     private ProductDetails selectedProduct;
     private List<ProductDetails> eatenProducts = new List<ProductDetails>(); // List to store eaten products
 
-    private double water; //Temp variable for storing water amount localy
-
 	public void AddWater()
 	{
-		water += 100;
-
 		int userId = SessionManager.GetIdKey();
 
 		string query = @"SELECT COUNT(*) FROM consumed_user_water WHERE id_user = " + userId + @";";
@@ -98,9 +99,6 @@ public class FoodSearch : MonoBehaviour
 
 		Water_field_plan.text = "Total water: " + totalWater.ToString() + " ml";
 		Water_field_header.text = totalWater.ToString() + " ml";
-		
-		//Water_field_plan.text = "Total water: " + water.ToString() + " ml";
-		//Water_field_header.text = water.ToString() + " ml";
 	}
 
 	void Start()
@@ -253,76 +251,102 @@ public class FoodSearch : MonoBehaviour
     public void OnAddToEatenList()
     {
         int userId = SessionManager.GetIdKey();
-        if (selectedProduct != null)
+    
+        if (float.TryParse(amountInputField.text, out float amount))
         {
-            float amount = float.Parse(amountInputField.text);
-            Debug.Log(amount);
-
             selectedProduct.Kcal = selectedProduct.Kcal * amount / 100;
             selectedProduct.Protein = selectedProduct.Protein * amount / 100;
             selectedProduct.Carbs = selectedProduct.Carbs * amount / 100;
             selectedProduct.Fat = selectedProduct.Fat * amount / 100;
 
-			string query = "INSERT INTO consumed_user_meals (id_user, id_meal, kcal, protein,  fat, carbohydrates) " +
-						   $"VALUES ({userId}, {selectedProduct.ProductID}, {selectedProduct.Kcal}, {selectedProduct.Protein},  {selectedProduct.Fat}, {selectedProduct.Carbs})";
+            string query = "INSERT INTO consumed_user_meals (id_user, id_meal, kcal, protein,  fat, carbohydrates) " +
+                           $"VALUES ({userId}, {selectedProduct.ProductID}, {selectedProduct.Kcal}, {selectedProduct.Protein},  {selectedProduct.Fat}, {selectedProduct.Carbs})";
 
+            DBManager.OpenConnection();
+            IDbCommand command = DBManager.connection.CreateCommand();
+            command.CommandText = query;
+            command.ExecuteNonQuery();
 
-			DBManager.OpenConnection();
-			IDbCommand command = DBManager.connection.CreateCommand();
-			command.CommandText = query;
-			command.ExecuteNonQuery();
+            eatenProducts.Add(selectedProduct);
 
-
-			eatenProducts.Add(selectedProduct);
-
-
-			DisplayEatenProducts();
-			//allCalories += selectedProduct.Kcal;
-			//Debug.Log("All calories: " + allCalories);
-
-			ReturnTotalKcal();
-		}
+            DisplayEatenProducts();
+            ReturnTotalKcal();
+        }
         else
         {
-            Debug.LogWarning("No product selected to add to eaten products list.");
+            Debug.Log("Amount entered is not gooooood");
         }
+
     }
 
     void DisplayEatenProducts()
     {
+        // Clear existing items in the scroll view
+        foreach (Transform child in eatenProductsScrollViewContent)
+        {
+            Destroy(child.gameObject);
+        }
+
         float totalKcal = 0;
         float totalProtein = 0;
         float totalCarbs = 0;
         float totalFat = 0;
-		int userId = SessionManager.GetIdKey();
+        int userId = SessionManager.GetIdKey();
 
-		string query = "SELECT kcal, protein, carbohydrates, fat FROM consumed_user_meals WHERE id_user = " + userId;
+        string query = @"SELECT cu.id_cum, cu.id_meal, cu.kcal, cu.protein, cu.carbohydrates, cu.fat, p.product_name 
+                        FROM consumed_user_meals cu 
+                        JOIN product p ON cu.id_meal = p.id_product 
+                        WHERE cu.id_user = " + userId;
 
-		DBManager.OpenConnection();
-		IDbCommand command = DBManager.connection.CreateCommand();
-		command.CommandText = query;
-		IDataReader reader = command.ExecuteReader();
+        DBManager.OpenConnection();
+        IDbCommand command = DBManager.connection.CreateCommand();
+        command.CommandText = query;
+        IDataReader reader = command.ExecuteReader();
 
-		while (reader.Read())
-		{
-			totalKcal += Convert.ToSingle(reader["kcal"]);
-			totalProtein += Convert.ToSingle(reader["protein"]);
-			totalCarbs += Convert.ToSingle(reader["carbohydrates"]);
-			totalFat += Convert.ToSingle(reader["fat"]);
-		}
+        while (reader.Read())
+        {
+            int cumId = Convert.ToInt32(reader["id_cum"]);
+            int mealId = Convert.ToInt32(reader["id_meal"]);
+            float kcal = Convert.ToSingle(reader["kcal"]);
+            float protein = Convert.ToSingle(reader["protein"]);
+            float carbs = Convert.ToSingle(reader["carbohydrates"]);
+            float fat = Convert.ToSingle(reader["fat"]);
+            string productName = reader["product_name"].ToString(); 
 
-		Total_kcal_header.text = totalKcal.ToString() + " kcal";
+            totalKcal += kcal;
+            totalProtein += protein;
+            totalCarbs += carbs;
+            totalFat += fat;
 
+            GameObject eatenProductObj = Instantiate(eatenProductPrefab, eatenProductsScrollViewContent);
+            eatenProductObj.GetComponentInChildren<TMP_Text>().text = $"{productName} - {kcal} kcal";
+            Button deleteButton = eatenProductObj.GetComponentInChildren<Button>();
+            deleteButton.onClick.AddListener(() => OnDeleteEatenProductClicked(cumId, eatenProductObj));
+        }
+
+        Total_kcal_header.text = totalKcal.ToString() + " kcal";
         Total_kcalText.text = "Total Kcal: " + totalKcal.ToString();
         Total_proteinText.text = "Total Protein: " + totalProtein.ToString() + "g";
         Total_carbsText.text = "Total Carbs: " + totalCarbs.ToString() + "g";
         Totoal_fatText.text = "Total Fat: " + totalFat.ToString() + "g";
         allCalories = totalKcal;
 
-        //PROGRES BAR STUFF DONT DELEETE
-		progressBar_instance.curr = totalKcal;
-		progressBar_instance.UpdateCurr();
-	}
+        progressBar_instance.curr = totalKcal;
+        progressBar_instance.UpdateCurr();
+    }
+
+    public void OnDeleteEatenProductClicked(int cumId, GameObject eatenProductObj)
+    {
+        string query = "DELETE FROM consumed_user_meals WHERE id_cum = " + cumId;
+
+        DBManager.OpenConnection();
+        IDbCommand command = DBManager.connection.CreateCommand();
+        command.CommandText = query;
+        command.ExecuteNonQuery();
+        DBManager.connection.Close();
+
+        DisplayEatenProducts();
+    }   
 
     public float ReturnTotalKcal()
     {
