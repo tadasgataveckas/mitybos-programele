@@ -8,13 +8,15 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+
 public class PlanFieldBehaviour : MonoBehaviour
 {
     protected TMP_Text InfoText { get; set; }
     protected Button EditButton { get; set; }
     protected Button RemoveButton { get; set; }
     private GameObject parent { get; set; }
-    private List<TableCell> cellList = new List<TableCell>();
+    public List<TableCell> cellList = new List<TableCell>();
     [SerializeField]
     private GameObject prefab;
 
@@ -49,10 +51,6 @@ public class PlanFieldBehaviour : MonoBehaviour
 
     public void OnAddButtonClick()
     {
-        
-        
-       // _prefab.transform.position = new Vector3(240, 360);
-
         foreach( var item in cellList )
         {
             if (item.transform.childCount == 0)
@@ -70,9 +68,8 @@ public class PlanFieldBehaviour : MonoBehaviour
         }
     }
 
-    private void SetPrefabParent(GameObject o, Transform parent)
+    public void SetPrefabParent(GameObject o, Transform parent)
     {
-        
         o.transform.SetParent(parent);
     }       
 }

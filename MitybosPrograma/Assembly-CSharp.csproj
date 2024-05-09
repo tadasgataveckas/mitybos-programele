@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\UI\DatePicker\DatePicker_ContentLayout.cs" />
+    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\FoodManager.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_Header.cs" />
     <Compile Include="Assets\Scripts\Survey\SegmentManager.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\DatabaseMethods.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Assets\Scripts\Tutorial\TutorialManager.cs" />
     <Compile Include="Assets\Scripts\Survey\SliderScript.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\IClientInterface.cs" />
+    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\FoodItem.cs" />
     <Compile Include="Assets\UI\TableLayout\TableRow.cs" />
     <Compile Include="Assets\UI\TableLayout\TableCell.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerTimerComponent.cs" />
@@ -106,6 +108,7 @@
     <Compile Include="Assets\Input\PlayerInput.cs" />
     <Compile Include="Assets\Scripts\Game\Jump\JumpGameManager.cs" />
     <Compile Include="Assets\Scripts\Main\MainManager.cs" />
+    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\PlanFieldBehaviour.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_HoldButton.cs" />
     <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\BranchAndBound.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_DayButton.cs" />
@@ -125,9 +128,6 @@
     <Compile Include="Assets\Scripts\Models\UserData.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\DBManager.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerCache.cs" />
-    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\FoodManager.cs" />
-    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\FoodItem.cs" />
-    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\PlanFieldBehaviour.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scripts\UI-DBmethods\plugins\sqlite3.dll" />
@@ -504,24 +504,12 @@
       <HintPath>Assets\Scripts\DLLs\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="System.IO.Pipelines">
-      <HintPath>Assets\Scripts\DLLs\System.IO.Pipelines.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="K4os.Hash.xxHash">
-      <HintPath>Assets\Scripts\DLLs\K4os.Hash.xxHash.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="ZstdSharp">
-      <HintPath>Assets\Scripts\DLLs\ZstdSharp.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.2.1\Runtime\Newtonsoft.Json.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="K4os.Compression.LZ4.Streams">
       <HintPath>Assets\Scripts\DLLs\K4os.Compression.LZ4.Streams.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.IO.Pipelines">
+      <HintPath>Assets\Scripts\DLLs\System.IO.Pipelines.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="MySql.Data">
@@ -532,8 +520,20 @@
       <HintPath>Library\PackageCache\com.unity.visualscripting@1.9.1\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="K4os.Hash.xxHash">
+      <HintPath>Assets\Scripts\DLLs\K4os.Hash.xxHash.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ZstdSharp">
+      <HintPath>Assets\Scripts\DLLs\ZstdSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="K4os.Compression.LZ4">
       <HintPath>Assets\Scripts\DLLs\K4os.Compression.LZ4.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.2.1\Runtime\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Mono.Data.Sqlite">
