@@ -45,10 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Pea Shooter
-  fireRate: 0.75
   projectileCount: 2
-  damage: 25
-  damageFrequency: 0.2
+  shotCooldown: 1.5
+  damage: 35
+  damageCooldown: 0
   speed: 7
   rotationSpeed: 180
   lifespan: 3

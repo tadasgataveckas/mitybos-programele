@@ -1,10 +1,11 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ME_CarrotSaber : ME_Weapon
+public class ME_VoltEel : ME_Weapon
 {
     public GameObject projectilePrefab;
-    private List<GameObject> swords = new List<GameObject>();
+    private List<GameObject> bolts = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -23,16 +24,17 @@ public class ME_CarrotSaber : ME_Weapon
         for (int i = 0; i < projectileCount; i++)
         {
             GameObject projectile = BuildProjectileOnPlayer(projectilePrefab);
-            swords.Add(projectile);
-            projectile.transform.rotation = Quaternion.Euler(0, 0, 360 / projectileCount * i);
+            bolts.Add(projectile);
+            projectile.transform.rotation = Quaternion.Euler(0, 0, 360 / projectileCount * i - 90);
+            StartCoroutine(StartPeriodicDisable(projectile));
         }
     }
 
     public void DeleteProjectiles()
     {
-        foreach (GameObject projectile in swords)
+        foreach (GameObject projectile in bolts)
             Destroy(projectile);
-        swords.Clear();
+        bolts.Clear();
     }
 
     public void ResetWeapon()

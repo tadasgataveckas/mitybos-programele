@@ -1,3 +1,5 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class ME_Enemy : ME_Entity
@@ -6,22 +8,27 @@ public class ME_Enemy : ME_Entity
     public float Speed = 1f;
     public float Damage = 5f;
     public float DamageCooldown = 0.5f;
+    public TextMeshProUGUI DamageNumberPrefab;
 
-    public GameObject Target;
-    public ME_Player Player;
+    // target gets set in game manager
+    [HideInInspector] public GameObject Target;
+    [HideInInspector] public ME_Player Player;
     private Rigidbody2D RB;
+
+    private void Awake()
+    {
+        HP = MaxHP;
+        RB = GetComponent<Rigidbody2D>();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        HP = MaxHP;
-        Target = GameObject.FindWithTag("Player");
         Player = Target.GetComponent<ME_Player>();
-        RB = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         // added so collisions won't fuck up
         RB.velocity = Vector2.zero;
@@ -39,6 +46,10 @@ public class ME_Enemy : ME_Entity
 
     public override void Die()
     {
+        if (isDead || this == null)
+            return;
+
+        isDead = true;
         Player.GiveXp(Xp);
         Destroy(gameObject);
     }
@@ -46,5 +57,20 @@ public class ME_Enemy : ME_Entity
     public override void UpdateHealthBar()
     {
         healthbar.UpdateSlider();
+    }
+
+    public override void TakeDamage(float damage)
+    {
+        base.TakeDamage(damage);
+        StartCoroutine(DisplayDamage(damage));
+    }
+
+    private IEnumerator DisplayDamage(float damage)
+    {
+        TextMeshProUGUI damageUI = Instantiate(DamageNumberPrefab, transform.position, transform.rotation);
+        damageUI.SetText(damage.ToString());
+        damageUI.transform.SetParent(healthbar.transform);
+        yield return new WaitForSeconds(0.5f);
+        Destroy(damageUI);
     }
 }

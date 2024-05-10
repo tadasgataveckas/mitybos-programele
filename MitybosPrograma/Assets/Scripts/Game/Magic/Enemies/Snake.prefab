@@ -58,7 +58,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 374541253
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -269,10 +269,12 @@ MonoBehaviour:
   HP: 0
   healthbar: {fileID: 6707773253830240396}
   MaxHP: 50
+  isDead: 0
   Xp: 10
   Speed: 1
   Damage: 5
   DamageCooldown: 0.5
+  DamageNumberPrefab: {fileID: 2349974610201991935, guid: bed27aee3c8036f4fb1291fbcf1f9c17, type: 3}
   Target: {fileID: 0}
   Player: {fileID: 0}
 --- !u!58 &545019553323897987

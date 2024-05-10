@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class ME_Game_Manager : MonoBehaviour
 {
@@ -12,7 +13,6 @@ public class ME_Game_Manager : MonoBehaviour
     public List<GameObject> Enemies;
     public float EnemySpawnDelay = 0.1f;
 
-    private float lastSpawnTime = 1;
     private int enemyTotalCounter = 0;
 
     [SerializeField] private GameObject gameOver;
@@ -45,10 +45,9 @@ public class ME_Game_Manager : MonoBehaviour
         {
             enemyTotalCounter++;
 
-            int enemyIndex = Random.Range(0, Enemies.Count - 1);
+            int enemyIndex = UnityEngine.Random.Range(0, Enemies.Count - 1);
             GameObject enemy = Instantiate(Enemies[0], GenerateSpawnLocation(), Quaternion.identity);
-            //enemy.transform.SetParent(Player.transform.parent, false);
-            //enemy.GetComponent<ME_Enemy>().Target = Player;
+            enemy.GetComponent<ME_Enemy>().Target = Player;
         }
     }
 
@@ -58,22 +57,22 @@ public class ME_Game_Manager : MonoBehaviour
         float randY = Player.transform.position.y;
         float margin = 6f;
 
-        switch (Random.Range(0, 4))
+        switch (UnityEngine.Random.Range(0, 4))
         {
             case 0:     //left
                 randX += -margin;
-                randY += Random.Range(-margin, margin);
+                randY += UnityEngine.Random.Range(-margin, margin);
                 break;
             case 1:     //right
                 randX += margin;
-                randY += Random.Range(-margin, margin);
+                randY += UnityEngine.Random.Range(-margin, margin);
                 break;
             case 2:     //top
-                randX += Random.Range(-margin, margin);
+                randX += UnityEngine.Random.Range(-margin, margin);
                 randY += margin;
                 break;
             default:    //bottom
-                randX += Random.Range(-margin, margin);
+                randX += UnityEngine.Random.Range(-margin, margin);
                 randY += -margin;
                 break;
         }
@@ -129,17 +128,31 @@ public class ME_Game_Manager : MonoBehaviour
             // if score doesn't reach top 10
             if (i == 9 && currentScoreIndex > 9)
             {
-                scoreboard.AddScoreItem((currentScoreIndex + 1).ToString());
-                scoreboard.AddScoreItem(System.Math.Round(list[currentScoreIndex].score, 1).ToString() + " pts").alignment = TextAlignmentOptions.Left;
-                scoreboard.AddScoreItem(list[i].score_date.Substring(0, list[currentScoreIndex].score_date.Length - 9));
+                FormatScore(currentScoreIndex, list);
             }
             else
             {
-                scoreboard.AddScoreItem((i + 1).ToString());
-                scoreboard.AddScoreItem(System.Math.Round(list[i].score, 1).ToString() + " pts").alignment = TextAlignmentOptions.Left;
-                scoreboard.AddScoreItem(list[i].score_date.Substring(0, list[i].score_date.Length - 9));
+                FormatScore(i, list);
             }
         }
+    }
+
+    public void FormatScore(int index, List<ScoresMagicExpedition> list)
+    {
+        TextMeshProUGUI item;
+
+        scoreboard.AddScoreItem((index + 1).ToString());
+
+        item = scoreboard.AddScoreItem(System.Math.Round(list[index].score, 1).ToString());
+        item.alignment = TextAlignmentOptions.Center;
+        item.enableAutoSizing = false;
+        item.fontSize = 32;
+        item.overflowMode = TextOverflowModes.Ellipsis;
+
+        item = scoreboard.AddScoreItem(list[index].score_date.Substring(0, list[index].score_date.Length - 9));
+        item.enableAutoSizing = false;
+        item.fontSize = 24;
+
     }
 
     public void RestartScene()

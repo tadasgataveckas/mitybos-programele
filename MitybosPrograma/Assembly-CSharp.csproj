@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\Game\Jump\JumpCameraFollow.cs" />
     <Compile Include="Assets\Scripts\Game\Magic\Weapons\Hot Sauce Trailblazer\ME_HotSauceTrailblazer.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_Animator.cs" />
+    <Compile Include="Assets\Scripts\Game\Magic\Weapons\_Projectile Type\ME_Projectile_Lightning.cs" />
     <Compile Include="Assets\Scripts\Game\Magic\Player\ME_Player.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerExtensions.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_DayButton_Pool.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Assets\Scripts\Game\Coin.cs" />
     <Compile Include="Assets\Scripts\Game\Harvest\SortingLayerSorter.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerTimerComponent.cs" />
+    <Compile Include="Assets\Scripts\Game\Magic\Weapons\Volt Eel\ME_VoltEel.cs" />
     <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\PriorityQueue.cs" />
     <Compile Include="Assets\Scripts\Game\Magic\Weapons\ME_Weapon.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerTimer.cs" />
@@ -107,8 +109,8 @@
     <Compile Include="Assets\Scripts\Main\CameraScroll.cs" />
     <Compile Include="Assets\Scripts\Calculations\BmiCalories.cs" />
     <Compile Include="Assets\Scripts\Models\ScoresChickenWings.cs" />
-    <Compile Include="Assets\Scripts\Game\Magic\Weapons\Projectile Type\ME_Projectile_Bullet.cs" />
-    <Compile Include="Assets\Scripts\Game\Magic\Healthbar\Healthbar.cs" />
+    <Compile Include="Assets\Scripts\Game\Magic\Weapons\_Projectile Type\ME_Projectile_Bullet.cs" />
+    <Compile Include="Assets\Scripts\Game\Magic\UI\Healthbar.cs" />
     <Compile Include="Assets\Prefabs\Scroller\ScrollerPrefab.cs" />
     <Compile Include="Assets\Scripts\Login\LoginManager.cs" />
     <Compile Include="Assets\UI\TableLayout\TableLayout.cs" />
@@ -128,7 +130,7 @@
     <Compile Include="Assets\Scripts\Game\PauseManager.cs" />
     <Compile Include="Assets\Scripts\Session\SessionManager.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerUtilities.cs" />
-    <Compile Include="Assets\Scripts\Game\Magic\Weapons\Projectile Type\ME_Projectile_Puddle.cs" />
+    <Compile Include="Assets\Scripts\Game\Magic\Weapons\_Projectile Type\ME_Projectile_Puddle.cs" />
     <Compile Include="Assets\Input\PlayerInput.cs" />
     <Compile Include="Assets\Scripts\Game\Jump\JumpGameManager.cs" />
     <Compile Include="Assets\Scripts\Main\MainManager.cs" />
@@ -156,7 +158,7 @@
     <Compile Include="Assets\Scripts\Game\Jump\Booster.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_Config.cs" />
     <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\FoodClass.cs" />
-    <Compile Include="Assets\Scripts\Game\Magic\Weapons\Projectile Type\ME_Projectile_Sword.cs" />
+    <Compile Include="Assets\Scripts\Game\Magic\Weapons\_Projectile Type\ME_Projectile_Sword.cs" />
     <Compile Include="Assets\Prefabs\Scoreboard\Scoreboard.cs" />
     <Compile Include="Assets\Scripts\Models\UserData.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\DBManager.cs" />

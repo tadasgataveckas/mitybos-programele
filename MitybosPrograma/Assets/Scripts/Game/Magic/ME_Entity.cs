@@ -7,9 +7,13 @@ public abstract class ME_Entity : MonoBehaviour
     public float HP;
     public Healthbar healthbar;
     public float MaxHP;
+    public bool isDead = false;
 
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
+        if (this == null || isDead)
+            return;
+
         HP -= damage;
         UpdateHealthBar();
 

@@ -18,6 +18,6 @@ public class ME_HotSauceTrailblazer : ME_Weapon
 
     public override void SpawnProjectiles()
     {
-        GameObject projectile = BuildProjectileFragile(projectilePrefab);
+        GameObject projectile = BuildProjectileOnWorld(projectilePrefab);
     }
 }

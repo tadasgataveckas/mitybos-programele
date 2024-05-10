@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 public class ME_Projectile : MonoBehaviour
 {
     [HideInInspector] public float damage = 0f;
-    [HideInInspector] public float damageFrequency = 0.2f;
+    [HideInInspector] public float damageCooldown = 0.2f;
     [HideInInspector] public float speed = 10f;
     [HideInInspector] public float rotationSpeed = 180f;
     [HideInInspector] public float lifespan = 3f;
@@ -31,7 +32,8 @@ public class ME_Projectile : MonoBehaviour
     // base damage function
     public void DealDamage(ME_Enemy enemy)
     {
-        enemy.TakeDamage(damage);
+        if (enemy != null)
+            enemy.TakeDamage(damage);
     }
 
     // checks if object is enemy
@@ -53,13 +55,14 @@ public class ME_Projectile : MonoBehaviour
         while (true)
         {
             DealAOEDamage();
-            yield return new WaitForSeconds(damageFrequency);
+            yield return new WaitForSeconds(damageCooldown);
         }
     }
 
     // damage to enemies within the trigger area
-    public virtual void DealAOEDamage()
+    public void DealAOEDamage()
     {
+        Debug.Log("Shooting aoe!");
         // collision list
         List<Collider2D> colliders = new List<Collider2D>();
 

@@ -20,7 +20,7 @@ public class ME_PeaShooter : ME_Weapon
     {
         for (int i = 0; i < projectileCount; i++)
         {
-            GameObject projectile = BuildProjectileFragile(projectilePrefab);
+            GameObject projectile = BuildProjectileOnWorld(projectilePrefab);
             projectile.transform.rotation = Quaternion.Euler(0, 0, 360 / projectileCount * i);
         }
     }
