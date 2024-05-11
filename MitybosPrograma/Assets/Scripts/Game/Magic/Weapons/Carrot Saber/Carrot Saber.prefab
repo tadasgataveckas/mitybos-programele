@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6473366015801601521}
   - component: {fileID: -1032504093855369757}
   m_Layer: 0
-  m_Name: ME Carrot Saber
+  m_Name: Carrot Saber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,9 +45,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Carrot Saber
-  fireRate: 0.2
-  projectileCount: 2
-  damage: 25
-  speed: 180
+  projectileCount: 1
+  shotCooldown: 0
+  damage: 10
+  damageCooldown: 0.1
+  speed: 0
+  rotationSpeed: 90
   lifespan: 0
+  scale: {x: 2, y: 2, z: 2}
   projectilePrefab: {fileID: 922292497825179408, guid: c0c82f96872bf0a4a9f25b97d117ab9c, type: 3}

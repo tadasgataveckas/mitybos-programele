@@ -5,17 +5,20 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Enemy Hitbox
+  - Player Hurtbox
+  - Enemy Hurtbox
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Enemy
+  - Projectile
+  - Projectile background
+  - Environment
   - 
   - 
   - 
@@ -45,17 +48,23 @@ TagManager:
   - name: Environment
     uniqueID: 3783415501
     locked: 0
+  - name: Projectile background
+    uniqueID: 4082302389
+    locked: 0
   - name: Enemy
     uniqueID: 850832361
-    locked: 0
-  - name: Projectile
-    uniqueID: 2061839223
     locked: 0
   - name: Player
     uniqueID: 2901358643
     locked: 0
   - name: Weapon
     uniqueID: 2527300333
+    locked: 0
+  - name: Projectile
+    uniqueID: 2061839223
+    locked: 0
+  - name: VFX
+    uniqueID: 2106354507
     locked: 0
   - name: UI
     uniqueID: 374541253

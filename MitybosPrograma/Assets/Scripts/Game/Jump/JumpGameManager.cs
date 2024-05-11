@@ -191,6 +191,7 @@ public class JumpGameManager : MonoBehaviour
         // Restart the scene
         Destroy(gameObject);
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        Time.timeScale = 1f;
     }
 
     private void TriggerGameOver()

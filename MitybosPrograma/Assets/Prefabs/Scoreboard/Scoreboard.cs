@@ -20,7 +20,7 @@ public class Scoreboard : MonoBehaviour
     /// <summary>
     /// Highlights selected item based on index
     /// </summary>
-    /// <param name="number">Index must be between 1 and 10</param>
+    /// <param name="number">Index must be between 0 and 9</param>
     public void HighlightElement(int number)
     {
         if (number < 0 || number > 9)

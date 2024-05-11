@@ -8,29 +8,26 @@ public class ME_Player : ME_Entity
     public double FireRate = 1;
     public float Range = 1;
 
-    private double HPRegenDelay = 3;
+    public double HPRegenDelay = 3;
     private double ActiveHPRegenDelay = 1;
     private double HPRegenAmount = 1;
 
-    private int[] weapons = new int[4];
+    public GameObject Caster;
+    public ME_Game_Manager Manager;
+
+    private ME_Weapon[] weapons = new ME_Weapon[4];
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        HP = MaxHP;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        
-    }
-
-    // Shoots
-    public void Shoot()
-    {
-
+        healthbar.UpdateSlider();
     }
 
     // Activates player level up function
@@ -43,6 +40,11 @@ public class ME_Player : ME_Entity
     private void Dash()
     {
 
+    }
+
+    public void GiveXp(float xp)
+    {
+        Manager.Score += xp;
     }
 
     // Activates player level up function
@@ -58,8 +60,13 @@ public class ME_Player : ME_Entity
         ActiveHPRegenDelay = HPRegenDelay;
     }
 
+    public override void UpdateHealthBar()
+    {
+        healthbar.UpdateSlider();
+    }
+
     public override void Die()
     {
-
+        Manager.TriggerGameEnd();
     }
 }

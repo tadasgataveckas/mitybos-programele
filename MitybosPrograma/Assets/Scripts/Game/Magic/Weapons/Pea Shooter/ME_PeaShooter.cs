@@ -7,12 +7,7 @@ public class ME_PeaShooter : ME_Weapon
     // Start is called before the first frame update
     void Start()
     {
-        //weaponName = "Pea Shooter";
 
-        //fireRate = 0.5f;
-        //damage = 10f;
-        //speed = 7f;
-        //projectileCount = 2;
     }
 
     // Update is called once per frame
@@ -25,7 +20,7 @@ public class ME_PeaShooter : ME_Weapon
     {
         for (int i = 0; i < projectileCount; i++)
         {
-            GameObject projectile = BuildProjectile(projectilePrefab);
+            GameObject projectile = BuildProjectileOnWorld(projectilePrefab);
             projectile.transform.rotation = Quaternion.Euler(0, 0, 360 / projectileCount * i);
         }
     }

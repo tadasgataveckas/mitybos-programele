@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6584949846779315900}
   - component: {fileID: -3181222510522795168}
   - component: {fileID: -3978103494985297904}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ME_Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2061839223
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 820643bdd7a6f9d42ba161a267994ba0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -121,7 +121,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
+  damageCooldown: 0.2
   speed: 180
+  rotationSpeed: 180
+  lifespan: 3
 --- !u!70 &-3978103494985297904
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
