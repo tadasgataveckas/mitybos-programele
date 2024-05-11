@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="Assets\UI\DatePicker\DatePicker_ContentLayout.cs" />
     <Compile Include="Assets\Scripts\Game\Magic\Weapons\Pea Shooter\ME_PeaShooter.cs" />
+    <Compile Include="Assets\Scripts\Game\Magic\Enemies\ME_EnemyHurtbox.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_Header.cs" />
     <Compile Include="Assets\Scripts\Game\Harvest\Mailbox.cs" />
     <Compile Include="Assets\Scripts\Survey\SegmentManager.cs" />
@@ -148,6 +149,7 @@
     <Compile Include="Assets\Scripts\Game\Magic\ME_Entity.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_DayHeader.cs" />
     <Compile Include="Assets\Scripts\Game\Jump\Platform.cs" />
+    <Compile Include="Assets\Scripts\Game\Magic\UI\Damage Numbers\ME_DamageNumber.cs" />
     <Compile Include="Assets\UI\DatePicker\TextMesh Pro\DatePicker_TextMeshProDefaults.cs" />
     <Compile Include="Assets\Scripts\Main\GameCard.cs" />
     <Compile Include="Assets\UI\TableLayout\TableLayoutUtilities.cs" />
@@ -163,8 +165,6 @@
     <Compile Include="Assets\Scripts\Models\UserData.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\DBManager.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerCache.cs" />
-    <Compile Include="Assets\Scripts\Game\Magic\Enemies\ME_EnemyHurtbox.cs" />
-    <Compile Include="Assets\Scripts\Game\Magic\UI\Damage Numbers\ME_DamageNumber.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

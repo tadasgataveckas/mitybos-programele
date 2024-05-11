@@ -15586,6 +15586,10 @@ PrefabInstance:
       value: 0.59607846
       objectReference: {fileID: 0}
     - target: {fileID: 2337899229301799058, guid: 17c41f697608120499e43259dcf89ee7, type: 3}
+      propertyPath: gameSceneName
+      value: MagicExpedition
+      objectReference: {fileID: 0}
+    - target: {fileID: 2337899229301799058, guid: 17c41f697608120499e43259dcf89ee7, type: 3}
       propertyPath: gameSelectTitle
       value: 
       objectReference: {fileID: 717001051}
