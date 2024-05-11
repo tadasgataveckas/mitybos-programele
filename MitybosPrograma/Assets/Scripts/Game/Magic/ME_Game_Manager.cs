@@ -9,7 +9,7 @@ public class ME_Game_Manager : MonoBehaviour
 {
     public float Score = 0;
 
-    public GameObject Player;
+    public ME_Player Player;
     public List<GameObject> Enemies;
     public float EnemySpawnDelay = 0.1f;
 
@@ -45,9 +45,10 @@ public class ME_Game_Manager : MonoBehaviour
         {
             enemyTotalCounter++;
 
-            int enemyIndex = UnityEngine.Random.Range(0, Enemies.Count - 1);
-            GameObject enemy = Instantiate(Enemies[0], GenerateSpawnLocation(), Quaternion.identity);
-            enemy.GetComponent<ME_Enemy>().Target = Player;
+            int enemyIndex = UnityEngine.Random.Range(0, Enemies.Count);
+            GameObject enemy = Instantiate(Enemies[enemyIndex], GenerateSpawnLocation(), Quaternion.identity);
+            enemy.gameObject.transform.parent = Player.transform.parent;
+            enemy.GetComponent<ME_Enemy>().Player = Player;
         }
     }
 

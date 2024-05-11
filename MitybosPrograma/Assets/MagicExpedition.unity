@@ -216,7 +216,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1393608653
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 2
   m_Sprite: {fileID: 2590943504011000651, guid: 2c6cdb0652aa7bf41b6b05932d67586e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -989,7 +989,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7432806643361047562, guid: 9af1e21f24382a64688b5861075fb8b1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9af1e21f24382a64688b5861075fb8b1, type: 3}
@@ -1919,10 +1919,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Score: 0
-  Player: {fileID: 2075013186}
+  Player: {fileID: 2075013191}
   Enemies:
-  - {fileID: 6692437357438632274, guid: 6fc0265e0b9f4c449be605e31865b95f, type: 3}
-  EnemySpawnDelay: 0.2
+  - {fileID: 6258804431712315472, guid: 901e0932a54db074dae3bf009becbc56, type: 3}
+  - {fileID: 5601196657613524741, guid: 00aa5a53822cad945a8089083faca0de, type: 3}
+  - {fileID: 531888823559832831, guid: e6c43b417bd3bba45ac9667c56e62970, type: 3}
+  - {fileID: 7721801926684250190, guid: e06bd06a4d30a0b45a7018876912d104, type: 3}
+  EnemySpawnDelay: 0.1
   gameOver: {fileID: 941000621}
   scoreboard: {fileID: 864009524}
 --- !u!1 &941000621
@@ -2259,7 +2262,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 996887091}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.49, z: 0}
+  m_LocalPosition: {x: 0, y: -4.5, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
