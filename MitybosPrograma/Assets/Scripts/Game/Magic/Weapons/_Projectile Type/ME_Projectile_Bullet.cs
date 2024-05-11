@@ -19,12 +19,16 @@ public class ME_Projectile_Bullet : ME_Projectile
     {
         if (IsEnemy(collision.gameObject))
         {
-            ME_Enemy enemy = collision.gameObject.GetComponent<ME_Enemy>();
+            ME_Enemy enemy = GetEnemyFromCollision(collision);
             if (enemy != null)
             {
                 DealDamage(enemy);
             }
             TriggerDestruction();
+        }
+        else
+        {
+            Debug.Log("failed, name: " + collision.gameObject.name);
         }
     }
 }

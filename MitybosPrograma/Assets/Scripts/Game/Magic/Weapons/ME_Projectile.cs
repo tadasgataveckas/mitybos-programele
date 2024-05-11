@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections.LowLevel.Unsafe;
@@ -39,7 +40,13 @@ public class ME_Projectile : MonoBehaviour
     // checks if object is enemy
     public bool IsEnemy(GameObject gameObject)
     {
-        return gameObject.gameObject.CompareTag("Enemy");
+        return gameObject.CompareTag("Enemy Hurtbox");
+    }
+
+    // checks if object is enemy
+    public ME_Enemy GetEnemyFromCollision(Collider2D collider)
+    {
+        return collider.GetComponent<ME_EnemyHurtbox>().enemy;
     }
 
     // rotation should be called every frame
@@ -62,11 +69,10 @@ public class ME_Projectile : MonoBehaviour
     // damage to enemies within the trigger area
     public void DealAOEDamage()
     {
-        Debug.Log("Shooting aoe!");
         // collision list
         List<Collider2D> colliders = new List<Collider2D>();
 
-        // filters through enemy collision
+        // filters through and picks up anything in "Enemy" layer (not tag)
         ContactFilter2D filter = new ContactFilter2D();
         filter.SetLayerMask(LayerMask.GetMask("Enemy"));
 
@@ -74,9 +80,24 @@ public class ME_Projectile : MonoBehaviour
 
         foreach (Collider2D collider in colliders)
         {
-            ME_Enemy enemy = collider.gameObject.GetComponent<ME_Enemy>();
-            if (enemy != null)
-                DealDamage(enemy);
+            Debug.Log("Attempting to get enemy");
+            if (IsEnemy(collider.gameObject))
+            {
+                ME_Enemy enemy = GetEnemyFromCollision(collider);
+
+                if (enemy != null)
+                {
+                    Debug.Log("GetEnemyFromCollision failed, name: " + collider.gameObject.name);
+                }
+
+                if (enemy != null)
+                    DealDamage(enemy);
+
+            }
+            else
+            {
+                Debug.Log("Not an enemy: " + collider.gameObject.name);
+            }
         }
     }
 }

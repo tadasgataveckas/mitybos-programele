@@ -46,11 +46,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Carrot Saber
   projectileCount: 1
-  shotCooldown: 0.5
+  shotCooldown: 0
   damage: 10
-  damageCooldown: 0.2
+  damageCooldown: 0.1
   speed: 0
   rotationSpeed: 90
   lifespan: 0
-  scale: {x: 1.5, y: 1.5, z: 1.5}
+  scale: {x: 2, y: 2, z: 2}
   projectilePrefab: {fileID: 922292497825179408, guid: c0c82f96872bf0a4a9f25b97d117ab9c, type: 3}

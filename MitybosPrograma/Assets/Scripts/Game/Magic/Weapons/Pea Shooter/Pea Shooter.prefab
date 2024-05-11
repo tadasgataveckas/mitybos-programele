@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Pea Shooter
-  projectileCount: 2
-  shotCooldown: 1.5
+  projectileCount: 5
+  shotCooldown: 0.25
   damage: 35
   damageCooldown: 0
   speed: 7

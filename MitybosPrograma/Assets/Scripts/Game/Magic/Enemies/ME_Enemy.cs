@@ -8,7 +8,7 @@ public class ME_Enemy : ME_Entity
     public float Speed = 1f;
     public float Damage = 5f;
     public float DamageCooldown = 0.5f;
-    public TextMeshProUGUI DamageNumberPrefab;
+    public GameObject DamageNumberPrefab;
 
     // target gets set in game manager
     [HideInInspector] public GameObject Target;
@@ -62,15 +62,13 @@ public class ME_Enemy : ME_Entity
     public override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
-        StartCoroutine(DisplayDamage(damage));
+        DisplayDamage(damage);
     }
 
-    private IEnumerator DisplayDamage(float damage)
+    private void DisplayDamage(float damage)
     {
-        TextMeshProUGUI damageUI = Instantiate(DamageNumberPrefab, transform.position, transform.rotation);
-        damageUI.SetText(damage.ToString());
-        damageUI.transform.SetParent(healthbar.transform);
-        yield return new WaitForSeconds(0.5f);
-        Destroy(damageUI);
+        GameObject damageUI = Instantiate(DamageNumberPrefab, transform.position, transform.rotation);
+        damageUI.transform.SetParent(healthbar.transform.parent);
+        damageUI.GetComponent<ME_DamageNumber>().DisplayDamage(damage);
     }
 }

@@ -47,10 +47,10 @@ MonoBehaviour:
   weaponName: Hot Sauce Trailblazer
   projectileCount: 0
   shotCooldown: 2
-  damage: 2
-  damageCooldown: 0.1
+  damage: 4
+  damageCooldown: 0.2
   speed: 0
   rotationSpeed: 0
   lifespan: 2
-  scale: {x: 2.5, y: 2.5, z: 2.5}
+  scale: {x: 3, y: 3, z: 3}
   projectilePrefab: {fileID: 922292497825179408, guid: fede0dd0a68340248b2a875e1706893b, type: 3}

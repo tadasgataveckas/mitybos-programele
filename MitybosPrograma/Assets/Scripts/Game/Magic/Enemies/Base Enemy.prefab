@@ -33,7 +33,7 @@ RectTransform:
   m_Children:
   - {fileID: 1813494194705482568}
   m_Father: {fileID: 180952669917814722}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 736619680440770165}
   - component: {fileID: 2269989572934209863}
   - component: {fileID: 3234389866610471525}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hitbox
   m_TagString: Enemy Hitbox
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 180952669917814722}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &2269989572934209863
 CircleCollider2D:
@@ -164,6 +164,68 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 6519927248523119233}
+--- !u!1 &3921322634447048567
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5122310313105606754}
+  - component: {fileID: 5888591182026581434}
+  - component: {fileID: 4832096206253497828}
+  m_Layer: 6
+  m_Name: Hurtbox
+  m_TagString: Enemy Hurtbox
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5122310313105606754
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3921322634447048567}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 180952669917814722}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5888591182026581434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3921322634447048567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c594a0f42ae3e0478dd818909c8094a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 6519927248523119233}
+--- !u!70 &4832096206253497828
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3921322634447048567}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.5, y: 0.6}
+  m_Direction: 0
 --- !u!1 &6692437357438632274
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,9 +239,8 @@ GameObject:
   - component: {fileID: 6519927248523119233}
   - component: {fileID: 545019553323897987}
   - component: {fileID: -8587509295121574300}
-  - component: {fileID: 6301460694309606800}
   m_Layer: 6
-  m_Name: Snake
+  m_Name: Base Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -197,6 +258,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 5122310313105606754}
   - {fileID: 736619680440770165}
   - {fileID: 6863999454794552154}
   m_Father: {fileID: 0}
@@ -274,7 +336,7 @@ MonoBehaviour:
   Speed: 1
   Damage: 5
   DamageCooldown: 0.5
-  DamageNumberPrefab: {fileID: 2349974610201991935, guid: bed27aee3c8036f4fb1291fbcf1f9c17, type: 3}
+  DamageNumberPrefab: {fileID: 5581271777358922812, guid: bed27aee3c8036f4fb1291fbcf1f9c17, type: 3}
   Target: {fileID: 0}
   Player: {fileID: 0}
 --- !u!58 &545019553323897987
@@ -314,22 +376,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &6301460694309606800
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6692437357438632274}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.1
 --- !u!1001 &2230395846328352816
 PrefabInstance:
   m_ObjectHideFlags: 0
