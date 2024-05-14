@@ -26,9 +26,5 @@ public class ME_Projectile_Bullet : ME_Projectile
             }
             TriggerDestruction();
         }
-        else
-        {
-            Debug.Log("failed, name: " + collision.gameObject.name);
-        }
     }
 }

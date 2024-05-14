@@ -1,6 +1,6 @@
+using System.Collections;
 using UnityEngine;
-using static UnityEngine.AudioSettings;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class ME_Player : ME_Entity
 {
@@ -8,56 +8,83 @@ public class ME_Player : ME_Entity
     public double FireRate = 1;
     public float Range = 1;
 
-    public double HPRegenDelay = 3;
-    private double ActiveHPRegenDelay = 1;
-    private double HPRegenAmount = 1;
+    public float HPRegenAmount = 0.1f;  // how much HP per frame
+    public float HPRegenDelay = 3f;     // how long until HP begins to regen
+    private float HPRegenDelayCounter = 0;
+    private bool canRegen = true;
+
+    [HideInInspector] public float xp = 0;
+    [HideInInspector] public float xpMax = 100;
+    [HideInInspector] public int Level = 1;
 
     public GameObject Caster;
     public ME_Game_Manager Manager;
 
     private ME_Weapon[] weapons = new ME_Weapon[4];
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         HP = MaxHP;
+    }
 
+    private void Start()
+    {
+        // initial slider update
+        Manager.XpSlider.maxValue = xpMax;
+        Manager.XpSlider.value = xp;
     }
 
     // Update is called once per frame
     void Update()
     {
+        // regeneration logic
+        HPRegenDelayCounter += Time.deltaTime;
+        if (HPRegenDelayCounter > HPRegenDelay)
+            canRegen = true;
+
+        if (canRegen && HP < MaxHP)
+            HP += HPRegenAmount;
+
+        if (HP > MaxHP)
+            HP = MaxHP;
+
         healthbar.UpdateSlider();
     }
 
     // Activates player level up function
     public void LevelUp()
     {
-
+        Level += 1;
+        Debug.Log("Leveled uo! Current level: " + Level);
     }
 
-    // Dashes past enemies while making player briefly invincible
-    private void Dash()
-    {
-
-    }
-
-    public void GiveXp(float xp)
+    public void GiveXp(float xpAmount)
     {
         Manager.Score += xp;
+        xp += xpAmount;
+
+        if (xp >= xpMax)
+        {
+            // increase xp cap
+            xpMax *= 1.2f;
+            Manager.XpSlider.maxValue = xpMax;
+
+            xp = 0;
+            LevelUp();
+        }
+        Manager.XpSlider.value = xp;
     }
 
-    // Activates player level up function
-    public void RegenerateHP()
+    public override void TakeDamage(float damage)
     {
-        //ActiveHPRegenDelay -= delta;
-        //if (ActiveHPRegenDelay <= 0 && HP < MaxHP)
-        //    HP += HPRegenAmount;
+        base.TakeDamage(damage);
+        ResetHPRegenDelay();
     }
 
     public void ResetHPRegenDelay()
     {
-        ActiveHPRegenDelay = HPRegenDelay;
+        canRegen = false;
+        HPRegenDelayCounter = 0;
     }
 
     public override void UpdateHealthBar()

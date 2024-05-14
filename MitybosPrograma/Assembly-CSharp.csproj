@@ -111,7 +111,7 @@
     <Compile Include="Assets\Scripts\Calculations\BmiCalories.cs" />
     <Compile Include="Assets\Scripts\Models\ScoresChickenWings.cs" />
     <Compile Include="Assets\Scripts\Game\Magic\Weapons\_Projectile Type\ME_Projectile_Bullet.cs" />
-    <Compile Include="Assets\Scripts\Game\Magic\UI\Healthbar.cs" />
+    <Compile Include="Assets\Scripts\Game\Magic\UI\Healthbar\Healthbar.cs" />
     <Compile Include="Assets\Prefabs\Scroller\ScrollerPrefab.cs" />
     <Compile Include="Assets\Scripts\Login\LoginManager.cs" />
     <Compile Include="Assets\UI\TableLayout\TableLayout.cs" />
@@ -165,6 +165,7 @@
     <Compile Include="Assets\Scripts\Models\UserData.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\DBManager.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerCache.cs" />
+    <Compile Include="Assets\Scripts\Game\Magic\UI\Timer\InGameTimer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

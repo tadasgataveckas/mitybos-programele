@@ -74,29 +74,17 @@ public class ME_Projectile : MonoBehaviour
 
         // filters through and picks up anything in "Enemy" layer (not tag)
         ContactFilter2D filter = new ContactFilter2D();
-        filter.SetLayerMask(LayerMask.GetMask("Enemy"));
+        filter.SetLayerMask(LayerMask.GetMask("Enemy Hurtbox"));
 
         Physics2D.OverlapCollider(GetComponent<Collider2D>(), filter, colliders);
 
         foreach (Collider2D collider in colliders)
         {
-            Debug.Log("Attempting to get enemy");
             if (IsEnemy(collider.gameObject))
             {
                 ME_Enemy enemy = GetEnemyFromCollision(collider);
-
-                if (enemy != null)
-                {
-                    Debug.Log("GetEnemyFromCollision failed, name: " + collider.gameObject.name);
-                }
-
                 if (enemy != null)
                     DealDamage(enemy);
-
-            }
-            else
-            {
-                Debug.Log("Not an enemy: " + collider.gameObject.name);
             }
         }
     }

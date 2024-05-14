@@ -4,17 +4,22 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ME_Game_Manager : MonoBehaviour
 {
+    // score is just total xp
     public float Score = 0;
 
     public ME_Player Player;
     public List<GameObject> Enemies;
     public float EnemySpawnDelay = 0.1f;
+    public int maxEnemiesAtOnce = 250;
 
     private int enemyTotalCounter = 0;
+    private List<GameObject> enemyInstances = new List<GameObject>();
 
+    public Slider XpSlider;
     [SerializeField] private GameObject gameOver;
     [SerializeField] private Scoreboard scoreboard;
 
@@ -41,7 +46,8 @@ public class ME_Game_Manager : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        if (Enemies.Count > 0)
+        enemyInstances.RemoveAll(s => s == null);
+        if (Enemies.Count > 0 && enemyInstances.Count < maxEnemiesAtOnce)
         {
             enemyTotalCounter++;
 
@@ -49,6 +55,8 @@ public class ME_Game_Manager : MonoBehaviour
             GameObject enemy = Instantiate(Enemies[enemyIndex], GenerateSpawnLocation(), Quaternion.identity);
             enemy.gameObject.transform.parent = Player.transform.parent;
             enemy.GetComponent<ME_Enemy>().Player = Player;
+
+            enemyInstances.Add(enemy);
         }
     }
 
