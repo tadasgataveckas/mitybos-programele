@@ -146,7 +146,7 @@ public class MainManager : MonoBehaviour
         currCoins.text = levelCoins.coins.ToString();
         currXp.text = levelCoins.xp.ToString();
 
-        UpdateLevelXPCoins();
+        
 
         user.text = "User: " + username;
     }
@@ -159,6 +159,7 @@ public class MainManager : MonoBehaviour
         c.DeleteUserAllergies(userData.id_user);
         foreach (int allergy in newAllergies)
             c.InsertUserAllergy(userData.id_user, allergy);
+        UpdateLevelXPCoins();
     }
 
     public void UpdateLevelXPCoins()

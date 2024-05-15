@@ -212,7 +212,7 @@ public class JumpGameManager : MonoBehaviour
         // TODO: store coins somewhere
         Debug.Log("Collected coins: " + coins);
         c.UpdateUserCoins(id_user, coins);
-        c.UpdateUserXp(id_user, 0);
+        //c.UpdateUserXp(id_user, intScore);
         //
         //
         //
