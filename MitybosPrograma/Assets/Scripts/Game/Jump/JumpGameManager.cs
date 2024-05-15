@@ -38,6 +38,11 @@ public class JumpGameManager : MonoBehaviour
     [HideInInspector] public float screenWidthInUnits;
     [HideInInspector] public float screenHeightInUnits;
 
+    ClientMethods c = new ClientMethods(new DatabaseMethods());
+    private int id_user;
+    int intScore;
+
+
 
     void Awake()
     {
@@ -55,6 +60,8 @@ public class JumpGameManager : MonoBehaviour
 
     void Start()
     {
+        id_user = SessionManager.GetIdKey();
+
         coins = 0;
         SpawnSection();
     }
@@ -136,6 +143,7 @@ public class JumpGameManager : MonoBehaviour
             maxScore = player.position.y;
             score.text = maxScore.ToString("F1") + " ft";
         }
+        intScore = (int)Math.Round(maxScore);
 
         // Check if player is below the camera vertically
         if (player.position.y < cameraTransform.position.y - screenHeightInUnits / 2)
@@ -203,6 +211,8 @@ public class JumpGameManager : MonoBehaviour
 
         // TODO: store coins somewhere
         Debug.Log("Collected coins: " + coins);
+        c.UpdateUserCoins(id_user, coins);
+        c.UpdateUserXp(id_user, 0);
         //
         //
         //
@@ -210,6 +220,13 @@ public class JumpGameManager : MonoBehaviour
         // added so Update() won't run while game is over
         this.enabled = false;
     }
+
+    //private int ReturnCoins()
+    //{
+    //    Debug.Log("Returned Coins: " + coins);
+    //    
+    //    return coins;
+    //}
 
     // inserts score into db and populates scoreboard
     private void PopulateScoreboard()

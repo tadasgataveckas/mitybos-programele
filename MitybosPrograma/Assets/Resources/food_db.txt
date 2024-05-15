@@ -79,6 +79,15 @@ CREATE TABLE IF NOT EXISTS user_data (
   FOREIGN KEY (id_user) REFERENCES user (id_user)
 );
 
+-- Table: level_coins
+CREATE TABLE IF NOT EXISTS level_coins (
+  id_user INTEGER PRIMARY KEY,
+  level INTEGER NOT NULL,
+  xp INTEGER NOT NULL,
+  coins INTEGER NOT NULL,
+  FOREIGN KEY (id_user) REFERENCES user (id_user)
+);
+
 -- Table: user_filtered_products
 CREATE TABLE IF NOT EXISTS user_filtered_products (
   id_user INTEGER NOT NULL,

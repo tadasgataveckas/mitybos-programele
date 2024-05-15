@@ -119,6 +119,198 @@ public class DatabaseMethods
         finally { DBManager.CloseConnection(); }
     }
 
+    public bool InsertUserLevelCoins(int id_user, int level, int xp, int coins)
+    {
+        try
+        {
+            DBManager.OpenConnection();
+            IDbCommand command_insert = DBManager.connection.CreateCommand();
+            command_insert.CommandText =
+                "INSERT INTO level_coins" +
+                "(id_user, level, xp, coins)" +
+                " VALUES(" + id_user + ", " + level + ", " + xp + ", " + coins + ");";
+
+            return command_insert.ExecuteNonQuery() > 0;
+        }
+        catch (SqliteException e)
+        {
+            System.Console.WriteLine(e.Message); return false;
+        }
+        finally { DBManager.CloseConnection(); }
+    }
+
+    //public bool UpdateUserXp(int id_user, int xp)
+    //{
+    //    try
+    //    {
+    //        DBManager.OpenConnection();
+    //        IDbCommand command_update = DBManager.connection.CreateCommand();
+    //        command_update.CommandText =
+    //            "UPDATE level_coins SET xp = @xp WHERE id_user = @id_user";
+
+    //        IDbDataParameter paramIdUser = command_update.CreateParameter();
+    //        paramIdUser.ParameterName = "@id_user";
+    //        paramIdUser.Value = id_user;
+    //        command_update.Parameters.Add(paramIdUser);
+
+    //        IDbDataParameter paramXp = command_update.CreateParameter();
+    //        paramXp.ParameterName = "@xp";
+    //        paramXp.Value = xp;
+    //        command_update.Parameters.Add(paramXp);
+
+    //        return command_update.ExecuteNonQuery() > 0;
+    //    }
+    //    catch (SqliteException e)
+    //    {
+    //        System.Console.WriteLine(e.Message);
+    //        return false;
+    //    }
+    //    finally
+    //    {
+    //        DBManager.CloseConnection();
+    //    }
+    //}
+    public bool UpdateUserXp(int id_user, int xpToAdd)
+    {
+        try
+        {
+            DBManager.OpenConnection();
+            IDbCommand command_update = DBManager.connection.CreateCommand();
+            command_update.CommandText =
+                "UPDATE level_coins SET xp = xp + @xpToAdd WHERE id_user = @id_user";
+
+            IDbDataParameter paramXpToAdd = command_update.CreateParameter();
+            paramXpToAdd.ParameterName = "@xpToAdd";
+            paramXpToAdd.Value = xpToAdd;
+            command_update.Parameters.Add(paramXpToAdd);
+
+            IDbDataParameter paramIdUser = command_update.CreateParameter();
+            paramIdUser.ParameterName = "@id_user";
+            paramIdUser.Value = id_user;
+            command_update.Parameters.Add(paramIdUser);
+
+            return command_update.ExecuteNonQuery() > 0;
+        }
+        catch (SqliteException e)
+        {
+            System.Console.WriteLine(e.Message);
+            return false;
+        }
+        finally
+        {
+            DBManager.CloseConnection();
+        }
+    }
+
+
+    public bool UpdateUserCoins(int id_user, int coinsToAdd)
+    {
+        try
+        {
+            DBManager.OpenConnection();
+            IDbCommand command_update = DBManager.connection.CreateCommand();
+            command_update.CommandText =
+                "UPDATE level_coins SET coins = coins + @coinsToAdd WHERE id_user = @id_user";
+
+            IDbDataParameter paramCoinsToAdd = command_update.CreateParameter();
+            paramCoinsToAdd.ParameterName = "@coinsToAdd";
+            paramCoinsToAdd.Value = coinsToAdd;
+            command_update.Parameters.Add(paramCoinsToAdd);
+
+            IDbDataParameter paramIdUser = command_update.CreateParameter();
+            paramIdUser.ParameterName = "@id_user";
+            paramIdUser.Value = id_user;
+            command_update.Parameters.Add(paramIdUser);
+
+            return command_update.ExecuteNonQuery() > 0;
+        }
+        catch (SqliteException e)
+        {
+            System.Console.WriteLine(e.Message);
+            return false;
+        }
+        finally
+        {
+            DBManager.CloseConnection();
+        }
+    }
+
+
+    public bool UpdateUserLevel(int id_user, int level)
+    {
+        try
+        {
+            DBManager.OpenConnection();
+            IDbCommand command_update = DBManager.connection.CreateCommand();
+            command_update.CommandText =
+                "UPDATE level_coins SET level = @level WHERE id_user = @id_user";
+
+            IDbDataParameter paramIdUser = command_update.CreateParameter();
+            paramIdUser.ParameterName = "@id_user";
+            paramIdUser.Value = id_user;
+            command_update.Parameters.Add(paramIdUser);
+
+            IDbDataParameter paramLevel = command_update.CreateParameter();
+            paramLevel.ParameterName = "@level";
+            paramLevel.Value = level;
+            command_update.Parameters.Add(paramLevel);
+
+            return command_update.ExecuteNonQuery() > 0;
+        }
+        catch (SqliteException e)
+        {
+            System.Console.WriteLine(e.Message);
+            return false;
+        }
+        finally
+        {
+            DBManager.CloseConnection();
+        }
+    }
+
+    public bool UpdateUserLevelCoins(int id_user, int level, int xp, int coins)
+    {
+        try
+        {
+            DBManager.OpenConnection();
+            IDbCommand command_update = DBManager.connection.CreateCommand();
+            command_update.CommandText =
+                "UPDATE level_coins SET coins = @coins WHERE id_user = @id_user AND xp = @xp AND level = @level";
+
+            IDbDataParameter paramIdUser = command_update.CreateParameter();
+            paramIdUser.ParameterName = "@id_user";
+            paramIdUser.Value = id_user;
+            command_update.Parameters.Add(paramIdUser);
+
+            IDbDataParameter paramLevel = command_update.CreateParameter();
+            paramLevel.ParameterName = "@level";
+            paramLevel.Value = level;
+            command_update.Parameters.Add(paramLevel);
+
+            IDbDataParameter paramXp = command_update.CreateParameter();
+            paramXp.ParameterName = "@xp";
+            paramXp.Value = xp;
+            command_update.Parameters.Add(paramXp);
+
+            IDbDataParameter paramCoins = command_update.CreateParameter();
+            paramCoins.ParameterName = "@coins";
+            paramCoins.Value = coins;
+            command_update.Parameters.Add(paramCoins);
+
+            return command_update.ExecuteNonQuery() > 0;
+        }
+        catch (SqliteException e)
+        {
+            System.Console.WriteLine(e.Message);
+            return false;
+        }
+        finally
+        {
+            DBManager.CloseConnection();
+        }
+    }
+
+
     public bool InsertUserAllergy(int id_user, int id_allergy)
     {
         try

@@ -51,7 +51,7 @@ public class FoodSearch : MonoBehaviour
 
     //Displaying water (temp)
     public TMP_Text Water_field_plan;
-    public TMP_Text Water_field_header;
+    //public TMP_Text Water_field_header;
 
     //Input field
     public TMP_InputField amountInputField;
@@ -98,7 +98,7 @@ public class FoodSearch : MonoBehaviour
 		int totalWater = result != null ? Convert.ToInt32(result) : 0;
 
 		Water_field_plan.text = "Total water: " + totalWater.ToString() + " ml";
-		Water_field_header.text = totalWater.ToString() + " ml";
+		//Water_field_header.text = totalWater.ToString() + " ml";
 	}
 
 	void Start()

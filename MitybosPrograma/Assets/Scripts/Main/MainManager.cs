@@ -45,6 +45,11 @@ public class MainManager : MonoBehaviour
     private List<int> newAllergies;
     public static UserCalories userCalories;
 
+    //level_coins object meant for storing and retrieving info
+    private LevelCoins levelCoins;
+    public TextMeshProUGUI currLevel;
+    public TextMeshProUGUI currXp;
+    public TextMeshProUGUI currCoins;
 
     int year;
 
@@ -76,6 +81,10 @@ public class MainManager : MonoBehaviour
         // retrieves user_data into object
         userData = new UserData(id_user);
         userData.SynchData();
+
+        // retrieves level_coins into object
+        levelCoins = new LevelCoins(id_user);
+        levelCoins.SynchData();
 
         userCalories = new UserCalories(id_user);
         userCalories.SynchData();
@@ -132,8 +141,14 @@ public class MainManager : MonoBehaviour
 		progressBar_instance.max = userCalories.calories;
         progressBar_instance.UpdateCurr();
 
+        //LEVEL COINS STUFF
+        currLevel.text = levelCoins.level.ToString();
+        currCoins.text = levelCoins.coins.ToString();
+        currXp.text = levelCoins.xp.ToString();
 
-		user.text = "User: " + username;
+        UpdateLevelXPCoins();
+
+        user.text = "User: " + username;
     }
 
     public void UpdateInfo()
@@ -144,6 +159,34 @@ public class MainManager : MonoBehaviour
         c.DeleteUserAllergies(userData.id_user);
         foreach (int allergy in newAllergies)
             c.InsertUserAllergy(userData.id_user, allergy);
+    }
+
+    public void UpdateLevelXPCoins()
+    {
+        if(levelCoins.xp == 1000)
+        {
+            c.UpdateUserLevel(id_user, 1);
+        }
+        else if(levelCoins.xp == 2500)
+        {
+            c.UpdateUserLevel(id_user, 2);
+        }
+        else if (levelCoins.xp == 5000)
+        {
+            c.UpdateUserLevel(id_user, 3);
+        }
+
+        if(currCalories >= userCalories.calories)
+        {
+            if ((currCalories - userCalories.calories) < 300)
+            {
+                c.UpdateUserCoins(id_user, 100);
+            }
+            else if((currCalories - userCalories.calories) > 500)
+            {
+                c.UpdateUserCoins(id_user, 50);
+            }
+        }
     }
 
     public void SwitchSegment(int switchTo)
