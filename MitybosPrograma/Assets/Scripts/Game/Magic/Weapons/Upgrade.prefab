@@ -298,7 +298,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6968138466624827549}
-  - component: {fileID: -6128910985300921070}
   - component: {fileID: 6968138466624827536}
   - component: {fileID: 6968138466624827551}
   - component: {fileID: 6968138466624827550}
@@ -333,26 +332,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 350, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &-6128910985300921070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6968138466624827548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ab58b89bcc730f459a3674582f1be89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapon: 0
-  effect: 0
-  upgradeName: 
-  description: 
-  repeatable: 1
-  available: 1
-  nameField: {fileID: 6968138467246194452}
-  descriptionField: {fileID: 6968138466123376305}
 --- !u!222 &6968138466624827536
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -423,7 +402,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29d5e0b64c74aff49bf36adcd08c97b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 6968138466624827551}
+  image: {fileID: 8300975052898869239}
+  sprite: {fileID: 0}
+  nameField: {fileID: 6968138467246194452}
+  descriptionField: {fileID: 6968138466123376305}
 --- !u!114 &2244496129755105794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,7 +413,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6968138466624827548}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 

@@ -11,25 +11,34 @@ public class ME_Game_Manager : MonoBehaviour
     public float Score = 0;
 
     public ME_Player Player;
-    public List<GameObject> Enemies;
     public float EnemySpawnDelay = 0.1f;
     public int maxEnemiesAtOnce = 250;
 
+    // stores enemy types
+    public List<GameObject> Enemies;
+    // individual enemies
     private List<GameObject> enemyInstances = new List<GameObject>();
+
+    // stores upgrade types
     public List<ME_Upgrade> upgradePool = new List<ME_Upgrade>();
+    // temporarily stores generated upgrades until on is picked
+    public List<ME_Upgrade> reserveUpgradePool = new List<ME_Upgrade>();
+
+
     public GameObject upgradeUI;
-
-
     public Slider XpSlider;
+
     [SerializeField] private GameObject gameOver;
     [SerializeField] private Scoreboard scoreboard;
     [SerializeField] private GameObject upgradeContainer;
+    [SerializeField] private ME_PowerUpHandler upgradePrefab;
 
     // Start is called before the first frame update
     void Start()
     {
         Time.timeScale = 1f;
         StartCoroutine(EnemySpawner());
+        TriggerLevelUp();
     }
 
     // Update is called once per frame
@@ -173,26 +182,6 @@ public class ME_Game_Manager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    public void PickUpgrade(ME_Upgrade upgrade = null)
-    {
-        if (upgrade != null)
-            upgrade.ApplyEffect();
-
-        while (upgradeContainer.transform.childCount != 0)
-        {
-            ME_Upgrade upgradeItem = GetComponent<ME_Upgrade>();
-
-            // adds back upgrades that weren't selected
-            if (upgradeItem != upgrade)
-                upgradePool.Add(upgradeItem);
-            // if selected is repeatable, add it back
-            else if (upgrade.repeatable)
-                upgradePool.Add(upgradeItem);
-
-            Destroy(upgradeContainer.transform.GetChild(0));
-        }
-    }
-
     public void TriggerLevelUp()
     {
         Time.timeScale = 0f;
@@ -204,11 +193,38 @@ public class ME_Game_Manager : MonoBehaviour
 
     public void PickAndRemoveRandomUpgrade()
     {
-        int index = Random.Range(0, upgradePool.Count);
-        ME_Upgrade upgrade = Instantiate(upgradePool[index], upgradeContainer.transform.position, upgradeContainer.transform.rotation);
-        upgrade.transform.parent = upgradeContainer.transform;
+        ME_PowerUpHandler handler = Instantiate(upgradePrefab);
+        handler.transform.SetParent(upgradeContainer.transform);
+        handler.transform.localScale = Vector3.one;
 
-        // remove so duplicates are generated
+        int index = Random.Range(0, upgradePool.Count);
+        handler.upgrade = upgradePool[index];
+
+        // remove so no duplicates are generated
+        reserveUpgradePool.Add(upgradePool[index]);
         upgradePool.RemoveAt(index);
+    }
+
+    // called by upgrade handler
+    public void PickUpgrade(ME_PowerUpHandler handler = null)
+    {
+        if (handler != null)
+            handler.ApplyEffect();
+
+        // clear power up ui container
+        foreach (Transform child in upgradeContainer.transform)
+        {
+            ME_Upgrade upgradeItem = handler.GetComponent<ME_PowerUpHandler>().upgrade;
+            Destroy(child.gameObject);
+        }
+
+        // handler removes already selected non repeatable upgrade
+        upgradePool.AddRange(reserveUpgradePool);
+
+
+        reserveUpgradePool.Clear();
+
+        Time.timeScale = 1f;
+        upgradeUI.SetActive(false);
     }
 }

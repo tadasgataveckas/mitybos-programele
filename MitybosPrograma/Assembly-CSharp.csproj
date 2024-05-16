@@ -123,6 +123,7 @@
     <Compile Include="Assets\Scripts\Main\SegmentInformation.cs" />
     <Compile Include="Assets\Scripts\Survey\ButtonTransitions.cs" />
     <Compile Include="Assets\Scripts\Game\Harvest\VitaminHarvestItemManager.cs" />
+    <Compile Include="Assets\Scripts\Game\Magic\Weapons\ME_PowerUpHandler.cs" />
     <Compile Include="Assets\Scripts\Survey\Congrats.cs" />
     <Compile Include="Assets\Scripts\Game\Magic\Enemies\ME_Enemy.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker.cs" />
@@ -167,7 +168,6 @@
     <Compile Include="Assets\Scripts\Models\UserData.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\DBManager.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerCache.cs" />
-    <Compile Include="Assets\Scripts\Game\Magic\Weapons\ME_PowerUpHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

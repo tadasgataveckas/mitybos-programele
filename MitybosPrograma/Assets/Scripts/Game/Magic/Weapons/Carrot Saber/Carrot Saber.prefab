@@ -45,6 +45,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Carrot Saber
+  upgrades:
+  - {fileID: 11400000, guid: fffd1c6dd14a2e84ba5f12f78dd0c908, type: 2}
+  - {fileID: 11400000, guid: d18b58cb2db170548a401789717667ac, type: 2}
+  - {fileID: 11400000, guid: d4887ff801138244d9c2a65c89c13cd2, type: 2}
+  - {fileID: 11400000, guid: e56ac3d27263c5f46aa96f1528f0f72b, type: 2}
+  - {fileID: 11400000, guid: 1098733c31fd29a4881e2f9dea969ba6, type: 2}
   projectileCount: 1
   shotCooldown: 0
   damage: 10

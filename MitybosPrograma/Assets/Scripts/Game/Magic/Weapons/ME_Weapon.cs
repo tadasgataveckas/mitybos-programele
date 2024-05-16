@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class ME_Weapon : MonoBehaviour
 {
     public string weaponName = "";
+    public List<ME_Upgrade> upgrades = new List<ME_Upgrade>();
     public int projectileCount = 2;
     public float shotCooldown = 0.5f;
 
@@ -64,7 +65,7 @@ public abstract class ME_Weapon : MonoBehaviour
         Collider2D collider = gameObject.GetComponent<Collider2D>();
         LineRenderer renderer = collider.GetComponent<LineRenderer>();
 
-        while (shotCooldown > 0)
+        while (shotCooldown > 0 && collider != null && renderer != null)
         {
             collider.enabled = false;
             renderer.enabled = false;

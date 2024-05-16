@@ -57,6 +57,7 @@ public class ME_Player : ME_Entity
     {
         Level += 1;
         Debug.Log("Leveled uo! Current level: " + Level);
+        Manager.TriggerLevelUp();
     }
 
     public void GiveXp(float xpAmount)

@@ -39,6 +39,7 @@ public class ME_CarrotSaber : ME_Weapon
 
     public override void ResetWeapon()
     {
+        StopAllCoroutines();
         DeleteProjectiles();
         SpawnProjectiles();
     }
