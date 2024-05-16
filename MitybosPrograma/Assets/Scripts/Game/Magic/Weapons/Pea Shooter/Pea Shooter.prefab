@@ -56,6 +56,6 @@ MonoBehaviour:
   damageCooldown: 0
   speed: 7
   rotationSpeed: 180
-  lifespan: 3
+  lifespan: 1
   scale: {x: 1, y: 1, z: 1}
   projectilePrefab: {fileID: 922292497825179408, guid: dc131d4f5fa6c5f4885d97e4395cd136, type: 3}

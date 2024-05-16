@@ -20,6 +20,7 @@ public class ME_PowerUpHandler : MonoBehaviour, IPointerEnterHandler, IPointerEx
     {
         original = image.color;
         image.sprite = upgrade.sprite;
+        image.color = upgrade.color;
         nameField.SetText(upgrade.upgradeName);
         descriptionField.SetText(upgrade.description);
 

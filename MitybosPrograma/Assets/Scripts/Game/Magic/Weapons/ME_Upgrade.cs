@@ -7,6 +7,7 @@ using UnityEngine;
 public class ME_Upgrade : ScriptableObject
 {
     public Sprite sprite;
+    public Color color = Color.white;
     public Weapon weapon = Weapon.None;
     public Effect effect = Effect.None;
     public string upgradeName;

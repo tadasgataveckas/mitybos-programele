@@ -2294,7 +2294,7 @@ MonoBehaviour:
   canSpawn: 1
   Score: 0
   Player: {fileID: 2075013191}
-  EnemySpawnDelay: 1
+  EnemySpawnDelay: 0.5
   maxEnemiesAtOnce: 75
   Enemies:
   - {fileID: 6258804431712315472, guid: 901e0932a54db074dae3bf009becbc56, type: 3}

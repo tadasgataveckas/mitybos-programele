@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: PS give
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 4f4b011a20c1a8746a0efe3e2c73a738, type: 3}
+  color: {r: 0, g: 0.7169812, b: 0.052490022, a: 1}
   weapon: 1
   effect: 9
   upgradeName: Pea Shooter
   description: Basic weapon that shoots rock hard peas at your foes.
   repeatable: 0
-  available: 1

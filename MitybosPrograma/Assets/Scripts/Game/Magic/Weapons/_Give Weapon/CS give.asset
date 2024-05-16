@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: CS give
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: bd0d6cb50322d5941b9f11754cf601df, type: 3}
+  color: {r: 1, g: 0.5615011, b: 0, a: 1}
   weapon: 2
   effect: 9
   upgradeName: Carrot Saber
   description: The ultimate melee weapon - deals high damage at close range.
   repeatable: 0
-  available: 1

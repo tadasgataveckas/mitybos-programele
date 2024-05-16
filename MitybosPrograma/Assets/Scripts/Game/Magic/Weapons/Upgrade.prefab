@@ -247,8 +247,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14
-  m_fontSizeBase: 14
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -402,8 +402,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29d5e0b64c74aff49bf36adcd08c97b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upgrade: {fileID: 0}
   image: {fileID: 8300975052898869239}
-  sprite: {fileID: 0}
   nameField: {fileID: 6968138467246194452}
   descriptionField: {fileID: 6968138466123376305}
 --- !u!114 &2244496129755105794
