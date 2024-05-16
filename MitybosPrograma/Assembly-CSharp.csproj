@@ -117,6 +117,7 @@
     <Compile Include="Assets\UI\TableLayout\TableLayout.cs" />
     <Compile Include="Assets\Scripts\unity_auth\UILogin.cs" />
     <Compile Include="Assets\Scripts\Survey\PhysicalScrollers.cs" />
+    <Compile Include="Assets\Scripts\Game\Magic\Weapons\ME_Upgrade.cs" />
     <Compile Include="Assets\Scripts\Game\Jump\JumpPlayerController.cs" />
     <Compile Include="Assets\Scripts\unity_auth\LoginController.cs" />
     <Compile Include="Assets\Scripts\Main\SegmentInformation.cs" />
@@ -147,6 +148,7 @@
     <Compile Include="Assets\Scripts\Game\Harvest\UsableObject.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_Button.cs" />
     <Compile Include="Assets\Scripts\Game\Magic\ME_Entity.cs" />
+    <Compile Include="Assets\Scripts\Game\Magic\UI\Timer\InGameTimer.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_DayHeader.cs" />
     <Compile Include="Assets\Scripts\Game\Jump\Platform.cs" />
     <Compile Include="Assets\Scripts\Game\Magic\UI\Damage Numbers\ME_DamageNumber.cs" />
@@ -165,7 +167,6 @@
     <Compile Include="Assets\Scripts\Models\UserData.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\DBManager.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerCache.cs" />
-    <Compile Include="Assets\Scripts\Game\Magic\UI\Timer\InGameTimer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

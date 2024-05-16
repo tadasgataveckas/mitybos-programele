@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,7 +21,7 @@ public class ME_Player : ME_Entity
     public GameObject Caster;
     public ME_Game_Manager Manager;
 
-    private ME_Weapon[] weapons = new ME_Weapon[4];
+    public List<ME_Weapon> weapons = new List<ME_Weapon>();
 
     private void Awake()
     {

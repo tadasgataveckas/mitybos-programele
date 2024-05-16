@@ -37,7 +37,7 @@ public class ME_CarrotSaber : ME_Weapon
         swords.Clear();
     }
 
-    public void ResetWeapon()
+    public override void ResetWeapon()
     {
         DeleteProjectiles();
         SpawnProjectiles();

@@ -90,4 +90,9 @@ public abstract class ME_Weapon : MonoBehaviour
         if (rotationSpeed != 0)
             transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
     }
+
+    public virtual void ResetWeapon()
+    {
+
+    }
 }
