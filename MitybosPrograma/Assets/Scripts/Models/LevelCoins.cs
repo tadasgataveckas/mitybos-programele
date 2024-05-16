@@ -9,6 +9,7 @@ public class LevelCoins
     public int level;
     public int xp;
     public int coins;
+    public int streak;
 
 
     public LevelCoins(int id)
@@ -17,6 +18,7 @@ public class LevelCoins
         level = 0;
         xp = 0;
         coins = 0;
+        streak = 0;
     }
 
     /// <summary>
@@ -29,7 +31,7 @@ public class LevelCoins
             DBManager.OpenConnection();
             IDbCommand command_synch = DBManager.connection.CreateCommand();
             command_synch.CommandText =
-                "SELECT level, xp, coins " +
+                "SELECT level, xp, coins, streak " +
                 "FROM level_coins " +
                 "WHERE id_user = " + id_user;
             IDataReader reader = command_synch.ExecuteReader();
@@ -38,6 +40,7 @@ public class LevelCoins
             {
                 level = int.Parse(reader[0].ToString());
                 xp = int.Parse(reader[1].ToString());
+                coins = int.Parse(reader[2].ToString());
 
                 coins = int.Parse(reader[2].ToString()); ;
             }
@@ -52,7 +55,8 @@ public class LevelCoins
             "id_user = " + id_user + "\n" +
             "level = " + level + "\n" +
             "xp = " + xp + "\n" +
-            "coins = " + coins;
+            "coins = " + coins + "\n" +
+            "streak = " + streak;
         return lines;
     }
 }

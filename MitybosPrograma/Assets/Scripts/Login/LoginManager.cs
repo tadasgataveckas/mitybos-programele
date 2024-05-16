@@ -142,7 +142,7 @@ public class LoginManager : MonoBehaviour
             if (c.RegisterUser(email, username, password))
             {
                 id = c.Login(username, password);
-                c.InsertUserLevelCoins(id, 0, 0, 0);
+                c.InsertUserLevelCoins(id, 0, 0, 0, 0);
                 Debug.Log("Account successfully created");
             }
             else

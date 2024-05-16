@@ -119,7 +119,7 @@ public class DatabaseMethods
         finally { DBManager.CloseConnection(); }
     }
 
-    public bool InsertUserLevelCoins(int id_user, int level, int xp, int coins)
+    public bool InsertUserLevelCoins(int id_user, int level, int xp, int coins, int streak)
     {
         try
         {
@@ -127,8 +127,8 @@ public class DatabaseMethods
             IDbCommand command_insert = DBManager.connection.CreateCommand();
             command_insert.CommandText =
                 "INSERT INTO level_coins" +
-                "(id_user, level, xp, coins)" +
-                " VALUES(" + id_user + ", " + level + ", " + xp + ", " + coins + ");";
+                "(id_user, level, xp, coins, streak)" +
+                " VALUES(" + id_user + ", " + level + ", " + xp + ", " + coins + ", " + streak + ");";
 
             return command_insert.ExecuteNonQuery() > 0;
         }
@@ -254,6 +254,38 @@ public class DatabaseMethods
             paramLevel.ParameterName = "@level";
             paramLevel.Value = level;
             command_update.Parameters.Add(paramLevel);
+
+            return command_update.ExecuteNonQuery() > 0;
+        }
+        catch (SqliteException e)
+        {
+            System.Console.WriteLine(e.Message);
+            return false;
+        }
+        finally
+        {
+            DBManager.CloseConnection();
+        }
+    }
+
+    public bool UpdateUserStreak(int id_user, int streak)
+    {
+        try
+        {
+            DBManager.OpenConnection();
+            IDbCommand command_update = DBManager.connection.CreateCommand();
+            command_update.CommandText =
+                "UPDATE level_coins SET streak = @streak WHERE id_user = @id_user";
+
+            IDbDataParameter paramIdUser = command_update.CreateParameter();
+            paramIdUser.ParameterName = "@id_user";
+            paramIdUser.Value = id_user;
+            command_update.Parameters.Add(paramIdUser);
+
+            IDbDataParameter paramStreak = command_update.CreateParameter();
+            paramStreak.ParameterName = "@streak";
+            paramStreak.Value = streak;
+            command_update.Parameters.Add(paramStreak);
 
             return command_update.ExecuteNonQuery() > 0;
         }

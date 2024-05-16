@@ -48,8 +48,10 @@ public class MainManager : MonoBehaviour
     //level_coins object meant for storing and retrieving info
     private LevelCoins levelCoins;
     public TextMeshProUGUI currLevel;
+    private bool isXpVisible = false;
     public TextMeshProUGUI currXp;
     public TextMeshProUGUI currCoins;
+    public TextMeshProUGUI currStreak;
 
     int year;
 
@@ -69,10 +71,12 @@ public class MainManager : MonoBehaviour
             // idk if other methods run after scene change, so I put this here just in case
             return;
         }
+        //Not showing xp at first
+        currXp.gameObject.SetActive(false);
 
         GetAllUserData();
         SwitchSegment(currentSegment);
-
+        
         UpdateUserDisplay();
     }
 
@@ -146,6 +150,8 @@ public class MainManager : MonoBehaviour
         currLevel.text = levelCoins.level.ToString();
         currCoins.text = levelCoins.coins.ToString();
         currXp.text = levelCoins.xp.ToString();
+        currStreak.text = levelCoins.streak.ToString();
+
 
         user.text = "User: " + username;
     }
@@ -174,6 +180,11 @@ public class MainManager : MonoBehaviour
         {
             c.UpdateUserLevel(id_user, 3);
         }
+
+        if(currCalories >= userCalories.calories)
+        {
+            c.UpdateUserStreak(id_user, 1);
+        }
   
         //if ((currCalories - userCalories.calories) < 200)
         //{
@@ -183,6 +194,21 @@ public class MainManager : MonoBehaviour
         //{
         //    c.UpdateUserCoins(id_user, 50);
         //}
+    }
+
+    public void ShowXP()
+    {
+        if (isXpVisible)
+        {
+
+            currXp.gameObject.SetActive(false);
+            isXpVisible = false;
+        }
+        else
+        {
+            currXp.gameObject.SetActive(true);
+            isXpVisible = true;
+        }
     }
 
     public void SwitchSegment(int switchTo)

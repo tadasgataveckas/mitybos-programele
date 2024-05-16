@@ -75,9 +75,9 @@ public class ClientMethods// : IClientInterface
         return _databaseMethods.IsPasswordCorrect(username, email);
     }
 
-    public bool InsertUserLevelCoins(int id_user, int level, int xp, int coins)
+    public bool InsertUserLevelCoins(int id_user, int level, int xp, int coins, int streak)
     {
-        return _databaseMethods.InsertUserLevelCoins(id_user, level, xp, coins);
+        return _databaseMethods.InsertUserLevelCoins(id_user, level, xp, coins, streak);
     }
 
     public bool UpdateUserLevelCoins(int id_user, int level, int xp, int coins)
@@ -98,6 +98,11 @@ public class ClientMethods// : IClientInterface
     public bool UpdateUserLevel(int id_user, int level)
     {
         return _databaseMethods.UpdateUserLevel(id_user, level);
+    }
+
+    public bool UpdateUserStreak(int id_user, int streak)
+    {
+        return _databaseMethods.UpdateUserStreak(id_user, streak);
     }
 
     public bool InsertUserAllergy(int id_user, int id_allergy)
