@@ -1,13 +1,12 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ME_Game_Manager : MonoBehaviour
 {
+    public bool canSpawn = true;
     // score is just total xp
     public float Score = 0;
 
@@ -16,12 +15,15 @@ public class ME_Game_Manager : MonoBehaviour
     public float EnemySpawnDelay = 0.1f;
     public int maxEnemiesAtOnce = 250;
 
-    private int enemyTotalCounter = 0;
     private List<GameObject> enemyInstances = new List<GameObject>();
+    public List<ME_Upgrade> upgradePool = new List<ME_Upgrade>();
+    public GameObject upgradeUI;
+
 
     public Slider XpSlider;
     [SerializeField] private GameObject gameOver;
     [SerializeField] private Scoreboard scoreboard;
+    [SerializeField] private GameObject upgradeContainer;
 
     // Start is called before the first frame update
     void Start()
@@ -47,17 +49,16 @@ public class ME_Game_Manager : MonoBehaviour
     private void SpawnEnemy()
     {
         enemyInstances.RemoveAll(s => s == null);
-        if (Enemies.Count > 0 && enemyInstances.Count < maxEnemiesAtOnce)
-        {
-            enemyTotalCounter++;
+        if (canSpawn)
+            if (Enemies.Count > 0 && enemyInstances.Count < maxEnemiesAtOnce)
+            {
+                int enemyIndex = UnityEngine.Random.Range(0, Enemies.Count);
+                GameObject enemy = Instantiate(Enemies[enemyIndex], GenerateSpawnLocation(), Quaternion.identity);
+                enemy.gameObject.transform.parent = Player.transform.parent;
+                enemy.GetComponent<ME_Enemy>().Player = Player;
 
-            int enemyIndex = UnityEngine.Random.Range(0, Enemies.Count);
-            GameObject enemy = Instantiate(Enemies[enemyIndex], GenerateSpawnLocation(), Quaternion.identity);
-            enemy.gameObject.transform.parent = Player.transform.parent;
-            enemy.GetComponent<ME_Enemy>().Player = Player;
-
-            enemyInstances.Add(enemy);
-        }
+                enemyInstances.Add(enemy);
+            }
     }
 
     private Vector2 GenerateSpawnLocation()
@@ -170,5 +171,44 @@ public class ME_Game_Manager : MonoBehaviour
         Destroy(gameObject);
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
         Time.timeScale = 1f;
+    }
+
+    public void PickUpgrade(ME_Upgrade upgrade = null)
+    {
+        if (upgrade != null)
+            upgrade.ApplyEffect();
+
+        while (upgradeContainer.transform.childCount != 0)
+        {
+            ME_Upgrade upgradeItem = GetComponent<ME_Upgrade>();
+
+            // adds back upgrades that weren't selected
+            if (upgradeItem != upgrade)
+                upgradePool.Add(upgradeItem);
+            // if selected is repeatable, add it back
+            else if (upgrade.repeatable)
+                upgradePool.Add(upgradeItem);
+
+            Destroy(upgradeContainer.transform.GetChild(0));
+        }
+    }
+
+    public void TriggerLevelUp()
+    {
+        Time.timeScale = 0f;
+        upgradeUI.SetActive(true);
+
+        for (int i = 0; i < 4; i++)
+            PickAndRemoveRandomUpgrade();
+    }
+
+    public void PickAndRemoveRandomUpgrade()
+    {
+        int index = Random.Range(0, upgradePool.Count);
+        ME_Upgrade upgrade = Instantiate(upgradePool[index], upgradeContainer.transform.position, upgradeContainer.transform.rotation);
+        upgrade.transform.parent = upgradeContainer.transform;
+
+        // remove so duplicates are generated
+        upgradePool.RemoveAt(index);
     }
 }

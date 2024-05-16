@@ -46,8 +46,9 @@ public class ME_Upgrade : MonoBehaviour
         descriptionField.SetText(description);
 
         player = FindObjectOfType<ME_Player>();
+
         if (weapon != Weapon.None)
-            weaponInstance = player.weapons[(int)weapon];
+            weaponInstance = player.weapons[(int)weapon - 1];
     }
 
     public virtual void ApplyEffect()
