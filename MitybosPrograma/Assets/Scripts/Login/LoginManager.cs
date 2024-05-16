@@ -17,6 +17,7 @@ public class LoginManager : MonoBehaviour
     public List<GameObject> segments;
 
     ClientMethods c = new ClientMethods(new DatabaseMethods());
+    int id;
 
     public void InputEmail(string newEmail)
     {
@@ -68,7 +69,7 @@ public class LoginManager : MonoBehaviour
         else
         {
             // logs in
-            int id = c.Login(username, password);
+            id = c.Login(username, password);
 
             // stores id_user in playerprefs as session id
             SessionManager.StoreIdKey(id);
@@ -139,7 +140,11 @@ public class LoginManager : MonoBehaviour
         else
         {
             if (c.RegisterUser(email, username, password))
+            {
+                id = c.Login(username, password);
+                c.InsertUserLevelCoins(id, 0, 0, 0);
                 Debug.Log("Account successfully created");
+            }
             else
                 Debug.Log("Account creation failed");
 

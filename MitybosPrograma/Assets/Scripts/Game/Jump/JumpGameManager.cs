@@ -40,7 +40,8 @@ public class JumpGameManager : MonoBehaviour
 
     ClientMethods c = new ClientMethods(new DatabaseMethods());
     private int id_user;
-    int intScore;
+    private int intScore;
+    private LevelCoins levelCoins;
 
 
 
@@ -211,8 +212,10 @@ public class JumpGameManager : MonoBehaviour
 
         // TODO: store coins somewhere
         Debug.Log("Collected coins: " + coins);
+        //c.InsertUserLevelCoins(id_user, 0, 0, 0);
         c.UpdateUserCoins(id_user, coins);
-        //c.UpdateUserXp(id_user, intScore);
+        c.UpdateUserXp(id_user, intScore);
+        
         //
         //
         //

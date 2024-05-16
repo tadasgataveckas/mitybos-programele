@@ -142,11 +142,10 @@ public class MainManager : MonoBehaviour
         progressBar_instance.UpdateCurr();
 
         //LEVEL COINS STUFF
+        UpdateLevelXPCoins();
         currLevel.text = levelCoins.level.ToString();
         currCoins.text = levelCoins.coins.ToString();
         currXp.text = levelCoins.xp.ToString();
-
-        
 
         user.text = "User: " + username;
     }
@@ -159,35 +158,31 @@ public class MainManager : MonoBehaviour
         c.DeleteUserAllergies(userData.id_user);
         foreach (int allergy in newAllergies)
             c.InsertUserAllergy(userData.id_user, allergy);
-        UpdateLevelXPCoins();
     }
 
     public void UpdateLevelXPCoins()
     {
-        if(levelCoins.xp == 1000)
+        if(levelCoins.xp >= 100)
         {
             c.UpdateUserLevel(id_user, 1);
         }
-        else if(levelCoins.xp == 2500)
+        if(levelCoins.xp >= 250)
         {
             c.UpdateUserLevel(id_user, 2);
         }
-        else if (levelCoins.xp == 5000)
+        if (levelCoins.xp >= 350)
         {
             c.UpdateUserLevel(id_user, 3);
         }
-
-        if(currCalories >= userCalories.calories)
-        {
-            if ((currCalories - userCalories.calories) < 300)
-            {
-                c.UpdateUserCoins(id_user, 100);
-            }
-            else if((currCalories - userCalories.calories) > 500)
-            {
-                c.UpdateUserCoins(id_user, 50);
-            }
-        }
+  
+        //if ((currCalories - userCalories.calories) < 200)
+        //{
+        //    c.UpdateUserCoins(id_user, 100);
+        //}
+        //else if((currCalories - userCalories.calories) > 500)
+        //{
+        //    c.UpdateUserCoins(id_user, 50);
+        //}
     }
 
     public void SwitchSegment(int switchTo)
