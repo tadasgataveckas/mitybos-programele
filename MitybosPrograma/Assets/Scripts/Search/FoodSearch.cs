@@ -25,11 +25,8 @@ public class FoodSearch : MonoBehaviour
 
     public ProgressBar progressBar_instance;
 
-    
-
 	public TMP_InputField searchInputField;
     public ScrollRect scrollView;
-
     public GameObject resultPrefab;
     public GameObject productDetailPanel;
     public GameObject searchPanel;
@@ -55,6 +52,9 @@ public class FoodSearch : MonoBehaviour
 
     //Input field
     public TMP_InputField amountInputField;
+    public TMP_Text Imput_error;
+
+
 
     private ProductDetails selectedProduct;
     private List<ProductDetails> eatenProducts = new List<ProductDetails>(); // List to store eaten products
@@ -83,6 +83,29 @@ public class FoodSearch : MonoBehaviour
 		command.ExecuteNonQuery();
 	}
 
+    public void RemoveWater()
+    {
+        int userId = SessionManager.GetIdKey();
+
+        string query = @"SELECT water FROM consumed_user_water WHERE id_user = " + userId + @";";
+        DBManager.OpenConnection();
+        IDbCommand command = DBManager.connection.CreateCommand();
+        command.CommandText = query;
+        object result = command.ExecuteScalar();
+        int waterAmount = result != null ? Convert.ToInt32(result) : 0;
+
+        if (waterAmount >= 100)
+        {
+            query = @"UPDATE consumed_user_water SET water = water - 100 WHERE id_user = " + userId + ";";
+        }
+        else
+        {
+            query = @"UPDATE consumed_user_water SET water = 0 WHERE id_user = " + userId + ";";
+        }
+
+        command.CommandText = query;
+        command.ExecuteNonQuery();
+    }
 
 	public void DisplayWater()
 	{
@@ -239,6 +262,7 @@ public class FoodSearch : MonoBehaviour
         mainPanel.SetActive(false);
         productDetailPanel.SetActive(false);
         searchPanel.SetActive(true);
+        Imput_error.gameObject.SetActive(false);
     }
     public void GoToDetailed()
     {
@@ -271,17 +295,18 @@ public class FoodSearch : MonoBehaviour
 
             DisplayEatenProducts();
             ReturnTotalKcal();
+            GoToMain();
         }
         else
         {
             Debug.Log("Amount entered is not gooooood");
+            Imput_error.gameObject.SetActive(true);
         }
 
     }
 
     void DisplayEatenProducts()
     {
-        // Clear existing items in the scroll view
         foreach (Transform child in eatenProductsScrollViewContent)
         {
             Destroy(child.gameObject);
@@ -320,8 +345,16 @@ public class FoodSearch : MonoBehaviour
 
             GameObject eatenProductObj = Instantiate(eatenProductPrefab, eatenProductsScrollViewContent);
             eatenProductObj.GetComponentInChildren<TMP_Text>().text = $"{productName} - {kcal} kcal";
-            Button deleteButton = eatenProductObj.GetComponentInChildren<Button>();
-            deleteButton.onClick.AddListener(() => OnDeleteEatenProductClicked(cumId, eatenProductObj));
+
+            Button editButton = eatenProductObj.transform.Find("Edit").GetComponent<Button>();
+            Button confirmButton = eatenProductObj.transform.Find("Confirm").GetComponent<Button>();
+            Button cancelButton = eatenProductObj.transform.Find("Cancel").GetComponent<Button>();
+
+            editButton.onClick.AddListener(() => OnDeleteEatenProductClicked(cumId, confirmButton, cancelButton));
+            Debug.Log("DisplayEatenProducts() - " + cumId);
+
+            confirmButton.gameObject.SetActive(false);
+            cancelButton.gameObject.SetActive(false);
         }
 
         Total_kcal_header.text = totalKcal.ToString() + " kcal";
@@ -335,7 +368,18 @@ public class FoodSearch : MonoBehaviour
         progressBar_instance.UpdateCurr();
     }
 
-    public void OnDeleteEatenProductClicked(int cumId, GameObject eatenProductObj)
+
+
+    public void OnDeleteEatenProductClicked(int cumId, Button confirm, Button cancel)
+    {
+        confirm.onClick.AddListener(() => OnConfirmDelete(cumId));
+        cancel.onClick.AddListener(() => OnCancelDelete(confirm, cancel));
+
+        confirm.gameObject.SetActive(true);
+        cancel.gameObject.SetActive(true);
+    } 
+
+    void OnConfirmDelete(int cumId)
     {
         string query = "DELETE FROM consumed_user_meals WHERE id_cum = " + cumId;
 
@@ -346,7 +390,14 @@ public class FoodSearch : MonoBehaviour
         DBManager.connection.Close();
 
         DisplayEatenProducts();
-    }   
+    }
+
+    void OnCancelDelete(Button confirm, Button cancel)
+    {
+        Debug.Log("OnCancelDelete()");
+        confirm.gameObject.SetActive(false);
+        cancel.gameObject.SetActive(false);
+    }
 
     public float ReturnTotalKcal()
     {
