@@ -29,6 +29,7 @@ public class VitaminHarvestItemManager : MonoBehaviour
     {
         public GameObject droppedItemPrefab;
         public string name;
+        public string vitamin;
         public RuntimeAnimatorController handController;
         public RuntimeAnimatorController plantedSeedController; // Seeds have this
     }

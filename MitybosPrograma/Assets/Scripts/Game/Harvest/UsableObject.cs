@@ -7,7 +7,8 @@ public enum UsableObjectType
     FarmLand,
     Plant,
     Finish,
-    PlacementArea
+    PlacementArea,
+    CustomerTable
 }
 
 public class UsableObject : MonoBehaviour
@@ -93,6 +94,10 @@ public class UsableObject : MonoBehaviour
                 case UsableObjectType.PlacementArea:
                     PlaceOnArea(item);
                     break;
+                case UsableObjectType.CustomerTable:
+                    PlaceOnArea(item);
+                    StartCoroutine(FinishOrderAfterDelay(item));
+                    break;
                 default:
                     Debug.LogWarning("Unknown UsableObjectType: " + type);
                     break;
@@ -148,6 +153,24 @@ public class UsableObject : MonoBehaviour
         {
             Debug.LogWarning("Prefab to drop is null!");
         }
+
+    }
+
+    private IEnumerator FinishOrderAfterDelay(string item)
+    {
+        // Wait for 1 second
+        yield return new WaitForSeconds(1f);
+
+        // Check if the placed item is still not null
+        if (transform.childCount > 1) // first child is placement area visuals
+        {
+            FinishOrder(item, transform.GetChild(1).gameObject); //second child
+        }
+    }
+
+    private void FinishOrder(string item, GameObject spawnedItem)
+    {
+        transform.parent.gameObject.GetComponent<CustomerTable>().FinishOrder(item, spawnedItem);
 
     }
 }
