@@ -6,8 +6,8 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PlantGrowEnd
+  m_Name: ReactionOk
   m_Controller: {fileID: 9100000, guid: e26668f5b7c2ebf42a2137a2ef7e0253, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 6043559136154774052, guid: 3229c9a25bc074b45a9a930dc727d3c0, type: 3}
-    m_OverrideClip: {fileID: 4083657038692557807, guid: 3229c9a25bc074b45a9a930dc727d3c0, type: 3}
+    m_OverrideClip: {fileID: -2799738379521546289, guid: 3229c9a25bc074b45a9a930dc727d3c0, type: 3}
