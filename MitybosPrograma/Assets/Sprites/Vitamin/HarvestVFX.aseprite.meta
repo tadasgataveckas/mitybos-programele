@@ -126,11 +126,11 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 108
-      y: 4
+      x: 88
+      y: 205
       width: 10
       height: 7
-    spriteID: 09f1984be28b9fe42b3eb52bd24dd453
+    spriteID: d8f1db562bb0d3a46a31b2af7800f9a0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -138,7 +138,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 108, y: 4}
+    uvTransform: {x: 88, y: 205}
   - name: HarvestVFX_Frame_1
     originalName: 
     pivot: {x: 0.5555555, y: -1.3846154}
@@ -146,11 +146,11 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 55
-      y: 112
+      x: 62
+      y: 205
       width: 18
       height: 13
-    spriteID: 9e6657eb497e3374c8e8d3242e58bbff
+    spriteID: fee236038717f4a4f9cf71d085c4ec00
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -158,7 +158,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 55, y: 112}
+    uvTransform: {x: 62, y: 205}
   - name: HarvestVFX_Frame_2
     originalName: 
     pivot: {x: 0.5500001, y: -1.1333333}
@@ -166,11 +166,11 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 55
-      y: 89
+      x: 34
+      y: 205
       width: 20
       height: 15
-    spriteID: 775e725eaa22390499a0beff127c0963
+    spriteID: 1a06d36f044456d47a12bb9929005d62
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -178,7 +178,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 55, y: 89}
+    uvTransform: {x: 34, y: 205}
   - name: HarvestVFX_Frame_3
     originalName: 
     pivot: {x: 0.54545456, y: -0.9411764}
@@ -186,11 +186,11 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 55
-      y: 64
+      x: 4
+      y: 205
       width: 22
       height: 17
-    spriteID: b498246199dd0bd41a84c3d55aea355b
+    spriteID: dbba2ab57ca3a97469da85cd2307f227
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -198,7 +198,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 55, y: 64}
+    uvTransform: {x: 4, y: 205}
   - name: HarvestVFX_Frame_4
     originalName: 
     pivot: {x: 0.5416666, y: -0.78947365}
@@ -206,11 +206,11 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 55
-      y: 37
+      x: 214
+      y: 175
       width: 24
       height: 19
-    spriteID: 9236902e3b5eeb3418a26c3f4c3d26f1
+    spriteID: 6d2379645758c424faccf1b99f46f3f7
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -218,7 +218,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 55, y: 37}
+    uvTransform: {x: 214, y: 175}
   - name: HarvestVFX_Frame_8
     originalName: 
     pivot: {x: 0.47619045, y: -1.15625}
@@ -226,11 +226,11 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 129
+      x: 155
+      y: 4
       width: 42
       height: 32
-    spriteID: fc569e1907d3b0f40ac0ca316cbbf2bd
+    spriteID: 70243c95825f83b4494f12774df6e703
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -238,7 +238,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 129}
+    uvTransform: {x: 155, y: 4}
   - name: HarvestVFX_Frame_9
     originalName: 
     pivot: {x: 0.46511623, y: -1.2121212}
@@ -246,11 +246,11 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 47
+      x: 55
+      y: 4
       width: 43
       height: 33
-    spriteID: 8f37f8a82e10d1d438a6390366c1cc67
+    spriteID: 0540dd36b198b6b4c8d4bd7e3e68a225
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -258,7 +258,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 47}
+    uvTransform: {x: 55, y: 4}
   - name: HarvestVFX_Frame_10
     originalName: 
     pivot: {x: 0.46341464, y: -1.4193548}
@@ -266,11 +266,11 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 169
+      x: 205
+      y: 4
       width: 41
       height: 31
-    spriteID: c909d9b97f7d3a647bdc348139ec46b1
+    spriteID: 156b5aaa4c25141459a6761982e7a373
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -278,7 +278,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 169}
+    uvTransform: {x: 205, y: 4}
   - name: HarvestVFX_Frame_11
     originalName: 
     pivot: {x: 0.46341464, y: -1.5333333}
@@ -287,10 +287,10 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 208
+      y: 47
       width: 41
       height: 30
-    spriteID: 78e8d60e308e4ae4aaa043263dcd68fd
+    spriteID: 047577ea6b527414e9795dabd6415374
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -298,7 +298,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 208}
+    uvTransform: {x: 4, y: 47}
   - name: HarvestVFX_Frame_12
     originalName: 
     pivot: {x: 0.46341464, y: -1.3939394}
@@ -306,11 +306,11 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 88
+      x: 106
+      y: 4
       width: 41
       height: 33
-    spriteID: 1d0038b5acdaa9b44bbc0b946261eac2
+    spriteID: edd500554c36a554a9131062e76a4bc0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -318,7 +318,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 88}
+    uvTransform: {x: 106, y: 4}
   - name: HarvestVFX_Frame_13
     originalName: 
     pivot: {x: 0.46511623, y: -1.2857143}
@@ -330,7 +330,7 @@ ScriptedImporter:
       y: 4
       width: 43
       height: 35
-    spriteID: 2749c451d0209d34cbeadbd3aea8afa0
+    spriteID: a8725cb89f24e46498c11f00c3598480
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -339,18 +339,18 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: HarvestVFX_Frame_14
+  - name: HarvestVFX_Frame_16
     originalName: 
-    pivot: {x: 0.4666667, y: -2.1599998}
+    pivot: {x: 0.6, y: -4.272727}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 55
-      y: 4
-      width: 45
-      height: 25
-    spriteID: e1c97ea13ec806e44954af2be64224ff
+      x: 246
+      y: 175
+      width: 5
+      height: 11
+    spriteID: 77e776b8d9c13214b892a7e3cd8774c8
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -358,7 +358,907 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 55, y: 4}
+    uvTransform: {x: 246, y: 175}
+  - name: HarvestVFX_Frame_17
+    originalName: 
+    pivot: {x: 0.6, y: -5.1}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 244
+      y: 85
+      width: 5
+      height: 10
+    spriteID: 67e5152b51b25ae4b9a4eacd9efc450f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 244, y: 85}
+  - name: HarvestVFX_Frame_18
+    originalName: 
+    pivot: {x: 0.6, y: -5.2000003}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 244
+      y: 115
+      width: 5
+      height: 10
+    spriteID: 6e47bd026f726df4e8391e0171074b5a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 244, y: 115}
+  - name: HarvestVFX_Frame_19
+    originalName: 
+    pivot: {x: 0.6, y: -5.2000003}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 244
+      y: 145
+      width: 5
+      height: 10
+    spriteID: a2cdb19ff2cf4af42ba89abf302f189f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 244, y: 145}
+  - name: HarvestVFX_Frame_20
+    originalName: 
+    pivot: {x: 0.6, y: -5.2000003}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 106
+      y: 205
+      width: 5
+      height: 10
+    spriteID: b8d26035f8b25e14c8ea8c558706e31b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 106, y: 205}
+  - name: HarvestVFX_Frame_21
+    originalName: 
+    pivot: {x: 0.6, y: -5.2000003}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 119
+      y: 205
+      width: 5
+      height: 10
+    spriteID: 68e04cb5b6ac0f34684498440c9300d1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 119, y: 205}
+  - name: HarvestVFX_Frame_22
+    originalName: 
+    pivot: {x: 0.6, y: -5.2000003}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 132
+      y: 205
+      width: 5
+      height: 10
+    spriteID: 26148db37140ea74abb110e0f821944d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 132, y: 205}
+  - name: HarvestVFX_Frame_23
+    originalName: 
+    pivot: {x: 0.6, y: -5.2999997}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 145
+      y: 205
+      width: 5
+      height: 10
+    spriteID: 73d991b84ff1f7240bc1ec63df7e410f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 145, y: 205}
+  - name: HarvestVFX_Frame_24
+    originalName: 
+    pivot: {x: 0.6, y: -5.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 158
+      y: 205
+      width: 5
+      height: 10
+    spriteID: 30bf2e60c2595b34cabd39216f75880e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 158, y: 205}
+  - name: HarvestVFX_Frame_26
+    originalName: 
+    pivot: {x: 0.50000006, y: -1.8333333}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 106
+      y: 47
+      width: 22
+      height: 24
+    spriteID: 6b965f6745387b74b94fa37acfa290de
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 106, y: 47}
+  - name: HarvestVFX_Frame_27
+    originalName: 
+    pivot: {x: 0.50000006, y: -2.1363635}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 226
+      y: 47
+      width: 22
+      height: 22
+    spriteID: fef038d7ae375d444903d637fbb1ce12
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 226, y: 47}
+  - name: HarvestVFX_Frame_28
+    originalName: 
+    pivot: {x: 0.50000006, y: -2.181818}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 85
+      width: 22
+      height: 22
+    spriteID: e9ea3057ee60a0f4b913875b75636888
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 85}
+  - name: HarvestVFX_Frame_29
+    originalName: 
+    pivot: {x: 0.50000006, y: -2.181818}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 34
+      y: 85
+      width: 22
+      height: 22
+    spriteID: 984337561d977b34cb0e9d452310ddc7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 34, y: 85}
+  - name: HarvestVFX_Frame_30
+    originalName: 
+    pivot: {x: 0.50000006, y: -2.181818}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 85
+      width: 22
+      height: 22
+    spriteID: def374b3098a28f47b334f92ca665a29
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 64, y: 85}
+  - name: HarvestVFX_Frame_31
+    originalName: 
+    pivot: {x: 0.50000006, y: -2.181818}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 94
+      y: 85
+      width: 22
+      height: 22
+    spriteID: b55ffa5b01d3ee64fb6fc2f4db1bdf9b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 94, y: 85}
+  - name: HarvestVFX_Frame_32
+    originalName: 
+    pivot: {x: 0.50000006, y: -2.181818}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 124
+      y: 85
+      width: 22
+      height: 22
+    spriteID: c836759a0af75284fbe4f64b1586a6a5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 124, y: 85}
+  - name: HarvestVFX_Frame_33
+    originalName: 
+    pivot: {x: 0.50000006, y: -2.2272727}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 154
+      y: 85
+      width: 22
+      height: 22
+    spriteID: 7b2fd4440eb027348a93da9ceefb46c0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 154, y: 85}
+  - name: HarvestVFX_Frame_34
+    originalName: 
+    pivot: {x: 0.50000006, y: -2.272727}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 184
+      y: 85
+      width: 22
+      height: 22
+    spriteID: 4130608c3cd773a4aaf30f8ff317bed9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 184, y: 85}
+  - name: HarvestVFX_Frame_35
+    originalName: 
+    pivot: {x: 0.50000006, y: -1.8333333}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 136
+      y: 47
+      width: 22
+      height: 24
+    spriteID: 99a8a0ad2487d1341a4e4c67a5567840
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 136, y: 47}
+  - name: HarvestVFX_Frame_36
+    originalName: 
+    pivot: {x: 0.50000006, y: -2.1363635}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 214
+      y: 85
+      width: 22
+      height: 22
+    spriteID: ace01d23605dc274d9e6dbf6f43cc07c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 214, y: 85}
+  - name: HarvestVFX_Frame_37
+    originalName: 
+    pivot: {x: 0.50000006, y: -2.181818}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 115
+      width: 22
+      height: 22
+    spriteID: fab266717899ff64bbd0088d2d0733d7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 115}
+  - name: HarvestVFX_Frame_38
+    originalName: 
+    pivot: {x: 0.50000006, y: -2.181818}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 34
+      y: 115
+      width: 22
+      height: 22
+    spriteID: 08cbb48fac71ca340936feab2982bcf0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 34, y: 115}
+  - name: HarvestVFX_Frame_39
+    originalName: 
+    pivot: {x: 0.50000006, y: -2.181818}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 115
+      width: 22
+      height: 22
+    spriteID: abd63664d0e2df14ba7e5bd0cb2ef22c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 64, y: 115}
+  - name: HarvestVFX_Frame_40
+    originalName: 
+    pivot: {x: 0.50000006, y: -2.181818}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 94
+      y: 115
+      width: 22
+      height: 22
+    spriteID: c6e06307714c9794c89a8decaf6fbfef
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 94, y: 115}
+  - name: HarvestVFX_Frame_41
+    originalName: 
+    pivot: {x: 0.50000006, y: -2.181818}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 124
+      y: 115
+      width: 22
+      height: 22
+    spriteID: 1852b4e1e89b75f4e88808b6dfb10548
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 124, y: 115}
+  - name: HarvestVFX_Frame_42
+    originalName: 
+    pivot: {x: 0.50000006, y: -2.2272727}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 154
+      y: 115
+      width: 22
+      height: 22
+    spriteID: 6639fb76629dff94d80b6ee5b4f1afd1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 154, y: 115}
+  - name: HarvestVFX_Frame_43
+    originalName: 
+    pivot: {x: 0.50000006, y: -2.272727}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 184
+      y: 115
+      width: 22
+      height: 22
+    spriteID: 97c4305af91c4f645b3f6332dc6b34b7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 184, y: 115}
+  - name: HarvestVFX_Frame_44
+    originalName: 
+    pivot: {x: 0.50000006, y: -1.8333333}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 166
+      y: 47
+      width: 22
+      height: 24
+    spriteID: 3224d1fdf9605dc438d28ab581524cf0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 166, y: 47}
+  - name: HarvestVFX_Frame_45
+    originalName: 
+    pivot: {x: 0.50000006, y: -2.1363635}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 214
+      y: 115
+      width: 22
+      height: 22
+    spriteID: f46ab5c8f1f04a9408c9066055cfa4fe
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 214, y: 115}
+  - name: HarvestVFX_Frame_46
+    originalName: 
+    pivot: {x: 0.50000006, y: -2.181818}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 145
+      width: 22
+      height: 22
+    spriteID: 9f8c95974413c314eb466aa8b90c8fc7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 145}
+  - name: HarvestVFX_Frame_47
+    originalName: 
+    pivot: {x: 0.50000006, y: -2.181818}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 34
+      y: 145
+      width: 22
+      height: 22
+    spriteID: 28b2a209880e555468b9aa931822589a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 34, y: 145}
+  - name: HarvestVFX_Frame_48
+    originalName: 
+    pivot: {x: 0.50000006, y: -2.181818}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 145
+      width: 22
+      height: 22
+    spriteID: 93348957b131a4746a596a854871b0e7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 64, y: 145}
+  - name: HarvestVFX_Frame_49
+    originalName: 
+    pivot: {x: 0.50000006, y: -2.181818}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 94
+      y: 145
+      width: 22
+      height: 22
+    spriteID: 652b730ce00655c4dad010d17b29aa72
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 94, y: 145}
+  - name: HarvestVFX_Frame_50
+    originalName: 
+    pivot: {x: 0.50000006, y: -2.181818}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 124
+      y: 145
+      width: 22
+      height: 22
+    spriteID: 83aba12c94ef8f948b9d8d805633285c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 124, y: 145}
+  - name: HarvestVFX_Frame_51
+    originalName: 
+    pivot: {x: 0.50000006, y: -2.2272727}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 154
+      y: 145
+      width: 22
+      height: 22
+    spriteID: 3a94d69bca5dbfd4888d1ddeb789c1d1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 154, y: 145}
+  - name: HarvestVFX_Frame_52
+    originalName: 
+    pivot: {x: 0.50000006, y: -2.272727}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 184
+      y: 145
+      width: 22
+      height: 22
+    spriteID: 2bb34887243a7af479d48dbb846509bf
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 184, y: 145}
+  - name: HarvestVFX_Frame_53
+    originalName: 
+    pivot: {x: 0.50000006, y: -1.8333333}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 196
+      y: 47
+      width: 22
+      height: 24
+    spriteID: 9f29a7d8d83991e4b8ecb2600a9b9896
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 196, y: 47}
+  - name: HarvestVFX_Frame_54
+    originalName: 
+    pivot: {x: 0.50000006, y: -2.1363635}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 214
+      y: 145
+      width: 22
+      height: 22
+    spriteID: 2a87976f9f3534c4cb450bfa0f9be81a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 214, y: 145}
+  - name: HarvestVFX_Frame_55
+    originalName: 
+    pivot: {x: 0.50000006, y: -2.181818}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 175
+      width: 22
+      height: 22
+    spriteID: 0dbba8d9ec5cf14478bd49c35008f80d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 175}
+  - name: HarvestVFX_Frame_56
+    originalName: 
+    pivot: {x: 0.50000006, y: -2.181818}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 34
+      y: 175
+      width: 22
+      height: 22
+    spriteID: 4f71c5f49632fa740bffb4936dc6a5dc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 34, y: 175}
+  - name: HarvestVFX_Frame_57
+    originalName: 
+    pivot: {x: 0.50000006, y: -2.181818}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 64
+      y: 175
+      width: 22
+      height: 22
+    spriteID: 9e45086825f396749ba59e9f1dcf6b38
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 64, y: 175}
+  - name: HarvestVFX_Frame_58
+    originalName: 
+    pivot: {x: 0.50000006, y: -2.181818}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 94
+      y: 175
+      width: 22
+      height: 22
+    spriteID: 9737b98d9a11cdd46841bf6e212be662
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 94, y: 175}
+  - name: HarvestVFX_Frame_59
+    originalName: 
+    pivot: {x: 0.50000006, y: -2.181818}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 124
+      y: 175
+      width: 22
+      height: 22
+    spriteID: 88ae34a75d091094387ab77459f6cc2a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 124, y: 175}
+  - name: HarvestVFX_Frame_60
+    originalName: 
+    pivot: {x: 0.50000006, y: -2.2272727}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 154
+      y: 175
+      width: 22
+      height: 22
+    spriteID: 8d37d6a57778f7f4694c65e690e90978
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 154, y: 175}
+  - name: HarvestVFX_Frame_61
+    originalName: 
+    pivot: {x: 0.50000006, y: -2.272727}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 184
+      y: 175
+      width: 22
+      height: 22
+    spriteID: 9315f399c4d171d4c813ac12d8029cb3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 184, y: 175}
+  - name: HarvestVFX_Frame_14
+    originalName: 
+    pivot: {x: 0.4666667, y: -2.1599998}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 53
+      y: 47
+      width: 45
+      height: 25
+    spriteID: 8b09c171a4a991743b42aa3c1d49ab5c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 53, y: 47}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -375,7 +1275,7 @@ ScriptedImporter:
         y: 21
         width: 10
         height: 7
-      spriteId: 09f1984be28b9fe42b3eb52bd24dd453
+      spriteId: d8f1db562bb0d3a46a31b2af7800f9a0
     - name: HarvestVFX_Frame_1
       frameIndex: 1
       cellRect:
@@ -383,7 +1283,7 @@ ScriptedImporter:
         y: 18
         width: 18
         height: 13
-      spriteId: 9e6657eb497e3374c8e8d3242e58bbff
+      spriteId: fee236038717f4a4f9cf71d085c4ec00
     - name: HarvestVFX_Frame_2
       frameIndex: 2
       cellRect:
@@ -391,7 +1291,7 @@ ScriptedImporter:
         y: 17
         width: 20
         height: 15
-      spriteId: 775e725eaa22390499a0beff127c0963
+      spriteId: 1a06d36f044456d47a12bb9929005d62
     - name: HarvestVFX_Frame_3
       frameIndex: 3
       cellRect:
@@ -399,7 +1299,7 @@ ScriptedImporter:
         y: 16
         width: 22
         height: 17
-      spriteId: b498246199dd0bd41a84c3d55aea355b
+      spriteId: dbba2ab57ca3a97469da85cd2307f227
     - name: HarvestVFX_Frame_4
       frameIndex: 4
       cellRect:
@@ -407,7 +1307,7 @@ ScriptedImporter:
         y: 15
         width: 24
         height: 19
-      spriteId: 9236902e3b5eeb3418a26c3f4c3d26f1
+      spriteId: 6d2379645758c424faccf1b99f46f3f7
     - name: HarvestVFX_Frame_8
       frameIndex: 8
       cellRect:
@@ -415,7 +1315,7 @@ ScriptedImporter:
         y: 37
         width: 42
         height: 32
-      spriteId: fc569e1907d3b0f40ac0ca316cbbf2bd
+      spriteId: 70243c95825f83b4494f12774df6e703
     - name: HarvestVFX_Frame_9
       frameIndex: 9
       cellRect:
@@ -423,7 +1323,7 @@ ScriptedImporter:
         y: 40
         width: 43
         height: 33
-      spriteId: 8f37f8a82e10d1d438a6390366c1cc67
+      spriteId: 0540dd36b198b6b4c8d4bd7e3e68a225
     - name: HarvestVFX_Frame_10
       frameIndex: 10
       cellRect:
@@ -431,7 +1331,7 @@ ScriptedImporter:
         y: 44
         width: 41
         height: 31
-      spriteId: c909d9b97f7d3a647bdc348139ec46b1
+      spriteId: 156b5aaa4c25141459a6761982e7a373
     - name: HarvestVFX_Frame_11
       frameIndex: 11
       cellRect:
@@ -439,7 +1339,7 @@ ScriptedImporter:
         y: 46
         width: 41
         height: 30
-      spriteId: 78e8d60e308e4ae4aaa043263dcd68fd
+      spriteId: 047577ea6b527414e9795dabd6415374
     - name: HarvestVFX_Frame_12
       frameIndex: 12
       cellRect:
@@ -447,7 +1347,7 @@ ScriptedImporter:
         y: 46
         width: 41
         height: 33
-      spriteId: 1d0038b5acdaa9b44bbc0b946261eac2
+      spriteId: edd500554c36a554a9131062e76a4bc0
     - name: HarvestVFX_Frame_13
       frameIndex: 13
       cellRect:
@@ -455,7 +1355,367 @@ ScriptedImporter:
         y: 45
         width: 43
         height: 35
-      spriteId: 2749c451d0209d34cbeadbd3aea8afa0
+      spriteId: a8725cb89f24e46498c11f00c3598480
+    - name: HarvestVFX_Frame_16
+      frameIndex: 16
+      cellRect:
+        x: 47
+        y: 47
+        width: 5
+        height: 11
+      spriteId: 77e776b8d9c13214b892a7e3cd8774c8
+    - name: HarvestVFX_Frame_17
+      frameIndex: 17
+      cellRect:
+        x: 47
+        y: 51
+        width: 5
+        height: 10
+      spriteId: 67e5152b51b25ae4b9a4eacd9efc450f
+    - name: HarvestVFX_Frame_18
+      frameIndex: 18
+      cellRect:
+        x: 47
+        y: 52
+        width: 5
+        height: 10
+      spriteId: 6e47bd026f726df4e8391e0171074b5a
+    - name: HarvestVFX_Frame_19
+      frameIndex: 19
+      cellRect:
+        x: 47
+        y: 52
+        width: 5
+        height: 10
+      spriteId: a2cdb19ff2cf4af42ba89abf302f189f
+    - name: HarvestVFX_Frame_20
+      frameIndex: 20
+      cellRect:
+        x: 47
+        y: 52
+        width: 5
+        height: 10
+      spriteId: b8d26035f8b25e14c8ea8c558706e31b
+    - name: HarvestVFX_Frame_21
+      frameIndex: 21
+      cellRect:
+        x: 47
+        y: 52
+        width: 5
+        height: 10
+      spriteId: 68e04cb5b6ac0f34684498440c9300d1
+    - name: HarvestVFX_Frame_22
+      frameIndex: 22
+      cellRect:
+        x: 47
+        y: 52
+        width: 5
+        height: 10
+      spriteId: 26148db37140ea74abb110e0f821944d
+    - name: HarvestVFX_Frame_23
+      frameIndex: 23
+      cellRect:
+        x: 47
+        y: 53
+        width: 5
+        height: 10
+      spriteId: 73d991b84ff1f7240bc1ec63df7e410f
+    - name: HarvestVFX_Frame_24
+      frameIndex: 24
+      cellRect:
+        x: 47
+        y: 55
+        width: 5
+        height: 10
+      spriteId: 30bf2e60c2595b34cabd39216f75880e
+    - name: HarvestVFX_Frame_26
+      frameIndex: 26
+      cellRect:
+        x: 39
+        y: 44
+        width: 22
+        height: 24
+      spriteId: 6b965f6745387b74b94fa37acfa290de
+    - name: HarvestVFX_Frame_27
+      frameIndex: 27
+      cellRect:
+        x: 39
+        y: 47
+        width: 22
+        height: 22
+      spriteId: fef038d7ae375d444903d637fbb1ce12
+    - name: HarvestVFX_Frame_28
+      frameIndex: 28
+      cellRect:
+        x: 39
+        y: 48
+        width: 22
+        height: 22
+      spriteId: e9ea3057ee60a0f4b913875b75636888
+    - name: HarvestVFX_Frame_29
+      frameIndex: 29
+      cellRect:
+        x: 39
+        y: 48
+        width: 22
+        height: 22
+      spriteId: 984337561d977b34cb0e9d452310ddc7
+    - name: HarvestVFX_Frame_30
+      frameIndex: 30
+      cellRect:
+        x: 39
+        y: 48
+        width: 22
+        height: 22
+      spriteId: def374b3098a28f47b334f92ca665a29
+    - name: HarvestVFX_Frame_31
+      frameIndex: 31
+      cellRect:
+        x: 39
+        y: 48
+        width: 22
+        height: 22
+      spriteId: b55ffa5b01d3ee64fb6fc2f4db1bdf9b
+    - name: HarvestVFX_Frame_32
+      frameIndex: 32
+      cellRect:
+        x: 39
+        y: 48
+        width: 22
+        height: 22
+      spriteId: c836759a0af75284fbe4f64b1586a6a5
+    - name: HarvestVFX_Frame_33
+      frameIndex: 33
+      cellRect:
+        x: 39
+        y: 49
+        width: 22
+        height: 22
+      spriteId: 7b2fd4440eb027348a93da9ceefb46c0
+    - name: HarvestVFX_Frame_34
+      frameIndex: 34
+      cellRect:
+        x: 39
+        y: 50
+        width: 22
+        height: 22
+      spriteId: 4130608c3cd773a4aaf30f8ff317bed9
+    - name: HarvestVFX_Frame_35
+      frameIndex: 35
+      cellRect:
+        x: 39
+        y: 44
+        width: 22
+        height: 24
+      spriteId: 99a8a0ad2487d1341a4e4c67a5567840
+    - name: HarvestVFX_Frame_36
+      frameIndex: 36
+      cellRect:
+        x: 39
+        y: 47
+        width: 22
+        height: 22
+      spriteId: ace01d23605dc274d9e6dbf6f43cc07c
+    - name: HarvestVFX_Frame_37
+      frameIndex: 37
+      cellRect:
+        x: 39
+        y: 48
+        width: 22
+        height: 22
+      spriteId: fab266717899ff64bbd0088d2d0733d7
+    - name: HarvestVFX_Frame_38
+      frameIndex: 38
+      cellRect:
+        x: 39
+        y: 48
+        width: 22
+        height: 22
+      spriteId: 08cbb48fac71ca340936feab2982bcf0
+    - name: HarvestVFX_Frame_39
+      frameIndex: 39
+      cellRect:
+        x: 39
+        y: 48
+        width: 22
+        height: 22
+      spriteId: abd63664d0e2df14ba7e5bd0cb2ef22c
+    - name: HarvestVFX_Frame_40
+      frameIndex: 40
+      cellRect:
+        x: 39
+        y: 48
+        width: 22
+        height: 22
+      spriteId: c6e06307714c9794c89a8decaf6fbfef
+    - name: HarvestVFX_Frame_41
+      frameIndex: 41
+      cellRect:
+        x: 39
+        y: 48
+        width: 22
+        height: 22
+      spriteId: 1852b4e1e89b75f4e88808b6dfb10548
+    - name: HarvestVFX_Frame_42
+      frameIndex: 42
+      cellRect:
+        x: 39
+        y: 49
+        width: 22
+        height: 22
+      spriteId: 6639fb76629dff94d80b6ee5b4f1afd1
+    - name: HarvestVFX_Frame_43
+      frameIndex: 43
+      cellRect:
+        x: 39
+        y: 50
+        width: 22
+        height: 22
+      spriteId: 97c4305af91c4f645b3f6332dc6b34b7
+    - name: HarvestVFX_Frame_44
+      frameIndex: 44
+      cellRect:
+        x: 39
+        y: 44
+        width: 22
+        height: 24
+      spriteId: 3224d1fdf9605dc438d28ab581524cf0
+    - name: HarvestVFX_Frame_45
+      frameIndex: 45
+      cellRect:
+        x: 39
+        y: 47
+        width: 22
+        height: 22
+      spriteId: f46ab5c8f1f04a9408c9066055cfa4fe
+    - name: HarvestVFX_Frame_46
+      frameIndex: 46
+      cellRect:
+        x: 39
+        y: 48
+        width: 22
+        height: 22
+      spriteId: 9f8c95974413c314eb466aa8b90c8fc7
+    - name: HarvestVFX_Frame_47
+      frameIndex: 47
+      cellRect:
+        x: 39
+        y: 48
+        width: 22
+        height: 22
+      spriteId: 28b2a209880e555468b9aa931822589a
+    - name: HarvestVFX_Frame_48
+      frameIndex: 48
+      cellRect:
+        x: 39
+        y: 48
+        width: 22
+        height: 22
+      spriteId: 93348957b131a4746a596a854871b0e7
+    - name: HarvestVFX_Frame_49
+      frameIndex: 49
+      cellRect:
+        x: 39
+        y: 48
+        width: 22
+        height: 22
+      spriteId: 652b730ce00655c4dad010d17b29aa72
+    - name: HarvestVFX_Frame_50
+      frameIndex: 50
+      cellRect:
+        x: 39
+        y: 48
+        width: 22
+        height: 22
+      spriteId: 83aba12c94ef8f948b9d8d805633285c
+    - name: HarvestVFX_Frame_51
+      frameIndex: 51
+      cellRect:
+        x: 39
+        y: 49
+        width: 22
+        height: 22
+      spriteId: 3a94d69bca5dbfd4888d1ddeb789c1d1
+    - name: HarvestVFX_Frame_52
+      frameIndex: 52
+      cellRect:
+        x: 39
+        y: 50
+        width: 22
+        height: 22
+      spriteId: 2bb34887243a7af479d48dbb846509bf
+    - name: HarvestVFX_Frame_53
+      frameIndex: 53
+      cellRect:
+        x: 39
+        y: 44
+        width: 22
+        height: 24
+      spriteId: 9f29a7d8d83991e4b8ecb2600a9b9896
+    - name: HarvestVFX_Frame_54
+      frameIndex: 54
+      cellRect:
+        x: 39
+        y: 47
+        width: 22
+        height: 22
+      spriteId: 2a87976f9f3534c4cb450bfa0f9be81a
+    - name: HarvestVFX_Frame_55
+      frameIndex: 55
+      cellRect:
+        x: 39
+        y: 48
+        width: 22
+        height: 22
+      spriteId: 0dbba8d9ec5cf14478bd49c35008f80d
+    - name: HarvestVFX_Frame_56
+      frameIndex: 56
+      cellRect:
+        x: 39
+        y: 48
+        width: 22
+        height: 22
+      spriteId: 4f71c5f49632fa740bffb4936dc6a5dc
+    - name: HarvestVFX_Frame_57
+      frameIndex: 57
+      cellRect:
+        x: 39
+        y: 48
+        width: 22
+        height: 22
+      spriteId: 9e45086825f396749ba59e9f1dcf6b38
+    - name: HarvestVFX_Frame_58
+      frameIndex: 58
+      cellRect:
+        x: 39
+        y: 48
+        width: 22
+        height: 22
+      spriteId: 9737b98d9a11cdd46841bf6e212be662
+    - name: HarvestVFX_Frame_59
+      frameIndex: 59
+      cellRect:
+        x: 39
+        y: 48
+        width: 22
+        height: 22
+      spriteId: 88ae34a75d091094387ab77459f6cc2a
+    - name: HarvestVFX_Frame_60
+      frameIndex: 60
+      cellRect:
+        x: 39
+        y: 49
+        width: 22
+        height: 22
+      spriteId: 8d37d6a57778f7f4694c65e690e90978
+    - name: HarvestVFX_Frame_61
+      frameIndex: 61
+      cellRect:
+        x: 39
+        y: 50
+        width: 22
+        height: 22
+      spriteId: 9315f399c4d171d4c813ac12d8029cb3
     - name: HarvestVFX_Frame_14
       frameIndex: 14
       cellRect:
@@ -463,7 +1723,7 @@ ScriptedImporter:
         y: 54
         width: 45
         height: 25
-      spriteId: e1c97ea13ec806e44954af2be64224ff
+      spriteId: 8b09c171a4a991743b42aa3c1d49ab5c
     linkedCells: []
     parentIndex: -1
   platformSettings: []
