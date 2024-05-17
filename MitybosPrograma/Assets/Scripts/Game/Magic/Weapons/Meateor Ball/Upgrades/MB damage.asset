@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ab58b89bcc730f459a3674582f1be89, type: 3}
-  m_Name: HST give
+  m_Name: MB damage
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: ca7d9efe9f2ae714fb7b4394888e82e9, type: 3}
-  color: {r: 1, g: 0.2576838, b: 0.1462264, a: 1}
-  weapon: 3
-  effect: 9
-  upgradeName: Hot Sauce Trailblazer
-  description: Leaves a trail of burning hot sauce behind you, burning enemies.
-  repeatable: 0
+  sprite: {fileID: 21300000, guid: d0332c8bac85a0d42a8d0d6256f4b3d3, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  weapon: 5
+  effect: 1
+  upgradeName: Damage+
+  description: Increases damage of Meateor Ball by 20%.
+  repeatable: 1

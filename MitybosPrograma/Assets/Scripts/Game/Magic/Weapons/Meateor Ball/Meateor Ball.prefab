@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473366015801601521}
-  - component: {fileID: -1033339297019470492}
+  - component: {fileID: -1545179176881028192}
   m_Layer: 0
-  m_Name: Hot Sauce Trailblazer
+  m_Name: Meateor Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-1033339297019470492
+--- !u!114 &-1545179176881028192
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,22 +41,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 7432806643361047562}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bd7be5afa2fd2e438dfd9c80b0cae67, type: 3}
+  m_Script: {fileID: 11500000, guid: 4bb074b7c706f0c47a7c12867157f9d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: Hot Sauce Trailblazer
+  weaponName: Meateor Ball
   upgrades:
-  - {fileID: 11400000, guid: 5b8d016ab062d7c4ead7adaabfb64fca, type: 2}
-  - {fileID: 11400000, guid: 935b44f7cd4de3e46984dea776e4e316, type: 2}
-  - {fileID: 11400000, guid: aacca6bd979d1574e89a9106730539ce, type: 2}
-  - {fileID: 11400000, guid: c6a295c7d49439141bb61b4cb8c4a028, type: 2}
-  - {fileID: 11400000, guid: 8c8fe3ce1688b2144b11ae5edad2cdae, type: 2}
+  - {fileID: 11400000, guid: aa9f0fb84ca5281489a26181692764f0, type: 2}
+  - {fileID: 11400000, guid: a70170cdd3ac61c4cac96cb2e0b53f6d, type: 2}
+  - {fileID: 11400000, guid: 71e8b1b509f05d64bb6c69db7eea00c5, type: 2}
+  - {fileID: 11400000, guid: d06111b8c20b2fd4c9dd45371465fe11, type: 2}
   projectileCount: 0
-  shotCooldown: 2
-  damage: 7
-  damageCooldown: 0.2
-  speed: 0
+  shotCooldown: 1
+  damage: 100
+  damageCooldown: 0
+  speed: 7
   rotationSpeed: 0
   lifespan: 2
-  scale: {x: 1, y: 1, z: 1}
-  projectilePrefab: {fileID: 922292497825179408, guid: fede0dd0a68340248b2a875e1706893b, type: 3}
+  scale: {x: 0.5, y: 0.5, z: 0.5}
+  projectilePrefab: {fileID: 922292497825179408, guid: 96f06a3259584e14c90364064305750b, type: 3}

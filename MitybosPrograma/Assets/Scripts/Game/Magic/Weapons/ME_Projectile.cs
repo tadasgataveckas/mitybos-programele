@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ME_Projectile : MonoBehaviour
 {
@@ -12,14 +13,22 @@ public class ME_Projectile : MonoBehaviour
     [HideInInspector] public float rotationSpeed = 180f;
     [HideInInspector] public float lifespan = 3f;
 
-    public void TriggerTimedDestruction()
+    public IEnumerator TriggerTimedDestruction()
     {
-        Destroy(gameObject, lifespan);
+        yield return new WaitForSeconds(lifespan);
+        TriggerDestruction();
     }
 
     public void TriggerDestruction()
     {
+        StopAllCoroutines();
+        OnDestructionEvent();
         Destroy(gameObject);
+    }
+
+    public virtual void OnDestructionEvent()
+    {
+        // to overwrite
     }
 
     // starts straight line movement
@@ -87,5 +96,45 @@ public class ME_Projectile : MonoBehaviour
                     DealDamage(enemy);
             }
         }
+    }
+
+    public IEnumerator ShrinkAnimation()
+    {
+        Vector3 originalScale = transform.localScale;
+        float timer = 0f;
+
+        while (timer < lifespan)
+        {
+            timer += Time.deltaTime;
+            transform.localScale = Vector3.Lerp(originalScale, Vector3.one, timer / lifespan);
+            yield return null;
+        }
+    }
+
+    public IEnumerator EnlargeAnimation()
+    {
+        Vector3 originalScale = transform.localScale;
+        float timer = 0f;
+
+        while (timer < lifespan)
+        {
+            timer += Time.deltaTime;
+            transform.localScale = Vector3.Lerp(Vector3.zero, originalScale, timer / lifespan);
+            yield return null;
+        }
+    }
+
+    public ME_Projectile InstantiateProjectile(ME_Projectile projectilePrefab)
+    {
+        ME_Projectile projectile = Instantiate(projectilePrefab, transform.position, transform.rotation);
+
+        projectile.damage = damage;
+        projectile.damageCooldown = damageCooldown;
+        projectile.speed = speed;
+        projectile.rotationSpeed = rotationSpeed;
+        projectile.lifespan = lifespan;
+        projectile.transform.localScale = Vector3.Scale(projectile.transform.localScale, transform.localScale * 2);
+
+        return projectile;
     }
 }
