@@ -24,7 +24,9 @@ public class ME_CarrotSaber : ME_Weapon
         {
             GameObject projectile = BuildProjectileOnPlayer(projectilePrefab);
             swords.Add(projectile);
-            projectile.transform.rotation = Quaternion.Euler(0, 0, 360 / projectileCount * i);
+
+            float angle = i * (360f / projectileCount);
+            projectile.transform.rotation = Quaternion.Euler(0, 0, angle);
         }
     }
 
@@ -35,8 +37,9 @@ public class ME_CarrotSaber : ME_Weapon
         swords.Clear();
     }
 
-    public void ResetWeapon()
+    public override void ResetWeapon()
     {
+        StopAllCoroutines();
         DeleteProjectiles();
         SpawnProjectiles();
     }

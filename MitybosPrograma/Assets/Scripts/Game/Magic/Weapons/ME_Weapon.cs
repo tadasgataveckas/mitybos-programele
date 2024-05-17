@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class ME_Weapon : MonoBehaviour
 {
     public string weaponName = "";
+    public List<ME_Upgrade> upgrades = new List<ME_Upgrade>();
     public int projectileCount = 2;
     public float shotCooldown = 0.5f;
 
@@ -39,7 +40,7 @@ public abstract class ME_Weapon : MonoBehaviour
         bullet.speed = speed;
         bullet.rotationSpeed = rotationSpeed;
         bullet.lifespan = lifespan;
-        bullet.transform.localScale = scale;
+        bullet.transform.localScale  = Vector3.Scale(bullet.transform.localScale, scale);
 
         return projectile;
     }
@@ -64,7 +65,7 @@ public abstract class ME_Weapon : MonoBehaviour
         Collider2D collider = gameObject.GetComponent<Collider2D>();
         LineRenderer renderer = collider.GetComponent<LineRenderer>();
 
-        while (shotCooldown > 0)
+        while (shotCooldown > 0 && collider != null && renderer != null)
         {
             collider.enabled = false;
             renderer.enabled = false;
@@ -89,5 +90,10 @@ public abstract class ME_Weapon : MonoBehaviour
     {
         if (rotationSpeed != 0)
             transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
+    }
+
+    public virtual void ResetWeapon()
+    {
+
     }
 }

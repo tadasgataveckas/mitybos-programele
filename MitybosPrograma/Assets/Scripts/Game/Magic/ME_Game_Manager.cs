@@ -1,28 +1,44 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ME_Game_Manager : MonoBehaviour
 {
+    public bool canSpawn = true;
+    // score is just total xp
     public float Score = 0;
 
     public ME_Player Player;
-    public List<GameObject> Enemies;
     public float EnemySpawnDelay = 0.1f;
+    public int maxEnemiesAtOnce = 250;
 
-    private int enemyTotalCounter = 0;
+    // stores enemy types
+    public List<GameObject> Enemies;
+    // individual enemies
+    private List<GameObject> enemyInstances = new List<GameObject>();
+
+    // stores upgrade types
+    public List<ME_Upgrade> upgradePool = new List<ME_Upgrade>();
+    // temporarily stores generated upgrades until on is picked
+    public List<ME_Upgrade> reserveUpgradePool = new List<ME_Upgrade>();
+
+
+    public GameObject upgradeUI;
+    public Slider XpSlider;
 
     [SerializeField] private GameObject gameOver;
     [SerializeField] private Scoreboard scoreboard;
+    [SerializeField] private GameObject upgradeContainer;
+    [SerializeField] private ME_PowerUpHandler upgradePrefab;
 
     // Start is called before the first frame update
     void Start()
     {
         Time.timeScale = 1f;
         StartCoroutine(EnemySpawner());
+        TriggerLevelUp();
     }
 
     // Update is called once per frame
@@ -41,15 +57,17 @@ public class ME_Game_Manager : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        if (Enemies.Count > 0)
-        {
-            enemyTotalCounter++;
+        enemyInstances.RemoveAll(s => s == null);
+        if (canSpawn)
+            if (Enemies.Count > 0 && enemyInstances.Count < maxEnemiesAtOnce)
+            {
+                int enemyIndex = UnityEngine.Random.Range(0, Enemies.Count);
+                GameObject enemy = Instantiate(Enemies[enemyIndex], GenerateSpawnLocation(), Quaternion.identity);
+                enemy.gameObject.transform.parent = Player.transform.parent;
+                enemy.GetComponent<ME_Enemy>().Player = Player;
 
-            int enemyIndex = UnityEngine.Random.Range(0, Enemies.Count);
-            GameObject enemy = Instantiate(Enemies[enemyIndex], GenerateSpawnLocation(), Quaternion.identity);
-            enemy.gameObject.transform.parent = Player.transform.parent;
-            enemy.GetComponent<ME_Enemy>().Player = Player;
-        }
+                enemyInstances.Add(enemy);
+            }
     }
 
     private Vector2 GenerateSpawnLocation()
@@ -162,5 +180,51 @@ public class ME_Game_Manager : MonoBehaviour
         Destroy(gameObject);
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
         Time.timeScale = 1f;
+    }
+
+    public void TriggerLevelUp()
+    {
+        Time.timeScale = 0f;
+        upgradeUI.SetActive(true);
+
+        for (int i = 0; i < 4; i++)
+            PickAndRemoveRandomUpgrade();
+    }
+
+    public void PickAndRemoveRandomUpgrade()
+    {
+        ME_PowerUpHandler handler = Instantiate(upgradePrefab);
+        handler.transform.SetParent(upgradeContainer.transform);
+        handler.transform.localScale = Vector3.one;
+
+        int index = Random.Range(0, upgradePool.Count);
+        handler.upgrade = upgradePool[index];
+
+        // remove so no duplicates are generated
+        reserveUpgradePool.Add(upgradePool[index]);
+        upgradePool.RemoveAt(index);
+    }
+
+    // called by upgrade handler
+    public void PickUpgrade(ME_PowerUpHandler handler = null)
+    {
+        if (handler != null)
+            handler.ApplyEffect();
+
+        // clear power up ui container
+        foreach (Transform child in upgradeContainer.transform)
+        {
+            ME_Upgrade upgradeItem = handler.GetComponent<ME_PowerUpHandler>().upgrade;
+            Destroy(child.gameObject);
+        }
+
+        // handler removes already selected non repeatable upgrade
+        upgradePool.AddRange(reserveUpgradePool);
+
+
+        reserveUpgradePool.Clear();
+
+        Time.timeScale = 1f;
+        upgradeUI.SetActive(false);
     }
 }

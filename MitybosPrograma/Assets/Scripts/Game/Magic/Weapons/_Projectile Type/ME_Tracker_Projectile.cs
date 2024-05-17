@@ -1,7 +1,10 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class ME_Projectile_Bullet : ME_Projectile
+public class ME_Tracker_Projectile : ME_Projectile
 {
+    public ME_Projectile projectilePrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -12,23 +15,22 @@ public class ME_Projectile_Bullet : ME_Projectile
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (IsEnemy(collision.gameObject))
         {
-            ME_Enemy enemy = GetEnemyFromCollision(collision);
-            if (enemy != null)
-            {
-                DealDamage(enemy);
-            }
             TriggerDestruction();
         }
-        else
-        {
-            Debug.Log("failed, name: " + collision.gameObject.name);
-        }
+    }
+
+    public override void OnDestructionEvent()
+    {
+        base.OnDestructionEvent();
+        ME_Projectile projectile =  InstantiateProjectile(projectilePrefab);
+        projectile.transform.rotation = Quaternion.identity;
+
     }
 }
