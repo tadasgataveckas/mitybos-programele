@@ -37,8 +37,9 @@ public class ME_VoltEel : ME_Weapon
         bolts.Clear();
     }
 
-    public void ResetWeapon()
+    public override void ResetWeapon()
     {
+        StopAllCoroutines();
         DeleteProjectiles();
         SpawnProjectiles();
     }

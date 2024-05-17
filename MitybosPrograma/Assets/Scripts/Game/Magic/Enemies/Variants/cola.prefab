@@ -101,7 +101,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6519927248523119233, guid: 6fc0265e0b9f4c449be605e31865b95f, type: 3}
       propertyPath: Speed
-      value: 2
+      value: 2.1
       objectReference: {fileID: 0}
     - target: {fileID: 6519927248523119233, guid: 6fc0265e0b9f4c449be605e31865b95f, type: 3}
       propertyPath: Damage
@@ -109,7 +109,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6519927248523119233, guid: 6fc0265e0b9f4c449be605e31865b95f, type: 3}
       propertyPath: DamageCooldown
-      value: 1.5
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6692437357438632274, guid: 6fc0265e0b9f4c449be605e31865b95f, type: 3}
       propertyPath: m_Name
@@ -159,7 +159,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.45, y: 0.9}
+  m_Size: {x: 0.6, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &2823885430954230048 stripped
 GameObject:

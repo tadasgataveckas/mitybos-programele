@@ -45,12 +45,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: Volt Eel
+  upgrades:
+  - {fileID: 11400000, guid: 7cf35366871fd56499a4ad187e7490ad, type: 2}
+  - {fileID: 11400000, guid: 951d456782810944c914516cb87c3d72, type: 2}
+  - {fileID: 11400000, guid: 177bdc3e7ef0e0149ba3804568b451f3, type: 2}
+  - {fileID: 11400000, guid: a2631d8b74449c040bf86e2067528f12, type: 2}
+  - {fileID: 11400000, guid: d45638ecd6aac8443920a81307d61fb3, type: 2}
+  - {fileID: 11400000, guid: 6a0330c98ef3df44e8b1f24df6f361b7, type: 2}
   projectileCount: 3
   shotCooldown: 0.8
-  damage: 2.5
+  damage: 5
   damageCooldown: 0.2
   speed: 1
   rotationSpeed: 90
-  lifespan: 0.2
+  lifespan: 1
   scale: {x: 1, y: 1, z: 1}
   projectilePrefab: {fileID: 922292497825179408, guid: e4d7c7d351506d94baf5fb92ff67bec5, type: 3}

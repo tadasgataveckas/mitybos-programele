@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 5122310313105606754}
   - component: {fileID: 5888591182026581434}
   - component: {fileID: 4832096206253497828}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Hurtbox
   m_TagString: Enemy Hurtbox
   m_Icon: {fileID: 0}
@@ -338,7 +338,6 @@ MonoBehaviour:
   DamageCooldown: 0.5
   DamageNumberPrefab: {fileID: 3201138088634971246, guid: 6c91dc9a09c41cd44bc52a9dcab72a27, type: 3}
   DeathEffectPrefab: {fileID: 5964728357344991875, guid: 573773ac2c9434242ba532427092d8d7, type: 3}
-  Target: {fileID: 0}
   Player: {fileID: 0}
 --- !u!50 &-8587509295121574300
 Rigidbody2D:

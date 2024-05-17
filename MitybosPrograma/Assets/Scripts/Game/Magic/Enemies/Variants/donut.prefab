@@ -99,6 +99,14 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6519927248523119233, guid: 6fc0265e0b9f4c449be605e31865b95f, type: 3}
+      propertyPath: Speed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6519927248523119233, guid: 6fc0265e0b9f4c449be605e31865b95f, type: 3}
+      propertyPath: Damage
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6692437357438632274, guid: 6fc0265e0b9f4c449be605e31865b95f, type: 3}
       propertyPath: m_Name
       value: donut
