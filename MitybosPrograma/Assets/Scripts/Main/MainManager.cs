@@ -60,11 +60,24 @@ public class MainManager : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("Iskviestas");
+        SceneSetUp();
+        StartCoroutine(RepeatSceneSetup());
+    }
+    private IEnumerator RepeatSceneSetup()
+    {
+        yield return new WaitForSeconds(0.0001f);
+        SceneSetUp();
+    }
+
+    public void SceneSetUp()
+    {
+        Debug.Log("Iskviestas");
         // gets stored user id
         id_user = SessionManager.GetIdKey();
 
-		// returns user to login screen if this scene is accessed without an id
-		if (id_user <= 0)
+        // returns user to login screen if this scene is accessed without an id
+        if (id_user <= 0)
         {
             GoToLogin();
 
@@ -76,9 +89,11 @@ public class MainManager : MonoBehaviour
 
         GetAllUserData();
         SwitchSegment(currentSegment);
-        
+
+
         UpdateUserDisplay();
     }
+
 
     public void GetAllUserData()
     {
@@ -147,7 +162,7 @@ public class MainManager : MonoBehaviour
 
         //LEVEL COINS STUFF
         UpdateLevelXPCoins();
-        currLevel.text = levelCoins.level.ToString();
+        currLevel.text = (levelCoins.xp / 100).ToString();
         currCoins.text = levelCoins.coins.ToString();
         currXp.text = levelCoins.xp.ToString();
         currStreak.text = levelCoins.streak.ToString();
@@ -168,24 +183,26 @@ public class MainManager : MonoBehaviour
 
     public void UpdateLevelXPCoins()
     {
-        if(levelCoins.xp >= 100)
-        {
-            c.UpdateUserLevel(id_user, 1);
-        }
-        if(levelCoins.xp >= 250)
-        {
-            c.UpdateUserLevel(id_user, 2);
-        }
-        if (levelCoins.xp >= 350)
-        {
-            c.UpdateUserLevel(id_user, 3);
-        }
+        c.UpdateUserLevel(id_user, levelCoins.xp / 100);
+        //if (levelCoins.xp >= 100)
+        //{
+        //    c.UpdateUserLevel(id_user, 1);
+        //}
+        //if(levelCoins.xp >= 190)
+        //{
+        //    c.UpdateUserLevel(id_user, 2);
+        //}
+        //if (levelCoins.xp >= 350)
+        //{
+        //    c.UpdateUserLevel(id_user, 3);
+        //}
 
         if(currCalories >= userCalories.calories)
         {
             c.UpdateUserStreak(id_user, 1);
         }
-  
+       
+
         //if ((currCalories - userCalories.calories) < 200)
         //{
         //    c.UpdateUserCoins(id_user, 100);

@@ -30,7 +30,7 @@ public class PauseManager : MonoBehaviour
 
     public void ReturnToMain()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
         Time.timeScale = 1f;
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Main");      
     }
 }

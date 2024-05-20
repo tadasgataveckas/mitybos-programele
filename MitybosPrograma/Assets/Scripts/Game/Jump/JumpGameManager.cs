@@ -62,6 +62,9 @@ public class JumpGameManager : MonoBehaviour
     void Start()
     {
         id_user = SessionManager.GetIdKey();
+        // retrieves level_coins into object
+        levelCoins = new LevelCoins(id_user);
+        levelCoins.SynchData();
 
         coins = 0;
         SpawnSection();
@@ -215,7 +218,8 @@ public class JumpGameManager : MonoBehaviour
         //c.InsertUserLevelCoins(id_user, 0, 0, 0, 0);
         c.UpdateUserCoins(id_user, coins);
         c.UpdateUserXp(id_user, intScore);
-        
+        //c.UpdateUserLevel(id_user, levelCoins.xp / 10);
+
         //
         //
         //
@@ -223,13 +227,6 @@ public class JumpGameManager : MonoBehaviour
         // added so Update() won't run while game is over
         this.enabled = false;
     }
-
-    //private int ReturnCoins()
-    //{
-    //    Debug.Log("Returned Coins: " + coins);
-    //    
-    //    return coins;
-    //}
 
     // inserts score into db and populates scoreboard
     private void PopulateScoreboard()
