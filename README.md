@@ -1,2 +1,2 @@
 # mitybos-programele
-Sužaidybinta mitybos plano sudarymo programėle.
+Sužaidybinta mitybos plano sudarymo programėlė.
