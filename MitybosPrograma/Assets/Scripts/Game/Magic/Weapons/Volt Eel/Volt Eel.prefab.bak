@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473366015801601521}
-  - component: {fileID: -5968345341088268789}
+  - component: {fileID: -3207455724359927005}
   m_Layer: 0
-  m_Name: Pea Shooter
+  m_Name: Volt Eel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,12 +27,12 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-5968345341088268789
+--- !u!114 &-3207455724359927005
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,21 +41,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 7432806643361047562}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d16546a9ce4a4c64c9108e1b19b82970, type: 3}
+  m_Script: {fileID: 11500000, guid: b35f184f384a3f646989e1d51c2c29be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponName: Pea Shooter
+  weaponName: Volt Eel
   upgrades:
-  - {fileID: 11400000, guid: 82e3220b610008443afe332e428f315e, type: 2}
-  - {fileID: 11400000, guid: 571cd0c97a5af4740ad965faada2e8e0, type: 2}
-  - {fileID: 11400000, guid: 266a68f0421862d419163fce3fb61a92, type: 2}
-  - {fileID: 11400000, guid: 520cb0dda479ca1458aa2f8456c76473, type: 2}
+  - {fileID: 11400000, guid: 7cf35366871fd56499a4ad187e7490ad, type: 2}
+  - {fileID: 11400000, guid: 951d456782810944c914516cb87c3d72, type: 2}
+  - {fileID: 11400000, guid: 177bdc3e7ef0e0149ba3804568b451f3, type: 2}
+  - {fileID: 11400000, guid: a2631d8b74449c040bf86e2067528f12, type: 2}
+  - {fileID: 11400000, guid: d45638ecd6aac8443920a81307d61fb3, type: 2}
+  - {fileID: 11400000, guid: 6a0330c98ef3df44e8b1f24df6f361b7, type: 2}
+<<<<<<< HEAD
+  projectileCount: 3
+  shotCooldown: 0.8
+  damage: 5
+=======
   projectileCount: 2
-  shotCooldown: 0.5
-  damage: 15
-  damageCooldown: 0
-  speed: 7
-  rotationSpeed: 180
+  shotCooldown: 0.8
+  damage: 4
+>>>>>>> main
+  damageCooldown: 0.2
+  speed: 1
+  rotationSpeed: 90
   lifespan: 1
   scale: {x: 1, y: 1, z: 1}
-  projectilePrefab: {fileID: 922292497825179408, guid: dc131d4f5fa6c5f4885d97e4395cd136, type: 3}
+  projectilePrefab: {fileID: 922292497825179408, guid: e4d7c7d351506d94baf5fb92ff67bec5, type: 3}

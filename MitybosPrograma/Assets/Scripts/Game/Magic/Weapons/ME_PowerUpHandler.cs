@@ -6,16 +6,12 @@ using UnityEngine.UI;
 public class ME_PowerUpHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [HideInInspector] public ME_Upgrade upgrade;
-<<<<<<< HEAD
-    public Image image;
-    private Color original;
 
-=======
     private Image panelImage;
     private Color original;
 
     public Image image;
->>>>>>> main
+
     public TextMeshProUGUI nameField;
     public TextMeshProUGUI descriptionField;
 
@@ -25,15 +21,13 @@ public class ME_PowerUpHandler : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     void Start()
     {
-<<<<<<< HEAD
-        original = image.color;
-=======
+
         // highlight
         panelImage = GetComponent<Image>();
         original = panelImage.color;
 
         // attribute assignment
->>>>>>> main
+
         image.sprite = upgrade.sprite;
         image.color = upgrade.color;
         nameField.SetText(upgrade.upgradeName);
@@ -105,19 +99,15 @@ public class ME_PowerUpHandler : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-<<<<<<< HEAD
-        image.color = new Color(1, 0.8f, 0);
-=======
+
         panelImage.color = new Color(1, 0.8f, 0);
->>>>>>> main
+
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-<<<<<<< HEAD
-        image.color = original;
-=======
+
         panelImage.color = original;
->>>>>>> main
+
     }
 }

@@ -52,15 +52,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a2631d8b74449c040bf86e2067528f12, type: 2}
   - {fileID: 11400000, guid: d45638ecd6aac8443920a81307d61fb3, type: 2}
   - {fileID: 11400000, guid: 6a0330c98ef3df44e8b1f24df6f361b7, type: 2}
-<<<<<<< HEAD
-  projectileCount: 3
-  shotCooldown: 0.8
-  damage: 5
-=======
+
   projectileCount: 2
   shotCooldown: 0.8
   damage: 4
->>>>>>> main
   damageCooldown: 0.2
   speed: 1
   rotationSpeed: 90
