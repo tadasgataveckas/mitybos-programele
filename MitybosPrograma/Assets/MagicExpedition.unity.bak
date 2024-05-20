@@ -2308,7 +2308,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 44d6b33835460334fae721eeb7e48419, type: 2}
   - {fileID: 11400000, guid: e11d43357ad522a4a966bcbc94b01f74, type: 2}
   - {fileID: 11400000, guid: 70b91992eb60ce242a0327e6b7177c7c, type: 2}
+<<<<<<< HEAD
+=======
   - {fileID: 11400000, guid: d0724db9ca793ec47a2520832c277a1b, type: 2}
+>>>>>>> main
   reserveUpgradePool: []
   upgradeUI: {fileID: 1482216553}
   XpSlider: {fileID: 5737105088364208034}
@@ -4032,6 +4035,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1768701713}
   m_CullTransparentMesh: 1
+<<<<<<< HEAD
+=======
 --- !u!1001 &2037868390
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4109,7 +4114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bb074b7c706f0c47a7c12867157f9d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-
+>>>>>>> main
 --- !u!1 &2074819488
 GameObject:
   m_ObjectHideFlags: 0
@@ -4319,7 +4324,10 @@ MonoBehaviour:
   - {fileID: 2117303390}
   - {fileID: 1700881718}
   - {fileID: 1369367100}
+<<<<<<< HEAD
+=======
   - {fileID: 2037868392}
+>>>>>>> main
 --- !u!1001 &2117303388
 PrefabInstance:
   m_ObjectHideFlags: 0
