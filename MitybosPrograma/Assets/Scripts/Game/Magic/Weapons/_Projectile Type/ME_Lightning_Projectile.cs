@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ME_Projectile_Lightning : ME_Projectile
+public class ME_Lightning_Projectile : ME_Projectile
 {
     public LineRenderer lineRenderer;
 
