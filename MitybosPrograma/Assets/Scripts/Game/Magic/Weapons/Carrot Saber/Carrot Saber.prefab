@@ -53,10 +53,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1098733c31fd29a4881e2f9dea969ba6, type: 2}
   projectileCount: 1
   shotCooldown: 0
-  damage: 5
+  damage: 10
   damageCooldown: 0.1
   speed: 0
-  rotationSpeed: 120
+  rotationSpeed: 90
   lifespan: 0
   scale: {x: 2, y: 2, z: 2}
   projectilePrefab: {fileID: 922292497825179408, guid: c0c82f96872bf0a4a9f25b97d117ab9c, type: 3}

@@ -40,7 +40,7 @@ public abstract class ME_Weapon : MonoBehaviour
         bullet.speed = speed;
         bullet.rotationSpeed = rotationSpeed;
         bullet.lifespan = lifespan;
-        bullet.transform.localScale  = Vector3.Scale(bullet.transform.localScale, scale);
+        bullet.transform.localScale = scale;
 
         return projectile;
     }

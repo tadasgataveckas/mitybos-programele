@@ -13,10 +13,7 @@ public class ME_Upgrade : ScriptableObject
     public string upgradeName;
     public string description;
     public bool repeatable = true;
-<<<<<<< HEAD
     //public bool available = true;
-=======
->>>>>>> main
 
     public enum Effect
     {
@@ -38,11 +35,6 @@ public class ME_Upgrade : ScriptableObject
         PeaShooter = 1,
         CarrotSaber = 2,
         HotSauceTrailblazer = 3,
-<<<<<<< HEAD
         VoltEel = 4
-=======
-        VoltEel = 4,
-        MeateorBall = 5
->>>>>>> main
     }
 }
