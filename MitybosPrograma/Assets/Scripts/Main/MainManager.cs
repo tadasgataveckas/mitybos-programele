@@ -58,6 +58,14 @@ public class MainManager : MonoBehaviour
     public FoodSearch food;
     public float currCalories;
 
+    //GAME DESCRIPTION THINGS
+    public Button VitaminHarvestButton;
+    public Button MagicExpeditionButton;
+    public Button ChickenWingsButton;
+    public Button FoodHeistButton;
+    public Button AsteroidRushButton;
+    public TextMeshProUGUI descr;
+
     void Start()
     {
         Debug.Log("Iskviestas");
@@ -89,6 +97,8 @@ public class MainManager : MonoBehaviour
 
         GetAllUserData();
         SwitchSegment(currentSegment);
+
+        GameDescr();
 
 
         UpdateUserDisplay();
@@ -167,6 +177,8 @@ public class MainManager : MonoBehaviour
         currXp.text = levelCoins.xp.ToString();
         currStreak.text = levelCoins.streak.ToString();
 
+        
+
 
         user.text = "User: " + username;
     }
@@ -211,6 +223,26 @@ public class MainManager : MonoBehaviour
         //{
         //    c.UpdateUserCoins(id_user, 50);
         //}
+    }
+
+    public void GameDescr()
+    {
+        descr.text = "Coming soon";
+        // Add listeners to the buttons
+        VitaminHarvestButton.onClick.AddListener(() => ShowDescription("Vitamin Harvest - It's an adventurous style game that involves knowledge and quick thinking. " +
+            "You'll be placed in nature, growing fruits for customers. As more customers arrive, you'll need to grow more fruits. Don't be sleepy, work like a professional!"));
+        MagicExpeditionButton.onClick.AddListener(() => ShowDescription("Magic Expedition is a thrilling survival game where you battle against waves of junk and unhealthy food. " +
+            "The longer you play, the more bad food you’ll face. Armed with your trusty talisman, you must be brave and break all the bones of junk food! " +
+            "Stay vigilant, keep your health up, and prove that you have what it takes to survive the Magic Expedition!"));
+        ChickenWingsButton.onClick.AddListener(() => ShowDescription("Chicken Wings is an exciting game, where you hop through various platforms with your talisman. " +
+            "As you jump higher, you'll encounter different types of platforms, each with its own unique challenges. " +
+            "Reach new heights to arrive at special stations where you can eat fruits, learn about their health benefits and discover the power of nutritious fruits in Chicken Wings!"));
+        FoodHeistButton.onClick.AddListener(() => ShowDescription("Coming soon...  ;)"));
+        AsteroidRushButton.onClick.AddListener(() => ShowDescription("Coming soon...  ;)"));
+    }
+    void ShowDescription(string description)
+    {
+        descr.text = description;
     }
 
     public void ShowXP()
