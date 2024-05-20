@@ -50,9 +50,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 571cd0c97a5af4740ad965faada2e8e0, type: 2}
   - {fileID: 11400000, guid: 266a68f0421862d419163fce3fb61a92, type: 2}
   - {fileID: 11400000, guid: 520cb0dda479ca1458aa2f8456c76473, type: 2}
+<<<<<<< HEAD
   projectileCount: 5
   shotCooldown: 0.25
   damage: 35
+=======
+  projectileCount: 2
+  shotCooldown: 0.5
+  damage: 15
+>>>>>>> main
   damageCooldown: 0
   speed: 7
   rotationSpeed: 180
