@@ -99,6 +99,10 @@ public class ClientMethods// : IClientInterface
     {
         return _databaseMethods.UpdateUserLevel(id_user, level);
     }
+    public bool UpdateUserLastStreakDay(int id_user, string last_streak_day)
+    {
+        return _databaseMethods.UpdateUserLastStreakDay(id_user, last_streak_day);
+    }
 
     public bool UpdateUserStreak(int id_user, int streak)
     {

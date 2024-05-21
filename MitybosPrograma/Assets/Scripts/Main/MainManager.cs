@@ -52,6 +52,7 @@ public class MainManager : MonoBehaviour
     public TextMeshProUGUI currXp;
     public TextMeshProUGUI currCoins;
     public TextMeshProUGUI currStreak;
+    public string today = DateTime.Now.ToString("yyyy-MM-dd");
 
     int year;
 
@@ -208,10 +209,16 @@ public class MainManager : MonoBehaviour
         //{
         //    c.UpdateUserLevel(id_user, 3);
         //}
-
-        if(currCalories >= userCalories.calories)
+        int streakCount = 0;
+        string currentStreakDay = YearMonthDay();
+        Debug.Log("currentStreakDay: " + currentStreakDay);
+        currentStreakDay = DateTime.Now.ToString("yyyy-MM-dd");
+        Debug.Log("today: " + today);
+        if (currCalories >= userCalories.calories && currentStreakDay == today)
         {
-            c.UpdateUserStreak(id_user, 1);
+            streakCount++;
+            Debug.Log("streakCount: " + streakCount);
+            c.UpdateUserStreak(id_user, streakCount);
         }
        
 
@@ -224,6 +231,27 @@ public class MainManager : MonoBehaviour
         //    c.UpdateUserCoins(id_user, 50);
         //}
     }
+
+    public string YearMonthDay()
+    {
+        // Konvertuojame string'ą į DateTime objektą
+        DateTime dataObj;
+        if (DateTime.TryParseExact(levelCoins.last_streak_day, "yyyy-MM-dd HH:mm:ss", null, System.Globalization.DateTimeStyles.None, out dataObj))
+        {
+            // Ištraukiame metus, mėnesį ir dieną
+            string yearMonthDay = dataObj.ToString("yyyy-MM-dd");
+
+            // Spausdiname metus, mėnesį ir dieną
+            // Debug.Log("Konvertuoti metai, mėnuo ir diena: " + yearMonthDay);
+            return yearMonthDay;           
+        }
+        else
+        {
+            Debug.Log("Form isnt correct (yyyy-MM-dd)");
+            return null;
+        }
+    }
+
 
     public void GameDescr()
     {

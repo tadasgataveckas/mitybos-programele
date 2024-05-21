@@ -268,6 +268,38 @@ public class DatabaseMethods
         }
     }
 
+    public bool UpdateUserLastStreakDay(int id_user, string last_streak_day)
+    {
+        try
+        {
+            DBManager.OpenConnection();
+            IDbCommand command_update = DBManager.connection.CreateCommand();
+            command_update.CommandText =
+                "UPDATE level_coins SET last_streak_day = @last_streak_day WHERE id_user = @id_user";
+
+            IDbDataParameter paramIdUser = command_update.CreateParameter();
+            paramIdUser.ParameterName = "@id_user";
+            paramIdUser.Value = id_user;
+            command_update.Parameters.Add(paramIdUser);
+
+            IDbDataParameter paramStreak = command_update.CreateParameter();
+            paramStreak.ParameterName = "@last_streak_day";
+            paramStreak.Value = last_streak_day;
+            command_update.Parameters.Add(paramStreak);
+
+            return command_update.ExecuteNonQuery() > 0;
+        }
+        catch (SqliteException e)
+        {
+            System.Console.WriteLine(e.Message);
+            return false;
+        }
+        finally
+        {
+            DBManager.CloseConnection();
+        }
+    }
+
     public bool UpdateUserStreak(int id_user, int streak)
     {
         try

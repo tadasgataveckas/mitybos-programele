@@ -10,6 +10,7 @@ public class LevelCoins
     public int xp;
     public int coins;
     public int streak;
+    public string last_streak_day;
 
 
     public LevelCoins(int id)
@@ -19,6 +20,7 @@ public class LevelCoins
         xp = 0;
         coins = 0;
         streak = 0;
+        last_streak_day = "";
     }
 
     /// <summary>
@@ -31,7 +33,7 @@ public class LevelCoins
             DBManager.OpenConnection();
             IDbCommand command_synch = DBManager.connection.CreateCommand();
             command_synch.CommandText =
-                "SELECT level, xp, coins, streak " +
+                "SELECT level, xp, coins, streak, last_streak_day " +
                 "FROM level_coins " +
                 "WHERE id_user = " + id_user;
             IDataReader reader = command_synch.ExecuteReader();
@@ -41,8 +43,9 @@ public class LevelCoins
                 level = int.Parse(reader[0].ToString());
                 xp = int.Parse(reader[1].ToString());
                 coins = int.Parse(reader[2].ToString());
+                streak = int.Parse(reader[3].ToString());
 
-                coins = int.Parse(reader[2].ToString()); ;
+                last_streak_day = reader[4].ToString(); ;
             }
         }
         catch (SqliteException e) { System.Console.WriteLine(e.Message); }
@@ -56,7 +59,8 @@ public class LevelCoins
             "level = " + level + "\n" +
             "xp = " + xp + "\n" +
             "coins = " + coins + "\n" +
-            "streak = " + streak;
+            "streak = " + streak + "\n" +
+            "last_streak_day = " + last_streak_day;
         return lines;
     }
 }
