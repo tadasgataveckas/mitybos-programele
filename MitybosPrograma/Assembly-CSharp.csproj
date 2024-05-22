@@ -62,6 +62,7 @@
     <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\FoodManager.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_Header.cs" />
     <Compile Include="Assets\Scripts\Survey\SegmentManager.cs" />
+    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\HelperScripts\MoveBehaviour.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\DatabaseMethods.cs" />
     <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\AutoPlan.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_Enums.cs" />
@@ -73,11 +74,11 @@
     <Compile Include="Assets\Scripts\Tutorial\TutorialManager.cs" />
     <Compile Include="Assets\Scripts\Survey\SliderScript.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\IClientInterface.cs" />
-    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\FoodItem.cs" />
+    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\HelperScripts\FoodItem.cs" />
     <Compile Include="Assets\UI\TableLayout\TableRow.cs" />
     <Compile Include="Assets\UI\TableLayout\TableCell.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerTimerComponent.cs" />
-    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\PriorityQueue.cs" />
+    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\HelperScripts\PriorityQueue.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerTimer.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\ClientMethods.cs" />
     <Compile Include="Assets\UI\TableLayout\Example\TableLayoutExampleController.cs" />
@@ -110,7 +111,7 @@
     <Compile Include="Assets\Scripts\Main\MainManager.cs" />
     <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\PlanFieldBehaviour.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_HoldButton.cs" />
-    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\BranchAndBound.cs" />
+    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\HelperScripts\BranchAndBound.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_DayButton.cs" />
     <Compile Include="Assets\Scripts\Game\Harvest\MovementJoystick.cs" />
     <Compile Include="Assets\Scripts\Models\Allergy.cs" />
@@ -124,11 +125,11 @@
     <Compile Include="Assets\UI\DatePicker\Example\ExampleController.cs" />
     <Compile Include="Assets\Scripts\Game\Jump\Booster.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_Config.cs" />
-    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\FoodClass.cs" />
+    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\HelperScripts\FoodClass.cs" />
     <Compile Include="Assets\Scripts\Models\UserData.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\DBManager.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerCache.cs" />
-    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\MoveBehaviour.cs" />
+    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\TableManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scripts\UI-DBmethods\plugins\sqlite3.dll" />

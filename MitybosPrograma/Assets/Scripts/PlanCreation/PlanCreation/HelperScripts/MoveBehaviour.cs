@@ -8,14 +8,17 @@ using ZstdSharp.Unsafe;
 
 public class MoveBehaviour : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
-	PlanFieldBehaviour p;
+	PlanFieldBehaviour p { get; set; }
 	Vector3 InitialPosition { get; set; }
 	Vector3 CurrentPosition { get; set; }
-	Transform parent { get; set; }
+	GameObject parent { get; set; }
+	Transform transformParent { get; set; }
+
+	TableManager tableManager { get; set; }
 	public void OnBeginDrag(PointerEventData eventData)
 	{
 		InitialPosition = transform.parent.position;
-		parent = transform.parent;
+		transformParent = transform.parent;
 
 		//need visuals
 		Debug.Log("startedat: " + InitialPosition);
@@ -31,12 +34,14 @@ public class MoveBehaviour : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
 
 	public void OnEndDrag(PointerEventData eventData)
 	{
-
-		TableCell tc = GetClosestTableCell(CurrentPosition,
-			p.cellList);
+		
+		TableCell tc = 
+			GetClosestTableCell(CurrentPosition,
+			tableManager.CellList);
 		Debug.Log("stopped" + transform.position+"closest cell " +tc.transform.position);
-		transform.parent = null;
-		p.SetPrefabParent(transform.gameObject, tc.transform);
+		transform.SetParent(null);
+		
+		tableManager.SetPrefabParent(transform.gameObject, tc.transform);
 	}
 
 
@@ -44,12 +49,13 @@ public class MoveBehaviour : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
 	{
 		Debug.Log(transform.parent.position);
 		Debug.Log(transform.parent.parent.position);
-		p = GameObject.Find("AddFoodInformation").GetComponent<PlanFieldBehaviour>();
-		if(p != null )
+		parent = transform.parent.gameObject;
+		p = GetComponent<PlanFieldBehaviour>();
+		tableManager = parent.GetComponentInParent<TableRow>().GetComponentInParent<TableManager>();
+		if (tableManager != null )
 		{
 			Debug.Log("plan field script found");
-			Debug.Log(p.cellList
-				.Count);
+			Debug.Log(tableManager.CellList.Count);
 		}
 
 	}
