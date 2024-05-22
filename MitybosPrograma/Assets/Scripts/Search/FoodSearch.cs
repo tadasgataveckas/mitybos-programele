@@ -24,7 +24,7 @@ public class FoodSearch : MonoBehaviour
 	public RectTransform eatenProductsScrollViewContent;
 
     public ProgressBar progressBar_instance;
-
+    public MainManager mainManager_instance;
 	public TMP_InputField searchInputField;
     public ScrollRect scrollView;
     public GameObject resultPrefab;
@@ -276,7 +276,7 @@ public class FoodSearch : MonoBehaviour
     {
         int userId = SessionManager.GetIdKey();
     
-        if (float.TryParse(amountInputField.text, out float amount))
+        if (float.TryParse(amountInputField.text, out float amount) && amount > 0)
         {
             selectedProduct.Kcal = selectedProduct.Kcal * amount / 100;
             selectedProduct.Protein = selectedProduct.Protein * amount / 100;
@@ -285,6 +285,10 @@ public class FoodSearch : MonoBehaviour
 
             string query = "INSERT INTO consumed_user_meals (id_user, id_meal, kcal, protein,  fat, carbohydrates) " +
                            $"VALUES ({userId}, {selectedProduct.ProductID}, {selectedProduct.Kcal}, {selectedProduct.Protein},  {selectedProduct.Fat}, {selectedProduct.Carbs})";
+
+            //string query = "INSERT INTO consumed_user_meals (id_user, id_meal, kcal, protein,  fat, carbohydrates) " +
+            //               $"VALUES ({userId}, {0}, {selectedProduct.Kcal}, {selectedProduct.Protein},  {selectedProduct.Fat}, {selectedProduct.Carbs})";
+
 
             DBManager.OpenConnection();
             IDbCommand command = DBManager.connection.CreateCommand();
@@ -353,15 +357,16 @@ public class FoodSearch : MonoBehaviour
             editButton.onClick.AddListener(() => OnDeleteEatenProductClicked(cumId, confirmButton, cancelButton));
             Debug.Log("DisplayEatenProducts() - " + cumId);
 
+            
             confirmButton.gameObject.SetActive(false);
             cancelButton.gameObject.SetActive(false);
         }
 
         Total_kcal_header.text = totalKcal.ToString() + " kcal";
-        Total_kcalText.text = "Total Kcal: " + totalKcal.ToString();
-        Total_proteinText.text = "Total Protein: " + totalProtein.ToString() + "g";
-        Total_carbsText.text = "Total Carbs: " + totalCarbs.ToString() + "g";
-        Totoal_fatText.text = "Total Fat: " + totalFat.ToString() + "g";
+        //Total_kcalText.text = "Total Kcal: " + totalKcal.ToString();
+        Total_proteinText.text = totalProtein.ToString() + "g";
+        Total_carbsText.text = totalCarbs.ToString() + "g";
+        Totoal_fatText.text = totalFat.ToString() + "g";
         allCalories = totalKcal;
 
         progressBar_instance.curr = totalKcal;
@@ -389,6 +394,8 @@ public class FoodSearch : MonoBehaviour
         command.ExecuteNonQuery();
         DBManager.connection.Close();
 
+        allCalories = 0;
+        mainManager_instance.UpdateUserDisplay();
         DisplayEatenProducts();
     }
 
