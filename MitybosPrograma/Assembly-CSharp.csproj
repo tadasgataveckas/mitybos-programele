@@ -116,6 +116,7 @@
     <Compile Include="Assets\Scripts\Game\Harvest\MovementJoystick.cs" />
     <Compile Include="Assets\Scripts\Models\Allergy.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_Button.cs" />
+    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\TableManager.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_DayHeader.cs" />
     <Compile Include="Assets\Scripts\Game\Jump\Platform.cs" />
     <Compile Include="Assets\UI\DatePicker\TextMesh Pro\DatePicker_TextMeshProDefaults.cs" />
@@ -129,7 +130,6 @@
     <Compile Include="Assets\Scripts\Models\UserData.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\DBManager.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerCache.cs" />
-    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\TableManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Scripts\UI-DBmethods\plugins\sqlite3.dll" />

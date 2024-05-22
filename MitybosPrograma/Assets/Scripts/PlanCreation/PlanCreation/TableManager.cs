@@ -18,7 +18,7 @@ public class TableManager : MonoBehaviour
 	TableLayout tableLayout;
 	private void Awake()
 	{
-		Debug.Log("Table is rendered, setting the cell list in TableLayout");
+		//Debug.Log("Table is rendered, setting the cell list in TableLayout");
 		for (int i = 0; i < tableLayout.Rows.Count; i++)
 		{
 			TableRow row = tableLayout.Rows[i];
@@ -26,11 +26,11 @@ public class TableManager : MonoBehaviour
 		}
 	}
 	
-	private void OnBecameVisible()
+
+	private void Update()
 	{
-
+		OnSelectedDateUpdate();	
 	}
-
 
 	public void OnSelectedDateUpdate()
 	{

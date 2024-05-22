@@ -432,7 +432,7 @@ RectTransform:
   m_GameObject: {fileID: 5533866884964222303}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.13, y: 0.89861363, z: 1}
+  m_LocalScale: {x: 1.9188032, y: 3.3123114, z: 1.0354}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5533866886153117783}
@@ -441,7 +441,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 13.247, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5297917242744453251
@@ -830,7 +830,7 @@ RectTransform:
   m_GameObject: {fileID: 5533866886153117782}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.9887999, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5533866886125627817}
@@ -841,7 +841,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -9.5, y: 2}
+  m_AnchoredPosition: {x: -2.2867, y: 2}
   m_SizeDelta: {x: 201.327, y: -53.699}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5533866886153117781
@@ -894,15 +894,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a37c6a89eb3b4654ca8dd55c61f04753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellList: []
   prefab: {fileID: 0}
-  Cell0: {fileID: 0}
-  Cell1: {fileID: 0}
-  Cell2: {fileID: 0}
-  Cell3: {fileID: 0}
-  Cell4: {fileID: 0}
-  Cell5: {fileID: 0}
-  Cell6: {fileID: 0}
-  Cell7: {fileID: 0}
-  Cell8: {fileID: 0}
-  Cell9: {fileID: 0}

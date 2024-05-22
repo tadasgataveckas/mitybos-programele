@@ -8,6 +8,7 @@ using UI.Dates;
 using UI.Tables;
 using Org.BouncyCastle.Utilities;
 using System;
+using UnityEngine.UIElements;
 
 public class AutoPlan : MonoBehaviour
 {
@@ -15,11 +16,14 @@ public class AutoPlan : MonoBehaviour
     List<FoodClass> ReturnedFoodList = new List<FoodClass>(); //allfoods
     List<FoodClass> CreatedFoodList = new List<FoodClass>(); //meals for the day
 
+    int index { get; set; }
 
+    int[] numbers = { 1, 3, 5 };
     GameObject parent { get; set; }
     TableManager tableManager { get; set; }
 
     //change to +- buttons representing less mid and more
+    
     TMP_InputField InputField { get; set; }
 
 
@@ -29,9 +33,11 @@ public class AutoPlan : MonoBehaviour
     
     private void Start()
     {
-        Debug.Log("+Button started, getting the table manager");
+        //Debug.Log("+Button started, getting the table manager");
+        //Debug.Log(numbers.Length + "nr length");
 		InputField = GameObject.Find("InputFieldNumber").GetComponent<TMP_InputField>();
 		InputField.contentType = TMP_InputField.ContentType.Alphanumeric;
+        InputField.text = "1";
 		parent = transform.parent.gameObject;
 		tableManager = parent.GetComponentInChildren<TableLayout>()?.GetComponentInChildren<TableManager>();
 	}
@@ -39,7 +45,7 @@ public class AutoPlan : MonoBehaviour
 
 	private void Update()
     {
-        //OnSelectedDateUpdate();
+        
     }
     public void OnClickAutoPlan()
     {
@@ -76,7 +82,29 @@ public class AutoPlan : MonoBehaviour
         }
     }
 
-    private void SetInitPrefabInfo(GameObject prefab, string name)
+
+    public void OnPressGreater()
+    {
+		//Debug.Log("Index: " + index);
+		index = Array.IndexOf(numbers, int.Parse(InputField.text));
+        if (index < numbers.Length - 1)
+        {
+            index += 1;
+        }
+		InputField.text = numbers[index].ToString();
+	}
+
+	public void OnPressLess()
+	{
+	    index = Array.IndexOf(numbers, int.Parse(InputField.text));
+		if (index > 0)
+		{
+            index -= 1;
+		}
+		InputField.text = numbers[index].ToString();
+	}
+
+	private void SetInitPrefabInfo(GameObject prefab, string name)
     {
         TMP_Text prefabText = prefab.GetComponentInChildren<TMP_Text>();
         prefabText.text = name;
