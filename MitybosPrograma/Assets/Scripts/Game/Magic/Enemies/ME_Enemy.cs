@@ -39,6 +39,14 @@ public class ME_Enemy : ME_Entity
         MoveToTarget();
     }
 
+    public void UpgradeStatsByFactor(float factor)
+    {
+        Damage *= factor;
+        MaxHP *= factor;
+        Xp *= factor;
+        HP = MaxHP;
+    }
+
     private void MoveToTarget()
     {
         if (Player != null)

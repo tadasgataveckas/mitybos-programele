@@ -53,8 +53,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8c8fe3ce1688b2144b11ae5edad2cdae, type: 2}
   projectileCount: 0
   shotCooldown: 2
-  damage: 7
-  damageCooldown: 0.2
+  damage: 10
+  damageCooldown: 0.4
   speed: 0
   rotationSpeed: 0
   lifespan: 2

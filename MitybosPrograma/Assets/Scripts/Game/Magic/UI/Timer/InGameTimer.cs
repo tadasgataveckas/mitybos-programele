@@ -16,4 +16,9 @@ public class InGameTimer : MonoBehaviour
 
         textField.text = string.Format("{0:D2}:{1:D2}", minutes, seconds);
     }
+
+    public int GetGameTimeMinutes()
+    {
+        return (int) (gameTime / 60);
+    }
 }

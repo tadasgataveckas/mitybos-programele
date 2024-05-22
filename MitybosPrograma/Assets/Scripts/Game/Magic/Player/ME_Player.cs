@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,7 @@ public class ME_Player : ME_Entity
     public double FireRate = 1;
     public float Range = 1;
 
+    public int WeaponCapacity = 3;      // how many weapons can player carry
     public float HPRegenAmount = 0.1f;  // how much HP per frame
     public float HPRegenDelay = 3f;     // how long until HP begins to regen
     private float HPRegenDelayCounter = 0;
@@ -56,7 +58,7 @@ public class ME_Player : ME_Entity
     public void LevelUp()
     {
         Level += 1;
-        Debug.Log("Leveled uo! Current level: " + Level);
+        Manager.xpLabel.SetText("Level: " + Level);
         Manager.TriggerLevelUp();
     }
 
@@ -97,5 +99,15 @@ public class ME_Player : ME_Entity
     public override void Die()
     {
         Manager.TriggerGameEnd();
+    }
+
+    public bool HasReachedWeaponCapacity()
+    {
+        int count = 0;
+        foreach (ME_Weapon weapon in weapons)
+            if (weapon.gameObject.activeSelf)
+                count++;
+
+        return count >= WeaponCapacity;
     }
 }

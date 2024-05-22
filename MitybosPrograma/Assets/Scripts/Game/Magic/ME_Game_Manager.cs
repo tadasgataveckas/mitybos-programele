@@ -7,11 +7,12 @@ using UnityEngine.UI;
 public class ME_Game_Manager : MonoBehaviour
 {
     public bool canSpawn = true;
+    private bool isGameRunning = true;
     // score is just total xp
     public float Score = 0;
 
     public ME_Player Player;
-    public float EnemySpawnDelay = 0.1f;
+    public float EnemySpawnDelay = 0.75f;
     public int maxEnemiesAtOnce = 250;
 
     // stores enemy types
@@ -27,16 +28,19 @@ public class ME_Game_Manager : MonoBehaviour
 
     public GameObject upgradeUI;
     public Slider XpSlider;
+    public TextMeshProUGUI xpLabel;
 
     [SerializeField] private GameObject gameOver;
     [SerializeField] private Scoreboard scoreboard;
     [SerializeField] private GameObject upgradeContainer;
     [SerializeField] private ME_PowerUpHandler upgradePrefab;
+    [SerializeField] private InGameTimer inGameTimer;
 
     // Start is called before the first frame update
     void Start()
     {
         Time.timeScale = 1f;
+        StartCoroutine(EnemySpawnDelayScale());
         StartCoroutine(EnemySpawner());
         TriggerLevelUp();
     }
@@ -44,6 +48,17 @@ public class ME_Game_Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+    }
+
+    // spawn delay reduced by 20% every minute
+    IEnumerator EnemySpawnDelayScale()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(60);
+            EnemySpawnDelay *= 0.2f;
+        }
     }
 
     IEnumerator EnemySpawner()
@@ -64,8 +79,11 @@ public class ME_Game_Manager : MonoBehaviour
                 int enemyIndex = UnityEngine.Random.Range(0, Enemies.Count);
                 GameObject enemy = Instantiate(Enemies[enemyIndex], GenerateSpawnLocation(), Quaternion.identity);
                 enemy.gameObject.transform.parent = Player.transform.parent;
-                enemy.GetComponent<ME_Enemy>().Player = Player;
+                ME_Enemy enemyStats = enemy.GetComponent<ME_Enemy>();
+                enemyStats.Player = Player;
 
+                // increases by 10% per minute (multiplicatively)
+                enemyStats.UpgradeStatsByFactor(Mathf.Pow(1.1f, inGameTimer.GetGameTimeMinutes()));
                 enemyInstances.Add(enemy);
             }
     }
@@ -100,6 +118,12 @@ public class ME_Game_Manager : MonoBehaviour
 
     public void TriggerGameEnd()
     {
+        // check in case this is called more than once per frame
+        if (!isGameRunning)
+            return;
+
+        isGameRunning = false;
+
         // important, so game logic doesn't run continuously
         Time.timeScale = 0;
 
@@ -191,6 +215,7 @@ public class ME_Game_Manager : MonoBehaviour
             PickAndRemoveRandomUpgrade();
     }
 
+    // add upgrade to handler and move it from pool to reserve
     public void PickAndRemoveRandomUpgrade()
     {
         ME_PowerUpHandler handler = Instantiate(upgradePrefab);
@@ -214,17 +239,29 @@ public class ME_Game_Manager : MonoBehaviour
         // clear power up ui container
         foreach (Transform child in upgradeContainer.transform)
         {
-            ME_Upgrade upgradeItem = handler.GetComponent<ME_PowerUpHandler>().upgrade;
+            //ME_Upgrade upgradeItem = handler.GetComponent<ME_PowerUpHandler>().upgrade;
             Destroy(child.gameObject);
         }
 
-        // handler removes already selected non repeatable upgrade
+        // handler removes already selected non repeatable upgrade!!!
+
+        // moves non picked items from reserve back to pool
         upgradePool.AddRange(reserveUpgradePool);
-
-
         reserveUpgradePool.Clear();
+
+        // removes weapons givers if capacity reached
+        if (Player.HasReachedWeaponCapacity())
+            RemoveWeaponsFromPool();
 
         Time.timeScale = 1f;
         upgradeUI.SetActive(false);
+    }
+
+    private void RemoveWeaponsFromPool()
+    {
+        for (int i = 0; i < upgradePool.Count; i++)
+            if (upgradePool[i].effect == ME_Upgrade.Effect.GiveWeapon)
+                upgradePool.RemoveAt(i);
+
     }
 }

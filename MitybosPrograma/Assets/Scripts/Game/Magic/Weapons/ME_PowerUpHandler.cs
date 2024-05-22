@@ -27,7 +27,6 @@ public class ME_PowerUpHandler : MonoBehaviour, IPointerEnterHandler, IPointerEx
         original = panelImage.color;
 
         // attribute assignment
-
         image.sprite = upgrade.sprite;
         image.color = upgrade.color;
         nameField.SetText(upgrade.upgradeName);
@@ -79,6 +78,8 @@ public class ME_PowerUpHandler : MonoBehaviour, IPointerEnterHandler, IPointerEx
             // give weapon
             case ME_Upgrade.Effect.GiveWeapon:
                 weaponInstance.gameObject.SetActive(true);
+
+                // add weapon upgrades to pool
                 manager.upgradePool.AddRange(weaponInstance.upgrades);
                 break;
         }
