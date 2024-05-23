@@ -1,10 +1,5 @@
-using Google.Protobuf.WellKnownTypes;
-using Mysqlx.Crud;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UI.Tables;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 

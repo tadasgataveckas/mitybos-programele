@@ -86,7 +86,7 @@
     <Compile Include="Assets\Scripts\Game\Harvest\SortingLayerSorter.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerTimerComponent.cs" />
     <Compile Include="Assets\Scripts\Game\Magic\Weapons\Volt Eel\ME_VoltEel.cs" />
-    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\PriorityQueue.cs" />
+    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\HelperScripts\PriorityQueue.cs" />
     <Compile Include="Assets\Scripts\Game\Magic\Weapons\ME_Weapon.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerTimer.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\ClientMethods.cs" />
@@ -145,7 +145,7 @@
     <Compile Include="Assets\Scripts\Game\Magic\Weapons\ME_Projectile.cs" />
     <Compile Include="Assets\Scripts\Game\Harvest\VitaminHarvestPlayerManager.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_HoldButton.cs" />
-    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\BranchAndBound.cs" />
+    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\HelperScripts\BranchAndBound.cs" />
     <Compile Include="Assets\Scripts\Game\Magic\Weapons\_Projectile Type\ME_Tracker_Projectile.cs" />
     <Compile Include="Assets\Scripts\Models\ScoresMagicExpedition.cs" />
     <Compile Include="Assets\Scripts\Game\Magic\Player\ME_PlayerHurtbox.cs" />
@@ -169,13 +169,18 @@
     <Compile Include="Assets\Scripts\Game\Jump\Booster.cs" />
     <Compile Include="Assets\Scripts\Game\Harvest\OrdersTable.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_Config.cs" />
-    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\FoodClass.cs" />
+    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\HelperScripts\FoodClass.cs" />
     <Compile Include="Assets\Scripts\Game\Magic\Weapons\_Projectile Type\ME_Sword_Projectile.cs" />
     <Compile Include="Assets\Prefabs\Scoreboard\Scoreboard.cs" />
     <Compile Include="Assets\Scripts\Models\UserData.cs" />
     <Compile Include="Assets\Scripts\Game\Harvest\CustomerTable.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\DBManager.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerCache.cs" />
+    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\PlanFieldBehaviour.cs" />
+    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\TableManager.cs" />
+    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\HelperScripts\MoveBehaviour.cs" />
+    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\FoodManager.cs" />
+    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\HelperScripts\FoodItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

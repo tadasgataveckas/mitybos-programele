@@ -1,14 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
-using UnityEditor;
-using UI.Dates;
 using UI.Tables;
-using Org.BouncyCastle.Utilities;
 using System;
-using UnityEngine.UIElements;
 
 public class AutoPlan : MonoBehaviour
 {
