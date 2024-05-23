@@ -1,3 +1,4 @@
+using System;
 using System.Globalization;
 using TMPro;
 using UI.Tables;
@@ -15,19 +16,15 @@ public class AddButtonBehaviour : MonoBehaviour
 
     TableManager tableManager { get; set; }
 
+
     
     [SerializeField]
     private GameObject prefab;
 
-    void Start()
+    void Start()    
     {
-        
 		parent = transform.parent.gameObject;
-        
-        tableManager =  parent.GetComponentInChildren<TableLayout>().GetComponentInChildren<TableManager>();
-
-		//tableManager = tableLayout.
-
+		tableManager = parent.GetComponentInChildren<TableLayout>().GetComponent<TableManager>();
 	}
 
     public void OnAddButtonClick()

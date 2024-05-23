@@ -53,9 +53,9 @@ public class MoveBehaviour : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
 		//Debug.Log(transform.parent.position);
 		//Debug.Log(transform.parent.parent.position);
 		Transform parent = transform.parent;
-		tableManager = parent.GetComponentInChildren<TableLayout>().GetComponentInChildren<TableManager>();
-
-		//parent.transform.GetComponentInParent<TableRow>().GetComponentInParent<TableManager>();
+		tableManager = parent.transform.GetComponentInParent<TableRow>().GetComponentInParent<TableManager>();
+		// parent.GetComponentInChildren<TableLayout>().GetComponentInChildren<TableManager>();
+		//
 	}
 
 	private void Update()

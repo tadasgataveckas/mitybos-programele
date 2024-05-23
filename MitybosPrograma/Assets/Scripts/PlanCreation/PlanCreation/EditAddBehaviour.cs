@@ -16,7 +16,7 @@ public class EditAddBehaviour : MonoBehaviour
 	public void OnEditButtonClick()
 	{
 		InfoText = GetComponentInChildren<TMP_Text>();
-		InfoText.text = "Editbutoun";
+		InfoText.text = "Ieškomas maistas...";
 	}
 
 	public void OnRemoveButtonClick()
