@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using MySql.Data.MySqlClient;
 using System;
 using TMPro;
 using System.Data;

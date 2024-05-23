@@ -5,7 +5,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using Google.Protobuf.WellKnownTypes;
+//using Google.Protobuf.WellKnownTypes;
 
 public class MainManager : MonoBehaviour
 {
