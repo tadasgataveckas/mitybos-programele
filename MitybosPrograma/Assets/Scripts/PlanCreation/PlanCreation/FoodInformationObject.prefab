@@ -257,7 +257,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5533866886153117802}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlanFieldBehaviour, Assembly-CSharp
         m_MethodName: OnRemoveButtonClick
         m_Mode: 1
@@ -415,7 +415,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5533866884964222300}
-  - component: {fileID: 5297917242744453251}
+  - component: {fileID: 2836798827017072728}
   m_Layer: 5
   m_Name: FoodInformationObject
   m_TagString: Untagged
@@ -444,7 +444,7 @@ RectTransform:
   m_AnchoredPosition: {x: 13.247, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5297917242744453251
+--- !u!114 &2836798827017072728
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -713,7 +713,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5533866886153117802}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlanFieldBehaviour, Assembly-CSharp
         m_MethodName: OnEditButtonClick
         m_Mode: 1
@@ -813,7 +813,7 @@ GameObject:
   - component: {fileID: 5533866886153117783}
   - component: {fileID: 5533866886153117781}
   - component: {fileID: 5533866886153117780}
-  - component: {fileID: 5533866886153117802}
+  - component: {fileID: 4036696425328825}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -882,7 +882,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5533866886153117802
+--- !u!114 &4036696425328825
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -894,4 +894,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a37c6a89eb3b4654ca8dd55c61f04753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 5533866884964222303}

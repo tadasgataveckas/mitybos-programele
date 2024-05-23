@@ -14,8 +14,7 @@ public class MoveBehaviour : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
 	{
 		//InitialPosition = transform.parent.position;
 		//transformParent = transform.parent;
-
-		//need visuals
+		//need visualsxdf
 		//Debug.Log("startedat: " + InitialPosition);
 	}
 
@@ -53,10 +52,14 @@ public class MoveBehaviour : MonoBehaviour, IDragHandler, IBeginDragHandler, IEn
 	{
 		//Debug.Log(transform.parent.position);
 		//Debug.Log(transform.parent.parent.position);
-		parent = transform.parent.gameObject;
-		tableManager = parent.GetComponentInParent<TableRow>().GetComponentInParent<TableManager>();
+		Transform parent = transform.parent;
+		tableManager = parent.transform.GetComponentInParent<TableRow>().GetComponentInParent<TableManager>();
 	}
 
+	private void Update()
+	{
+			
+	}
 
 	public TableCell GetClosestTableCell(Vector3 releasePosition, List<TableCell> cellList)
 	{

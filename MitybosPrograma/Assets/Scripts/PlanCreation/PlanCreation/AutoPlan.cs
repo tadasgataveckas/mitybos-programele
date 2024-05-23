@@ -14,7 +14,7 @@ public class AutoPlan : MonoBehaviour
 
     int[] numbers = { 1, 3, 5 };
     GameObject parent { get; set; }
-    TableManager tableManager { get; set; }
+    protected TableManager tableManager { get; set; }
 
     //change to +- buttons representing less mid and more
     
@@ -33,7 +33,7 @@ public class AutoPlan : MonoBehaviour
 		InputField.contentType = TMP_InputField.ContentType.Alphanumeric;
         InputField.text = "1";
 		parent = transform.parent.gameObject;
-		tableManager = parent.GetComponentInChildren<TableLayout>()?.GetComponentInChildren<TableManager>();
+		tableManager = parent.GetComponentInChildren<TableLayout>().GetComponentInChildren<TableManager>();
 	}
 
 

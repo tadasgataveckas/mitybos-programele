@@ -61,9 +61,11 @@
     <Compile Include="Assets\UI\DatePicker\DatePicker_ContentLayout.cs" />
     <Compile Include="Assets\Scripts\Game\Magic\Weapons\Pea Shooter\ME_PeaShooter.cs" />
     <Compile Include="Assets\Scripts\Game\Magic\Enemies\ME_EnemyHurtbox.cs" />
+    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\FoodManager.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_Header.cs" />
     <Compile Include="Assets\Scripts\Game\Harvest\Mailbox.cs" />
     <Compile Include="Assets\Scripts\Survey\SegmentManager.cs" />
+    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\HelperScripts\MoveBehaviour.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\DatabaseMethods.cs" />
     <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\AutoPlan.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_Enums.cs" />
@@ -79,6 +81,7 @@
     <Compile Include="Assets\Scripts\Models\LevelCoins.cs" />
     <Compile Include="Assets\Scripts\Survey\SliderScript.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\IClientInterface.cs" />
+    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\HelperScripts\FoodItem.cs" />
     <Compile Include="Assets\UI\TableLayout\TableRow.cs" />
     <Compile Include="Assets\Scripts\Game\Harvest\VitaminHarvestOrdersManager.cs" />
     <Compile Include="Assets\UI\TableLayout\TableCell.cs" />
@@ -142,6 +145,7 @@
     <Compile Include="Assets\Input\PlayerInput.cs" />
     <Compile Include="Assets\Scripts\Game\Jump\JumpGameManager.cs" />
     <Compile Include="Assets\Scripts\Main\MainManager.cs" />
+    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\AddButtonBehaviour.cs" />
     <Compile Include="Assets\Scripts\Game\Magic\Weapons\ME_Projectile.cs" />
     <Compile Include="Assets\Scripts\Game\Harvest\VitaminHarvestPlayerManager.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_HoldButton.cs" />
@@ -156,6 +160,7 @@
     <Compile Include="Assets\UI\DatePicker\DatePicker_Button.cs" />
     <Compile Include="Assets\Scripts\Game\Magic\ME_Entity.cs" />
     <Compile Include="Assets\Scripts\Game\Magic\UI\Timer\InGameTimer.cs" />
+    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\TableManager.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_DayHeader.cs" />
     <Compile Include="Assets\Scripts\Game\Jump\Platform.cs" />
     <Compile Include="Assets\Scripts\Game\Magic\UI\Damage Numbers\ME_DamageNumber.cs" />
@@ -176,11 +181,7 @@
     <Compile Include="Assets\Scripts\Game\Harvest\CustomerTable.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\DBManager.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerCache.cs" />
-    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\PlanFieldBehaviour.cs" />
-    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\TableManager.cs" />
-    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\HelperScripts\MoveBehaviour.cs" />
-    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\FoodManager.cs" />
-    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\HelperScripts\FoodItem.cs" />
+    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\EditAddBehaviour.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

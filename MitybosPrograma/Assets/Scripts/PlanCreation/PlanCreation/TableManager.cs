@@ -12,13 +12,13 @@ public class TableManager : MonoBehaviour
 	TMP_Text dateText;
 	[SerializeField]
 	DatePicker datePicker;
-	public List<TableCell> CellList { get; set; } = new List<TableCell>();
+	public List<TableCell> CellList { get; set; } = new List<TableCell> ();
 
 	[SerializeField]
 	TableLayout tableLayout;
 	private void Awake()
 	{
-		//Debug.Log("Table is rendered, setting the cell list in TableLayout");
+		Debug.Log("Table is rendered, setting the cell list in TableLayout");
 		for (int i = 0; i < tableLayout.Rows.Count; i++)
 		{
 			TableRow row = tableLayout.Rows[i];
