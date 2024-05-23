@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\UI\DatePicker\DatePicker_ContentLayout.cs" />
+    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\EditAddBehaviour.cs" />
     <Compile Include="Assets\Scripts\Game\Magic\Weapons\Pea Shooter\ME_PeaShooter.cs" />
     <Compile Include="Assets\Scripts\Game\Magic\Enemies\ME_EnemyHurtbox.cs" />
     <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\FoodManager.cs" />
@@ -181,7 +182,6 @@
     <Compile Include="Assets\Scripts\Game\Harvest\CustomerTable.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\DBManager.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerCache.cs" />
-    <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\EditAddBehaviour.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
