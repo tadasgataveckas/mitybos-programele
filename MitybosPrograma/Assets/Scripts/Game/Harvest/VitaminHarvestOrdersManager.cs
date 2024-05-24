@@ -15,6 +15,8 @@ public class VitaminHarvestOrdersManager : MonoBehaviour
     // Points and coins
     public int PointsCollected;
     public int CoinsCollected;
+    public TextMeshProUGUI PointsText;
+    public TextMeshProUGUI CoinsText;
     //
     // Order spawning info:
     public float TimeToPrepareOrder; // How much time do the customers wait before leaving
@@ -197,6 +199,9 @@ public class VitaminHarvestOrdersManager : MonoBehaviour
                     VitaminHarvestItemManager.Instance.SpawnVFX("ReactionAwesome", tableToFinish.tableObject.transform.position);
                     PointsCollected += 10; // Example: Add points for completing the order
                     CoinsCollected += 5; // Example: Add coins for completing the order
+
+                    PointsText.text = PointsCollected + " Points";
+                    CoinsText.text = CoinsCollected + " g";
                 }
                 else
                 {
@@ -246,12 +251,26 @@ public class VitaminHarvestOrdersManager : MonoBehaviour
         // Wait until the customer reaches the spawn point
         yield return new WaitUntil(() => !customerMovement.isMoving);
 
-        // Step 4: Destroy the customer object
+        // Step 4: Find the table the customer was seated at and clear the seated customer name
+        Table customerTable = Tables.Find(table => table.seatedCustomerName == selectedCustomer.name);
+        if (customerTable != null)
+        {
+            customerTable.seatedCustomerName = "";
+        }
+
+        // Step 5: Destroy the customer object
         Destroy(selectedCustomer.spawnedObject);
         selectedCustomer.spawnedObject = null;
 
         // Update the customer list or perform any other necessary cleanup
-        Debug.Log($"Customer {selectedCustomer.name} has been sent home.");
+        Debug.Log($"Customer {selectedCustomer.name} has been sent home and their table is now free.");
+
+        // Step 6: Wait for a random time between 2 and 4 seconds
+        float randomDelay = UnityEngine.Random.Range(2f, 4f);
+        yield return new WaitForSeconds(randomDelay);
+
+        // Step 7: Spawn a new customer
+        SpawnCustomer();
 
     }
 }
