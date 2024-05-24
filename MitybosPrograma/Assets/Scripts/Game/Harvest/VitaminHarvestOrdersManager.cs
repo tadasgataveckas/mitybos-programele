@@ -15,6 +15,9 @@ public class VitaminHarvestOrdersManager : MonoBehaviour
     // Points and coins
     public int PointsCollected;
     public int CoinsCollected;
+    public TextMeshProUGUI PointsText;
+    public TextMeshProUGUI FinalPointsText;
+    public TextMeshProUGUI CoinsText;
     //
     // Order spawning info:
     public float TimeToPrepareOrder; // How much time do the customers wait before leaving
@@ -31,6 +34,7 @@ public class VitaminHarvestOrdersManager : MonoBehaviour
     public Transform CustomerSpawnPoint;
     public float RadiusFromCenter;
     public Transform DiningAreaCenter;
+    public GameObject GameEndScreen;
 
     public static VitaminHarvestOrdersManager Instance;
 
@@ -51,7 +55,8 @@ public class VitaminHarvestOrdersManager : MonoBehaviour
     {
         Timer = TotalTime;
         UpdateTimeDisplay();
-        StartCoroutine(SpawnCustomersWithDelay(3, 1f));
+        UpdatePoints();
+        StartCoroutine(SpawnCustomersWithDelay(3, 1.5f));
     }
 
     // Coroutine to spawn customers with a delay
@@ -72,10 +77,18 @@ public class VitaminHarvestOrdersManager : MonoBehaviour
             if (Timer < 0)
             {
                 Timer = 0;
+                OpenGameEnd();
+
             }
             UpdateTimeDisplay();
         }
         ordersTable.UpdateOrderTable(Orders, PossibleCustomers);
+    }
+
+    void OpenGameEnd()
+    {
+        Time.timeScale = 0;
+        GameEndScreen.SetActive(true);
     }
 
     void UpdateTimeDisplay()
@@ -83,6 +96,13 @@ public class VitaminHarvestOrdersManager : MonoBehaviour
         int minutes = Mathf.FloorToInt(Timer / 60);
         int seconds = Mathf.FloorToInt(Timer % 60);
         TimeText.text = $"{minutes:00}:{seconds:00}";
+    }
+
+    void UpdatePoints()
+    {
+        PointsText.text = PointsCollected + " Points";
+        FinalPointsText.text = PointsCollected + " Points";
+        CoinsText.text = CoinsCollected + " g";
     }
 
     public void SpawnCustomer()
@@ -197,6 +217,8 @@ public class VitaminHarvestOrdersManager : MonoBehaviour
                     VitaminHarvestItemManager.Instance.SpawnVFX("ReactionAwesome", tableToFinish.tableObject.transform.position);
                     PointsCollected += 10; // Example: Add points for completing the order
                     CoinsCollected += 5; // Example: Add coins for completing the order
+
+                    UpdatePoints();
                 }
                 else
                 {
@@ -246,12 +268,26 @@ public class VitaminHarvestOrdersManager : MonoBehaviour
         // Wait until the customer reaches the spawn point
         yield return new WaitUntil(() => !customerMovement.isMoving);
 
-        // Step 4: Destroy the customer object
+        // Step 4: Find the table the customer was seated at and clear the seated customer name
+        Table customerTable = Tables.Find(table => table.seatedCustomerName == selectedCustomer.name);
+        if (customerTable != null)
+        {
+            customerTable.seatedCustomerName = "";
+        }
+
+        // Step 5: Destroy the customer object
         Destroy(selectedCustomer.spawnedObject);
         selectedCustomer.spawnedObject = null;
 
         // Update the customer list or perform any other necessary cleanup
-        Debug.Log($"Customer {selectedCustomer.name} has been sent home.");
+        Debug.Log($"Customer {selectedCustomer.name} has been sent home and their table is now free.");
+
+        // Step 6: Wait for a random time between 2 and 4 seconds
+        float randomDelay = UnityEngine.Random.Range(2f, 4f);
+        yield return new WaitForSeconds(randomDelay);
+
+        // Step 7: Spawn a new customer
+        SpawnCustomer();
 
     }
 }

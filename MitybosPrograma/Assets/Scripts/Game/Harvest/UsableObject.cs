@@ -148,11 +148,37 @@ public class UsableObject : MonoBehaviour
             disabled = true;
 
             player.GetComponent<VitaminHarvestPlayerManager>().UnequipItem();
+
+            // Start the coroutine to set the sorting order after 0.1 seconds
+            StartCoroutine(SetSortingOrderAfterDelay(droppedItem, 0.01f));
         }
         else
         {
             Debug.LogWarning("Prefab to drop is null!");
         }
+    }
+
+    private IEnumerator SetSortingOrderAfterDelay(GameObject droppedItem, float delay)
+    {
+        float position = transform.parent.position.y;
+        // Get the first child, which is visuals
+        SpriteRenderer spriteRenderer = droppedItem.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.sortingOrder = Mathf.CeilToInt(position * 1000) * -1 + 5;
+        }
+        else
+        {
+            Debug.LogWarning("SpriteRenderer not found on the first child of the dropped item.");
+        }
+
+        yield return new WaitForSeconds(delay);
+
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.sortingOrder = Mathf.CeilToInt(position * 1000) * -1 + 5;
+        }
+
 
     }
 
