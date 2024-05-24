@@ -16,6 +16,7 @@ public class VitaminHarvestOrdersManager : MonoBehaviour
     public int PointsCollected;
     public int CoinsCollected;
     public TextMeshProUGUI PointsText;
+    public TextMeshProUGUI FinalPointsText;
     public TextMeshProUGUI CoinsText;
     //
     // Order spawning info:
@@ -33,6 +34,7 @@ public class VitaminHarvestOrdersManager : MonoBehaviour
     public Transform CustomerSpawnPoint;
     public float RadiusFromCenter;
     public Transform DiningAreaCenter;
+    public GameObject GameEndScreen;
 
     public static VitaminHarvestOrdersManager Instance;
 
@@ -53,7 +55,8 @@ public class VitaminHarvestOrdersManager : MonoBehaviour
     {
         Timer = TotalTime;
         UpdateTimeDisplay();
-        StartCoroutine(SpawnCustomersWithDelay(3, 1f));
+        UpdatePoints();
+        StartCoroutine(SpawnCustomersWithDelay(3, 1.5f));
     }
 
     // Coroutine to spawn customers with a delay
@@ -74,10 +77,18 @@ public class VitaminHarvestOrdersManager : MonoBehaviour
             if (Timer < 0)
             {
                 Timer = 0;
+                OpenGameEnd();
+
             }
             UpdateTimeDisplay();
         }
         ordersTable.UpdateOrderTable(Orders, PossibleCustomers);
+    }
+
+    void OpenGameEnd()
+    {
+        Time.timeScale = 0;
+        GameEndScreen.SetActive(true);
     }
 
     void UpdateTimeDisplay()
@@ -85,6 +96,13 @@ public class VitaminHarvestOrdersManager : MonoBehaviour
         int minutes = Mathf.FloorToInt(Timer / 60);
         int seconds = Mathf.FloorToInt(Timer % 60);
         TimeText.text = $"{minutes:00}:{seconds:00}";
+    }
+
+    void UpdatePoints()
+    {
+        PointsText.text = PointsCollected + " Points";
+        FinalPointsText.text = PointsCollected + " Points";
+        CoinsText.text = CoinsCollected + " g";
     }
 
     public void SpawnCustomer()
@@ -200,8 +218,7 @@ public class VitaminHarvestOrdersManager : MonoBehaviour
                     PointsCollected += 10; // Example: Add points for completing the order
                     CoinsCollected += 5; // Example: Add coins for completing the order
 
-                    PointsText.text = PointsCollected + " Points";
-                    CoinsText.text = CoinsCollected + " g";
+                    UpdatePoints();
                 }
                 else
                 {

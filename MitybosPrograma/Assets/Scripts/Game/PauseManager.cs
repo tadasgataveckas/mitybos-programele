@@ -33,4 +33,12 @@ public class PauseManager : MonoBehaviour
         Time.timeScale = 1f;
         UnityEngine.SceneManagement.SceneManager.LoadScene("Main");      
     }
+
+    public void RestartScene()
+    {
+        Time.timeScale = 1f;
+        int currentSceneIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(currentSceneIndex);
+    }
+
 }
