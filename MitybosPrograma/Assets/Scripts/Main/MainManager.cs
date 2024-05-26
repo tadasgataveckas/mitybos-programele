@@ -138,7 +138,7 @@ public class MainManager : MonoBehaviour
                     $"Gender: {userData.GetGenderString()}\n" +
                     $"Goal: {userData.GetGoalString()}\n" +
                     $"Physical Activity: {userData.physical_activity}\n" +
-                    $"Date of Birth: {userData.date_of_birth}\n" +
+                    $"Year of Birth: {userData.date_of_birth}\n" +
                     $"Creation date: {userData.creation_date.Substring(0, 9)}\n" +
                     $"BMI: {userCalories.bmi}\n" +
                     $"Daily Calories: {userCalories.calories}";
@@ -213,7 +213,7 @@ public class MainManager : MonoBehaviour
         string currentStreakDay = YearMonthDay();
         Debug.Log("currentStreakDay: " + currentStreakDay);
         currentStreakDay = DateTime.Now.ToString("yyyy-MM-dd");
-        Debug.Log("today: " + today);
+        Debug.Log("Last day: " + today);
         if (currCalories >= userCalories.calories && currentStreakDay == today)
         {
             streakCount++;
@@ -416,24 +416,24 @@ public class MainManager : MonoBehaviour
     /// Transferring from birth date to year
     /// </summary>
     /// <returns></returns>
-    public int Year()
-    {
-        // Konvertuojame string'ą į DateTime objektą
-        DateTime dataObj;
-        if (DateTime.TryParseExact(userData.date_of_birth, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out dataObj))
-        {
-            // Ištraukiame metus
-            year = dataObj.Year;
+    //public int Year()
+    //{
+    //    // Konvertuojame string'ą į DateTime objektą
+    //    DateTime dataObj;
+    //    if (DateTime.TryParseExact(userData.date_of_birth, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out dataObj))
+    //    {
+    //        // Ištraukiame metus
+    //        year = dataObj.Year;
 
-            // Spausdiname metus
-            //Debug.Log("Konvertuoti metai: " + year);
-        }
-        else
-        {
-            Debug.Log("Please write your birth date in correct form! (yyyy-MM-dd)");
-        }
-        return year;
-    }
+    //        // Spausdiname metus
+    //        //Debug.Log("Konvertuoti metai: " + year);
+    //    }
+    //    else
+    //    {
+    //        Debug.Log("Please write your birth date in correct form! (yyyy-MM-dd)");
+    //    }
+    //    return year;
+    //}
 
     private void GoToLogin()
     {
@@ -460,9 +460,9 @@ public class MainManager : MonoBehaviour
             errorData.text = "Weight is invalid";
             return;
         }
-        else if (!DateTime.TryParseExact(userData.date_of_birth, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out dataObj))
+        else if (!DateTime.TryParseExact(userData.date_of_birth, "yyyy", null, System.Globalization.DateTimeStyles.None, out dataObj))
         {
-            errorData.text = "Please write your birth date in correct form! (yyyy-MM-dd)";
+            errorData.text = "Please write your birth date in correct form! (yyyy)";
             return;
         }
 

@@ -23,6 +23,7 @@ public class SurveyManager : MonoBehaviour
     //scroller
     public ScrollerPrefab HeightScroller;
     public ScrollerPrefab WeightScroller;
+    public ScrollerPrefab YearScroller;
 
     // Continue and Back buttons
     public GameObject Continue;
@@ -58,6 +59,7 @@ public class SurveyManager : MonoBehaviour
 
         userData.height = HeightScroller.defaultValue;
         userData.weight = WeightScroller.defaultValue;
+        userData.date_of_birth = YearScroller.defaultValue.ToString();
     }
 
     void Update()
@@ -125,9 +127,24 @@ public class SurveyManager : MonoBehaviour
             eatingPreference = newEatingPreference;
     }
 
-    public void InputAge(string newBirthDate)
+    //public void InputAge(string newBirthDate)
+    //{
+    //    userData.date_of_birth = newBirthDate + "-01-01";
+    //}
+
+    public void InputYear()
     {
-        userData.date_of_birth = newBirthDate;
+        if (YearScroller != null)
+        {
+            float currYear = YearScroller.GetValue();
+
+            Debug.Log("Year: " + currYear);
+            userData.date_of_birth = currYear.ToString();
+        }
+        else
+        {
+            Debug.LogError("Year scroll object is not initialized.");
+        }
     }
     public void InputHeight()
     {
@@ -213,28 +230,29 @@ public class SurveyManager : MonoBehaviour
     }
 
     // Calculating features ----------------------------------------------------
-    public void Year()
-    {
-        // Konvertuojame string'ą į DateTime objektą
-        DateTime dataObj;
-        if (DateTime.TryParseExact(userData.date_of_birth, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out dataObj))
-        {
-            // Ištraukiame metus
-            year = dataObj.Year;
+    //public int Year()
+    //{
+    //    // Konvertuojame string'ą į DateTime objektą
+    //    DateTime dataObj;
+    //    if (DateTime.TryParseExact(userData.date_of_birth, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out dataObj))
+    //    {
+    //        // Ištraukiame metus
+    //        year = dataObj.Year;
 
-            // Spausdiname metus
-            Debug.Log("Konvertuoti metai: " + year);
-        }
-        else
-        {
-            error.text = "Please write your birth date in correct form! (yyyy-MM-dd)";
-            Debug.Log("Please write your birth date in correct form! (yyyy-MM-dd)");
-        }
-    }
-    public int ReturnYear()
-    {
-        return year;
-    }
+    //        // Spausdiname metus
+    //        Debug.Log("Konvertuoti metai: " + year);
+    //    }
+    //    else
+    //    {
+    //        error.text = "Please write your birth date in correct form! (yyyy-MM-dd)";
+    //        Debug.Log("Please write your birth date in correct form! (yyyy-MM-dd)");
+    //    }
+    //    return year;
+    //}
+    //public int ReturnYear()
+    //{
+    //    return year;
+    //}
 
     // Survey Segments ---------------------------------------------------------
 
@@ -288,11 +306,11 @@ public class SurveyManager : MonoBehaviour
                 Debug.Log("Please fill in all required fields.");
                 error.text = "Please choose your goal to continue the survey!";
             }
-            else if (currentSegment == 3 && !AHWEntered())
-            {               
-                 Debug.Log("Please fill in all required fields.");
-                 error.text = "Please write all your physical data in correct form!";                
-            }
+            //else if (currentSegment == 3 && !AHWEntered())
+            //{               
+            //     Debug.Log("Please fill in all required fields.");
+            //     error.text = "Please write all your physical data in correct form!";                
+            //}
             else
             {
                 SwitchSegment(currentSegment + 1);
@@ -311,6 +329,7 @@ public class SurveyManager : MonoBehaviour
                     goalText = " (reduced by 10%)";
                 }
 
+                year = int.Parse(userData.date_of_birth);
                 BMI = bmiCalories.CalculateBMI(userData.height, userData.weight);
                 CALORIES = bmiCalories.CalculateDailyCalories(userData, year);
                 // Printing user survey data 
@@ -319,7 +338,7 @@ public class SurveyManager : MonoBehaviour
                     "Gender: " + userData.GetGenderString() + "\n" +
                     "Goal: " + userData.GetGoalString() + "\n" +
                     "Eating preference: " + Allergy.ReturnAllergyName(eatingPreference) + "\n" +
-                    "Date of birth: " + userData.date_of_birth + "\n" +
+                    "Year of birth: " + userData.date_of_birth + "\n" +
                     "Height: " + userData.height + "\n" +
                     "Weight: " + userData.weight + "\n" +
                     "Allergies: " + GetAllergiesAsString() + "\n" +
@@ -362,9 +381,9 @@ public class SurveyManager : MonoBehaviour
     }
 
     // Checking if survey parameters are correct
-    private bool AHWEntered()
-    {        
-        return (DateTime.TryParseExact(userData.date_of_birth, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out _)) &&
-            (250 > userData.height && userData.height > 120) && (350 > userData.weight && userData.weight > 30);
-    }
+    //private bool AHWEntered()
+    //{        
+    //    return (DateTime.TryParseExact(userData.date_of_birth, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out _)) &&
+    //        (250 > userData.height && userData.height > 120) && (350 > userData.weight && userData.weight > 30);
+    //}
 }
