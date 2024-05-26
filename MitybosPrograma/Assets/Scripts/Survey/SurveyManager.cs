@@ -20,7 +20,7 @@ public class SurveyManager : MonoBehaviour
     //activity slider
     public SliderScript slider;
 
-    //scroller
+    //scrollers
     public ScrollerPrefab HeightScroller;
     public ScrollerPrefab WeightScroller;
     public ScrollerPrefab YearScroller;

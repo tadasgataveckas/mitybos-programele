@@ -38,6 +38,11 @@ public class MainManager : MonoBehaviour
 
     ClientMethods c = new ClientMethods(new DatabaseMethods());
 
+    //scrollers
+    public ScrollerPrefab HeightScroller;
+    public ScrollerPrefab WeightScroller;
+    public ScrollerPrefab YearScroller;
+
     // user_data object meant for storing and retrieving info
     private int id_user;
     private UserData userData;
@@ -72,6 +77,10 @@ public class MainManager : MonoBehaviour
         Debug.Log("Iskviestas");
         SceneSetUp();
         StartCoroutine(RepeatSceneSetup());
+
+        HeightScroller.defaultValue = Convert.ToInt32(userData.height);
+        WeightScroller.defaultValue = Convert.ToInt32(userData.weight);
+        YearScroller.defaultValue = Convert.ToInt32(userData.date_of_birth);
     }
     private IEnumerator RepeatSceneSetup()
     {
@@ -139,7 +148,7 @@ public class MainManager : MonoBehaviour
                     $"Goal: {userData.GetGoalString()}\n" +
                     $"Physical Activity: {userData.physical_activity}\n" +
                     $"Year of Birth: {userData.date_of_birth}\n" +
-                    $"Creation date: {userData.creation_date.Substring(0, 9)}\n" +
+                    $"Creation date: {userData.creation_date.Substring(0, 10)}\n" +
                     $"BMI: {userCalories.bmi}\n" +
                     $"Daily Calories: {userCalories.calories}";
 
@@ -308,19 +317,33 @@ public class MainManager : MonoBehaviour
         //camera.GetComponent<CameraScroll>().maxY = segments[currentSegment].GetComponent<SegmentInformation>().maxYScroll;
     }
 
-    public void InputHeight(string newHeight)
+    public void InputHeight()
     {
-        if (double.TryParse(newHeight, out userData.height))
+        if (HeightScroller != null)
         {
-            //Debug.Log("Edited height is: " + userData.height);
+            float currHeight = HeightScroller.GetValue();
+
+            Debug.Log("Height: " + currHeight);
+            userData.height = currHeight;
+        }
+        else
+        {
+            Debug.LogError("Scroll object is not initialized.");
         }
     }
 
-    public void InputWeight(string newWeight)
+    public void InputWeight()
     {
-        if (double.TryParse(newWeight, out userData.weight))
+        if (WeightScroller != null)
         {
-            //Debug.Log("Edited weight is: " + userData.weight);
+            float currWeight = WeightScroller.GetValue();
+
+            Debug.Log("Weight: " + currWeight);
+            userData.weight = currWeight;
+        }
+        else
+        {
+            Debug.LogError("Scroll object is not initialized.");
         }
     }
 
@@ -342,10 +365,19 @@ public class MainManager : MonoBehaviour
         //Debug.Log("Edited physical activity is: " + userData.physical_activity);
     }
 
-    public void InputBirth(string newBirth)
+    public void InputYear()
     {
-        userData.date_of_birth = newBirth;
-        //Debug.Log("Edited birth is: " + userData.date_of_birth);
+        if (YearScroller != null)
+        {
+            float currYear = YearScroller.GetValue();
+
+            Debug.Log("Year: " + currYear);
+            userData.date_of_birth = currYear.ToString();
+        }
+        else
+        {
+            Debug.LogError("Year scroll object is not initialized.");
+        }
     }
 
     public void InputAllergy(int val)

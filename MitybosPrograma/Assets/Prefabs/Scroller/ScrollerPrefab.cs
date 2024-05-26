@@ -79,4 +79,10 @@ public class ScrollerPrefab : MonoBehaviour
         Debug.Log("Value: " + currentValue);
         return currentValue;
     }
+
+    public void SetDefaultValue(int value)
+    {
+        currentValue = value;
+        SetCurrentValue();
+    }
 }
