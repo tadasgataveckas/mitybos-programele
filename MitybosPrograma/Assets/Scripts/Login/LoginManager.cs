@@ -144,6 +144,7 @@ public class LoginManager : MonoBehaviour
                 id = c.Login(username, password);
                 c.InsertUserLevelCoins(id, 0, 0, 0, 0);
                 Debug.Log("Account successfully created");
+                
             }
             else
                 Debug.Log("Account creation failed");
@@ -151,7 +152,7 @@ public class LoginManager : MonoBehaviour
             // TO DO: show account creation success pop up
             //
             //
-
+            //SceneManager.LoadScene("Survey");
             SceneManager.LoadScene("Login");
         }
     }

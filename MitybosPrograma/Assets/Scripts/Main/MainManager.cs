@@ -152,9 +152,9 @@ public class MainManager : MonoBehaviour
                     $"BMI: {userCalories.bmi}\n" +
                     $"Daily Calories: {userCalories.calories}";
 
-        currHeight.text = userData.height.ToString();
-        currWeight.text = userData.weight.ToString();
-        currBirth.text = userData.date_of_birth;
+        //currHeight.text = userData.height.ToString();
+        //currWeight.text = userData.weight.ToString();
+        //currBirth.text = userData.date_of_birth;
         currGender.value = (int)userData.gender - 1;
         currGoal.value = (int)userData.goal - 1;
         currPA.value = (int)userData.physical_activity - 1;
