@@ -28201,6 +28201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1140004983}
   - component: {fileID: 1140004984}
+  - component: {fileID: 1140004985}
   m_Layer: 0
   m_Name: MainManager
   m_TagString: Untagged
@@ -28280,6 +28281,19 @@ MonoBehaviour:
   FoodHeistButton: {fileID: 1800218755}
   AsteroidRushButton: {fileID: 991713067}
   descr: {fileID: 62175521}
+--- !u!114 &1140004985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140004982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68012fef755eaec4c85df7129cae651a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portraitOrientation: 1
 --- !u!1 &1142486347
 GameObject:
   m_ObjectHideFlags: 0

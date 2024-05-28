@@ -44,6 +44,18 @@ public class JumpGameManager : MonoBehaviour
     private LevelCoins levelCoins;
 
 
+    public List<float[]> PlatformPercentages = new List<float[]>()
+    {
+        // OneTime | HighJump | Death | Moving | Regular
+
+        new float[] { 10f, 20f, 0f, 0f, 70f }, // Level 1 percentages
+        new float[] { 20f, 20f, 10f, 0f, 50f },  // Level 2 percentages
+        new float[] { 20f, 20f, 15f, 20f, 25f },  // Level 3 percentages
+        new float[] { 20f, 20f, 20f, 20f, 20f }  // Level 4 percentages
+
+        // Add more levels as needed
+    };
+
 
     void Awake()
     {
@@ -104,7 +116,7 @@ public class JumpGameManager : MonoBehaviour
             case < 40:
                 SpawnPlatform(highJumpPlatformPrefab);
                 break;
-            // High jump platform, 10%
+            // Death platform, 20%
             case < 60:
                 SpawnPlatform(DeathPlatformPrefab);
                 spawnPosition.x = UnityEngine.Random.Range(0.2f - screenWidthInUnits / 2, screenWidthInUnits / 2 - 0.2f);
