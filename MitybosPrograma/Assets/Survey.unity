@@ -7194,6 +7194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1237100515}
   - component: {fileID: 1237100514}
+  - component: {fileID: 1237100516}
   m_Layer: 0
   m_Name: SurveyManager
   m_TagString: Untagged
@@ -7249,6 +7250,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1237100516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237100513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68012fef755eaec4c85df7129cae651a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portraitOrientation: 1
 --- !u!1 &1341566558
 GameObject:
   m_ObjectHideFlags: 0
