@@ -8,6 +8,7 @@ public class Chair : MonoBehaviour
 
     private JumpGameManager jumpGameManager;
     private float screenHeightInUnits;
+    public Chef chef;
 
     // for not sending duplicate triggers
     private bool hasTriggeredAnimation = false;
@@ -24,15 +25,16 @@ public class Chair : MonoBehaviour
                 velocity.y = jumpForce;
                 rb.velocity = velocity;
             }
+            chef.SpawnTooltip();
             if (!hasTriggeredAnimation)
             {
                 collision.gameObject.GetComponent<JumpPlayerController>().LandSit();
                 collision.gameObject.GetComponent<JumpPlayerController>().sitting = true;
+                GetComponent<ChairSlide>().slidingTarget = "FinalSpot";
                 hasTriggeredAnimation = true;
                 StartCoroutine(ResetAnimationTriger(0.3f));
                 //Spawn food?
                 //Go to designated position
-                GetComponent<ChairSlide>().slidingTarget = "FinalSpot";
             }
         }
     }
