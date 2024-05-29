@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 6587327512602232715}
   - component: {fileID: 4092933562359338633}
   - component: {fileID: 1126985169372128662}
-  - component: {fileID: 8724481787369554952}
   - component: {fileID: 8238329995210400621}
+  - component: {fileID: 5686219810625017345}
   m_Layer: 0
   m_Name: PlateFood
   m_TagString: Untagged
@@ -108,18 +108,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8724481787369554952
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 585721202343822128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b22041bdb8df7b646b1f4d10fdb7ee3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &8238329995210400621
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -146,6 +134,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.21332598, y: 1.1520342}
   m_EdgeRadius: 0
+--- !u!114 &5686219810625017345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 585721202343822128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f341b0a1a8e0ad840abac0c7ac1fed54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vitaminName: 
 --- !u!1 &1678130107384674243
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,6 +320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 0
+  chef: {fileID: 2463325928747475279}
 --- !u!114 &2761551745198778160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -536,7 +538,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 0
-  BreakAfterTouch: 0
+  breakAfterTouch: 0
+  killOnTouch: 0
+  moveAround: 0
 --- !u!251 &4824882963519211491
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -677,12 +681,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possibleFoods:
-  - animator: {fileID: 22100000, guid: 578de2f7ddb9c7943a06316aad757d96, type: 2}
-    vitaminName: K
   - animator: {fileID: 9100000, guid: c8e944e4c5c56004e8591c0d50ab5889, type: 2}
     vitaminName: C
-  - animator: {fileID: 22100000, guid: e8fb8708aa6559846b66907cfa587dfb, type: 2}
+    tooltipPrefab: {fileID: 5790851059275384959, guid: 14e1b3ab5c799ba4782f0c47e89d8cad, type: 3}
+  - animator: {fileID: 22100000, guid: a7a60ac5266fd3742b4a2fba2d79bfb1, type: 2}
+    vitaminName: E
+    tooltipPrefab: {fileID: 6909041811561492108, guid: 0e1a25820d2902a43b715e8f05499019, type: 3}
+  - animator: {fileID: 22100000, guid: d46fce6ef5da5124d8eb2eb29c019ea2, type: 2}
     vitaminName: A
+    tooltipPrefab: {fileID: 4804424052374271823, guid: 587e31853cd158546bf9f505828b6e4f, type: 3}
+  - animator: {fileID: 22100000, guid: 5a3773b8531484a41bc316ae6dc271b2, type: 2}
+    vitaminName: D
+    tooltipPrefab: {fileID: 7234039943075177587, guid: 92966debb3a1b704daa22b67154f67c9, type: 3}
   plateFood: {fileID: 6587327512602232715}
   plateFoodFlySpeed: 5
   heightFromPlayer: 1.5

@@ -49,6 +49,7 @@ public class ChairSlide : MonoBehaviour
             if (chairReached)
             {
                 slidingTarget = "";
+                chef.gameObject.GetComponent<Chef>().SpawnTooltip();
                 //StartCoroutine(SetHappyTriggerAfterDelay(0.5f)); //
             }
         }

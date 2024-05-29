@@ -16,12 +16,16 @@ public class Chef : MonoBehaviour
     private JumpGameManager jumpGameManager;
     private Transform playerTransform;
 
+    private Transform VitaminTooltipHolder;
+    private GameObject spawnedTooltip;
+
     void Start()
     {
         chosenFoodIndex = Random.Range(0, possibleFoods.Count);
         plateFood.GetComponent<Animator>().runtimeAnimatorController = possibleFoods[chosenFoodIndex].animator;
         jumpGameManager = JumpGameManager.Instance;
         playerTransform = jumpGameManager.player;
+        VitaminTooltipHolder = jumpGameManager.VitaminTooltipHolder;
         animator = GetComponent<Animator>();
     }
 
@@ -41,8 +45,18 @@ public class Chef : MonoBehaviour
             if (foodFlownToTargetPosition)
             {
                 flyFood = false;
+                plateFood.GetComponent<PlateFoodObject>().vitaminName = possibleFoods[chosenFoodIndex].vitaminName;
                 plateFood.GetComponent<BoxCollider2D>().enabled = true;
             }
+        }
+    }
+
+    //Chair went to its final position
+    public void SpawnTooltip()
+    {
+        if (spawnedTooltip == null)
+        {
+            spawnedTooltip = Instantiate(possibleFoods[chosenFoodIndex].tooltipPrefab, VitaminTooltipHolder.position, Quaternion.identity, VitaminTooltipHolder);
         }
     }
     public void PlayerTriesToJump() {
@@ -54,6 +68,7 @@ public class Chef : MonoBehaviour
 
         yield return new WaitForSeconds(delay);
         flyFood = true;
+        Destroy(spawnedTooltip);
     }
 }
 
@@ -62,4 +77,5 @@ public class PlateFood
 {
     public RuntimeAnimatorController animator;
     public string vitaminName;
+    public GameObject tooltipPrefab;
 }
