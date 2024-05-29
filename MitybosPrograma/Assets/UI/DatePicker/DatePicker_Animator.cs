@@ -47,7 +47,7 @@ namespace UI.Dates
                             // Start off by setting our Y scale to zero;
                             SetPropertyValue(DatePicker_Animation_Property.ScaleY, 0);
                             // Then animate to full size
-                            Animate(DatePicker_Animation_Property.ScaleY, 1, AnimationDuration, onComplete);
+                            Animate(DatePicker_Animation_Property.ScaleY, 1.8f, AnimationDuration, onComplete);
                         }
                         break;
                     case Animation.Fade:

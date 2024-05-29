@@ -13,6 +13,8 @@ public class AutoPlan : MonoBehaviour
     int index { get; set; }
 
     int[] numbers = { 1, 3, 5 };
+
+    [SerializeField] TMP_Text plus1, plus3, plus5;
     GameObject parent { get; set; }
     protected TableManager tableManager { get; set; }
 
@@ -27,8 +29,30 @@ public class AutoPlan : MonoBehaviour
     
     private void Start()
     {
-        //Debug.Log("+Button started, getting the table manager");
-        //Debug.Log(numbers.Length + "nr length");
+		switch (index)
+		{
+			case 0:
+				{
+					plus1.enabled = true;
+					plus3.enabled = false;
+					plus5.enabled = false;
+					break;
+				}
+			case 1:
+				{
+					plus1.enabled = true;
+					plus3.enabled = true;
+					plus5.enabled = false;
+					break;
+				}
+			case 2:
+				{
+					plus1.enabled = true;
+					plus3.enabled = true;
+					plus5.enabled = true;
+					break;
+				}
+		}
 		InputField = GameObject.Find("InputFieldNumber").GetComponent<TMP_InputField>();
 		InputField.contentType = TMP_InputField.ContentType.Alphanumeric;
         InputField.text = "1";
@@ -39,7 +63,7 @@ public class AutoPlan : MonoBehaviour
 
 	private void Update()
     {
-        
+
     }
     public void OnClickAutoPlan()
     {
@@ -63,7 +87,7 @@ public class AutoPlan : MonoBehaviour
                         
 						tableManager.SetPrefabParent(_prefab, item.transform);
 
-						SetInitPrefabInfo(_prefab, food.Name);
+						SetInitPrefabInfo(_prefab, food.Name + " " +food.Calories+ " kcal");
 
                         _prefab.SetActive(true);
 						break;
@@ -86,6 +110,30 @@ public class AutoPlan : MonoBehaviour
             index += 1;
         }
 		InputField.text = numbers[index].ToString();
+		switch (index)
+		{
+			case 0:
+				{
+					plus1.enabled = true;
+					plus3.enabled = false;
+					plus5.enabled = false;
+					break;
+				}
+			case 1:
+				{
+					plus1.enabled = true;
+					plus3.enabled = true;
+					plus5.enabled = false;
+					break;
+				}
+			case 2:
+				{
+					plus1.enabled = true;
+					plus3.enabled = true;
+					plus5.enabled = true;
+					break;
+				}
+		}
 	}
 
 	public void OnPressLess()
@@ -96,6 +144,31 @@ public class AutoPlan : MonoBehaviour
             index -= 1;
 		}
 		InputField.text = numbers[index].ToString();
+
+		switch (index)
+		{
+			case 0:
+				{
+					plus1.enabled = true;
+					plus3.enabled = false;
+					plus5.enabled = false;
+					break;
+				}
+			case 1:
+				{
+					plus1.enabled = true;
+					plus3.enabled = true;
+					plus5.enabled = false;
+					break;
+				}
+			case 2:
+				{
+					plus1.enabled = true;
+					plus3.enabled = true;
+					plus5.enabled = true;
+					break;
+				}
+		}
 	}
 
 	private void SetInitPrefabInfo(GameObject prefab, string name)

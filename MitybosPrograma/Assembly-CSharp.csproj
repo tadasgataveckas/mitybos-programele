@@ -103,6 +103,7 @@
     <Compile Include="Assets\UI\DatePicker\DatePicker_InputField.cs" />
     <Compile Include="Assets\Scripts\Game\Shield.cs" />
     <Compile Include="Assets\Scripts\Game\Harvest\PickableObject.cs" />
+    <Compile Include="Assets\Scripts\Game\ScreenOrientationManager.cs" />
     <Compile Include="Assets\UI\TableLayout\Example\DynamicRowsExampleController.cs" />
     <Compile Include="Assets\Scripts\Game\Magic\ME_Game_Manager.cs" />
     <Compile Include="Assets\Prefabs\FPS Counter\FPSCounter.cs" />
