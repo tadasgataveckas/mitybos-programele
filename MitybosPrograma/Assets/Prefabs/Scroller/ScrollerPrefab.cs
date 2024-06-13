@@ -33,14 +33,11 @@ public class ScrollerPrefab : MonoBehaviour
         GridLayoutGroup G = container.GetComponent<GridLayoutGroup>();
 
         // sets scroller height
-        R.sizeDelta = new Vector2(R.sizeDelta.x, G.cellSize.y * 
+        R.sizeDelta = new Vector2(R.sizeDelta.x, G.cellSize.y *
             ((Mathf.Abs(startIndex - endIndex) + 1)) + G.cellSize.y / 2);
 
         // sets default scroller position
-        Debug.Log("DEFAULT THING" + new Vector2(R.position.x, G.cellSize.y * (defaultValue - startIndex)));
-        R.anchoredPosition3D = new Vector2(R.anchoredPosition3D.x, G.cellSize.y * (defaultValue - startIndex));
-
-
+        SetDefaultValue(defaultValue);
         PopulateScroller();
         SetCurrentValue();
     }
@@ -82,7 +79,12 @@ public class ScrollerPrefab : MonoBehaviour
 
     public void SetDefaultValue(int value)
     {
-        currentValue = value;
+        RectTransform R = container.GetComponent<RectTransform>();
+        GridLayoutGroup G = container.GetComponent<GridLayoutGroup>();
+
+        defaultValue = value;
+        R.anchoredPosition3D = new Vector2(R.anchoredPosition3D.x, G.cellSize.y * (defaultValue - startIndex));
+
         SetCurrentValue();
     }
 }

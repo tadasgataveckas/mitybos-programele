@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="Assets\UI\DatePicker\DatePicker_ContentLayout.cs" />
     <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\EditAddBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Main\SafeAreaThing.cs" />
     <Compile Include="Assets\Scripts\Game\Magic\Weapons\Pea Shooter\ME_PeaShooter.cs" />
     <Compile Include="Assets\Scripts\Game\Magic\Enemies\ME_EnemyHurtbox.cs" />
     <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\FoodManager.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Assets\Scripts\Tutorial\TutorialManager.cs" />
     <Compile Include="Assets\Scripts\Models\LevelCoins.cs" />
     <Compile Include="Assets\Scripts\Survey\SliderScript.cs" />
+    <Compile Include="Assets\Scripts\Main\Settings\EditSettings.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\IClientInterface.cs" />
     <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\HelperScripts\FoodItem.cs" />
     <Compile Include="Assets\UI\TableLayout\TableRow.cs" />
@@ -107,6 +109,7 @@
     <Compile Include="Assets\Scripts\Game\ScreenOrientationManager.cs" />
     <Compile Include="Assets\UI\TableLayout\Example\DynamicRowsExampleController.cs" />
     <Compile Include="Assets\Scripts\Game\Magic\ME_Game_Manager.cs" />
+    <Compile Include="Assets\Scripts\Main\ScreenScaler.cs" />
     <Compile Include="Assets\Prefabs\FPS Counter\FPSCounter.cs" />
     <Compile Include="Assets\Scripts\Game\Jump\Chef.cs" />
     <Compile Include="Assets\Scripts\Main\ProgressBar.cs" />
@@ -139,6 +142,7 @@
     <Compile Include="Assets\Scripts\Game\Magic\Enemies\ME_Enemy.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker.cs" />
     <Compile Include="Assets\Scripts\Main\ButtonObject.cs" />
+    <Compile Include="Assets\Scripts\Main\Settings\SettingsTab.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_DateRange.cs" />
     <Compile Include="Assets\Scripts\Models\UserCalories.cs" />
     <Compile Include="Assets\Scripts\Game\PauseManager.cs" />

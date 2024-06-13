@@ -5,6 +5,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Globalization;
 //using Google.Protobuf.WellKnownTypes;
 
 public class MainManager : MonoBehaviour
@@ -22,26 +23,10 @@ public class MainManager : MonoBehaviour
     // Current User survey info in the edit fields
     public TextMeshProUGUI user;
     public TextMeshProUGUI info;
-
-    public TextMeshProUGUI currHeight;
-    public TextMeshProUGUI currWeight;
-    public TMP_Dropdown currGender;
-    public TMP_Dropdown currGoal;
-    public TMP_Dropdown currPA;
-    public TextMeshProUGUI currBirth;
-    public TMP_Dropdown currAllergies;
-    public TextMeshProUGUI allergySettingDisplay;
-    public TMP_Dropdown currPreferences;
     public TextMeshProUGUI dailyCalories;
-    public TextMeshProUGUI errorData;
     public GameObject editSettings;
 
     ClientMethods c = new ClientMethods(new DatabaseMethods());
-
-    //scrollers
-    public ScrollerPrefab HeightScroller;
-    public ScrollerPrefab WeightScroller;
-    public ScrollerPrefab YearScroller;
 
     // user_data object meant for storing and retrieving info
     private int id_user;
@@ -74,13 +59,14 @@ public class MainManager : MonoBehaviour
 
     void Start()
     {
+        CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
+        CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
+
         Debug.Log("Iskviestas");
         SceneSetUp();
         StartCoroutine(RepeatSceneSetup());
 
-        HeightScroller.defaultValue = Convert.ToInt32(userData.height);
-        WeightScroller.defaultValue = Convert.ToInt32(userData.weight);
-        YearScroller.defaultValue = Convert.ToInt32(userData.date_of_birth);
+        //YearScroller.defaultValue = Convert.ToInt32(userData.date_of_birth);
     }
     private IEnumerator RepeatSceneSetup()
     {
@@ -140,39 +126,6 @@ public class MainManager : MonoBehaviour
 
     public void UpdateUserDisplay()
     {
-        errorData.text = "";
-        //Debug.Log("Year is: " + Year());
-        info.text = $"Height: {userData.height}\n" +
-                    $"Weight: {userData.weight}\n" +
-                    $"Gender: {userData.GetGenderString()}\n" +
-                    $"Goal: {userData.GetGoalString()}\n" +
-                    $"Physical Activity: {userData.physical_activity}\n" +
-                    $"Year of Birth: {userData.date_of_birth}\n" +
-                    $"Creation date: {userData.creation_date.Substring(0, 10)}\n" +
-                    $"BMI: {userCalories.bmi}\n" +
-                    $"Daily Calories: {userCalories.calories}";
-
-        currHeight.text = userData.height.ToString();
-        currWeight.text = userData.weight.ToString();
-        currBirth.text = userData.date_of_birth;
-        currGender.value = (int)userData.gender - 1;
-        currGoal.value = (int)userData.goal - 1;
-        currPA.value = (int)userData.physical_activity - 1;
-
-        if (newAllergies.Contains(10))
-            currPreferences.value = 1;
-        else if (newAllergies.Contains(11))
-            currPreferences.value = 2;
-        else
-            currPreferences.value = 0;
-
-        foreach (int allergy in newAllergies)
-            if (allergy < 10)
-                currAllergies.options[allergy - 1].text = "O - " + Allergy.ReturnAllergyName(allergy);
-
-        UnselectDropdown();
-        UpdateAllergyDisplay();
-
         currCalories = food.ReturnTotalKcal();
         dailyCalories.text = currCalories + " / " + userCalories.calories + "cal";
 
@@ -186,9 +139,6 @@ public class MainManager : MonoBehaviour
         currCoins.text = levelCoins.coins.ToString();
         currXp.text = levelCoins.xp.ToString();
         currStreak.text = levelCoins.streak.ToString();
-
-        
-
 
         user.text = "User: " + username;
     }
@@ -299,9 +249,6 @@ public class MainManager : MonoBehaviour
 
     public void SwitchSegment(int switchTo)
     {
-        //teleport camera to position
-        //camera.transform.position = new Vector3(segments[switchTo].transform.position.x, 0, -10);
-
         //changed for canvas
         for (int i = 0; i < segments.Count; i++)
         {
@@ -313,191 +260,15 @@ public class MainManager : MonoBehaviour
         {
             segmentButtons[i].GetComponent<ButtonTransitions>().SetSelectedSegment(i == switchTo);
         }
-        //camera.GetComponent<CameraScroll>().minY = segments[currentSegment].GetComponent<SegmentInformation>().minYScroll;
-        //camera.GetComponent<CameraScroll>().maxY = segments[currentSegment].GetComponent<SegmentInformation>().maxYScroll;
     }
-
-    public void InputHeight()
-    {
-        if (HeightScroller != null)
-        {
-            float currHeight = HeightScroller.GetValue();
-
-            Debug.Log("Height: " + currHeight);
-            userData.height = currHeight;
-        }
-        else
-        {
-            Debug.LogError("Scroll object is not initialized.");
-        }
-    }
-
-    public void InputWeight()
-    {
-        if (WeightScroller != null)
-        {
-            float currWeight = WeightScroller.GetValue();
-
-            Debug.Log("Weight: " + currWeight);
-            userData.weight = currWeight;
-        }
-        else
-        {
-            Debug.LogError("Scroll object is not initialized.");
-        }
-    }
-
-    public void InputGender(int val)
-    {
-        userData.gender = (UserData.Gender)(val + 1);
-        //Debug.Log("Edited gender is: " + userData.gender);
-    }
-
-    public void InputGoal(int val1)
-    {
-        userData.goal = (UserData.Goal)(val1 + 1);
-        //Debug.Log("Edited goal is: " + userData.goal);
-    }
-
-    public void InputActivity(int val2)
-    {
-        userData.physical_activity = (val2 + 1);
-        //Debug.Log("Edited physical activity is: " + userData.physical_activity);
-    }
-
-    public void InputYear()
-    {
-        if (YearScroller != null)
-        {
-            float currYear = YearScroller.GetValue();
-
-            Debug.Log("Year: " + currYear);
-            userData.date_of_birth = currYear.ToString();
-        }
-        else
-        {
-            Debug.LogError("Year scroll object is not initialized.");
-        }
-    }
-
-    public void InputAllergy(int val)
-    {
-        // added to escape self call (9 is non existent item acting as null)
-        if (val >= 9)
-            return;
-
-        UnselectDropdown();
-
-        // ++, cuz dropdown values start at 0
-        val = val + 1;
-
-        if (newAllergies.Contains(val))
-        {
-            newAllergies.Remove(val);
-            currAllergies.options[val - 1].text = Allergy.ReturnAllergyName(val);
-        }
-        else
-        {
-            newAllergies.Add(val);
-            currAllergies.options[val - 1].text = "O - " + Allergy.ReturnAllergyName(val);
-        }
-
-        UpdateAllergyDisplay();
-    }
-
-    private void UpdateAllergyDisplay()
-    {
-        allergySettingDisplay.text = "";
-        foreach (int i in newAllergies)
-            if (i < 10)
-                allergySettingDisplay.text = allergySettingDisplay.text + Allergy.ReturnAllergyName(i) + ", ";
-
-        if (allergySettingDisplay.text.Length > 0)
-            allergySettingDisplay.text = allergySettingDisplay.text.Substring(0, allergySettingDisplay.text.Length - 2);
-    }
-
-    public void InputPreference(int val)
-    {
-        switch (val)
-        {
-            case 1:
-                newAllergies.Remove(11);
-                newAllergies.Add(10);
-                break;
-            case 2:
-                newAllergies.Remove(10);
-                newAllergies.Add(11);
-                break;
-            default:
-                newAllergies.Remove(10);
-                newAllergies.Remove(11);
-                break;
-        }
-    }
-
-    // this is added cuz you can't select "nothing", and input allergy triggers
-    // on value "changed" and not "selected"
-    private void UnselectDropdown()
-    {
-        currAllergies.options.Add(new TMP_Dropdown.OptionData());
-        currAllergies.value = 10;
-        currAllergies.options.RemoveAt(9);
-    }
-
-    /// <summary>
-    /// Transferring from birth date to year
-    /// </summary>
-    /// <returns></returns>
-    //public int Year()
-    //{
-    //    // Konvertuojame string'ą į DateTime objektą
-    //    DateTime dataObj;
-    //    if (DateTime.TryParseExact(userData.date_of_birth, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out dataObj))
-    //    {
-    //        // Ištraukiame metus
-    //        year = dataObj.Year;
-
-    //        // Spausdiname metus
-    //        //Debug.Log("Konvertuoti metai: " + year);
-    //    }
-    //    else
-    //    {
-    //        Debug.Log("Please write your birth date in correct form! (yyyy-MM-dd)");
-    //    }
-    //    return year;
-    //}
 
     private void GoToLogin()
     {
         SceneManager.LoadScene("Login");
     }
 
-    public void LogOut()
-    {
-        SessionManager.CloseSession();
-        GoToLogin();
-    }
-
     public void SubmitChanges()
     {
-        DateTime dataObj;
-
-        if (250 <= userData.height || userData.height <= 120)
-        {
-            errorData.text = "Height is invalid";
-            return;
-        }
-        else if (350 <= userData.weight || userData.weight <= 30)
-        {
-            errorData.text = "Weight is invalid";
-            return;
-        }
-        else if (!DateTime.TryParseExact(userData.date_of_birth, "yyyy", null, System.Globalization.DateTimeStyles.None, out dataObj))
-        {
-            errorData.text = "Please write your birth date in correct form! (yyyy)";
-            return;
-        }
-
         editSettings.SetActive(false);
         UpdateInfo();
         UpdateUserDisplay();
