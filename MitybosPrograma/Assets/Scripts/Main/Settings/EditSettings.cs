@@ -165,9 +165,6 @@ public class EditSettings : MonoBehaviour
 
         if (allergySettingDisplay.text.Length > 0)
             allergySettingDisplay.text = allergySettingDisplay.text.Substring(0, allergySettingDisplay.text.Length - 2);
-
-        Debug.Log(allergySettingDisplay.text.Substring(0, allergySettingDisplay.text.Length - 2));
-        Debug.Log(allergySettingDisplay.text);
     }
 
     public void SubmitChanges()
