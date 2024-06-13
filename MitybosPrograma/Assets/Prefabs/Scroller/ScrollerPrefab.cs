@@ -21,6 +21,12 @@ public class ScrollerPrefab : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        RefreshScroller();
+    }
+
+    public void RefreshScroller()
+    {
+
         // checking index range validity
         if (startIndex > endIndex)
             endIndex = startIndex + 1;
@@ -43,11 +49,15 @@ public class ScrollerPrefab : MonoBehaviour
     }
 
 
-
-
     // populate scroller with items
     public void PopulateScroller()
     {
+
+        foreach (Transform child in container.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
         for (int i = startIndex; i <= endIndex; i++)
         {
             TextMeshProUGUI item = Instantiate(text_element, container.transform);

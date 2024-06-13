@@ -7,13 +7,16 @@ using UnityEngine.SceneManagement;
 public class SettingsTab : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI info;
+    [SerializeField] private TextMeshProUGUI usernameText;
 
     private UserData userData;
     private int id_user;
     private UserCalories userCalories;
+    private ClientMethods clientMethods;
 
     void Awake()
     {
+        clientMethods = new ClientMethods(new DatabaseMethods());
         id_user = SessionManager.GetIdKey();
         userData = new UserData(id_user);
         userCalories = new UserCalories(id_user);
@@ -21,8 +24,12 @@ public class SettingsTab : MonoBehaviour
 
     private void OnEnable()
     {
-        userCalories.SynchData();
         userData.SynchData();
+        userCalories.SynchData();
+
+
+        string username = clientMethods.ReturnUsername(userData.id_user);
+        usernameText.text = "User: " + username;
 
         info.text = $"Height: {userData.height}\n" +
                     $"Weight: {userData.weight}\n" +

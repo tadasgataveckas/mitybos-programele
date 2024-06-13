@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using static UnityEngine.Timeline.TimelineAsset;
 
 public class EditSettings : MonoBehaviour
 {
@@ -20,23 +21,21 @@ public class EditSettings : MonoBehaviour
     private UserData userData;
     private int id_user;
     private List<int> newAllergies;
-    ClientMethods c;
+    ClientMethods clientMethods;
 
     // Start is called before the first frame update
     void Awake()
     {
-        c = new ClientMethods(new DatabaseMethods());
+        clientMethods = new ClientMethods(new DatabaseMethods());
         id_user = SessionManager.GetIdKey();
         userData = new UserData(id_user);
         date.endIndex = DateTime.Now.Year;
+        date.RefreshScroller();
     }
 
     private void OnEnable()
     {
         userData.SynchData();
-
-        Debug.Log("HEIGHT: " + userData.height);
-        Debug.Log("WEIGHT: " + userData.weight);
 
         height.SetDefaultValue((int)userData.height);
         weight.SetDefaultValue((int)userData.weight);
@@ -44,7 +43,7 @@ public class EditSettings : MonoBehaviour
         gender.value = (int)userData.gender - 1;
         goal.value = (int)userData.goal - 1;
         activity.value = (int)userData.physical_activity - 1;
-        newAllergies = c.GetAllUserAllergies(id_user);
+        newAllergies = clientMethods.GetAllUserAllergies(id_user);
 
         if (newAllergies.Contains(10))
             preference.value = 1;
@@ -67,8 +66,6 @@ public class EditSettings : MonoBehaviour
         {
             float currHeight = height.GetValue();
             userData.height = currHeight;
-
-            Debug.Log("HEEEIGHT: " + currHeight);
         }
     }
 
@@ -168,5 +165,18 @@ public class EditSettings : MonoBehaviour
 
         if (allergySettingDisplay.text.Length > 0)
             allergySettingDisplay.text = allergySettingDisplay.text.Substring(0, allergySettingDisplay.text.Length - 2);
+
+        Debug.Log(allergySettingDisplay.text.Substring(0, allergySettingDisplay.text.Length - 2));
+        Debug.Log(allergySettingDisplay.text);
+    }
+
+    public void SubmitChanges()
+    {
+        clientMethods.DeleteUserAllergies(userData.id_user);
+        foreach (int allergy in newAllergies)
+            clientMethods.InsertUserAllergy(userData.id_user, allergy);
+
+        clientMethods.UpdateUserData(userData);
+        gameObject.SetActive(false);
     }
 }

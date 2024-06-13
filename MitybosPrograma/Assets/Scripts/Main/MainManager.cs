@@ -10,44 +10,23 @@ using System.Globalization;
 
 public class MainManager : MonoBehaviour
 {
-	//PROGRES BAR STUFF DONT DELEETE
-	public ProgressBar progressBar_instance;
-	//PROGRES BAR STUFF DONT DELEETE
-
-
-	public GameObject camera;
     public List<GameObject> segments;
     public List<GameObject> segmentButtons;
     public int currentSegment = 0;
-
-    // Current User survey info in the edit fields
-    public TextMeshProUGUI user;
-    public TextMeshProUGUI info;
-    public TextMeshProUGUI dailyCalories;
-    public GameObject editSettings;
 
     ClientMethods c = new ClientMethods(new DatabaseMethods());
 
     // user_data object meant for storing and retrieving info
     private int id_user;
-    private UserData userData;
-    private string username;
-    private List<int> newAllergies;
+    //private UserData userData;
     public static UserCalories userCalories;
 
     //level_coins object meant for storing and retrieving info
     private LevelCoins levelCoins;
     public TextMeshProUGUI currLevel;
-    private bool isXpVisible = false;
-    public TextMeshProUGUI currXp;
     public TextMeshProUGUI currCoins;
     public TextMeshProUGUI currStreak;
-    public string today = DateTime.Now.ToString("yyyy-MM-dd");
-
-    int year;
-
-    public FoodSearch food;
-    public float currCalories;
+    private string today = DateTime.Now.ToString("yyyy-MM-dd");
 
     //GAME DESCRIPTION THINGS
     public Button VitaminHarvestButton;
@@ -57,138 +36,74 @@ public class MainManager : MonoBehaviour
     public Button AsteroidRushButton;
     public TextMeshProUGUI descr;
 
-    void Start()
+    void Awake()
     {
         CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
         CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
 
-        Debug.Log("Iskviestas");
-        SceneSetUp();
-        StartCoroutine(RepeatSceneSetup());
-
-        //YearScroller.defaultValue = Convert.ToInt32(userData.date_of_birth);
-    }
-    private IEnumerator RepeatSceneSetup()
-    {
-        yield return new WaitForSeconds(0.0001f);
         SceneSetUp();
     }
 
     public void SceneSetUp()
     {
-        Debug.Log("Iskviestas");
-        // gets stored user id
         id_user = SessionManager.GetIdKey();
 
         // returns user to login screen if this scene is accessed without an id
         if (id_user <= 0)
         {
             GoToLogin();
-
-            // idk if other methods run after scene change, so I put this here just in case
             return;
         }
-        //Not showing xp at first
-        currXp.gameObject.SetActive(false);
-
         GetAllUserData();
         SwitchSegment(currentSegment);
-
         GameDescr();
+    }
 
-
+    private void OnEnable()
+    {
+        UpdateInfo();
         UpdateUserDisplay();
     }
 
-
     public void GetAllUserData()
     {
-        // retrieves user_data into object
-        userData = new UserData(id_user);
-        userData.SynchData();
-
         // retrieves level_coins into object
         levelCoins = new LevelCoins(id_user);
         levelCoins.SynchData();
 
         userCalories = new UserCalories(id_user);
         userCalories.SynchData();
-
-        username = c.ReturnUsername(id_user);
-
-        newAllergies = c.GetAllUserAllergies(id_user);
-
-        food.GetComponent<FoodSearch>();
-        currCalories = food.ReturnTotalKcal();
-
-        Debug.Log(userData.ToString());
     }
 
     public void UpdateUserDisplay()
     {
-        currCalories = food.ReturnTotalKcal();
-        dailyCalories.text = currCalories + " / " + userCalories.calories + "cal";
-
-		//PROGRES BAR STUFF DONT DELEETE
-		progressBar_instance.max = userCalories.calories;
-        progressBar_instance.UpdateCurr();
-
         //LEVEL COINS STUFF
         UpdateLevelXPCoins();
         currLevel.text = (levelCoins.xp / 100).ToString();
         currCoins.text = levelCoins.coins.ToString();
-        currXp.text = levelCoins.xp.ToString();
         currStreak.text = levelCoins.streak.ToString();
-
-        user.text = "User: " + username;
     }
 
     public void UpdateInfo()
     {
-        c.UpdateUserData(userData);
         userCalories.SynchData();
-
-        c.DeleteUserAllergies(userData.id_user);
-        foreach (int allergy in newAllergies)
-            c.InsertUserAllergy(userData.id_user, allergy);
+        levelCoins.SynchData();
     }
 
     public void UpdateLevelXPCoins()
     {
         c.UpdateUserLevel(id_user, levelCoins.xp / 100);
-        //if (levelCoins.xp >= 100)
-        //{
-        //    c.UpdateUserLevel(id_user, 1);
-        //}
-        //if(levelCoins.xp >= 190)
-        //{
-        //    c.UpdateUserLevel(id_user, 2);
-        //}
-        //if (levelCoins.xp >= 350)
-        //{
-        //    c.UpdateUserLevel(id_user, 3);
-        //}
+
         int streakCount = 0;
         string currentStreakDay = YearMonthDay();
-        Debug.Log("currentStreakDay: " + currentStreakDay);
         currentStreakDay = DateTime.Now.ToString("yyyy-MM-dd");
-        Debug.Log("Last day: " + today);
+
+        float currCalories = c.GetTotalKcalFromDate(id_user, DateTime.Today.ToString("yyyy-MM-dd"));
         if (currCalories >= userCalories.calories && currentStreakDay == today)
         {
             streakCount++;
-            Debug.Log("streakCount: " + streakCount);
             c.UpdateUserStreak(id_user, streakCount);
         }
-       
-
-        //if ((currCalories - userCalories.calories) < 200)
-        //{
-        //    c.UpdateUserCoins(id_user, 100);
-        //}
-        //else if((currCalories - userCalories.calories) > 500)
-        //{
-        //    c.UpdateUserCoins(id_user, 50);
-        //}
     }
 
     public string YearMonthDay()
@@ -202,7 +117,7 @@ public class MainManager : MonoBehaviour
 
             // Spausdiname metus, mėnesį ir dieną
             // Debug.Log("Konvertuoti metai, mėnuo ir diena: " + yearMonthDay);
-            return yearMonthDay;           
+            return yearMonthDay;
         }
         else
         {
@@ -232,21 +147,6 @@ public class MainManager : MonoBehaviour
         descr.text = description;
     }
 
-    public void ShowXP()
-    {
-        if (isXpVisible)
-        {
-
-            currXp.gameObject.SetActive(false);
-            isXpVisible = false;
-        }
-        else
-        {
-            currXp.gameObject.SetActive(true);
-            isXpVisible = true;
-        }
-    }
-
     public void SwitchSegment(int switchTo)
     {
         //changed for canvas
@@ -265,12 +165,5 @@ public class MainManager : MonoBehaviour
     private void GoToLogin()
     {
         SceneManager.LoadScene("Login");
-    }
-
-    public void SubmitChanges()
-    {
-        editSettings.SetActive(false);
-        UpdateInfo();
-        UpdateUserDisplay();
     }
 }

@@ -78,7 +78,7 @@
     <Compile Include="Assets\Scripts\Game\Magic\Player\ME_Player.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerExtensions.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePicker_DayButton_Pool.cs" />
-    <Compile Include="Assets\Scripts\Main\GameSelect.cs" />
+    <Compile Include="Assets\Scripts\Main\Games\GameSelect.cs" />
     <Compile Include="Assets\Scripts\Tutorial\TutorialManager.cs" />
     <Compile Include="Assets\Scripts\Models\LevelCoins.cs" />
     <Compile Include="Assets\Scripts\Survey\SliderScript.cs" />
@@ -94,6 +94,7 @@
     <Compile Include="Assets\Scripts\Game\Magic\Weapons\Volt Eel\ME_VoltEel.cs" />
     <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\HelperScripts\PriorityQueue.cs" />
     <Compile Include="Assets\Scripts\Game\Magic\Weapons\ME_Weapon.cs" />
+    <Compile Include="Assets\Scripts\Main\Home\HomeTab.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerTimer.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\ClientMethods.cs" />
     <Compile Include="Assets\UI\TableLayout\Example\TableLayoutExampleController.cs" />
@@ -172,7 +173,7 @@
     <Compile Include="Assets\Scripts\Game\Jump\Platform.cs" />
     <Compile Include="Assets\Scripts\Game\Magic\UI\Damage Numbers\ME_DamageNumber.cs" />
     <Compile Include="Assets\UI\DatePicker\TextMesh Pro\DatePicker_TextMeshProDefaults.cs" />
-    <Compile Include="Assets\Scripts\Main\GameCard.cs" />
+    <Compile Include="Assets\Scripts\Main\Games\GameCard.cs" />
     <Compile Include="Assets\UI\TableLayout\TableLayoutUtilities.cs" />
     <Compile Include="Assets\Scripts\Survey\SurveyManager.cs" />
     <Compile Include="Assets\Scripts\Game\Harvest\HandsAnimator.cs" />
@@ -188,6 +189,7 @@
     <Compile Include="Assets\Scripts\Game\Harvest\CustomerTable.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\DBManager.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerCache.cs" />
+    <Compile Include="Assets\Scripts\Main\XpPopup.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
