@@ -123,4 +123,9 @@ public class ClientMethods// : IClientInterface
     {
         return _databaseMethods.DeleteUserAllergies(id_user);
     }
+
+    public float GetTotalKcalFromDate(int id_user, string date)
+    {
+        return _databaseMethods.GetTotalKcalFromDate(id_user, date);
+    }
 }

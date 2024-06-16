@@ -5,6 +5,7 @@ using UnityEngine;
 using System.Text;
 using Mono.Data.Sqlite;
 using static UserData;
+using Unity.VisualScripting;
 
 public class DatabaseMethods
 {
@@ -659,6 +660,29 @@ public class DatabaseMethods
             return command_delete.ExecuteNonQuery() > 0;
         }
         catch (SqliteException e) { System.Console.WriteLine(e.Message); return false; }
+        finally { DBManager.CloseConnection(); }
+    }
+
+
+    public float GetTotalKcalFromDate(int id_user, string date)
+    {
+        float kcal = 0;
+        try
+        {
+            DBManager.OpenConnection();
+            IDbCommand command_get = DBManager.connection.CreateCommand();
+            command_get.CommandText =
+                "SELECT SUM(kcal) " +
+                "FROM consumed_user_meals " +
+                "WHERE id_user = " + id_user + " " +
+                "AND DATE(consumption_date) = '" + date + "'";
+            IDataReader reader = command_get.ExecuteReader();
+
+            if (reader.Read())
+                kcal = reader.GetFloat(0);
+            return kcal;
+        }
+        catch (Exception e) { System.Console.WriteLine(e.Message); return kcal; }
         finally { DBManager.CloseConnection(); }
     }
 }

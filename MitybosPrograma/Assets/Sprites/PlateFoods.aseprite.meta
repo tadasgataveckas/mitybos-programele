@@ -126,11 +126,11 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 4
-      y: 68
+      x: 25
+      y: 216
       width: 8
       height: 14
-    spriteID: 6f0f060dbb463ab4aa4d8eadceb11594
+    spriteID: b64e4483ddf9fda439b4b914d69a870f
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -138,7 +138,7 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 68}
+    uvTransform: {x: 25, y: 216}
   - name: PlateFoods_Frame_3
     originalName: 
     pivot: {x: 0.4666667, y: -0.71428573}
@@ -146,251 +146,11 @@ ScriptedImporter:
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 32
-      y: 40
-      width: 15
-      height: 14
-    spriteID: 76ea8f7ccf4487949aaa91bc99feb8bb
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 32, y: 40}
-  - name: PlateFoods_Frame_4
-    originalName: 
-    pivot: {x: 0.4615385, y: -0.9166667}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 79
-      y: 40
-      width: 13
-      height: 12
-    spriteID: 78426d09f1c8d6b4fbfd7130f8306c10
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 79, y: 40}
-  - name: PlateFoods_Frame_5
-    originalName: 
-    pivot: {x: 0.4615385, y: -0.8333334}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 100
-      y: 40
-      width: 13
-      height: 12
-    spriteID: f5c07e9ed6483304fb45220eeec47fbb
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 100, y: 40}
-  - name: PlateFoods_Frame_8
-    originalName: 
-    pivot: {x: 0.5, y: -1.1428572}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 114
-      y: 68
-      width: 6
-      height: 14
-    spriteID: 367a4cbefaf64a545aa2cf4540fee70a
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 114, y: 68}
-  - name: PlateFoods_Frame_9
-    originalName: 
-    pivot: {x: 0.54545456, y: -0.9166667}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 112
-      y: 4
-      width: 11
-      height: 12
-    spriteID: 775537fa2c33fbf4c8dae2bade6bcb95
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 112, y: 4}
-  - name: PlateFoods_Frame_10
-    originalName: 
-    pivot: {x: 0.5555556, y: -1.2}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 80
-      y: 68
-      width: 9
-      height: 10
-    spriteID: f5b31f4876d9bf64dab347f6d69f0efe
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 80, y: 68}
-  - name: PlateFoods_Frame_11
-    originalName: 
-    pivot: {x: 0.5555556, y: -1.1}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 97
-      y: 68
-      width: 9
-      height: 10
-    spriteID: 9ec893af50202984a84f571aafaded22
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 97, y: 68}
-  - name: PlateFoods_Frame_14
-    originalName: 
-    pivot: {x: 0.5, y: -1.1428572}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 20
-      y: 68
-      width: 8
-      height: 14
-    spriteID: 742f564cebd99fd428de26f93a641317
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 20, y: 68}
-  - name: PlateFoods_Frame_15
-    originalName: 
-    pivot: {x: 0.5, y: -1.2}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 55
-      y: 40
-      width: 16
-      height: 10
-    spriteID: eb7d8045e6b47b9419916d4da32a17bf
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 55, y: 40}
-  - name: PlateFoods_Frame_16
-    originalName: 
-    pivot: {x: 0.5, y: -1.625}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 36
-      y: 68
-      width: 14
-      height: 8
-    spriteID: af0c9219dcbb48046b427ee3c7cacfc5
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 36, y: 68}
-  - name: PlateFoods_Frame_17
-    originalName: 
-    pivot: {x: 0.5, y: -1.5}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 58
-      y: 68
-      width: 14
-      height: 8
-    spriteID: e12a5ab81cfd6aa499eb150fd5b5e39f
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 58, y: 68}
-  - name: PlateFoods_Frame_18
-    originalName: 
-    pivot: {x: 0.5, y: -0.16}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 78
-      y: 4
-      width: 26
-      height: 25
-    spriteID: 468a529fd222b194b8dad64eacab60bc
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 78, y: 4}
-  - name: PlateFoods_Frame_19
-    originalName: 
-    pivot: {x: 0.5, y: -0.11111111}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
       x: 42
       y: 4
-      width: 28
-      height: 27
-    spriteID: 42ea389dc032eea4da36a4a49748e9a3
+      width: 15
+      height: 14
+    spriteID: 651da9e7edeab2c44812e5c970960917
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -399,6 +159,246 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 42, y: 4}
+  - name: PlateFoods_Frame_4
+    originalName: 
+    pivot: {x: 0.4615385, y: -0.9166667}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 42
+      y: 72
+      width: 13
+      height: 12
+    spriteID: bf9475a50a46bb442b53da264e0fa4a5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 72}
+  - name: PlateFoods_Frame_5
+    originalName: 
+    pivot: {x: 0.4615385, y: -0.8333334}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 42
+      y: 92
+      width: 13
+      height: 12
+    spriteID: 2265dc286ced9094cbb6b7c7c4af3469
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 92}
+  - name: PlateFoods_Frame_8
+    originalName: 
+    pivot: {x: 0.5, y: -1.1428572}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 65
+      y: 84
+      width: 6
+      height: 14
+    spriteID: 8f1e2d1d027c3514cb598c4351bfecb8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 65, y: 84}
+  - name: PlateFoods_Frame_9
+    originalName: 
+    pivot: {x: 0.54545456, y: -0.9166667}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 42
+      y: 134
+      width: 11
+      height: 12
+    spriteID: 3469adb86a5a169458e3e9245d9e3a90
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 134}
+  - name: PlateFoods_Frame_10
+    originalName: 
+    pivot: {x: 0.5555556, y: -1.2}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 42
+      y: 242
+      width: 9
+      height: 10
+    spriteID: dce6123a280d958419421a2955300cca
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 242}
+  - name: PlateFoods_Frame_11
+    originalName: 
+    pivot: {x: 0.5555556, y: -1.1}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 65
+      y: 66
+      width: 9
+      height: 10
+    spriteID: 6f7e54a81022fa346bca0e13c17d51cb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 65, y: 66}
+  - name: PlateFoods_Frame_14
+    originalName: 
+    pivot: {x: 0.5, y: -1.1428572}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 42
+      y: 188
+      width: 8
+      height: 14
+    spriteID: 7ae8b3e367e97834089358feeeaccb6f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 188}
+  - name: PlateFoods_Frame_15
+    originalName: 
+    pivot: {x: 0.5, y: -1.2}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 65
+      y: 4
+      width: 16
+      height: 10
+    spriteID: 24c53201c95fcc34eb2172c3c7699448
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 65, y: 4}
+  - name: PlateFoods_Frame_16
+    originalName: 
+    pivot: {x: 0.5, y: -1.625}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 42
+      y: 210
+      width: 14
+      height: 8
+    spriteID: 2f26e95e18e3a99438b037f5b25df51c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 210}
+  - name: PlateFoods_Frame_17
+    originalName: 
+    pivot: {x: 0.5, y: -1.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 42
+      y: 226
+      width: 14
+      height: 8
+    spriteID: 4aaef3df0fe5263429162bcbf6b29e1a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 226}
+  - name: PlateFoods_Frame_18
+    originalName: 
+    pivot: {x: 0.5, y: -0.16}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 75
+      width: 26
+      height: 25
+    spriteID: 49c964cdf6ae05f4d9264f466c6f31eb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 75}
+  - name: PlateFoods_Frame_19
+    originalName: 
+    pivot: {x: 0.5, y: -0.11111111}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 40
+      width: 28
+      height: 27
+    spriteID: 1a3d18ead0ba8df47be34f0e5b931497
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 40}
   - name: PlateFoods_Frame_20
     originalName: 
     pivot: {x: 0.5, y: -0.071428575}
@@ -410,7 +410,7 @@ ScriptedImporter:
       y: 4
       width: 30
       height: 28
-    spriteID: 9a83694bf95737140ac1551300519c2b
+    spriteID: 6ce7473b634bb9248ac71502b3a07b41
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -427,10 +427,10 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 40
+      y: 136
       width: 20
       height: 20
-    spriteID: d29032b8a65fbd94d8834a899c6db4d5
+    spriteID: db8d3c8191145d843a40437ab026d48c
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -438,7 +438,247 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 4, y: 40}
+    uvTransform: {x: 4, y: 136}
+  - name: PlateFoods_Frame_26
+    originalName: 
+    pivot: {x: 0.45454547, y: -1.1428572}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 42
+      y: 112
+      width: 11
+      height: 14
+    spriteID: 69d62b59c2be4f34397d65bd097d7506
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 112}
+  - name: PlateFoods_Frame_27
+    originalName: 
+    pivot: {x: 0.47619048, y: -0.45000002}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 108
+      width: 21
+      height: 20
+    spriteID: a39652f25a55dfc43ad2a6a477e05738
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 108}
+  - name: PlateFoods_Frame_28
+    originalName: 
+    pivot: {x: 0.47368422, y: -0.5555556}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 164
+      width: 19
+      height: 18
+    spriteID: 0e8f6ee787059324ab3467d6ac6b138e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 164}
+  - name: PlateFoods_Frame_29
+    originalName: 
+    pivot: {x: 0.47368422, y: -0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 190
+      width: 19
+      height: 18
+    spriteID: 876315a1e28f5354a8dd2dd1a47279b7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 190}
+  - name: PlateFoods_Frame_32
+    originalName: 
+    pivot: {x: 0.5, y: -1.1428572}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 65
+      y: 22
+      width: 8
+      height: 14
+    spriteID: 7263f61df5add92468020afde8ebbe9d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 65, y: 22}
+  - name: PlateFoods_Frame_33
+    originalName: 
+    pivot: {x: 0.4615385, y: -0.5294118}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 216
+      width: 13
+      height: 17
+    spriteID: 97277476e7fb4c84e95d3c5549045582
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 216}
+  - name: PlateFoods_Frame_34
+    originalName: 
+    pivot: {x: 0.45454547, y: -0.6666667}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 42
+      y: 26
+      width: 11
+      height: 15
+    spriteID: 8f21a3f96620f2447a29a65be8f2c355
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 26}
+  - name: PlateFoods_Frame_35
+    originalName: 
+    pivot: {x: 0.45454547, y: -0.6}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 42
+      y: 49
+      width: 11
+      height: 15
+    spriteID: dd927aa0cb377674d9ab4820e8e263c2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 49}
+  - name: PlateFoods_Frame_38
+    originalName: 
+    pivot: {x: 0.5, y: -1.1428572}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 65
+      y: 44
+      width: 8
+      height: 14
+    spriteID: 06b4eefb586b6894da4793c0ae24e0b1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 65, y: 44}
+  - name: PlateFoods_Frame_39
+    originalName: 
+    pivot: {x: 0.53333336, y: -1}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 241
+      width: 15
+      height: 11
+    spriteID: abb5d438266195648a7c8325ef8b8742
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 241}
+  - name: PlateFoods_Frame_40
+    originalName: 
+    pivot: {x: 0.53846157, y: -1.3333334}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 42
+      y: 154
+      width: 13
+      height: 9
+    spriteID: a7448b8cd3b4ccb4ca6064516f82a971
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 154}
+  - name: PlateFoods_Frame_41
+    originalName: 
+    pivot: {x: 0.53846157, y: -1.2222222}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 42
+      y: 171
+      width: 13
+      height: 9
+    spriteID: 25097df8dc5593947915389944045ee0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 42, y: 171}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -455,7 +695,7 @@ ScriptedImporter:
         y: 16
         width: 8
         height: 14
-      spriteId: 6f0f060dbb463ab4aa4d8eadceb11594
+      spriteId: b64e4483ddf9fda439b4b914d69a870f
     - name: PlateFoods_Frame_3
       frameIndex: 3
       cellRect:
@@ -463,7 +703,7 @@ ScriptedImporter:
         y: 10
         width: 15
         height: 14
-      spriteId: 76ea8f7ccf4487949aaa91bc99feb8bb
+      spriteId: 651da9e7edeab2c44812e5c970960917
     - name: PlateFoods_Frame_4
       frameIndex: 4
       cellRect:
@@ -471,7 +711,7 @@ ScriptedImporter:
         y: 11
         width: 13
         height: 12
-      spriteId: 78426d09f1c8d6b4fbfd7130f8306c10
+      spriteId: bf9475a50a46bb442b53da264e0fa4a5
     - name: PlateFoods_Frame_5
       frameIndex: 5
       cellRect:
@@ -479,7 +719,7 @@ ScriptedImporter:
         y: 10
         width: 13
         height: 12
-      spriteId: f5c07e9ed6483304fb45220eeec47fbb
+      spriteId: 2265dc286ced9094cbb6b7c7c4af3469
     - name: PlateFoods_Frame_8
       frameIndex: 8
       cellRect:
@@ -487,7 +727,7 @@ ScriptedImporter:
         y: 16
         width: 6
         height: 14
-      spriteId: 367a4cbefaf64a545aa2cf4540fee70a
+      spriteId: 8f1e2d1d027c3514cb598c4351bfecb8
     - name: PlateFoods_Frame_9
       frameIndex: 9
       cellRect:
@@ -495,7 +735,7 @@ ScriptedImporter:
         y: 11
         width: 11
         height: 12
-      spriteId: 775537fa2c33fbf4c8dae2bade6bcb95
+      spriteId: 3469adb86a5a169458e3e9245d9e3a90
     - name: PlateFoods_Frame_10
       frameIndex: 10
       cellRect:
@@ -503,7 +743,7 @@ ScriptedImporter:
         y: 12
         width: 9
         height: 10
-      spriteId: f5b31f4876d9bf64dab347f6d69f0efe
+      spriteId: dce6123a280d958419421a2955300cca
     - name: PlateFoods_Frame_11
       frameIndex: 11
       cellRect:
@@ -511,7 +751,7 @@ ScriptedImporter:
         y: 11
         width: 9
         height: 10
-      spriteId: 9ec893af50202984a84f571aafaded22
+      spriteId: 6f7e54a81022fa346bca0e13c17d51cb
     - name: PlateFoods_Frame_14
       frameIndex: 14
       cellRect:
@@ -519,7 +759,7 @@ ScriptedImporter:
         y: 16
         width: 8
         height: 14
-      spriteId: 742f564cebd99fd428de26f93a641317
+      spriteId: 7ae8b3e367e97834089358feeeaccb6f
     - name: PlateFoods_Frame_15
       frameIndex: 15
       cellRect:
@@ -527,7 +767,7 @@ ScriptedImporter:
         y: 12
         width: 16
         height: 10
-      spriteId: eb7d8045e6b47b9419916d4da32a17bf
+      spriteId: 24c53201c95fcc34eb2172c3c7699448
     - name: PlateFoods_Frame_16
       frameIndex: 16
       cellRect:
@@ -535,7 +775,7 @@ ScriptedImporter:
         y: 13
         width: 14
         height: 8
-      spriteId: af0c9219dcbb48046b427ee3c7cacfc5
+      spriteId: 2f26e95e18e3a99438b037f5b25df51c
     - name: PlateFoods_Frame_17
       frameIndex: 17
       cellRect:
@@ -543,7 +783,7 @@ ScriptedImporter:
         y: 12
         width: 14
         height: 8
-      spriteId: e12a5ab81cfd6aa499eb150fd5b5e39f
+      spriteId: 4aaef3df0fe5263429162bcbf6b29e1a
     - name: PlateFoods_Frame_18
       frameIndex: 18
       cellRect:
@@ -551,7 +791,7 @@ ScriptedImporter:
         y: 4
         width: 26
         height: 25
-      spriteId: 468a529fd222b194b8dad64eacab60bc
+      spriteId: 49c964cdf6ae05f4d9264f466c6f31eb
     - name: PlateFoods_Frame_19
       frameIndex: 19
       cellRect:
@@ -559,7 +799,7 @@ ScriptedImporter:
         y: 3
         width: 28
         height: 27
-      spriteId: 42ea389dc032eea4da36a4a49748e9a3
+      spriteId: 1a3d18ead0ba8df47be34f0e5b931497
     - name: PlateFoods_Frame_20
       frameIndex: 20
       cellRect:
@@ -567,7 +807,7 @@ ScriptedImporter:
         y: 2
         width: 30
         height: 28
-      spriteId: 9a83694bf95737140ac1551300519c2b
+      spriteId: 6ce7473b634bb9248ac71502b3a07b41
     - name: PlateFoods_Frame_21
       frameIndex: 21
       cellRect:
@@ -575,7 +815,103 @@ ScriptedImporter:
         y: 6
         width: 20
         height: 20
-      spriteId: d29032b8a65fbd94d8834a899c6db4d5
+      spriteId: db8d3c8191145d843a40437ab026d48c
+    - name: PlateFoods_Frame_26
+      frameIndex: 26
+      cellRect:
+        x: 11
+        y: 16
+        width: 11
+        height: 14
+      spriteId: 69d62b59c2be4f34397d65bd097d7506
+    - name: PlateFoods_Frame_27
+      frameIndex: 27
+      cellRect:
+        x: 6
+        y: 9
+        width: 21
+        height: 20
+      spriteId: a39652f25a55dfc43ad2a6a477e05738
+    - name: PlateFoods_Frame_28
+      frameIndex: 28
+      cellRect:
+        x: 7
+        y: 10
+        width: 19
+        height: 18
+      spriteId: 0e8f6ee787059324ab3467d6ac6b138e
+    - name: PlateFoods_Frame_29
+      frameIndex: 29
+      cellRect:
+        x: 7
+        y: 9
+        width: 19
+        height: 18
+      spriteId: 876315a1e28f5354a8dd2dd1a47279b7
+    - name: PlateFoods_Frame_32
+      frameIndex: 32
+      cellRect:
+        x: 12
+        y: 16
+        width: 8
+        height: 14
+      spriteId: 7263f61df5add92468020afde8ebbe9d
+    - name: PlateFoods_Frame_33
+      frameIndex: 33
+      cellRect:
+        x: 10
+        y: 9
+        width: 13
+        height: 17
+      spriteId: 97277476e7fb4c84e95d3c5549045582
+    - name: PlateFoods_Frame_34
+      frameIndex: 34
+      cellRect:
+        x: 11
+        y: 10
+        width: 11
+        height: 15
+      spriteId: 8f21a3f96620f2447a29a65be8f2c355
+    - name: PlateFoods_Frame_35
+      frameIndex: 35
+      cellRect:
+        x: 11
+        y: 9
+        width: 11
+        height: 15
+      spriteId: dd927aa0cb377674d9ab4820e8e263c2
+    - name: PlateFoods_Frame_38
+      frameIndex: 38
+      cellRect:
+        x: 12
+        y: 16
+        width: 8
+        height: 14
+      spriteId: 06b4eefb586b6894da4793c0ae24e0b1
+    - name: PlateFoods_Frame_39
+      frameIndex: 39
+      cellRect:
+        x: 8
+        y: 11
+        width: 15
+        height: 11
+      spriteId: abb5d438266195648a7c8325ef8b8742
+    - name: PlateFoods_Frame_40
+      frameIndex: 40
+      cellRect:
+        x: 9
+        y: 12
+        width: 13
+        height: 9
+      spriteId: a7448b8cd3b4ccb4ca6064516f82a971
+    - name: PlateFoods_Frame_41
+      frameIndex: 41
+      cellRect:
+        x: 9
+        y: 11
+        width: 13
+        height: 9
+      spriteId: 25097df8dc5593947915389944045ee0
     linkedCells: []
     parentIndex: -1
   platformSettings: []

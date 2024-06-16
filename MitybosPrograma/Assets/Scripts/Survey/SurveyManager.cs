@@ -60,6 +60,9 @@ public class SurveyManager : MonoBehaviour
         userData.height = HeightScroller.defaultValue;
         userData.weight = WeightScroller.defaultValue;
         userData.date_of_birth = YearScroller.defaultValue.ToString();
+
+        YearScroller.endIndex = DateTime.Now.Year;
+        YearScroller.RefreshScroller();
     }
 
     void Update()

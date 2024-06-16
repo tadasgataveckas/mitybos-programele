@@ -3,6 +3,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System.Text.RegularExpressions;
+using System.Globalization;
 
 public class LoginManager : MonoBehaviour
 {
@@ -174,6 +175,9 @@ public class LoginManager : MonoBehaviour
 
     void Start()
     {
+        CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
+        CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
+
         SwitchSegment(0);
         DBManager.CreateDatabase();
     }

@@ -43,6 +43,43 @@ public class JumpGameManager : MonoBehaviour
     private int intScore;
     private LevelCoins levelCoins;
 
+    private int coinDropChance = 5;
+    private int nutDropChance = 1;
+
+    public Transform VitaminTooltipHolder;
+
+
+
+    public List<float[]> PlatformPercentages = new List<float[]>()
+    {
+        // OneTime | HighJump | Death | Moving | Regular
+
+        new float[] { 10f, 20f, 0f, 0f, 70f }, // Level 1 percentages
+        new float[] { 20f, 20f, 10f, 0f, 50f },  // Level 2 percentages
+        new float[] { 20f, 20f, 15f, 20f, 25f },  // Level 3 percentages
+        new float[] { 20f, 20f, 20f, 20f, 20f },  // Level 4 percentages
+        new float[] { 30f, 10f, 20f, 30f, 10f }  // Level 5 percentages
+
+        // Add more levels as needed
+    };
+
+    private float[] currentPlatformPercentages;
+
+    private void setPlatformPercentages(int index)
+    {
+        if (index >= PlatformPercentages.Count)
+        {
+            index = PlatformPercentages.Count - 1;
+        }
+        currentPlatformPercentages = PlatformPercentages[index];
+        //convert
+        for (int i = 1; i < 5; i++)
+        {
+            currentPlatformPercentages[i] = currentPlatformPercentages[i] + currentPlatformPercentages[i - 1];
+        }
+        Debug.Log(currentPlatformPercentages[0].ToString() + " " + currentPlatformPercentages[3].ToString());
+
+    }
 
 
     void Awake()
@@ -73,6 +110,7 @@ public class JumpGameManager : MonoBehaviour
     // spawns section of platforms (relax platform included)
     private void SpawnSection()
     {
+        setPlatformPercentages(SectionCounter);
         SectionCounter++;
         spawnPosition.y += 2f;
 
@@ -94,32 +132,43 @@ public class JumpGameManager : MonoBehaviour
 
         spawnPosition.y += UnityEngine.Random.Range(.2f, 1f);
         spawnPosition.x = UnityEngine.Random.Range(0.2f - screenWidthInUnits / 2, screenWidthInUnits / 2 - 0.2f);
-        switch (percentage)
+
+        float OneTimePercentage = currentPlatformPercentages[0];
+        float HighJumpPercentage = currentPlatformPercentages[1];
+        float DeathPercentage = currentPlatformPercentages[2];
+        float MovingPercentage = currentPlatformPercentages[3];
+
+
+
+        // One time platform, 30%
+        if (percentage < OneTimePercentage)
         {
-            // One time platform, 30%
-            case < 30:
-                SpawnPlatform(oneTimePlatformPrefab);
-                break;
-            // High jump platform, 10%
-            case < 40:
-                SpawnPlatform(highJumpPlatformPrefab);
-                break;
-            // High jump platform, 10%
-            case < 60:
-                SpawnPlatform(DeathPlatformPrefab);
-                spawnPosition.x = UnityEngine.Random.Range(0.2f - screenWidthInUnits / 2, screenWidthInUnits / 2 - 0.2f);
-                SpawnPlatform(platformPrefab);
-                break;
-            // Moving platform, 10%
-            case < 70:
-                SpawnPlatform(movePlatformPrefab);
-                break;
-            // Regular, 30%
-            default:
-                SpawnPlatform(platformPrefab);
-                break;
+            SpawnPlatform(oneTimePlatformPrefab);
+        }
+        // High jump platform, 10%
+        else if (percentage < HighJumpPercentage)
+        {
+            SpawnPlatform(highJumpPlatformPrefab);
+        }
+        // Death platform, 20%
+        else if (percentage < DeathPercentage)
+        {
+            SpawnPlatform(DeathPlatformPrefab);
+            spawnPosition.x = UnityEngine.Random.Range(0.2f - screenWidthInUnits / 2, screenWidthInUnits / 2 - 0.2f);
+            SpawnPlatform(platformPrefab);
+        }
+        // Moving platform, 10%
+        else if (percentage < MovingPercentage)
+        {
+            SpawnPlatform(movePlatformPrefab);
+        }
+        // Regular, 30%
+        else
+        {
+            SpawnPlatform(platformPrefab);
         }
     }
+
 
     private void SpawnPlatform(GameObject platform)
     {
@@ -132,10 +181,10 @@ public class JumpGameManager : MonoBehaviour
         float percentage = UnityEngine.Random.Range(0f, 100f);
 
         // 10% coin spawn chance
-        if (percentage < 10)
+        if (percentage < coinDropChance)
             Instantiate(coinPrefab, spawnPosition, Quaternion.identity);
-        // 5% coin spawn chance
-        else if (percentage < 15)
+        // 5% shield spawn chance
+        else if (percentage < nutDropChance)
             Instantiate(shieldPrefab, spawnPosition, Quaternion.identity);
     }
 
@@ -180,6 +229,32 @@ public class JumpGameManager : MonoBehaviour
         }
         else
             TriggerGameOver();
+    }
+
+    public void ConsumeVitamin(string vitaminName)
+    {
+        Debug.Log("Consumed " + vitaminName);
+        if (vitaminName == "E")
+        {
+            // give shield
+            hasShield = true;
+            shieldSprite.SetActive(true);
+        }
+        if (vitaminName == "A")
+        {
+            // increase coin chance
+            coinDropChance = (coinDropChance + 3) % 15; // max 15 
+        }
+        if (vitaminName == "C")
+        {
+            // increase shield drop chance
+            nutDropChance = (nutDropChance + 3) % 15; // max 15 
+        }
+        if (vitaminName == "D")
+        {
+            // increase jump force
+            player.GetComponent<JumpPlayerController>().jumpForce += 0.2f; 
+        }
     }
 
     private void CountCameraSize()

@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: PlateFish
+  m_Controller: {fileID: 9100000, guid: c8e944e4c5c56004e8591c0d50ab5889, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 4411740324371532458, guid: 527cdfb0a06a4664abc4159d8b1f7a6d, type: 3}
+    m_OverrideClip: {fileID: -775478356699868161, guid: 527cdfb0a06a4664abc4159d8b1f7a6d, type: 3}
+  - m_OriginalClip: {fileID: -77851232050952080, guid: 527cdfb0a06a4664abc4159d8b1f7a6d, type: 3}
+    m_OverrideClip: {fileID: 7284837678552807922, guid: 527cdfb0a06a4664abc4159d8b1f7a6d, type: 3}
