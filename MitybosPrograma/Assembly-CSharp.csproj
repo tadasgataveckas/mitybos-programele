@@ -82,6 +82,7 @@
     <Compile Include="Assets\Scripts\Tutorial\TutorialManager.cs" />
     <Compile Include="Assets\Scripts\Models\LevelCoins.cs" />
     <Compile Include="Assets\Scripts\Survey\SliderScript.cs" />
+    <Compile Include="Assets\Scripts\Main\XpPopup.cs" />
     <Compile Include="Assets\Scripts\Main\Settings\EditSettings.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\IClientInterface.cs" />
     <Compile Include="Assets\Scripts\PlanCreation\PlanCreation\HelperScripts\FoodItem.cs" />
@@ -189,7 +190,6 @@
     <Compile Include="Assets\Scripts\Game\Harvest\CustomerTable.cs" />
     <Compile Include="Assets\Scripts\UI-DBmethods\DBManager.cs" />
     <Compile Include="Assets\UI\DatePicker\DatePickerCache.cs" />
-    <Compile Include="Assets\Scripts\Main\XpPopup.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
