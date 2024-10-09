@@ -29,7 +29,7 @@ We proudly showcased MealQuest at the **Technorama 2024** startup event held at 
 
 ## Screenshots
 
-![MealQuest Poster](https://github.com/MatasPal/MealQuest/tree/main/Images/MealQuestScreenshot_Poster2.png)
+![MealQuest Poster](https://raw.githubusercontent.com/MatasPal/MealQuest/main/Images/MealQuestScreenshot_Poster2.png)
 ![MealQuest Screenshot 2](link-to-your-image-2)
 ![MealQuest Screenshot 3](link-to-your-image-3)
 
