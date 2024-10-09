@@ -30,6 +30,6 @@ We proudly showcased MealQuest at the **Technorama 2024** startup event held at 
 ## Screenshots
 
 ![MealQuest Poster](https://raw.githubusercontent.com/MatasPal/MealQuest/main/Images/MealQuestScreenshot_Poster2.png)
-![MealQuest JumpGame](https://raw.githubusercontent.com/MatasPal/MealQuest/main/Images/MealQuestScreenshot_JumpGame.jpg)
-![MealQuest VitaminHarvest](https://raw.githubusercontent.com/MatasPal/MealQuest/main/Images/MealQuestScreenshot_VitaminHarvest.jpg)
+![MealQuest JumpGame](https://raw.githubusercontent.com/MatasPal/MealQuest/main/Images/MealQuestScreenshot_JumpGame.png)
+![MealQuest VitaminHarvest](https://raw.githubusercontent.com/MatasPal/MealQuest/main/Images/MealQuestScreenshot_VitaminHarvest.png)
 
